@@ -35,7 +35,6 @@
     "husky": "^9.1.6",
     "next-translate-plugin": "^2.6.2",
     "postcss": "^8",
-    "prisma": "^5.21.1",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
