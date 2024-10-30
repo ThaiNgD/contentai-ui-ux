@@ -3,5 +3,5 @@ export default function layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className={` `}>{children}</div>;
+  return <div className={``}>{children}</div>;
 }
