@@ -11,7 +11,7 @@ export default function layout({
     >
       <Image src={BackGroundImage} className="w-[50%]" alt="Background Image" />
       <div className="w-[50%] flex items-center justify-center">
-        <div className="border-2 shadow-xl rounded-lg w-[500px] h-[800px] bg-white">
+        <div className="border shadow-xl rounded-2xl w-[500px] h-[full] bg-white">
           {children}
         </div>
       </div>
