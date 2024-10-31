@@ -10,9 +10,9 @@ const layout = ({
   return (
     <div className="flex w-screen h-screen">
       <Sidebar />
-      <div className="flex flex-col flex-auto transition-all duration-300">
+      <div className="flex flex-col overflow-y-auto scrollbar-none flex-auto transition-all duration-300">
         <Header />
-        <div className="p-2">{children}</div>
+        <div className="p-2 bg-white">{children}</div>
         <Footer />
       </div>
     </div>

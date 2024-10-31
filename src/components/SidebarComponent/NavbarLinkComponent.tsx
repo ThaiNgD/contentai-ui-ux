@@ -34,12 +34,12 @@ const NavbarLinkComponent = ({
         <Link
           href={link}
           className={cn(
-            "text-white flex justify-between hover:text-gray-300",
+            "text-black flex font-googleSans justify-between hover:text-gray-300",
             classLink,
             !isOpen && "justify-center"
           )}
         >
-          <Icon size={24} />{" "}
+          <Icon size={20} />{" "}
           {isOpen && <p className="w-[calc(100%-36px)]">{title}</p>}
         </Link>
         {isOpen && <div className="absolute "></div>}

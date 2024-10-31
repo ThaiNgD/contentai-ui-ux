@@ -1,4 +1,5 @@
 import TanStackProvider from "@/provider/TanStackProvider";
+import { MantineProvider } from "@mantine/core";
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
@@ -13,8 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        <TanStackProvider>{children}</TanStackProvider>
+      <body className={`font-googleSans antialiased`}>
+        <MantineProvider>
+          <TanStackProvider>{children}</TanStackProvider>
+        </MantineProvider>
       </body>
     </html>
   );
