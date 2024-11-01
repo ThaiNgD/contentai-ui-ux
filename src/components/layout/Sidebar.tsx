@@ -18,14 +18,14 @@ const Sidebar = () => {
     >
       <div
         className={cn(
-          "absolute rounded-full p-1 left-[256px] transition-all duration-300 bg-gray-200 z-50 top-[10%]",
+          "absolute rounded-full p-1 left-[256px] transition-all duration-300 bg-gray-200 z-50 top-[50px]",
           isOpen ? "left-[50px]" : "left-[242px]"
         )}
         role="button"
+        onClick={handleToggleArrow}
       >
         <FaAngleRight
           className={cn(!isOpen && "rotate-180", "duration-400 transition-all")}
-          onClick={handleToggleArrow}
           size={20}
         />
       </div>
@@ -40,7 +40,7 @@ const Sidebar = () => {
       >
         {/* Sidebar content */}
         <div className="flex flex-col items-center">
-          <div className="h-[80px]  flex items-center">
+          <div className="h-[50px] mb-[30px] flex items-center">
             {isOpen ? (
               <Image
                 src={Logo}
