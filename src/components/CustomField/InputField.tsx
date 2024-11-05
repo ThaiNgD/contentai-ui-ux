@@ -34,6 +34,8 @@ const InputField = <T,>({
   classWapper,
   isVertical,
   msgError,
+  title,
+  clsTitle,
   hiddenError,
   clsLabelWrapper,
   isClear,
@@ -51,6 +53,11 @@ const InputField = <T,>({
       isVertical={isVertical}
       clsLabelWrapper={clsLabelWrapper}
     >
+      {title && (
+        <div className={cn("flex items-center gap-1", clsTitle)}>
+          <span className="text-sm font-bold italic">{title}</span>
+        </div>
+      )}
       <input
         autoComplete="off"
         {...spread}

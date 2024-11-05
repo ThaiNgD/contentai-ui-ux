@@ -1,4 +1,3 @@
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
 import ContentDisplay from "./_lib/ContentDisplay";
 import FolderDisplay from "./_lib/FolderDisplay";
 import Header from "./_lib/Header";
@@ -10,7 +9,7 @@ const page = () => {
       <div className="px-[175px] my-[50px]">
         <FolderDisplay />
         <ContentDisplay />
-        <CustomEditor />
+        {/* <CustomEditor /> */}
       </div>
     </>
   );
