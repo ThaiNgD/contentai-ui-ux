@@ -1,3 +1,4 @@
+"use client";
 import CKEditor from "./_lib/CKEditor";
 import InputContent from "./_lib/InputContent";
 

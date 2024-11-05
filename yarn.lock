@@ -3452,7 +3452,7 @@ natural-compare@^1.4.0:
 
 next-translate-plugin@^2.6.2:
   version "2.6.2"
-  resolved "https://registry.npmjs.org/next-translate-plugin/-/next-translate-plugin-2.6.2.tgz"
+  resolved "https://registry.yarnpkg.com/next-translate-plugin/-/next-translate-plugin-2.6.2.tgz#b08044699ff1a66fc028b818ba300b6308d2d057"
   integrity sha512-qfvYG//QfP7b+A/xXGP9K+bdswkAFCabguemuEqjxu+j8pRNoF+jWKmepRXRaAcn1PqFLBj6PBvYkqD1r5k5Zw==
   dependencies:
     typescript "4.5.2"
