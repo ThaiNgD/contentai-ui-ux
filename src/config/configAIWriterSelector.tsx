@@ -25,4 +25,12 @@ export const configAIWriterSelector: AIWriterSelector[] = [
     slug: "content-strategy",
     category: "business",
   },
+  {
+    title: "Phân tích ý định người dùng",
+    description: "Phân tích ý định người dùng, từ khóa, ý định, tiêu đề",
+    // image: "/images/writer_b.jpg",
+    isFavorite: false,
+    slug: "user-intent-analysis",
+    category: "seo-optimization",
+  },
 ];

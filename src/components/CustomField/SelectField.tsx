@@ -4,7 +4,7 @@
 import { cn, convertViToEn } from "@/helper/function";
 import { FormikProps } from "formik";
 import { get } from "lodash";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import {
   Dispatch,
   SetStateAction,
@@ -84,7 +84,7 @@ export const SelectField = <T,>({
       menuPortalRef.current = window.document.body;
     }
   }, []);
-  const { t } = useTranslation();
+  const t = useTranslations();
   //disable-eslint-next-line
   const translatedOption = options?.map((option: any) => {
     return {

@@ -20,7 +20,7 @@ const RecentLaunchComponent = ({
     <div
       role="button"
       className={cn(
-        "shadow-lg rounded-xl duration-200 hover:-translate-y-1 p-3 hover:shadow-2xl  h-[220px] w-[240px]",
+        "shadow-lg rounded-xl dark:bg-[#0D0B0B] duration-200 hover:-translate-y-1 p-3 hover:shadow-2xl  h-[220px] w-[240px]",
         color && ""
       )}
     >

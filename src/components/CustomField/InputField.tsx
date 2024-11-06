@@ -24,6 +24,7 @@ export interface InputFieldProps<T>
   hiddenBgDisabled?: boolean;
   isClear?: boolean;
   onClear?: () => void;
+  type?: "text" | "number" | "password";
 }
 
 const InputField = <T,>({
@@ -40,6 +41,7 @@ const InputField = <T,>({
   clsLabelWrapper,
   isClear,
   onClear,
+  type = "text",
   ...spread
 }: InputFieldProps<T>): JSX.Element => {
   const newValue = formik ? get(formik.values, name) : spread.value;
@@ -62,7 +64,9 @@ const InputField = <T,>({
         autoComplete="off"
         {...spread}
         name={name}
+        type={type}
         id={name}
+        min={0}
         onChange={formik ? formik.handleChange : spread?.onChange}
         onBlur={formik ? formik.handleBlur : spread?.onBlur}
         value={newValue}

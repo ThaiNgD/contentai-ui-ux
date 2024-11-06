@@ -1,0 +1,25 @@
+{
+  "dashboard": {
+    "title": "Hello world!",
+    "about": "Go to the about page",
+    "welcome": "Chào mừng",
+    "welcome_to_content_ai": "Chào mừng bạn đến với phần mềm Content AI",
+    "day_left": "Số ngày còn lại",
+    "word_left": "Số từ còn lại",
+    "image_left": "Số ảnh còn lại",
+    "second_number": "Số giây",
+    "documents_created": "Bài viết đã tạo",
+    "contents": "Nội dung"
+  },
+  "table": {
+    "example_name": "Tên mẫu",
+    "project_name": "Tên dự án",
+    "folder_name": "Tên thư mục",
+    "created_day": "Ngày tạo",
+    "language": "Ngôn ngữ",
+    "action": "Hành động",
+    "total_word": "Số từ"
+  },
+  "Việt Nam": "Việt Nam",
+  "English": "English"
+}

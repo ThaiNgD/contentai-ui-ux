@@ -2,6 +2,7 @@
 
 import { cn } from "@/helper/function";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { IconType } from "react-icons";
 
 export interface NavbarLinkComponentProps {
@@ -22,6 +23,8 @@ const NavbarLinkComponent = ({
   isOpen,
 }: NavbarLinkComponentProps) => {
   const Icon = icon;
+  const pathName = usePathname();
+  const path = pathName?.split("/").slice(0, 2).join("/");
   return (
     <>
       <div
@@ -32,9 +35,9 @@ const NavbarLinkComponent = ({
         )}
       >
         <Link
-          href={link}
+          href={`${path}/${link}`}
           className={cn(
-            "text-black flex font-googleSans justify-between hover:text-gray-300",
+            "text-black dark:text-white flex font-googleSans justify-between hover:text-gray-300",
             classLink,
             !isOpen && "justify-center"
           )}

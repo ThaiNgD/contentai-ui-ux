@@ -2,7 +2,7 @@
 import { cn } from "@/helper/function";
 import { Checkbox, Pagination } from "@mantine/core";
 import _, { get } from "lodash";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Key, memo, useCallback, useEffect, useMemo, useState } from "react";
 import DataGrid, { SelectColumn, SortColumn } from "react-data-grid";
@@ -35,7 +35,7 @@ const ReactTableGridCustom = <T, SR = unknown, K extends Key = Key>({
   fetching,
   ...spread
 }: IReactTableGridCustom<T, SR, K>): JSX.Element => {
-  const { t } = useTranslation();
+  const t = useTranslations("table");
   const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);
   const isSelectRow = selectedRows !== undefined;
 
