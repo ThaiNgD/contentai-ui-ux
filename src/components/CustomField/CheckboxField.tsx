@@ -2,7 +2,7 @@
 import { cn } from "@/helper/function";
 import { Checkbox, CheckboxProps } from "flowbite-react";
 import { get } from "lodash";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 import { ReactNode, useId } from "react";
 import ErrorHelperText from "./ErrorHelperText";
 import { IFieldFormCustom } from "./InputField";
@@ -29,7 +29,7 @@ const CheckBoxField = <T,>({
 }: CheckBoxFieldProps<T>): JSX.Element => {
   const idCheck = useId();
   const values = get(formik?.values, name);
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <div className={cn(classWapper)}>

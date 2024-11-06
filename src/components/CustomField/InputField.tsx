@@ -24,6 +24,7 @@ export interface InputFieldProps<T>
   hiddenBgDisabled?: boolean;
   isClear?: boolean;
   onClear?: () => void;
+  type?: "text" | "number" | "password";
 }
 
 const InputField = <T,>({
@@ -34,10 +35,13 @@ const InputField = <T,>({
   classWapper,
   isVertical,
   msgError,
+  title,
+  clsTitle,
   hiddenError,
   clsLabelWrapper,
   isClear,
   onClear,
+  type = "text",
   ...spread
 }: InputFieldProps<T>): JSX.Element => {
   const newValue = formik ? get(formik.values, name) : spread.value;
@@ -51,11 +55,18 @@ const InputField = <T,>({
       isVertical={isVertical}
       clsLabelWrapper={clsLabelWrapper}
     >
+      {title && (
+        <div className={cn("flex items-center gap-1", clsTitle)}>
+          <span className="text-sm font-bold italic">{title}</span>
+        </div>
+      )}
       <input
         autoComplete="off"
         {...spread}
         name={name}
+        type={type}
         id={name}
+        min={0}
         onChange={formik ? formik.handleChange : spread?.onChange}
         onBlur={formik ? formik.handleBlur : spread?.onBlur}
         value={newValue}

@@ -1,3 +1,4 @@
+"use client";
 import { Cell, Pie, PieChart } from "recharts";
 
 const data = [{ name: "Group A", value: 400 }];
