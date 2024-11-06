@@ -1,4 +1,5 @@
 import ChartDisplay from "./_lib/ChartDisplay";
+import ContentDisplay from "./_lib/ContentDisplay";
 import DashboardInfo from "./_lib/DashboardInfo";
 import DashboardTableDisplay from "./_lib/DashboardTableDisplay";
 import Header from "./_lib/Header";
@@ -16,6 +17,7 @@ const page = () => {
         <EmailContact />
       </div> */}
       <RecentlyLaunch />
+      <ContentDisplay />
     </>
   );
 };
