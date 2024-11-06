@@ -1,13 +1,19 @@
+"use client";
+import { useState } from "react";
 import AISelector from "./_lib/AISelector";
 import Header from "./_lib/Header";
+import SelectorGroup from "./_lib/SelectorGroup";
 
-const page = () => {
+export type SelectedType = "all" | "business" | "seo-optimization";
+const Page = () => {
+  const [selectedType, setSelectedType] = useState<SelectedType>("all");
   return (
     <>
       <Header />
-      <AISelector />
+      <SelectorGroup setSelectedType={setSelectedType} />
+      <AISelector type={selectedType} />
     </>
   );
 };
 
-export default page;
+export default Page;

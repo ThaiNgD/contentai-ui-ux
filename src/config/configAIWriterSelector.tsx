@@ -1,3 +1,5 @@
+import { SelectedType } from "@/app/[locale]/(home)/ai-writer/page";
+
 export interface AIWriterSelector {
   title: string;
   description: string;
@@ -6,6 +8,11 @@ export interface AIWriterSelector {
   slug: string;
   category: string;
 }
+
+export const AIWriterSelectorType: SelectedType[] = [
+  "business",
+  "seo-optimization",
+];
 
 export const configAIWriterSelector: AIWriterSelector[] = [
   {
@@ -31,6 +38,23 @@ export const configAIWriterSelector: AIWriterSelector[] = [
     // image: "/images/writer_b.jpg",
     isFavorite: false,
     slug: "user-intent-analysis",
+    category: "seo-optimization",
+  },
+  {
+    title: "Viết lại nội dung",
+    description:
+      "Viết lại nôi dung để loại bỏ đạo văn, bảo đảm nội dung nguyên bản",
+    // image: "/images/writer_b.jpg",
+    isFavorite: false,
+    slug: "rewrite-content",
+    category: "seo-optimization",
+  },
+  {
+    title: "FAQ SEO",
+    description: "Tạo mục FAQ SEO: câu hỏi, câu trả lời, chi tiết từ khóa",
+    // image: "/images/writer_b.jpg",
+    isFavorite: false,
+    slug: "faq-seo",
     category: "seo-optimization",
   },
 ];
