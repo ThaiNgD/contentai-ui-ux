@@ -3,7 +3,12 @@ import { configAIWriterSelector } from "@/config/configAIWriterSelector";
 import { useMemo } from "react";
 
 export interface AISelectorProps {
-  type: "all" | "business" | "seo-optimization";
+  type:
+    | "all"
+    | "business"
+    | "seo-optimization"
+    | "write-web-content"
+    | "write-email";
 }
 const AISelector = ({ type }: AISelectorProps) => {
   const TypedSelector = useMemo(() => {
@@ -14,9 +19,9 @@ const AISelector = ({ type }: AISelectorProps) => {
         (selector) => selector.category === type
       );
     }
-  }, [type, configAIWriterSelector]);
+  }, [type]);
   return (
-    <div className="flex mb-[60px] flex-shrink-0 flex-grow flex-wrap gap-5 px-[175px]">
+    <div className="flex mb-[60px] overflow-hidden w-[calc(100%-350px)] mx-auto justify-center flex-wrap gap-5">
       {TypedSelector.map((selector, index) => {
         return <SelectorComponent key={index} selector={selector} />;
       })}
