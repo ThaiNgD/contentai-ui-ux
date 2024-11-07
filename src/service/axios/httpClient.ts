@@ -4,10 +4,10 @@ import Axios from "axios";
 import { toast } from "react-toastify";
 
 export const AUTH_TOKEN = process.env.NEXT_PUBLIC_AUTH_TOKEN || "MKTtoken";
-export const BASE_URL = process.env.NEXT_PUBLIC_URL || "";
+export const BASE_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:5000";
 
 const axiosClient = Axios.create({
-  baseURL: joinPathParent(BASE_URL, "/api").slice(1),
+  baseURL: joinPathParent(BASE_URL, "/api/v1").slice(1),
   headers: {
     "Content-Type": "application/json",
   },

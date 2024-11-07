@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 const setToken = (data: string, key: string) => {
   Cookies.set(key, data ?? "", {
     secure: false,
-    path: "/",
+    path: "/dashboard",
   });
 };
 

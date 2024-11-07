@@ -2,11 +2,16 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
+import configModuleSelector from "@/config/configModule";
+import { aiAnalysisApi } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 
 const InputContent = () => {
-  const formik = useFormik({
+  const router = useRouter();
+
+  const formik = useFormik<IFrormCompetiorAnalysis>({
     initialValues: {
       brandName: "",
       productDescription: "",
@@ -14,7 +19,12 @@ const InputContent = () => {
       module: "",
       language: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: async (values) => {
+      await aiAnalysisApi.create(values).then((values) => {
+        console.log(values);
+        router.refresh();
+      });
+    },
   });
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
@@ -44,7 +54,7 @@ const InputContent = () => {
         clsLabelWrapper="font-bold italic"
         label="Mô hình"
         name="module"
-        options={configLanguageSelector}
+        options={configModuleSelector}
         formik={formik}
       />
       <SelectField

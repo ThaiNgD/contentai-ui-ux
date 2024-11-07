@@ -1,7 +1,8 @@
+"use client";
 import AISelector from "./_lib/AISelector";
 import Header from "./_lib/Header";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <Header />
@@ -10,4 +11,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

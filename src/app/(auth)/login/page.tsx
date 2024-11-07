@@ -1,8 +1,12 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import CheckBoxField from "@/components/CustomField/CheckboxField";
 import InputField from "@/components/CustomField/InputField";
+import { setAccessToken } from "@/config";
+import { authApi } from "@/service/axios/authApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import * as yup from "yup";
 
 const validateSchemaLogin = yup.object().shape({
@@ -11,7 +15,7 @@ const validateSchemaLogin = yup.object().shape({
 });
 
 function Login() {
-  // const router = useRouter();
+  const router = useRouter();
   const formik = useFormik<IFormLogin>({
     initialValues: {
       remember_password: false,
@@ -19,9 +23,12 @@ function Login() {
       password: "",
     },
     validationSchema: validateSchemaLogin,
-    onSubmit: (value) => {
-      console.log(value);
-      // router.push("/");
+    onSubmit: async (value) => {
+      await authApi.login(value).then((value) => {
+        console.log(value);
+        router.push("/dashboard");
+        setAccessToken(value.access_token);
+      });
     },
   });
   return (

@@ -15,8 +15,11 @@ import {
 import "ckeditor5/ckeditor5.css";
 
 function CustomEditor() {
+  // const { data } = useAiCompetior();
+
   return (
     <CKEditor
+      // data={data?.result}
       editor={ClassicEditor}
       config={{
         toolbar: {

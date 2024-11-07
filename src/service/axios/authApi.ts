@@ -2,6 +2,7 @@
 import http from "./httpClient";
 
 export interface IResultAuth {
+  access_token: string;
   id: string;
   username: string;
   active: boolean;

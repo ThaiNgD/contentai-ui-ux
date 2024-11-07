@@ -1,5 +1,5 @@
 const configModuleSelector = [
-  { value: "vi", label: "Việt Nam" },
+  { value: "gpt-4o", label: "Việt Nam" },
   { value: "en", label: "English" },
 ];
 
