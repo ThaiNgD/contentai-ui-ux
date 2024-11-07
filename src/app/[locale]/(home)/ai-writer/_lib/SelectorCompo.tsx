@@ -7,7 +7,7 @@ interface SelectorCompo {
 const SelectorCompo = ({ title, onClick }: SelectorCompo) => {
   return (
     <div
-      className="border p-2 rounded-xl text-sm"
+      className="border p-1 px-2 rounded-xl text-xs font-thin"
       role="button"
       onClick={onClick}
     >

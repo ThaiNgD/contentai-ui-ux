@@ -11,7 +11,7 @@ const SelectorGroup = ({ setSelectedType }: SelectorGroup) => {
     setSelectedType(type);
   };
   return (
-    <div className="px-[175px] py-[35px] gap-2 h-[150px] flex flex-wrap items-center justify-between">
+    <div className="px-[175px] pb-[35px] gap-2 flex flex-wrap items-center justify-stretch">
       {AIWriterSelectorType.map((selector, index) => {
         return (
           <SelectorCompo

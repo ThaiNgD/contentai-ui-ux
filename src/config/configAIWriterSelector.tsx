@@ -10,6 +10,7 @@ export interface AIWriterSelector {
 }
 
 export const AIWriterSelectorType: SelectedType[] = [
+  "all",
   "business",
   "seo-optimization",
 ];
