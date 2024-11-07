@@ -17,13 +17,15 @@ const InfoCard = ({
 InfoCardProps): JSX.Element => {
   const Icon = icon;
   return (
-    <div className="bg-white border px-4 py-3 items-center rounded-xl w-[300px] h-[70px] flex gap-4 ">
-      <div className="rounded-full h-fit shadow-md p-2">
+    <div className="bg-white dark:bg-[#0D0B0B] dark:text-white border px-4 py-3 w-full items-center rounded-xl h-[70px] flex gap-4 ">
+      <div className="rounded-full dark:text-black dark:bg-white dark:shadow-white h-fit bg-black text-white p-2">
         <Icon size={20} />
       </div>
-      <div className="flex flex-col justify-center">
-        <p className="text-black text-sm opacity-60">{title}</p>
-        <span className="text-black text-xl font-bold flex gap-2">
+      <div className="flex flex-col overflow-hidden justify-center w-[calc(100%-50px)] ">
+        <p className="text-black dark:text-white  text-sm opacity-60 text-ellipsis">
+          {title}
+        </p>
+        <span className="text-black dark:text-white text-xl font-bold text-ellipsis flex gap-2">
           {value} <p className="font-normal">{contents}</p>
         </span>
       </div>

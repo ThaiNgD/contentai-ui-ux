@@ -1,7 +1,8 @@
 const Footer = () => {
   return (
     <div
-      className=" w-full flex items-center  px-[175px] justify-between  border-t py-[20px]"
+      className=" w-full duration-300 dark:border-black dark:bg-black dark:text-white flex items-center  px-[175px] justify-between  border-t py-[20px]"
+
       // style={{ width: "inherit" }}
     >
       Copyright © 2024 MKT-ContentAI . All rights reserved.

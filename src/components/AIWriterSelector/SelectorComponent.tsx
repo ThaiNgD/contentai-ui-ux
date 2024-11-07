@@ -1,18 +1,20 @@
 "use client";
 import Icon from "@/app/favicon.ico";
 import { AIWriterSelector } from "@/config/configAIWriterSelector";
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaAngleRight, FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 const SelectorComponent = ({ selector }: { selector: AIWriterSelector }) => {
   const router = useRouter();
+  const { locale } = useGetPathComponent();
   const handleCLickDiv = (): void => {
-    router.push(`/ai-writer/${selector.slug}`);
+    router.push(`/${locale}/ai-writer/${selector.slug}`);
   };
   return (
     <div
-      className="px-[50px] group py-[30px] flex w-[410px] h-[230px] flex-col border gap-2 relative"
+      className="px-[50px] group py-[30px] flex w-[410px] h-[230px] flex-col border border-collapse gap-2 relative"
       role="button"
       onClick={handleCLickDiv}
     >

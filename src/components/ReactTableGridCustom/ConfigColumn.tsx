@@ -4,39 +4,39 @@ import { TColumnsTable } from "./types";
 export const test_columns: TColumnsTable<any> = [
   {
     key: "project_name",
-    name: "Tên dự án",
+    name: "project_name",
     sortable: true,
   },
   {
     key: "example_name",
-    name: "Tên mẫu",
+    name: "example_name",
     sortable: true,
   },
   {
     key: "folder_name",
-    name: "Tên thư mục",
+    name: "folder_name",
     sortable: true,
   },
 
   {
     key: "created_day",
-    name: "Ngày tạo",
+    name: "created_day",
     sortable: true,
   },
   {
     key: "language",
-    name: "Ngôn ngữ",
+    name: "language",
     width: 200,
     sortable: true,
   },
   {
     key: "total_word",
-    name: "Số từ",
+    name: "total_word",
     sortable: true,
   },
   {
     key: "action",
-    name: "Hành động",
+    name: "action",
     width: 200,
   },
 ];

@@ -18,7 +18,7 @@ const Sidebar = () => {
     >
       <div
         className={cn(
-          "absolute rounded-full p-1 left-[256px] transition-all duration-300 bg-gray-200 z-50 top-[50px]",
+          "absolute rounded-full p-1 left-[256px] transition-all duration-300 dark:bg-white bg-gray-200 z-50 top-[50px]",
           isOpen ? "left-[50px]" : "left-[242px]"
         )}
         role="button"
@@ -32,8 +32,8 @@ const Sidebar = () => {
       <div
         // style={{ width: "inherit" }}
         className={cn(
-          `border-r text-black
-                    fixed h-screen bg-white transition-all 
+          `border-r dark:border-black text-black dark:text-white
+                    fixed h-screen dark:bg-black bg-white transition-all 
                     duration-300 z-[49]`,
           isOpen ? "w-16" : "w-64 overflow-hidden"
         )}

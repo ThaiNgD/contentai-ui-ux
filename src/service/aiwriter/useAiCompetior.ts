@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 export const useAiCompetior = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFrormCompetiorAnalysis, unknown> => {
+): UseMutationResult<IResult, Error, IFormCompetiorAnalysis, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
