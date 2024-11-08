@@ -7,8 +7,8 @@ const page = () => {
   return (
     <>
       <ChildHeader
-        title="Viết lại nội dung"
-        description="Viết lại nôi dung để loại bỏ đạo văn, bảo đảm nội dung nguyên bản"
+        title="Luận điểm chính"
+        description="Viết đoạn luận điểm chính với 4 ý chính, 3 gach đầu dòng, từ khóa trong 400 ký tự"
       />
       <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] px-[175px] py-[40px] gap-[30px] ">
         <InputContent />

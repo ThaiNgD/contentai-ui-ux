@@ -14,7 +14,7 @@ const SelectorComponent = ({ selector }: { selector: AIWriterSelector }) => {
   };
   return (
     <div
-      className="px-[50px] group py-[30px] flex w-[410px] h-[230px] flex-col border border-collapse gap-2 relative"
+      className="px-[50px]  group py-[30px] flex h-[230px] w-[410px] flex-col border border-collapse gap-2 relative"
       role="button"
       onClick={handleCLickDiv}
     >

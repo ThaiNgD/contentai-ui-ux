@@ -7,8 +7,8 @@ const page = () => {
   return (
     <>
       <ChildHeader
-        title="Viết lại nội dung"
-        description="Viết lại nôi dung để loại bỏ đạo văn, bảo đảm nội dung nguyên bản"
+        title="Email thông báo hủy đơn hàng"
+        description="Viết email thông báo đơn hàng bị hủy với nội dung cụ thể"
       />
       <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] px-[175px] py-[40px] gap-[30px] ">
         <InputContent />
