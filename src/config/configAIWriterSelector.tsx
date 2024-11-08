@@ -509,7 +509,7 @@ export const configAIWriterSelector: AIWriterSelector[] = [
   {
     title: "Ý tưởng cho Video Tiktok",
     description:
-      "Tạo kịch bản Tiktok 15-60 giây hấp dẫn, truyền tải thông điệp quảng cáo, nhanh chóng và thúc đẩy hành động ",
+      "Tạo ý tưởng video Tiktok: chuyện cá nhân, kết nối người theo dõi ",
     // image: "/images/writer_b.jpg",
     isFavorite: true,
     slug: "video-tiktok-idea",
