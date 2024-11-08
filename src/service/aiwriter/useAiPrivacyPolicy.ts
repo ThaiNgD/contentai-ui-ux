@@ -1,4 +1,4 @@
-import { UseMutationResult } from "@tanstack/react-query";
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { aiPrivacyPolicy, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
 
