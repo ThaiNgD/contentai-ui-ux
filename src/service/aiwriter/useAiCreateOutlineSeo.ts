@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiFaqSeo, IResult } from "../axios/AIWriterApi";
+import { aiOutLineSeo, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
 
-export const useAiFaqSeo = (
+export const useAiCreateOutlineSeo = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormFaqSeo, unknown> => {
+): UseMutationResult<IResult, Error, IFormOutLineSeo, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiFaqSeo.create,
+    mutationFn: aiOutLineSeo.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/ai-writer/faq-seo");
+        router.push("/ai-writer/create-outline-seo");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/ai-writer/faq-seo")) {
+        if (!(location.pathname === "/ai-writer/create-outline-seo")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

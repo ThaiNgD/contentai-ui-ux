@@ -21,7 +21,7 @@ declare global {
   };
 
   type IFormUserIntentAnalysis = {
-    keyword: string;
+    keywords: string;
     language: string;
     module: string;
   };
@@ -32,7 +32,7 @@ declare global {
     module: string;
   };
 
-  type IFormFaq = {
+  type IFormFaqSeo = {
     keywords: string;
     language: string;
     module: string;
@@ -56,6 +56,52 @@ declare global {
     brandName: string;
     keywords: string;
     customerPortrait: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormContentBlogLongForm = {
+    title: string;
+    keywords: string;
+    outline: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormOutLineSeo = {
+    title: string;
+    keywords: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormCreateTitleSeo = {
+    searchIntent: string;
+    keywords: string;
+    currentYear: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormDeliveryPolicy = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormPrivacyPolicy = {
+    brandName: string;
+    description: string;
+    customerPortrait: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteTitle = {
+    brandName: string;
+    descriptionWeb: string;
+    keywords: string;
     language: string;
     module: string;
   };

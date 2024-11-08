@@ -61,20 +61,20 @@ export const aiUserIntentAnalytics = {
 
   create: async (payload: IFormUserIntentAnalysis) => {
     return await http.post<any, IResult>(
-      `${aiUserIntentAnalytics.queryKey}/user_intent_analytics`,
+      `${aiUserIntentAnalytics.queryKey}/user_intent_analysis`,
       payload
     );
   },
 
   save: async () => {
     return await http.post<any, IResult>(
-      `${aiUserIntentAnalytics.queryKey}/save_user_intent_analytics`
+      `${aiUserIntentAnalytics.queryKey}/save_user_intent_analysis`
     );
   },
 
   get: async () => {
     return await http.get<any, any>(
-      `${aiUserIntentAnalytics.queryKey}/get_user_intent_analytics`
+      `${aiUserIntentAnalytics.queryKey}/get_user_intent_analysis`
     );
   },
 };
@@ -105,7 +105,7 @@ export const aiRephraseContent = {
 export const aiFaqSeo = {
   queryKey: "ai_seo_optimization",
 
-  create: async (payload: IFormFaq) => {
+  create: async (payload: IFormFaqSeo) => {
     return await http.post<any, IResult>(
       `${aiFaqSeo.queryKey}/faq_seo`,
       payload
@@ -186,6 +186,142 @@ export const aiLongTailKeyword = {
   get: async () => {
     return await http.get<any, any>(
       `${aiLongTailKeyword.queryKey}/get_long_tail_keyword`
+    );
+  },
+};
+
+export const aiContentBlogLongForm = {
+  queryKey: "ai_seo_optimization",
+
+  create: async (payload: IFormContentBlogLongForm) => {
+    return await http.post<any, IResult>(
+      `${aiContentBlogLongForm.queryKey}/content_blog_long_form`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiContentBlogLongForm.queryKey}/save_content_blog_long_form`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiContentBlogLongForm.queryKey}/get_content_blog_long_form`
+    );
+  },
+};
+
+export const aiOutLineSeo = {
+  queryKey: "ai_seo_optimization",
+
+  create: async (payload: IFormOutLineSeo) => {
+    return await http.post<any, IResult>(
+      `${aiOutLineSeo.queryKey}/create_outline_seo`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiOutLineSeo.queryKey}/save_outline_seo`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(`${aiOutLineSeo.queryKey}/get_outline_seo`);
+  },
+};
+
+export const aiCreateTitleSeo = {
+  queryKey: "ai_seo_optimization",
+
+  create: async (payload: IFormCreateTitleSeo) => {
+    return await http.post<any, IResult>(
+      `${aiCreateTitleSeo.queryKey}/create_title_seo`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiCreateTitleSeo.queryKey}/save_create_title_seo`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiCreateTitleSeo.queryKey}/get_create_title_seo`
+    );
+  },
+};
+
+export const aiDeliveryPolicy = {
+  queryKey: "ai_website_content",
+
+  create: async (payLoad: IFormDeliveryPolicy) => {
+    return await http.post<any, IResult>(
+      `${aiDeliveryPolicy.queryKey}/delivery_policy`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiDeliveryPolicy.queryKey}/save_delivery_policy`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiDeliveryPolicy.queryKey}/get_delivery_policy`
+    );
+  },
+};
+
+export const aiPrivacyPolicy = {
+  queryKey: "ai_website_content",
+
+  create: async (payLoad: IFormPrivacyPolicy) => {
+    return await http.post<any, IResult>(
+      `${aiPrivacyPolicy.queryKey}/privacy_policy`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiPrivacyPolicy.queryKey}/save_privacy_policy`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiPrivacyPolicy.queryKey}/get_privacy_policy`
+    );
+  },
+};
+
+export const aiWebsiteTitle = {
+  queryKey: "ai_website_content",
+
+  create: async (payLoad: IFormWebsiteTitle) => {
+    return await http.post<any, IResult>(
+      `${aiWebsiteTitle.queryKey}/website_title`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiWebsiteTitle.queryKey}/save_website_title`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiWebsiteTitle.queryKey}/get_website_title`
     );
   },
 };
