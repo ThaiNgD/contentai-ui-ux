@@ -1,14 +1,10 @@
 import SelectorComponent from "@/components/AIWriterSelector/SelectorComponent";
 import { configAIWriterSelector } from "@/config/configAIWriterSelector";
 import { useMemo } from "react";
+import { SelectedType } from "../page";
 
 export interface AISelectorProps {
-  type:
-    | "all"
-    | "business"
-    | "seo-optimization"
-    | "write-web-content"
-    | "write-email";
+  type: SelectedType;
 }
 const AISelector = ({ type }: AISelectorProps) => {
   const TypedSelector = useMemo(() => {

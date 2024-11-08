@@ -6,16 +6,8 @@ export interface AIWriterSelector {
   image?: string;
   isFavorite?: boolean;
   slug: string;
-  category: string;
+  category: SelectedType;
 }
-
-export const AIWriterSelectorType: SelectedType[] = [
-  "all",
-  "business",
-  "seo-optimization",
-  "write-web-content",
-  "write-email",
-];
 
 export const configAIWriterSelector: AIWriterSelector[] = [
   {
@@ -515,4 +507,8 @@ export const configAIWriterSelector: AIWriterSelector[] = [
     slug: "video-tiktok-idea",
     category: "write-tiktok-content",
   },
+];
+
+export const AIWriterSelectorType: SelectedType[] = [
+  ...new Set(configAIWriterSelector.map((selector) => selector.category)),
 ];
