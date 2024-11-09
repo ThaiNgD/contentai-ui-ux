@@ -3,20 +3,28 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiPrivacyPolicy } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormPrivacyPolicy>({
     initialValues: {
-      keyword: "",
-      product_portrait: "",
+      brandName: "",
+      description: "",
+      customerPortrait: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
-      console.log(values);
+    onSubmit: async (values) => {
+      await aiPrivacyPolicy.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -26,7 +34,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"keyword"}
+        name={"brandName"}
         placeholder="Từ khóa"
         title="Từ khóa"
         clsTitle="font-bold italic"
@@ -34,7 +42,7 @@ const InputContent = () => {
         formik={formik}
       />
       <InputField
-        name={"product_portrait"}
+        name={"customerPortrait"}
         placeholder="Chân dung khách hàng"
         title="Chân dung khách hàng"
         clsTitle="font-bold italic"

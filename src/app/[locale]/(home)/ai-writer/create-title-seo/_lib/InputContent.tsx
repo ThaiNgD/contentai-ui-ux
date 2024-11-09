@@ -3,22 +3,29 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiCreateTitleSeo } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface Inputprops {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: Inputprops) => {
+  const formik = useFormik<IFormCreateTitleSeo>({
     initialValues: {
-      total_creating_title: 1,
-      keyword: "",
-      searching_year: 2024,
-      searching_purpose: "",
+      searchIntent: "",
+      keywords: "",
+      currentYear: "2024",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
-      console.log(values);
+    onSubmit: async (values) => {
+      await aiCreateTitleSeo.create(values).then((values) => {
+        // Handle form submission
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -38,7 +45,7 @@ const InputContent = () => {
           formik={formik}
         />
         <InputField
-          name={"keyword"}
+          name={"keywords"}
           placeholder="Từ khóa"
           title="Từ khóa"
           clsTitle="font-bold italic"
@@ -46,7 +53,7 @@ const InputContent = () => {
           formik={formik}
         />
         <InputField
-          name={"searching_year"}
+          name={"currentYear"}
           placeholder="2024"
           title="Năm tìm kiếm"
           clsTitle="font-bold italic"
@@ -55,7 +62,7 @@ const InputContent = () => {
           formik={formik}
         />
         <InputField
-          name={"searching_purpose"}
+          name={"searchIntent"}
           placeholder="Ý định tìm kiếm"
           title="Tiêu đề"
           clsTitle="font-bold italic"

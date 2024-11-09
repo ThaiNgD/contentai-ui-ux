@@ -14,16 +14,21 @@ import {
 
 import "ckeditor5/ckeditor5.css";
 
-function CustomEditor() {
+interface CKEDITORProps {
+  data?: string;
+}
+
+function CustomEditor({ data }: CKEDITORProps) {
   return (
     <CKEditor
+      data={data}
       editor={ClassicEditor}
       config={{
         toolbar: {
           items: ["undo", "redo", "|", "bold", "italic"],
         },
         plugins: [Bold, Essentials, Italic, Mention, Paragraph, Undo],
-        initialData: "<p>Hello from CKEditor 5 in React!</p>",
+        // initialData: "<p>Hello from CKEditor 5 in React!</p>",
       }}
     />
   );

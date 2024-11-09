@@ -4,24 +4,32 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiContentStrategyApi } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormContentStrategy>({
     initialValues: {
       goals: "",
       targetAudience: "",
+      contentGeneration: "",
       product: "",
-      product_info: "",
-      competitor_ads_content: "",
-      another_content: "",
-      content_type: "",
+      contentPurpose: "",
+      otherContent: "",
+      module: "",
       language: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       // Handle form submission
-      console.log(values);
+      await aiContentStrategyApi.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -48,28 +56,28 @@ const InputContent = () => {
           formik={formik}
         />
         <InputField
-          name="product"
+          name={"contentGeneration"}
           placeholder="Thể loại content"
           title="Thể loại content"
           className="h-[50px]"
           formik={formik}
         />
         <TextAreaField
-          name="product_info"
+          name={"product"}
           placeholder="Thông tin sản phẩm"
           title="Mô tả sản phẩm"
           clsTextArea="h-[125px]"
           formik={formik}
         />
         <TextAreaField
-          name="competitor_ads_content"
+          name={"contentPurpose"}
           title="Mục đích của content"
           placeholder="Nhập nội dung"
           clsTextArea="h-[125px]"
           formik={formik}
         />
         <TextAreaField
-          name="another_content"
+          name={"otherContent"}
           title="Nội dung khác"
           placeholder="Nhập nội dung"
           clsTextArea="h-[125px]"
@@ -78,14 +86,14 @@ const InputContent = () => {
         <SelectField
           clsLabelWrapper="font-bold italic"
           label="Model"
-          name="module"
+          name={"module"}
           options={configModuleSelector}
           formik={formik}
         />
         <SelectField
           clsLabelWrapper="font-bold italic"
           label="Ngôn ngữ"
-          name="language"
+          name={"language"}
           options={configLanguageSelector}
           formik={formik}
         />
