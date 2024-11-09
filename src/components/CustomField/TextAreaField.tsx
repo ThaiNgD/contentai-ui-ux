@@ -17,6 +17,7 @@ interface TextAreaFieldProps<T>
   msgError?: string;
   clsTitle?: string;
   title?: string;
+  clsChildren?: string;
 }
 
 const TextAreaField = <T,>({
@@ -32,12 +33,14 @@ const TextAreaField = <T,>({
   placeholder,
   clsTextArea,
   clsLabelWrapper,
+  clsChildren,
   ...spread
 }: TextAreaFieldProps<T>): JSX.Element => {
   return (
     <WrapperLabelForm
       isRequired={isRequired}
       label={label}
+      clsChildren={clsChildren}
       classWapper={classWapper}
       isVertical={isVertical}
       clsLabelWrapper={clsLabelWrapper}

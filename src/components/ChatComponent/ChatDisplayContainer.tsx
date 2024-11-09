@@ -2,7 +2,7 @@ import { IoChatboxEllipses } from "react-icons/io5";
 
 const ChatDisplayContainer = () => {
   return (
-    <div className="w-full border-b items-center shadow-inner flex gap-2 p-[20px] h-[80px]">
+    <div className="w-full group border-b items-center shadow-inner flex gap-2 p-[20px] h-[80px]">
       <div className="p-2 shadow-inner bg-gray-100 rounded-full h-fit w-fit">
         <IoChatboxEllipses size={20} />
       </div>
