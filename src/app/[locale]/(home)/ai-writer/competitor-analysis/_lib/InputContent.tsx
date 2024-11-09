@@ -2,11 +2,17 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
+import configModuleSelector from "@/config/configModule";
+import { aiAnalysisApi } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormCompetiorAnalysis>({
     initialValues: {
       brandName: "",
       productDescription: "",
@@ -14,7 +20,12 @@ const InputContent = () => {
       module: "",
       language: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: async (values) => {
+      await aiAnalysisApi.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
+    },
   });
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
@@ -44,7 +55,7 @@ const InputContent = () => {
         clsLabelWrapper="font-bold italic"
         label="Mô hình"
         name="module"
-        options={configLanguageSelector}
+        options={configModuleSelector}
         formik={formik}
       />
       <SelectField
