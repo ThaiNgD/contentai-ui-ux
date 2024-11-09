@@ -6,16 +6,8 @@ export interface AIWriterSelector {
   image?: string;
   isFavorite?: boolean;
   slug: string;
-  category: string;
+  category: SelectedType;
 }
-
-export const AIWriterSelectorType: SelectedType[] = [
-  "all",
-  "business",
-  "seo-optimization",
-  "write-web-content",
-  "write-email",
-];
 
 export const configAIWriterSelector: AIWriterSelector[] = [
   {
@@ -503,16 +495,20 @@ export const configAIWriterSelector: AIWriterSelector[] = [
       "Tạo kịch bản Tiktok 15-60 giây hấp dẫn, truyền tải thông điệp quảng cáo, nhanh chóng và thúc đẩy hành động ",
     // image: "/images/writer_b.jpg",
     isFavorite: true,
-    slug: "honeycomp-optimize-post",
+    slug: "script-creation",
     category: "write-tiktok-content",
   },
   {
     title: "Ý tưởng cho Video Tiktok",
     description:
-      "Tạo kịch bản Tiktok 15-60 giây hấp dẫn, truyền tải thông điệp quảng cáo, nhanh chóng và thúc đẩy hành động ",
+      "Tạo ý tưởng video Tiktok: chuyện cá nhân, kết nối người theo dõi ",
     // image: "/images/writer_b.jpg",
     isFavorite: true,
-    slug: "honeycomp-optimize-post",
+    slug: "video-tiktok-idea",
     category: "write-tiktok-content",
   },
+];
+
+export const AIWriterSelectorType: SelectedType[] = [
+  ...new Set(configAIWriterSelector.map((selector) => selector.category)),
 ];

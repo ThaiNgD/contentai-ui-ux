@@ -1,6 +1,7 @@
 "use client";
 import Avatar from "@/assets/images/avatar.jpg";
 import { cn } from "@/helper/utils";
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -13,8 +14,10 @@ const HeaderAccountDropdownInfo = () => {
     setIsShowAccountInfo(false);
   };
   const router = useRouter();
+  const path = useGetPathComponent();
+
   const logout = (): void => {
-    router.push("/login");
+    router.push(`/${path.locale}/login`);
   };
   return (
     <div className="relative">

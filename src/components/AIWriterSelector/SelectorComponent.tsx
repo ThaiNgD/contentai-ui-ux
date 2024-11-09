@@ -31,14 +31,17 @@ const SelectorComponent = ({ selector }: { selector: AIWriterSelector }) => {
           className="size-[45px] group-hover:shadow-lg duration-200 group-hover:-translate-y-0.5 border rounded-full"
         />
       )}
-      <h1 className="text-xl group-hover:underline duration-200 font-bold flex items-center">
-        {selector.title}{" "}
+      <div className="w-full items-center flex">
+        <span className="text-xl text-ellipsis overflow-hidden  group-hover:underline duration-200 font-bold  truncate">
+          {selector.title}{" "}
+        </span>
         <FaAngleRight
           size={20}
           className="invisible group-hover:visible group-hover:translate-x-1 duration-200"
         />
-      </h1>
-      <p className="text-sm opacity-70">{selector.description}</p>
+      </div>
+
+      <p className="line-clamp-3 text-sm opacity-70">{selector.description}</p>
       {selector.isFavorite ? (
         <div className="shadow-md absolute right-4 top-4 rounded-full hover:bg-blue-500 hover:text-white text-blue-500 p-2 hover:translate-y-0.5 hover:shadow-none hover:shadow-blue-500">
           <FaStar size={18} />

@@ -9,13 +9,19 @@ export type SelectedType =
   | "business"
   | "seo-optimization"
   | "write-web-content"
-  | "write-email";
+  | "write-email"
+  | "write-advertisement"
+  | "write-blog"
+  | "write-sale-content"
+  | "write-tiktok-content"
+  | "write-facebook-content"
+  | "video-script";
 const Page = () => {
   const [selectedType, setSelectedType] = useState<SelectedType>("all");
   return (
     <>
       <Header />
-      <SelectorGroup setSelectedType={setSelectedType} />
+      <SelectorGroup type={selectedType} setSelectedType={setSelectedType} />
       <AISelector type={selectedType} />
     </>
   );
