@@ -2,7 +2,7 @@ import ChatDisplayContainer from "@/components/ChatComponent/ChatDisplayContaine
 
 const ChatList = () => {
   return (
-    <div className="flex mt-[15px] flex-col overflow-y-auto">
+    <div className="flex flex-col overflow-x-hidden overflow-y-auto">
       <ChatDisplayContainer />
       <ChatDisplayContainer />
       <ChatDisplayContainer />
