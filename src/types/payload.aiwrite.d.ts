@@ -105,4 +105,55 @@ declare global {
     language: string;
     module: string;
   };
+
+  type IFormWebsiteSubHeader = {
+    brandName: string;
+    descriptionWeb: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteDescription = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteIntroduction = {
+    brandName: string;
+    description: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteBenefits = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormCustomerTestimonial = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteFaq = {
+    brandName: string;
+    description: string;
+    keywords: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormOutlineMenu = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
 }

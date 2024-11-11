@@ -3,19 +3,28 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiWebsiteDescription } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormWebsiteDescription>({
     initialValues: {
-      brand_description: "",
+      brandName: "",
+      description: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
-      console.log(values);
+    onSubmit: async (values) => {
+      await aiWebsiteDescription.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -25,7 +34,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <TextAreaField
-        name={"brand_description"}
+        name={"description"}
         placeholder="Mô tả Web"
         title="Mô tả Web"
         clsTitle="font-bold italic"
