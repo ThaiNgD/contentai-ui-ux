@@ -12,7 +12,7 @@ const layout = ({
       <Sidebar />
       <div className="flex flex-col overflow-y-auto scrollbar-none flex-auto transition-all duration-300">
         <Header />
-        <div className="h-[calc(100%-130px)] min-h-fit duration-300 bg-white dark:bg-[#1F1F1F]">
+        <div className="h-[calc(100%-130px)] flex flex-col min-h-fit duration-300 bg-white dark:bg-[#1F1F1F]">
           {children}
         </div>
         <Footer />

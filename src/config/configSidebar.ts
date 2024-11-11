@@ -48,8 +48,8 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     icon: IoImage,
   },
   {
-    link: "/ai-pdf-image",
-    title: "AI PDF Image",
+    link: "/ai-pdf-chat",
+    title: "AI PDF Chat",
     icon: FaFilePdf,
   },
   {

@@ -16,7 +16,7 @@ const ChatInput = () => {
           clsChildren="flex"
           name={""}
           classWapper="w-[calc(100%-350px)]"
-          clsTextArea="max-h-[100px] min-h-[50px] h-fit bg-white rounded-l-xl"
+          clsTextArea="max-h-[100px] h-[48px] min-h-[48px] bg-white rounded-l-xl"
           placeholder="Nhập tin nhắn"
         />
         <div className="flex gap-2 items-center">
