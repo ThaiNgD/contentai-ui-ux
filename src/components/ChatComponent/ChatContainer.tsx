@@ -5,6 +5,7 @@ import { Button } from "flowbite-react";
 import { useState } from "react";
 import ChatInput from "./ChatInput";
 import UserChatContent from "./UserChatContent";
+import WelcomeUserChatContent from "./WelcomeUserChatContent";
 
 const ChatContainer = () => {
   const [isChat, setIsChat] = useState(false);
@@ -26,8 +27,9 @@ const ChatContainer = () => {
       ) : (
         <div className="p-[30px] h-full flex flex-col justify-between">
           <div className="flex flex-col h-full overflow-auto pb-4 gap-4">
-            <UserChatContent imgUrl={userImage} />
+            <WelcomeUserChatContent imgUrl={userImage} />
             <UserChatContent isUser={true} userImage={userImage} />
+            <UserChatContent imgUrl={userImage} />
           </div>
           <ChatInput />
         </div>

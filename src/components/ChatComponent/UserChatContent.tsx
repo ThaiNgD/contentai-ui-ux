@@ -1,5 +1,6 @@
 import { cn } from "@/helper/function";
 import Image, { StaticImageData } from "next/image";
+import { IoIosCopy } from "react-icons/io";
 interface UserChatContentProps {
   imgUrl?: StaticImageData;
   widthCls?: string;
@@ -30,9 +31,20 @@ const UserChatContent = ({
         )}
       >
         <div className="flex relative group flex-col">
-          <p className="text-sm rounded-xl bg-gray-100 w-fit p-2 text-gray-500 dark:text-gray-400">
-            Last Message
-          </p>
+          <div className="w-fit min-w-[100px] relative  rounded-xl bg-gray-100">
+            <p className="text-sm text-cursor typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
+              Last Message
+            </p>
+            <div
+              role="button"
+              className={cn(
+                "group-hover:block absolute bg-white text-gray-400 border rounded-full -bottom-5 hidden p-[6px]",
+                isUser ? "-left-3" : "-right-3"
+              )}
+            >
+              <IoIosCopy size={16} />
+            </div>
+          </div>
           <span
             className={cn(
               "text-xs opacity-50",

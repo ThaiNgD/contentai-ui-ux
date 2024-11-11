@@ -1,9 +1,12 @@
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import { Button } from "flowbite-react";
 
-const FormInputContent = () => {
+const FormInputAudio = () => {
   return (
-    <div className="flex h-full flex-col bg-white shadow-lg rounded-xl p-[50px] gap-4">
+    <div className="flex h-full flex-col bg-white shadow-lg rounded-xl p-[25px] gap-4">
+      <div className="flex gap-2">
+        <h1 className="text-lg font-bold">AI Speech To Text</h1>
+      </div>
       <div className="rounded-xl px-4 p-3 items-center flex gap-3 border">
         <label className="text-sm mb-0 font-bold dark:text-white text-black">
           Số từ của nội dung:
@@ -22,4 +25,4 @@ const FormInputContent = () => {
   );
 };
 
-export default FormInputContent;
+export default FormInputAudio;

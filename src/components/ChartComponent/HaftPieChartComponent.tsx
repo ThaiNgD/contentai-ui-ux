@@ -1,5 +1,5 @@
 "use client";
-import { Cell, Pie, PieChart } from "recharts";
+import { Cell, Legend, Pie, PieChart } from "recharts";
 
 const data = [{ name: "Group A", value: 400 }];
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
@@ -16,9 +16,11 @@ const HaftPieChartComponent = () => {
         outerRadius={160}
         fill="#8884d8"
         paddingAngle={5}
+        textAnchor="middle"
         dataKey="value"
-        textRendering={"String"}
+        textRendering={50}
       >
+        <Legend layout="vertical" verticalAlign="top" />
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}

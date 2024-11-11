@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -140,4 +139,43 @@ label {
 [data-theme="dark"] {
   --background: black;
   --foreground: white;
+}
+
+/* Cursor */
+.text-cursor {
+  position: relative;
+  /* border-right: 2px solid rgba(255, 255, 255, 0.75); */
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* Animation */
+.typewriter-animation {
+  animation: typewriter 2s steps(100) 1 normal both,
+    blinkingCursor 200ms steps(100) infinite normal;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blinkingCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+
+/* ck-editor */
+.ck-editor {
+  width: 100% !important;
+}
+
+.ck-content {
+  min-height: 400px;
 }
