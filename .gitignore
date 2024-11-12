@@ -41,5 +41,5 @@ next-env.d.ts
 
 #husky
 
-.husky
 .husky/*
+.husky
