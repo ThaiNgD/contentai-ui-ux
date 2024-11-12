@@ -3,20 +3,29 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiBlogCallAction } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormBlogCallAction>({
     initialValues: {
-      brand: "",
+      brandName: "",
       keyword: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
-      console.log(values);
+    onSubmit: async (values) => {
+      await aiBlogCallAction.create(values).then((values) => {
+        setCkData(values.result);
+        // Handle form submission
+        console.log(values);
+      });
     },
   });
   return (
@@ -26,7 +35,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
