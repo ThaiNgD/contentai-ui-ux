@@ -482,3 +482,256 @@ export const aiWebsiteOutlineMenu = {
     );
   },
 };
+
+export const aiFacebookAds = {
+  queryKey: "ai_ads_content",
+
+  create: async (payload: IFormFacebookAds) => {
+    return await http.post<any, IResult>(
+      `${aiFacebookAds.queryKey}/facebook_ads`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiFacebookAds.queryKey}/save_facebook_ads`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiFacebookAds.queryKey}/get_facebook_ads`
+    );
+  },
+};
+
+export const aiInstagramBio = {
+  queryKey: "ai_ads_content",
+
+  create: async (payload: IFormInstagramBio) => {
+    return await http.post<any, IResult>(
+      `${aiInstagramBio.queryKey}/instagram_bio`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiInstagramBio.queryKey}/save_instagram_bio`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiInstagramBio.queryKey}/get_instagram_bio`
+    );
+  },
+};
+
+export const aiCreateAdsIdea = {
+  queryKey: "ai_ads_content",
+
+  create: async (payload: IFormCreateAdsIdea) => {
+    return await http.post<any, IResult>(
+      `${aiCreateAdsIdea.queryKey}/create_ads_ideas`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiCreateAdsIdea.queryKey}/save_create_ads_ideas`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiCreateAdsIdea.queryKey}/get_create_ads_ideas`
+    );
+  },
+};
+
+export const aiPasAdertising = {
+  queryKey: "ai_ads_content",
+
+  create: async (payload: IFormPasAdvertising) => {
+    return await http.post<any, IResult>(
+      `${aiPasAdertising.queryKey}/pas_advertising`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiPasAdertising.queryKey}/save_pas_advertising`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiPasAdertising.queryKey}/get_pas_advertising`
+    );
+  },
+};
+
+export const aiGoogleAdsHeadline = {
+  queryKey: "ai_ads_content",
+
+  create: async (payload: IFormGoogleAdsHeading) => {
+    return await http.post<any, IResult>(
+      `${aiGoogleAdsHeadline.queryKey}/google_ads_headlines`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiGoogleAdsHeadline.queryKey}/save_google_ads_headlines`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiGoogleAdsHeadline.queryKey}/get_google_ads_headlines`
+    );
+  },
+};
+
+export const aiMetaDescriptionSeo = {
+  queryKey: "ai_blog_v2",
+
+  create: async (payload: IFormMetaDescriptionSeo) => {
+    return await http.post<any, IResult>(
+      `${aiMetaDescriptionSeo.queryKey}/blog_meta_description_seo`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiMetaDescriptionSeo.queryKey}/save_blog_meta_description_seo`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiMetaDescriptionSeo.queryKey}/get_blog_meta_description_seo`
+    );
+  },
+};
+
+export const aiBlogIntroduction = {
+  queryKey: "ai_blog_v2",
+
+  create: async (payload: IFormBlogIntroduction) => {
+    return await http.post<any, IResult>(
+      `${aiBlogIntroduction.queryKey}/blog_introduction`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiBlogIntroduction.queryKey}/save_blog_introduction`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiBlogIntroduction.queryKey}/get_blog_introduction`
+    );
+  },
+};
+
+export const aiMainTakingPoints = {
+  queryKey: "ai_blog_v2",
+
+  create: async (payload: IFormMainTakingPoints) => {
+    return await http.post<any, IResult>(
+      `${aiMainTakingPoints.queryKey}/blog_main_point`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiMainTakingPoints.queryKey}/save_blog_main_point`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiMainTakingPoints.queryKey}/get_blog_main_point`
+    );
+  },
+};
+
+export const aiBlogConclusion = {
+  queryKey: "ai_blog_v2",
+
+  create: async (payload: IFormBlogConclusion) => {
+    return await http.post<any, IResult>(
+      `${aiBlogConclusion.queryKey}/blog_conclusion`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiBlogConclusion.queryKey}/save_blog_conclusion`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiBlogConclusion.queryKey}/get_blog_conclusion`
+    );
+  },
+};
+
+export const aiBlogCallAction = {
+  queryKey: "ai_blog_v2",
+
+  create: async (payload: IFormBlogCallAction) => {
+    return await http.post<any, IResult>(
+      `${aiBlogCallAction.queryKey}/blog_call_to_action`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiBlogCallAction.queryKey}/save_blog_call_to_action`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiBlogCallAction.queryKey}/get_blog_call_to_action`
+    );
+  },
+};
+
+export const aiBlogListicle = {
+  queryKey: "ai_blog_v2",
+
+  create: async (payload: IFormBlogListicle) => {
+    return await http.post<any, IResult>(
+      `${aiBlogListicle.queryKey}/blog_listicle`,
+      payload
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiBlogListicle.queryKey}/save_blog_listicle`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiBlogListicle.queryKey}/get_blog_listicle`
+    );
+  },
+};
