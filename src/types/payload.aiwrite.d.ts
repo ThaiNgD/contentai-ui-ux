@@ -105,4 +105,135 @@ declare global {
     language: string;
     module: string;
   };
+
+  type IFormWebsiteSubHeader = {
+    brandName: string;
+    descriptionWeb: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteDescription = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteIntroduction = {
+    brandName: string;
+    description: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteBenefits = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormCustomerTestimonial = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormWebsiteFaq = {
+    brandName: string;
+    description: string;
+    keywords: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormOutlineMenu = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormFacebookAds = {
+    brandName: string;
+    description: string;
+    customerPortrait: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormInstagramBio = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormCreateAdsIdea = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormPasAdvertising = {
+    brandName: string;
+    problemCustomer: string;
+    customerPortrait: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormGoogleAdsHeading = {
+    brandName: string;
+    description: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormMetaDescriptionSeo = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormBlogIntroduction = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormMainTakingPoints = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormBlogConclusion = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormBlogCallAction = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormBlogListicle = {
+    brandName: string;
+    keyword: string;
+    language: string;
+    module: string;
+  };
 }

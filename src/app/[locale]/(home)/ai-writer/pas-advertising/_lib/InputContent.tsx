@@ -4,21 +4,30 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiPasAdertising } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormPasAdvertising>({
     initialValues: {
-      brand: "",
-      customer_problem: "",
-      customer_portrait: "",
+      brandName: "",
+      problemCustomer: "",
+      customerPortrait: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      await aiPasAdertising.create(values).then((values) => {
+        setCkData(values.result);
+        console.log(values);
+      });
       // Handle form submission
-      console.log(values);
     },
   });
   return (
@@ -28,7 +37,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
@@ -36,7 +45,7 @@ const InputContent = () => {
         formik={formik}
       />
       <TextAreaField
-        name={"customer_problem"}
+        name={"problemCustomer"}
         placeholder="Vấn đê của khách hàng"
         title="Vấn đê của khách hàng"
         clsTitle="font-bold italic"
@@ -44,7 +53,7 @@ const InputContent = () => {
         formik={formik}
       />
       <TextAreaField
-        name={"customer_portrait"}
+        name={"customerPortrait"}
         placeholder="Chân dung khách hàng"
         title="Chân dung khách hàng"
         clsTitle="font-bold italic"
