@@ -3,11 +3,13 @@ import Logo from "@/assets/images/Table-Logo.png";
 import LongLogo from "@/assets/images/logo-mkt.png";
 import { sidebarList } from "@/config/configSidebar";
 import { cn } from "@/helper/function";
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
 import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa";
 import NavbarLinkComponent from "../SidebarComponent/NavbarLinkComponent";
 const Sidebar = () => {
+  const { pathArray } = useGetPathComponent();
   const [isOpen, setIsOpen] = useState(false);
   const handleToggleArrow = (): void => {
     setIsOpen((prevState) => !prevState);
@@ -55,6 +57,16 @@ const Sidebar = () => {
           {sidebarList.map((sidebar, index) => {
             return (
               <NavbarLinkComponent
+                classWrapper={
+                  pathArray?.join("/").includes(sidebar.link)
+                    ? "bg-gray-100 border-blue-500 border-l-[3px]"
+                    : ""
+                }
+                classLink={
+                  pathArray?.join("/").includes(sidebar.link)
+                    ? "text-blue-500"
+                    : ""
+                }
                 icon={sidebar.icon}
                 title={sidebar.title}
                 link={sidebar.link}
