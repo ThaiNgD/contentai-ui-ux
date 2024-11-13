@@ -29,21 +29,25 @@ const NavbarLinkComponent = ({
     <>
       <div
         className={cn(
-          "mt-4 w-[85%] h-[30px] overflow-hidden",
+          "mt-1 w-full hover:bg-gray-200 flex items-center justify-center h-[40px] overflow-hidden",
           classWrapper,
-          isOpen && "relative"
+          isOpen && "relative pl-[30px] justify-start"
         )}
       >
         <Link
           href={`${path}/${link}`}
           className={cn(
-            "text-black dark:text-white flex font-googleSans justify-between hover:text-gray-300",
+            "text-black dark:text-white flex font-googleSans justify-between hover:text-blue-500 ",
             classLink,
             !isOpen && "justify-center"
           )}
         >
           <Icon size={20} />{" "}
-          {isOpen && <p className="w-[calc(100%-36px)]">{title}</p>}
+          {isOpen && (
+            <p className="whitespace-nowrap font-bold w-[calc(100%-36px)]">
+              {title}
+            </p>
+          )}
         </Link>
         {isOpen && <div className="absolute "></div>}
       </div>

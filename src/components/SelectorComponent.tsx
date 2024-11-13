@@ -6,11 +6,17 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaAngleRight, FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
-const SelectorComponent = ({ selector }: { selector: AISEOSelector }) => {
+const SelectorComponent = ({
+  selector,
+  folder,
+}: {
+  selector: AISEOSelector;
+  folder: string;
+}) => {
   const router = useRouter();
   const { locale } = useGetPathComponent();
   const handleCLickDiv = (): void => {
-    router.push(`/${locale}/ai-writer/${selector.slug}`);
+    router.push(`/${locale}/${folder}/${selector.slug}`);
   };
   return (
     <div

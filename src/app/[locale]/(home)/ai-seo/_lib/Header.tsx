@@ -4,13 +4,14 @@ import ModalNewFolder from "@/components/Modal/ModaNewFolder";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
+
 const Header = () => {
   const [isShowModalAddFolder, setIsShowModalAddFolder] = useState(false);
   const handleClickAddNewFolder = (): void => {
     setIsShowModalAddFolder(true);
   };
   return (
-    <div className="px-[175px] py-[35px] h-[fit] flex items-center justify-between border-b">
+    <div className="px-[175px] py-[35px] h-[150px] flex items-center justify-between">
       <div className="flex flex-col gap-2">
         <span
           role="button"
@@ -20,12 +21,9 @@ const Header = () => {
           Trở về
         </span>
         <h1 className="text-3xl font-extrabold">AI SEO</h1>
-        {/* <span className="text-sm opacity-70">
-          • Viết lại hoặc cải thiện nội dung văn bản, thay đổi phong cách, giọng
-          điệu hoặc cấu trúc câu.
-          <br /> • Tóm tắt nội dung dài, Paraphrase (diễn giải lại) nội dung để
-          tránh đạo văn.
-        </span> */}
+        <span className="text-sm opacity-70">
+          Tối ưu bài viết theo tiêu chuẩn SEO
+        </span>
       </div>
       <div className="flex flex-col h-full justify-center">
         <div className="flex gap-4">
@@ -33,10 +31,10 @@ const Header = () => {
             onClick={handleClickAddNewFolder}
             className="bg-white text-black rounded-2xl shadow-md hover:bg-blue-500 font-bold hover:text-white"
           >
-            Tài liệu của tôi
+            + Tài liệu của tôi
           </Button>
-          <Button className="bg-blue-500 border-blue-500 font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md hover:-translate-y-0.5">
-            + Tạo mới
+          <Button className="bg-blue-500 font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md hover:-translate-y-0.5">
+            + Tạo Template
           </Button>
         </div>
       </div>

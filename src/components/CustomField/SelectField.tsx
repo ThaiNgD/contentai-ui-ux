@@ -142,6 +142,11 @@ export const SelectField = <T,>({
   );
 
   const customStyles: StylesConfig = {
+    // input: (base: CSSObjectWithLabel) => ({
+    //   ...base,
+    //   backgroundColor: "#F1F9FC",
+    //   "&:focus": {},
+    // }),
     control: (base: CSSObjectWithLabel, state: ControlProps) => ({
       ...base,
       backgroundColor: "#FFFFFF",
@@ -226,6 +231,8 @@ export const SelectField = <T,>({
         </div>
       )}
       <Select
+        blurInputOnSelect={true}
+        isSearchable={false}
         className={cn("shadow-sm", className)}
         name={name}
         value={newValue}
