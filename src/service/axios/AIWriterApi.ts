@@ -325,3 +325,553 @@ export const aiWebsiteTitle = {
     );
   },
 };
+
+export const aiTiktokVideoIdeas = {
+  queryKey: "ai-tiktok-video-ideas",
+
+  create: async (payLoad: IFormTikTokVideoIdeas) => {
+    return await http.post<any, IResult>(
+      `${aiTiktokVideoIdeas.queryKey}/generate-ideas`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiTiktokVideoIdeas.queryKey}/save-generate-ideas`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiTiktokVideoIdeas.queryKey}/get-generate-ideas`
+    );
+  },
+};
+
+export const aiThankYouEmail = {
+  queryKey: "ai-thank-you-email",
+
+  create: async (payLoad: IFormThankYouLetter) => {
+    return await http.post<any, IResult>(
+      `${aiThankYouEmail.queryKey}/generate-email`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiThankYouEmail.queryKey}/save-generate-email`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiThankYouEmail.queryKey}/get-generate-email`
+    );
+  },
+};
+
+export const aiLiveStreamScript = {
+  queryKey: "ai-live-stream-script",
+
+  create: async (payLoad: IFormLiveStreamScript) => {
+    return await http.post<any, IResult>(
+      `${aiLiveStreamScript.queryKey}/generate-script`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiLiveStreamScript.queryKey}/save-generate-script`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiLiveStreamScript.queryKey}/get-generate-script`
+    );
+  },
+};
+
+export const aiVideoIntroScript = {
+  queryKey: "ai-video-intro-script",
+
+  create: async (payLoad: IFormIntroductionVideoScript) => {
+    return await http.post<any, IResult>(
+      `${aiVideoIntroScript.queryKey}/generate-intro-script`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiVideoIntroScript.queryKey}/save-generate-intro-script`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiVideoIntroScript.queryKey}/get-generate-intro-script`
+    );
+  },
+};
+
+export const aiVideoAdScript = {
+  queryKey: "ai-video-ad-script",
+
+  create: async (payLoad: IFormVideoAdScript) => {
+    return await http.post<any, IResult>(
+      `${aiVideoAdScript.queryKey}/generate-script`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiVideoAdScript.queryKey}/save-generate-script`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiVideoAdScript.queryKey}/get-generate-script`
+    );
+  },
+};
+
+export const aiYoutubeVideoDescription = {
+  queryKey: "ai-youtube-video-description",
+
+  create: async (payLoad: IFormYoutubeVideoDescription) => {
+    return await http.post<any, IResult>(
+      `${aiYoutubeVideoDescription.queryKey}/generate-description`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiYoutubeVideoDescription.queryKey}/save-generate-description`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiYoutubeVideoDescription.queryKey}/get-generate-description`
+    );
+  },
+};
+
+export const aiEmailSubject = {
+  queryKey: "ai-email-subject",
+
+  create: async (payLoad: IFormEmailSubject) => {
+    return await http.post<any, IResult>(
+      `${aiEmailSubject.queryKey}/generate-email-subject`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiEmailSubject.queryKey}/save-generate-email-subject`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiEmailSubject.queryKey}/get-generate-email-subject`
+    );
+  },
+};
+
+export const aiCancelOrderEmail = {
+  queryKey: "ai-order-cancellation-email",
+
+  create: async (payLoad: IFormOrderCancellationEmail) => {
+    return await http.post<any, IResult>(
+      `${aiCancelOrderEmail.queryKey}/generate-email`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiCancelOrderEmail.queryKey}/save-generate-email`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiCancelOrderEmail.queryKey}/get-generate-email`
+    );
+  },
+};
+
+export const aiEmailWriting = {
+  queryKey: "ai-email-writing",
+
+  create: async (payLoad: IFormEmailWriting) => {
+    return await http.post<any, IResult>(
+      `${aiEmailWriting.queryKey}/generate-email`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiEmailWriting.queryKey}/save-generate-email`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiEmailWriting.queryKey}/get-generate-email`
+    );
+  },
+};
+
+export const aiSalesPitch = {
+  queryKey: "ai-effective-sales-pitch",
+
+  create: async (payLoad: IFormSalesPitch) => {
+    return await http.post<any, IResult>(
+      `${aiSalesPitch.queryKey}/generate-pitch`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiSalesPitch.queryKey}/save-generate-pitch`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiSalesPitch.queryKey}/get-generate-pitch`
+    );
+  },
+};
+
+export const aiBeforeAterPost = {
+  queryKey: "ai-before-after-post",
+
+  create: async (payLoad: IFormBeforeAfterPost) => {
+    return await http.post<any, IResult>(
+      `${aiBeforeAterPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiBeforeAterPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiBeforeAterPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiProblemSolutionPost = {
+  queryKey: "ai-problem-solution-post",
+
+  create: async (payLoad: IFormProblemSolutionPost) => {
+    return await http.post<any, IResult>(
+      `${aiProblemSolutionPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiProblemSolutionPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiProblemSolutionPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiLandingPageOutline = {
+  queryKey: "ai-landing-page-outline",
+
+  create: async (payLoad: IFormLandingPageOutLine) => {
+    return await http.post<any, IResult>(
+      `${aiLandingPageOutline.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiLandingPageOutline.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiLandingPageOutline.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiProductBenefitsPost = {
+  queryKey: "ai-product-benefits-post",
+
+  create: async (payLoad: IFormProductBenefitsPost) => {
+    return await http.post<any, IResult>(
+      `${aiProductBenefitsPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiProductBenefitsPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiProductBenefitsPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiProductDescriptionPost = {
+  queryKey: "ai-product-description",
+
+  create: async (payLoad: IFormProductDescriptionPost) => {
+    return await http.post<any, IResult>(
+      `${aiProductDescriptionPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiProductDescriptionPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiProductDescriptionPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiProductTitle = {
+  queryKey: "ai-product-title",
+
+  create: async (payLoad: IFormProductTitle) => {
+    return await http.post<any, IResult>(
+      `${aiProductTitle.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiProductTitle.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiProductTitle.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiBuyerPersonas = {
+  queryKey: "ai-buyer-personas",
+
+  create: async (payLoad: IFormCustomerPortrait) => {
+    return await http.post<any, IResult>(
+      `${aiBuyerPersonas.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiBuyerPersonas.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiBuyerPersonas.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiHeroJourneyPost = {
+  queryKey: "ai-hero-journey-post",
+
+  create: async (payLoad: IFormHeroJourneyPost) => {
+    return await http.post<any, IResult>(
+      `${aiHeroJourneyPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiHeroJourneyPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiHeroJourneyPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiStoryTellingPost = {
+  queryKey: "ai-story-telling-fb-post",
+
+  create: async (payLoad: IFormStoryTellingPost) => {
+    return await http.post<any, IResult>(
+      `${aiStoryTellingPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiStoryTellingPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiStoryTellingPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiHoneyCombPost = {
+  queryKey: "ai-honey-comb-post",
+
+  create: async (payLoad: IFormHoneyCombPost) => {
+    return await http.post<any, IResult>(
+      `${aiHoneyCombPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiHoneyCombPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiHoneyCombPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiInvertedPyramidFormulaPost = {
+  queryKey: "ai-inverted-pyramid-formula-post",
+
+  create: async (payLoad: IFormInvertedPyramidFormulaPost) => {
+    return await http.post<any, IResult>(
+      `${aiInvertedPyramidFormulaPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiInvertedPyramidFormulaPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiInvertedPyramidFormulaPost.queryKey}/get-generate-post`
+    );
+  },
+};
+
+export const aiFABPost = {
+  queryKey: "ai-fab-formula-post",
+
+  create: async (payLoad: IFormFABPost) => {
+    return await http.post<any, IResult>(
+      `${aiFABPost.queryKey}/generate-post`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiFABPost.queryKey}/save-generate-post`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(`${aiFABPost.queryKey}/get-generate-post`);
+  },
+};
+
+export const aiTikTokVideoHook = {
+  queryKey: "ai-tiktok-video-hook",
+
+  create: async (payLoad: IFormTikTokVideoHook) => {
+    return await http.post<any, IResult>(
+      `${aiTikTokVideoHook.queryKey}/generate-hook`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiTikTokVideoHook.queryKey}/save-generate-hook`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiTikTokVideoHook.queryKey}/get-generate-hook`
+    );
+  },
+};
+
+export const aiTikTokVideoScript = {
+  queryKey: "ai-tiktok-video-script",
+
+  create: async (payLoad: IFormTikTokVideoScript) => {
+    return await http.post<any, IResult>(
+      `${aiTikTokVideoScript.queryKey}/generate-script`,
+      payLoad
+    );
+  },
+
+  save: async () => {
+    return await http.post<any, IResult>(
+      `${aiTikTokVideoScript.queryKey}/save-generate-script`
+    );
+  },
+
+  get: async () => {
+    return await http.get<any, any>(
+      `${aiTikTokVideoScript.queryKey}/get-generate-script`
+    );
+  },
+};

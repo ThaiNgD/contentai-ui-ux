@@ -4,22 +4,28 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiBuyerPersonas } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-
-const InputContent = () => {
-  const formik = useFormik({
+import { Dispatch, SetStateAction } from "react";
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormCustomerPortrait>({
     initialValues: {
-      brand: "",
-      product_description: "",
-      total: 1,
-      customer_portrait: "",
+      brandName: "",
+      productDescription: "",
+      numberOfCustomerPortraits: 1,
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
+    onSubmit: async (values) => {
       console.log(values);
+      await aiBuyerPersonas.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -29,7 +35,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
@@ -37,7 +43,7 @@ const InputContent = () => {
         formik={formik}
       />
       <InputField
-        name={"total"}
+        name={"numberOfCustomerPortraits"}
         placeholder="Số lượng"
         title="Số lượng"
         clsTitle="font-bold italic"
@@ -45,21 +51,14 @@ const InputContent = () => {
         formik={formik}
       />
       <TextAreaField
-        name={"product_description"}
+        name={"productDescription"}
         placeholder="Mô tả sản phẩm"
         title="Mô tả sản phẩm"
         clsTitle="font-bold italic"
         className="h-[125px]"
         formik={formik}
       />
-      <TextAreaField
-        name={"customer_portrait"}
-        placeholder="Chân dung khách hàng"
-        title="Chân dung khách hàng"
-        clsTitle="font-bold italic"
-        className="h-[125px]"
-        formik={formik}
-      />
+
       <SelectField
         clsLabelWrapper="font-bold italic"
         label="Model"

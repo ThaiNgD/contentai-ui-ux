@@ -4,20 +4,27 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiHoneyCombPost } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-
-const InputContent = () => {
-  const formik = useFormik({
+import { Dispatch, SetStateAction } from "react";
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormHoneyCombPost>({
     initialValues: {
-      brand: "",
-      character_description: "",
+      brandName: "",
+      productDescription: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
+    onSubmit: async (values) => {
       console.log(values);
+      await aiHoneyCombPost.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -27,7 +34,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
@@ -35,7 +42,7 @@ const InputContent = () => {
         formik={formik}
       />
       <TextAreaField
-        name={"character_description"}
+        name={"productDescription"}
         placeholder="Mô tả nhân vật"
         title="Mô tả nhân vật"
         clsTitle="font-bold italic"

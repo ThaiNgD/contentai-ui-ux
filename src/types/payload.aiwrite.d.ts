@@ -105,4 +105,172 @@ declare global {
     language: string;
     module: string;
   };
+
+  type IFormTikTokVideoIdeas = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormThankYouLetter = {
+    brandName: string;
+    description: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormLiveStreamScript = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormIntroductionVideoScript = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormVideoAdScript = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+  type IFormYoutubeVideoDescription = {
+    brandName: string;
+    keywords: string;
+    language: string;
+    module: string;
+  };
+  type IFormEmailSubject = {
+    purpose: string;
+    emailDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormOrderCancellationEmail = {
+    brandName: string;
+    emailDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormEmailWriting = {
+    brandName: string;
+    emailDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormSalesPitch = {
+    brandName: string;
+    productDescription: string;
+    targetCustomerProfile: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormBeforeAfterPost = {
+    brandName: string;
+    productBenefitsDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormProblemSolutionPost = {
+    brandName: string;
+    problemKeyword: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormLandingPageOutLine = {
+    brandName: string;
+    keywords: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormProductBenefitsPost = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormProductDescriptionPost = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormProductTitle = {
+    brandName: string;
+    productKeywords: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormCustomerPortrait = {
+    brandName: string;
+    productDescription: string;
+    numberOfCustomerPortraits: number;
+    language: string;
+    module: string;
+  };
+
+  type IFormHeroJourneyPost = {
+    brandName: string;
+    characterDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormStoryTellingPost = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormHoneyCombPost = {
+    brandName: string;
+    productDescription: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormInvertedPyramidFormulaPost = {
+    brandName: string;
+    mostImportantDetails: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormFABPost = {
+    brandName: string;
+    benefits: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormTikTokVideoHook = {
+    brandName: string;
+    topic: string;
+    language: string;
+    module: string;
+  };
+
+  type IFormTikTokVideoScript = {
+    brandName: string;
+    scriptKeyword: string;
+    language: string;
+    module: string;
+  };
 }

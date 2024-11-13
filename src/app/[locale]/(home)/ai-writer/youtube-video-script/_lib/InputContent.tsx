@@ -4,19 +4,26 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
 import { Button } from "flowbite-react";
+import { Dispatch, SetStateAction } from "react";
 import { useFormik } from "formik";
-
-const InputContent = () => {
+import { aiYoutubeVideoDescription } from "@/service/axios/AIWriterApi";
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
   const formik = useFormik({
     initialValues: {
-      brand: "",
-      keyword: "",
-      module: "",
+      brandName: "",
+      keywords: "",
       language: "",
+      module: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
+    onSubmit: async (values) => {
       console.log(values);
+      await aiYoutubeVideoDescription.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -26,7 +33,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
@@ -34,7 +41,7 @@ const InputContent = () => {
         formik={formik}
       />
       <InputField
-        name={"keyword"}
+        name={"keywords"}
         placeholder="Từ khóa"
         title="Từ khóa"
         clsTitle="font-bold italic"
