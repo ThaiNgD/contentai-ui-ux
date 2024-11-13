@@ -10,7 +10,7 @@ const data = [
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const PieChartComponent = () => {
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center" suppressHydrationWarning>
       <PieChart width={400} height={400}>
         <Pie
           data={data}

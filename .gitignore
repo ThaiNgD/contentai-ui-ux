@@ -41,5 +41,6 @@ next-env.d.ts
 
 #husky
 
-.husky
 .husky/*
+.husky
+.husky/pre-commit
