@@ -4,12 +4,19 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { useAiContentBlogLongForm } from "@/service/aiwriter/useAiContentBlogLongForm";
+import { UseMutateFunction } from "@tanstack/react-query";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-
-const InputContent = () => {
-  const { mutate: mutateFn, isPending } = useAiContentBlogLongForm();
+interface InputContentProps {
+  submitForm: UseMutateFunction<
+    IResult,
+    Error,
+    IFormContentBlogLongForm,
+    unknown
+  >;
+  isPending: boolean;
+}
+const InputContent = ({ submitForm, isPending }: InputContentProps) => {
   const formik = useFormik<IFormContentBlogLongForm>({
     initialValues: {
       title: "",
@@ -19,13 +26,10 @@ const InputContent = () => {
       language: "",
     },
     onSubmit: async (values) => {
-      mutateFn(values);
-      // await aiContentBlogLongForm.create(values).then((values) => {
-      //   console.log(values);
-      //   setCkData(values.result);
-      // });
+      submitForm(values);
     },
   });
+  // console.log(data?.result);
   return (
     <div className="flex flex-col h-full">
       <form

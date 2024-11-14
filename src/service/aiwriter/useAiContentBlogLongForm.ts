@@ -3,7 +3,7 @@ import {
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
-import { aiContentBlogLongForm, IResult } from "../axios/AIWriterApi";
+import { aiContentBlogLongForm } from "../axios/AIWriterApi";
 export const useAiContentBlogLongForm = (
   hideToast?: boolean
 ): UseMutationResult<IResult, Error, IFormContentBlogLongForm, unknown> => {
@@ -11,6 +11,7 @@ export const useAiContentBlogLongForm = (
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: aiContentBlogLongForm.create,
+    mutationKey: [aiContentBlogLongForm.queryKey],
     onSuccess: (isSuccess) => {
       queryClient.setQueryData([aiContentBlogLongForm.queryKey], isSuccess);
       queryClient.invalidateQueries({

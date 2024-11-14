@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiGoogleAdsHeadline, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiGoogleAdsHeadline } from "../axios/AIWriterApi";
 
 export const useAiGoogleAdsHeadline = (
   hideToast?: boolean

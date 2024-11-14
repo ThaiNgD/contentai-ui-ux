@@ -1,7 +1,7 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiWebsiteOutlineMenu, IResult } from "../axios/AIWriterApi";
-import { useRouter } from "next/router";
 import { console } from "inspector";
+import { useRouter } from "next/router";
+import { aiWebsiteOutlineMenu } from "../axios/AIWriterApi";
 
 export const useAIOutlineMenu = (
   hideToast?: boolean
