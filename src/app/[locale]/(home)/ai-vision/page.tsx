@@ -9,7 +9,7 @@ const Page = () => {
   return (
     <>
       <Header />
-      <div className="p-[20px] bg-[#F5F9FC] h-[calc(100%-150px)]">
+      <div className="px-[175px] p-[20px] bg-[#F5F9FC] h-[calc(100%-150px)]">
         <div className="border divide-x  grid grid-cols-[20%,80%] bg-white rounded-xl shadow-lg h-full">
           <div className="grid divide-y  grid-rows-[15%,85%]">
             <ChatSearchBar />

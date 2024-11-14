@@ -1,9 +1,7 @@
 "use client";
 import { GrAttachment } from "react-icons/gr";
 import { IoSend } from "react-icons/io5";
-import { LuLayoutTemplate } from "react-icons/lu";
-import { MdSettingsVoice } from "react-icons/md";
-import { PiOpenAiLogo, PiTextAlignLeftFill } from "react-icons/pi";
+import { PiOpenAiLogo } from "react-icons/pi";
 import TextAreaField from "../CustomField/TextAreaField";
 const ChatInput = () => {
   return (
@@ -21,24 +19,6 @@ const ChatInput = () => {
         />
         <div className="flex gap-2 items-center">
           <div className="flex gap-4 p-1 px-3 bg-white rounded-xl">
-            <div
-              className="p-2 bg-blue-500 hover:scale-110 rounded-full"
-              role="button"
-            >
-              <PiTextAlignLeftFill size={24} className="text-white" />
-            </div>
-            <div
-              className="p-2 bg-blue-500 hover:scale-110 rounded-full"
-              role="button"
-            >
-              <LuLayoutTemplate size={24} className="text-white" />
-            </div>
-            <div
-              className="p-2 bg-blue-500 hover:scale-110 rounded-full"
-              role="button"
-            >
-              <MdSettingsVoice size={24} className="text-white" />
-            </div>
             <div
               className="p-2 bg-blue-500 hover:scale-110 rounded-full"
               role="button"
