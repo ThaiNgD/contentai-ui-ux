@@ -4,15 +4,12 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiContentBlogLongForm } from "@/service/axios/AIWriterApi";
+import { useAiContentBlogLongForm } from "@/service/aiwriter/useAiContentBlogLongForm";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
 
-interface InputProps {
-  setCkData: Dispatch<SetStateAction<string>>;
-}
-const InputContent = ({ setCkData }: InputProps) => {
+const InputContent = () => {
+  const { mutate: mutateFn, isPending } = useAiContentBlogLongForm();
   const formik = useFormik<IFormContentBlogLongForm>({
     initialValues: {
       title: "",
@@ -22,10 +19,11 @@ const InputContent = ({ setCkData }: InputProps) => {
       language: "",
     },
     onSubmit: async (values) => {
-      await aiContentBlogLongForm.create(values).then((values) => {
-        console.log(values);
-        setCkData(values.result);
-      });
+      mutateFn(values);
+      // await aiContentBlogLongForm.create(values).then((values) => {
+      //   console.log(values);
+      //   setCkData(values.result);
+      // });
     },
   });
   return (
@@ -79,7 +77,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         type="submit"
         className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
       >
-        Tạo nội dung
+        {isPending ? "Tạo nội dung" : "Đang tao"}
       </Button>
     </div>
   );

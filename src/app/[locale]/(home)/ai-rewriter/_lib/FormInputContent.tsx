@@ -7,6 +7,8 @@ import { Button } from "flowbite-react";
 import { AiFillEdit } from "react-icons/ai";
 
 const FormInputContent = () => {
+  //const { mutate: mutateFN, data } = useAiBlogCallAction();
+
   return (
     <form className="flex h-full flex-col bg-white shadow-lg rounded-xl p-[25px] gap-4">
       <div className="flex gap-2 items-center">
@@ -20,17 +22,17 @@ const FormInputContent = () => {
         <label className="text-sm mb-0 font-bold dark:text-white text-black">
           Số từ của nội dung:
         </label>
-        <span className="text-sm mb-0 opacity-60">0/10000</span>
+        <span className="text-sm mb-0 opacity-60">{0}</span>
       </div>
       <TextAreaField
-        name=""
+        name="content"
         placeholder="Nhập nội dung"
         clsTextArea="min-h-[200px] max-h-[400px] "
       />
       <SelectField
         clsLabelWrapper="font-bold italic"
         label="Tông giọng"
-        name="tone"
+        name="request"
         options={configSelectTone}
         // formik={formik}
       />
