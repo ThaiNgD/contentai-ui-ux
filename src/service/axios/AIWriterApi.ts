@@ -191,11 +191,11 @@ export const aiLongTailKeyword = {
 };
 
 export const aiContentBlogLongForm = {
-  queryKey: "ai_seo_optimization",
-
+  pathKey: "ai_seo_optimization",
+  queryKey: "ai_content_blog_long_form",
   create: async (payload: IFormContentBlogLongForm) => {
     return await http.post<any, IResult>(
-      `${aiContentBlogLongForm.queryKey}/content_blog_long_form`,
+      `${aiContentBlogLongForm.pathKey}/content_blog_long_form`,
       payload
     );
   },
