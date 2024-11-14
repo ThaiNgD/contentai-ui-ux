@@ -1,4 +1,5 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import { aiAnalysisApi } from "../axios/AIWriterApi";
 
 export const useAiCompetior = (): UseMutationResult<
@@ -11,6 +12,11 @@ export const useAiCompetior = (): UseMutationResult<
     mutationFn: aiAnalysisApi.create,
     onSuccess: (isSuccess) => {
       console.log(isSuccess);
+      toast.success("Thành công");
+    },
+    onError: (error) => {
+      console.log(error);
+      toast.error("Error");
     },
   });
 };
