@@ -40,6 +40,11 @@ function CustomEditor({ data, clsHeight, clsWidth }: CKEDITORProps) {
               classes: [clsHeight ? clsHeight : "", clsWidth ? clsWidth : ""],
               element: "ck-editor",
             },
+            {
+              name: "bar",
+              classes: ["text-cursorm, typewriter-animation"],
+              element: "p",
+            },
           ],
         },
         toolbar: {
