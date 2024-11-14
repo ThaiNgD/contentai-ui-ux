@@ -67,7 +67,7 @@ export interface AIBlogStep {
 }
 
 export const configAIBlogStep: AIBlogStep[] = [
-  { title: "Viết tiêu đề", step: 1, isActive: true },
-  { title: "Viết outline", step: 2, isActive: false },
-  { title: "Viết chi tiết", step: 3, isActive: false },
+  { title: "Tạo ý tưởng", step: 1, isActive: true },
+  { title: "Dàn ý", step: 2, isActive: false },
+  { title: "Bài viết chi tiết", step: 3, isActive: false },
 ];

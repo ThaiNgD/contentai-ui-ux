@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiDeliveryPolicy, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiDeliveryPolicy } from "../axios/AIWriterApi";
 
 export const useAiDeliveryPolicy = (
   hideToast?: boolean

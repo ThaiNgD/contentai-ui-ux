@@ -11,16 +11,16 @@ interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 
-const InputPost = ({ setCkData }: InputProps) => {
+const InputContent = ({ setCkData }: InputProps) => {
   const formik = useFormik({
     initialValues: {
-      outline: "",
+      content: "",
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
       console.log(values);
-      setCkData(values.outline);
+      setCkData(values.content);
       // Handle form submission
     },
   });
@@ -28,15 +28,14 @@ const InputPost = ({ setCkData }: InputProps) => {
     <form
       id="form-submit"
       onSubmit={formik.handleSubmit}
-      className="flex flex-col gap-4 bg-white p-[20px] shadow-xl rounded-xl"
+      className="flex flex-col gap-4"
     >
       <TextAreaField
-        name={"outline"}
-        placeholder="Outline"
-        title="Dàn ý cung cấp"
+        name={"content"}
+        placeholder="Nhập nội dung"
+        title="Nội dung cần tối ưu"
         clsTitle="font-bold italic"
-        className="h-[200px]"
-        clsTextArea="min-h-[50px]"
+        className="h-[150px]"
         formik={formik}
       />
       <SelectField
@@ -56,12 +55,12 @@ const InputPost = ({ setCkData }: InputProps) => {
       <Button
         form="form-submit"
         type="submit"
-        className="bg-blue-500 w-fit mx-auto px-[50px] mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
       >
-        Tạo bài viết
+        Tạo tiêu đề
       </Button>
     </form>
   );
 };
 
-export default InputPost;
+export default InputContent;

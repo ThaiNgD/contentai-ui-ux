@@ -1,5 +1,5 @@
 "use client";
-import { configAISEOStep } from "@/config/configAISEO";
+import { configAIBlogStep } from "@/config/configAIBlog";
 import { useState } from "react";
 import ChildHeader from "../_lib/ChildHeader";
 import InputKeyword from "./_lib/InputKeyword";
@@ -8,7 +8,7 @@ import InputPostForm from "./_lib/InputPostForm";
 import SelectorStep from "./_lib/SelectorStep";
 
 const Page = () => {
-  const [steps, setSteps] = useState(configAISEOStep);
+  const [steps, setSteps] = useState(configAIBlogStep);
   // const setStepsKeyword = (): void => {
   //   setSteps((prevs) => {
   //     return prevs.map((prev, index) => {

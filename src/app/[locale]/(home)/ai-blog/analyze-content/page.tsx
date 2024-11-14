@@ -9,8 +9,8 @@ const Page = () => {
   return (
     <>
       <ChildHeader
-        title="Tạo ý tưởng"
-        description="Đề xuất ý tưởng chủ đề blog"
+        title="Phân tích nội dung đối thủ"
+        description="Phân tích nội dung bài viết của đối thủ cạnh tranh theo SEO."
       />
       <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] px-[175px] py-[40px] gap-[30px] ">
         <InputContent setCkData={setCkData} />

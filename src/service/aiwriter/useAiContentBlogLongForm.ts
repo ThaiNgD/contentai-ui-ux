@@ -1,22 +1,20 @@
-import {
-  useMutation,
-  UseMutationResult,
-  useQueryClient,
-} from "@tanstack/react-query";
-import { aiContentBlogLongForm, IResult } from "../axios/AIWriterApi";
-import { aiRewriter } from "../axios/aiRewriterApi";
-export const useAiContentBlogLongForm = (
-  hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormContentBlogLongForm, unknown> => {
-  console.log(hideToast);
-  const queryClient = useQueryClient();
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { aiContentBlogLongForm } from "../axios/AIWriterApi";
+export const useAiContentBlogLongForm = (): UseMutationResult<
+  IResult,
+  Error,
+  IFormContentBlogLongForm,
+  unknown
+> => {
   return useMutation({
     mutationFn: aiContentBlogLongForm.create,
+    mutationKey: [aiContentBlogLongForm.queryKey],
     onSuccess: (isSuccess) => {
-      queryClient.setQueryData([aiRewriter.queryKey], isSuccess);
-      queryClient.invalidateQueries({
-        queryKey: [aiRewriter.queryKey],
-      });
+      console.log(isSuccess);
+      // queryClient.setQueryData([aiContentBlogLongForm.queryKey], isSuccess);
+      // queryClient.invalidateQueries({
+      //   queryKey: [aiContentBlogLongForm.queryKey],
+      // });
     },
   });
 };

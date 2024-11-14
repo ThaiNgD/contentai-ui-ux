@@ -14,13 +14,13 @@ interface InputProps {
 const InputContent = ({ setCkData }: InputProps) => {
   const formik = useFormik({
     initialValues: {
-      title: "",
+      idea: "",
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
       console.log(values);
-      setCkData(values.title);
+      setCkData(values.idea);
       // Handle form submission
     },
   });
@@ -31,9 +31,9 @@ const InputContent = ({ setCkData }: InputProps) => {
       className="flex flex-col gap-4"
     >
       <TextAreaField
-        name={"title"}
-        placeholder="Nhập tiêu đề"
-        title="Tiêu đề"
+        name={"idea"}
+        placeholder="Nhập ý tưởng"
+        title="Ý tưởng bài viết"
         clsTitle="font-bold italic"
         className="h-[150px]"
         formik={formik}

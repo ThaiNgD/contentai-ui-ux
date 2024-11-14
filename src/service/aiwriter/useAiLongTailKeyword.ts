@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiLongTailKeyword, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiLongTailKeyword } from "../axios/AIWriterApi";
 
 export const useAiLongTailKeyword = (
   hideToast?: boolean

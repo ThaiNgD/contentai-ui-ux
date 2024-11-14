@@ -14,13 +14,13 @@ interface InputProps {
 const InputContent = ({ setCkData }: InputProps) => {
   const formik = useFormik({
     initialValues: {
-      keyword: "",
+      target: "",
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
       console.log(values);
-      setCkData(values.keyword);
+      setCkData(values.target);
       // Handle form submission
     },
   });
@@ -32,8 +32,8 @@ const InputContent = ({ setCkData }: InputProps) => {
     >
       <TextAreaField
         name={"keyword"}
-        placeholder="Nhập từ khóa"
-        title="Từ khóa cần phân tích"
+        placeholder="Khách hàng mục tiêu"
+        title="Khách hàng mục tiêu"
         clsTitle="font-bold italic"
         className="h-[150px]"
         formik={formik}

@@ -20,7 +20,7 @@ const InputOutlineForm = ({ setStepsPost }: InputOutlineFormProps) => {
             className="bg-blue-500 w-fit mx-auto px-[50px] mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
             onClick={setStepsPost}
           >
-            Tạo bài viết với outline này
+            Tạo bài viết với dàn ý này
           </Button>
         )}
       </div>

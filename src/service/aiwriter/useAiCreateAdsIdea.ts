@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiCreateAdsIdea, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiCreateAdsIdea } from "../axios/AIWriterApi";
 
 export const useAiCreateAdsIdea = (
   hideToast?: boolean

@@ -32,7 +32,7 @@ const InputKeyword = ({ setStepsOutline }: InputKeywordProps) => {
             className="bg-blue-500 font-bold w-fit mx-auto px-[50px] mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
             onClick={setStepsOutline}
           >
-            Tạo Outline với tiêu đề này
+            Tạo Outline với ý tưởng này
           </Button>
         )}
       </div>

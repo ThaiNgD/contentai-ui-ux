@@ -33,7 +33,7 @@ const InputContent = ({ setCkData }: InputProps) => {
       <TextAreaField
         name={"outline"}
         placeholder="Nhập outline"
-        title="Dàn ý"
+        title="Dàn ý cung cấp"
         clsTitle="font-bold italic"
         className="h-[200px]"
         formik={formik}
