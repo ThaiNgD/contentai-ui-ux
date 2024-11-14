@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiInstagramBio, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiInstagramBio } from "../axios/AIWriterApi";
 
 export const useAiInstagramBio = (
   hideToast?: boolean

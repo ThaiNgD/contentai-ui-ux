@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiRephraseContent, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiRephraseContent } from "../axios/AIWriterApi";
 
 export const useAiRephraseContent = (
   hideToast?: boolean

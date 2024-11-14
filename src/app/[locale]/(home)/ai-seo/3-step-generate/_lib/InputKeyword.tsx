@@ -27,7 +27,7 @@ const InputKeyword = ({ setStepsOutline }: InputKeywordProps) => {
             )}
           </div>
         </div>
-        {!ckData && (
+        {ckData && (
           <Button
             className="bg-blue-500 font-bold w-fit mx-auto px-[50px] mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
             onClick={setStepsOutline}

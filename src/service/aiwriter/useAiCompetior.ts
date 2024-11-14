@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiAnalysisApi, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiAnalysisApi } from "../axios/AIWriterApi";
 
 export const useAiCompetior = (
   hideToast?: boolean

@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiWebsiteFaq, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiWebsiteFaq } from "../axios/AIWriterApi";
 
 export const useAiWebsiteFaq = (
   hideToast?: boolean

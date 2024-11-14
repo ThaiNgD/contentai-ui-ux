@@ -1,4 +1,4 @@
-import { aiBlogListicle, IResult } from "@/service/axios/AIWriterApi";
+import { aiBlogListicle } from "@/service/axios/AIWriterApi";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 

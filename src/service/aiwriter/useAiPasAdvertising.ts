@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiPasAdertising, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiPasAdertising } from "../axios/AIWriterApi";
 
 export const useAiPasAdvertising = (
   hideToast?: boolean

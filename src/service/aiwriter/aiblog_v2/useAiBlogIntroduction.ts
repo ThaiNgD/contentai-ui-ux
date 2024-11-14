@@ -1,4 +1,4 @@
-import { aiBlogIntroduction, IResult } from "@/service/axios/AIWriterApi";
+import { aiBlogIntroduction } from "@/service/axios/AIWriterApi";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 

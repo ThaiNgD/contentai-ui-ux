@@ -1,6 +1,6 @@
 "use client";
 import Icon from "@/app/favicon.ico";
-import { AISEOSelector } from "@/config/configAISEO";
+import { AIBlogSelector } from "@/config/configAIBlog";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,7 +10,7 @@ const SelectorComponent = ({
   selector,
   folder,
 }: {
-  selector: AISEOSelector;
+  selector: AIBlogSelector;
   folder: string;
 }) => {
   const router = useRouter();
