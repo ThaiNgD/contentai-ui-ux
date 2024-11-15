@@ -46,7 +46,7 @@ const NavbarLinkComponent = ({
         <Link
           href={`${path}/${link}`}
           className={cn(
-            "text-black dark:text-white flex font-googleSans justify-between group-hover:text-blue-500 ",
+            "text-black w-full h-full items-center dark:text-white flex font-googleSans justify-between group-hover:text-blue-500 ",
             classLink,
             !isOpen && "justify-center"
           )}
