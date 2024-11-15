@@ -114,3 +114,21 @@ export const selectRandom = <T>(array: T[]): T => {
   const random = Math.floor(Math.random() * array.length);
   return array[random];
 };
+
+export function readURL(input: HTMLInputElement): void {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      const result = e.target?.result as string;
+      const img = document.getElementById("blah") as HTMLImageElement;
+      if (img) {
+        img.src = result;
+        img.width = 150;
+        img.height = 200;
+      }
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
