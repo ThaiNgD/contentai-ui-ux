@@ -1,5 +1,5 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiTiktokVideoIdeas, IResult } from "../axios/AIWriterApi";
+import { aiTiktokVideoIdeas } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
 export const useAiLiveStreamScript = (
   hideToast?: boolean
