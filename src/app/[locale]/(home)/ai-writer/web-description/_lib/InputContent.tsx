@@ -1,4 +1,5 @@
 "use client";
+import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
@@ -33,6 +34,14 @@ const InputContent = ({ setCkData }: InputProps) => {
       onSubmit={formik.handleSubmit}
       className="flex flex-col gap-4"
     >
+      <InputField
+        name={"brandName"}
+        placeholder="Tên thương hiệu"
+        title="Tên thương hiệu"
+        clsTitle="font-bold italic"
+        className="h-[50px]"
+        formik={formik}
+      />
       <TextAreaField
         name={"description"}
         placeholder="Mô tả Web"
