@@ -1,0 +1,19 @@
+{
+  "locales": [
+    "vn",
+    "en"
+  ],
+  "defaultLocale": "vn",
+  "pages": {
+    "*": [
+      "common"
+    ],
+    "/": [
+      "home",
+      "example"
+    ],
+    "/about": [
+      "about"
+    ]
+  }
+}
