@@ -1,13 +1,15 @@
 // components/custom-editor.js
-"use client"; // only in App Router
+"use client";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
+
 import {
   Alignment,
   Autoformat,
   Autosave,
   Bold,
   ClassicEditor,
+  Code,
   Essentials,
   FontFamily,
   Heading,
@@ -16,37 +18,35 @@ import {
   List,
   Mention,
   Paragraph,
+  Strikethrough,
+  Subscript,
+  Superscript,
+  Underline,
   Undo,
 } from "ckeditor5";
-
 import "ckeditor5/ckeditor5.css";
-
+import { useEffect, useState } from "react";
+import showdown from "showdown";
 interface CKEDITORProps {
   data?: string;
   clsWidth?: string;
   clsHeight?: string;
 }
+function CustomEditor({ data }: CKEDITORProps) {
+  const converter = new showdown.Converter();
+  const [htmlData, setHtmlData] = useState("");
+  // Convert markdown to HTML
+  useEffect(() => {
+    if (data) {
+      setHtmlData(converter.makeHtml(data));
+    }
+  }, [data]);
 
-function CustomEditor({ data, clsHeight, clsWidth }: CKEDITORProps) {
   return (
     <CKEditor
-      data={data}
+      data={htmlData}
       editor={ClassicEditor}
       config={{
-        style: {
-          definitions: [
-            {
-              name: "foo",
-              classes: [clsHeight ? clsHeight : "", clsWidth ? clsWidth : ""],
-              element: "ck-editor",
-            },
-            {
-              name: "bar",
-              classes: ["text-cursorm, typewriter-animation"],
-              element: "p",
-            },
-          ],
-        },
         toolbar: {
           items: [
             "undo",
@@ -94,6 +94,11 @@ function CustomEditor({ data, clsHeight, clsWidth }: CKEDITORProps) {
           Autosave,
           Autoformat,
           List,
+          Code,
+          Strikethrough,
+          Subscript,
+          Superscript,
+          Underline,
         ],
         image: {
           insert: {
