@@ -58,7 +58,7 @@ const InputContent = ({ submitForm, isPending }: InputContentProps) => {
           placeholder="Outline"
           title="Ounline"
           clsTitle="font-bold italic"
-          className="h-[50px]"
+          className="h-[150px]"
           formik={formik}
         />
         <SelectField
@@ -81,7 +81,11 @@ const InputContent = ({ submitForm, isPending }: InputContentProps) => {
         type="submit"
         className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
       >
-        {isPending ? "Tạo nội dung" : "Đang tao"}
+        {isPending ? (
+          <div className="size-[24px] loading"></div>
+        ) : (
+          "Tạo nội dung"
+        )}
       </Button>
     </div>
   );
