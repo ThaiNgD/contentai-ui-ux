@@ -4,8 +4,12 @@ import { FaLink } from "react-icons/fa6";
 import { IoChatboxEllipses } from "react-icons/io5";
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
+  chat: IConversationResult;
 }
-const ChatDisplayContainer = ({ isPdfChat }: ChatDisplayContainerProps) => {
+const ChatDisplayContainer = ({
+  chat,
+  isPdfChat,
+}: ChatDisplayContainerProps) => {
   return (
     <div className="w-full group border-b items-center shadow-inner flex gap-2 p-[20px] h-[80px]">
       <div
@@ -18,7 +22,7 @@ const ChatDisplayContainer = ({ isPdfChat }: ChatDisplayContainerProps) => {
         )}
       </div>
       <div className="flex flex-col justify-center ">
-        <span>Tilte</span>
+        <span>{chat?.conversationName}</span>
         {isPdfChat && (
           <div className="flex gap-2 w-full">
             <FaLink size={20} />
@@ -31,7 +35,7 @@ const ChatDisplayContainer = ({ isPdfChat }: ChatDisplayContainerProps) => {
           </div>
         )}
         <p className="text-xs opacity-50 text-black w-fit whitespace-nowrap overflow-hidden">
-          5 ngày trước
+          {chat?.createdAt}
         </p>
       </div>
     </div>

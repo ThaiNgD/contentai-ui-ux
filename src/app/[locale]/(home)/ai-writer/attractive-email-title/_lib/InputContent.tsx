@@ -3,20 +3,27 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiEmailSubject } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-
-const InputContent = () => {
+import { Dispatch, SetStateAction } from "react";
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
   const formik = useFormik({
     initialValues: {
       purpose: "",
-      email_description: "",
+      emailDescription: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
+    onSubmit: async (values) => {
       console.log(values);
+      await aiEmailSubject.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -34,7 +41,7 @@ const InputContent = () => {
         formik={formik}
       />
       <InputField
-        name={"email_description"}
+        name={"emailDescription"}
         placeholder="Mô tả Email"
         title="Mô tả Email"
         clsTitle="font-bold italic"

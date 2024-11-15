@@ -4,20 +4,27 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiBeforeAterPost } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-
-const InputContent = () => {
-  const formik = useFormik({
+import { Dispatch, SetStateAction } from "react";
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormBeforeAfterPost>({
     initialValues: {
-      brand: "",
-      product_benefit_description: "",
+      brandName: "",
+      productBenefitsDescription: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
+    onSubmit: async (values) => {
       console.log(values);
+      await aiBeforeAterPost.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -27,7 +34,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
@@ -35,7 +42,7 @@ const InputContent = () => {
         formik={formik}
       />
       <TextAreaField
-        name={"product_benefit_description"}
+        name={"productBenefitsDescription"}
         placeholder="Mô tả lợi ích sản phẩm/dịch vụ"
         title="Mô tả lợi ích sản phẩm/dịch vụ"
         clsTitle="font-bold italic"
