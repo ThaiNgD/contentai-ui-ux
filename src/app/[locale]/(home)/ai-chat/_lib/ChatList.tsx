@@ -25,24 +25,6 @@ const ChatList = ({
   }, []);
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-auto">
-      <ChatDisplayContainer
-        setChat={setChat}
-        chat={{
-          id: "aaa",
-          conversationName: "test",
-          createdAt: "test",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        setChat={setChat}
-        chat={{
-          id: "aaa",
-          conversationName: "test",
-          createdAt: "test",
-          updatedAt: new Date(),
-        }}
-      />
       {allChats?.conversation.map((chat, index) => {
         return (
           <ChatDisplayContainer setChat={setChat} chat={chat} key={index} />
