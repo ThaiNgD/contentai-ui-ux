@@ -3,6 +3,7 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiCreateDetailBlog } from "@/service/axios/aiBlogApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { Dispatch, SetStateAction } from "react";
@@ -12,16 +13,18 @@ interface InputProps {
 }
 
 const InputContent = ({ setCkData }: InputProps) => {
-  const formik = useFormik({
+  const formik = useFormik<IFormDetailBlog>({
     initialValues: {
       outline: "",
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
-      setCkData(values.outline);
-      // Handle form submission
+      await aiCreateDetailBlog.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+        // Handle form submission
+      });
     },
   });
   return (

@@ -20,8 +20,30 @@
     "action": "Hành động",
     "total_word": "Số từ"
   },
-  "Việt Nam": "Việt Nam",
-  "English": "English",
-  "gpt-4o": "GPT-4o",
-  "gpt-4o-mini": "GPT-4o Mini"
+  "option": {
+    "Việt Nam": "Việt Nam",
+    "English": "English",
+    "gpt-4o": "GPT-4o",
+    "gpt-4o-mini": "GPT-4o Mini",
+    "professional": "Chuyên nghiệp",
+    "exciting": "Thú vị",
+    "friendly": "Thân thiện",
+    "witty": "Hóm hỉnh",
+    "humorous": "Hài hước",
+    "convincing": "Thuyết phục",
+    "empathetic": "Đồng cảm",
+    "inspiring": "Truyền cảm hứng",
+    "supportive": "Hỗ trợ",
+    "trusting": "Đáng tin cậy",
+    "playful": "Vui tươi",
+    "excited": "Hào hứng",
+    "positive": "Tích cực",
+    "negative": "Tiêu cực",
+    "engaging": "Thu hút",
+    "worried": "Lo lắng",
+    "urgent": "Khẩn cấp",
+    "passionate": "Đam mê",
+    "informative": "Cung cấp thông tin",
+    "funny": "Vui nhộn"
+  }
 }

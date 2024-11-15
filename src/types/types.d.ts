@@ -17,4 +17,13 @@ declare global {
     value: string;
     array: string[];
   }
+
+  interface IResult {
+    message: string;
+    statusCode: string;
+    active: boolean;
+    result: string;
+    tokenInput: string;
+    tokenOutput: string;
+  }
 }
