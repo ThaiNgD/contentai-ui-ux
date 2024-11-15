@@ -17,6 +17,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   const handleToggleArrow = (): void => {
     setIsOpen((prevState) => !prevState);
   };
+  console.log(pathArray?.[pathArray?.length - 1]);
   return (
     <div
       className={cn("relative w-fit z-[50]", isOpen ? "w-[64px]" : "w-[256px]")}
@@ -64,14 +65,12 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
               return (
                 <NavbarLinkComponent
                   classWrapper={
-                    pathArray?.join("/").includes(sidebar.link)
+                    pathArray?.includes(sidebar.link)
                       ? "bg-gray-100 border-blue-500 border-l-[3px]"
                       : ""
                   }
                   classLink={
-                    pathArray?.join("/").includes(sidebar.link)
-                      ? "text-blue-500"
-                      : ""
+                    pathArray?.includes(sidebar.link) ? "text-blue-500" : ""
                   }
                   icon={sidebar.icon}
                   title={sidebar.title}

@@ -6,16 +6,16 @@ import { useRef, useState } from "react";
 import { TbCloudUpload } from "react-icons/tb";
 import { toast } from "react-toastify";
 
-interface DragnDropImageProps {
-  isImage: boolean;
+interface DragnDropFileProps {
+  title?: string;
   desc?: string;
   acceptedFile?: string;
 }
-const DragnDropImage = ({
-  isImage = true,
+const DragnDropFile = ({
+  title = "Thả hoặc chọn ảnh ở đây",
   desc = "Chỉ cho phép chọn JPG,PNG,WEPG",
   acceptedFile = "image/*",
-}: DragnDropImageProps) => {
+}: DragnDropFileProps) => {
   const inputRef = useRef(null);
   const [file, setFile] = useState<string>("");
   const [isFileEnter, setIsFileEnter] = useState(false);
@@ -25,11 +25,19 @@ const DragnDropImage = ({
   //disabled-eslint-next-line
   const onInputChange = (e: any): void => {
     const fileInput = e.target.files;
-    if (!fileInput[0].type.includes("image/")) {
+    if (
+      acceptedFile.includes("image/") &&
+      !fileInput[0].type.includes("image/")
+    ) {
       toast.error("File không phải là ảnh!!");
+    } else if (
+      acceptedFile.includes("audio/") &&
+      !fileInput[0].type.includes("audio/")
+    ) {
+      toast.error("File không phải là file âm thanh !!");
     } else if (fileInput && fileInput.length > 0) {
       setFile(URL.createObjectURL(fileInput[0]));
-      setIsFileEnter(true);
+      setIsFileEnter(false);
     }
   };
   return (
@@ -48,6 +56,10 @@ const DragnDropImage = ({
         setIsFileEnter(false);
       }}
       onDragEnd={(e) => {
+        e.preventDefault();
+        setIsFileEnter(false);
+      }}
+      onDragOverCapture={(e) => {
         e.preventDefault();
         setIsFileEnter(false);
       }}
@@ -95,9 +107,7 @@ const DragnDropImage = ({
       ) : (
         <div className="flex flex-col items-center">
           <TbCloudUpload size={40} />
-          <p className="font-semibold">
-            Thả hoặc chọn {isImage ? "ảnh" : "video"} vào đây
-          </p>
+          <p className="font-semibold">{title}</p>
           <span className="text-sm ">{`(${desc}}`}</span>
         </div>
       )}
@@ -105,4 +115,4 @@ const DragnDropImage = ({
   );
 };
 
-export default DragnDropImage;
+export default DragnDropFile;
