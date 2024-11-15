@@ -1,17 +1,20 @@
+"use client";
 import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiAnalysisApi } from "@/service/axios/AIWriterApi";
+import { cn } from "@/helper/function";
+import { useAiCompetior } from "@/service/aiwriter/useAiCompetior";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
+  const { data, mutate: mutateFn, isPending } = useAiCompetior();
   const formik = useFormik<IFormCompetiorAnalysis>({
     initialValues: {
       brandName: "",
@@ -20,13 +23,15 @@ const InputContent = ({ setCkData }: InputProps) => {
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
-      await aiAnalysisApi.create(values).then((values) => {
-        console.log(values);
-        setCkData(values.result);
-      });
+    onSubmit: (values) => {
+      mutateFn(values);
     },
   });
+  useEffect(() => {
+    if (data?.result) {
+      setCkData(data?.result);
+    }
+  }, [data]);
   return (
     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
       <InputField
@@ -67,9 +72,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       />
       <Button
         type="submit"
-        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className={cn(
+          "bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5",
+          isPending && "hover:cursor-not-allowed"
+        )}
       >
-        Tạo nội dung
+        {isPending ? (
+          <span className="loading size-[20px]"></span>
+        ) : (
+          "Tạo nội dung"
+        )}
       </Button>
     </form>
   );

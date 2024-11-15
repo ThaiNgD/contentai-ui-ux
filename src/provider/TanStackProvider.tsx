@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode } from "react";
+import ToastProvider from "./ToastProvider";
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -12,7 +13,9 @@ export const queryClient = new QueryClient({
 });
 const TanStackProvider = ({ children }: { children: ReactNode }) => {
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <ToastProvider>{children}</ToastProvider>
+    </QueryClientProvider>
   );
 };
 
