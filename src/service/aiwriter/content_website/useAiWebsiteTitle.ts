@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { aiCreateAdsIdea } from "../axios/AIWriterApi";
+import { aiWebsiteTitle } from "@/service/axios/AIWriterApi";
 
-export const useAiCreateAdsIdea = (
+export const useAiWebsiteTitle = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormCreateAdsIdea, unknown> => {
+): UseMutationResult<IResult, Error, IFormWebsiteTitle, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiCreateAdsIdea.create,
+    mutationFn: aiWebsiteTitle.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/ad-ideas");
+        router.push("/home/ai-writer/website-title");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/home/ai-writer/ad-ideas")) {
+        if (!(location.pathname === "/home/ai-writer/website-title")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

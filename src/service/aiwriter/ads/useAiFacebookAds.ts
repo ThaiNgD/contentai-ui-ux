@@ -1,7 +1,7 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { console } from "inspector";
 import { useRouter } from "next/router";
-import { aiFacebookAds } from "../axios/AIWriterApi";
+import { aiFacebookAds } from "../../axios/AIWriterApi";
 
 export const useAiFacebookAds = (
   hideToast?: boolean

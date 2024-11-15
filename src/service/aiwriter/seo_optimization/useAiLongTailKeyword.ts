@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { aiContentStrategyApi } from "../axios/AIWriterApi";
+import { aiLongTailKeyword } from "@/service/axios/AIWriterApi";
 
-export const useAiContentStrategy = (
+export const useAiLongTailKeyword = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormContentStrategy, unknown> => {
+): UseMutationResult<IResult, Error, IFormLongTailKeywords, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiContentStrategyApi.create,
+    mutationFn: aiLongTailKeyword.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/ai-writer/content-strategy");
+        router.push("/home/ai-writer/long-tail-keyword");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/ai-writer/content-strategy")) {
+        if (!(location.pathname === "/home/ai-writer/long-tail-keyword")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

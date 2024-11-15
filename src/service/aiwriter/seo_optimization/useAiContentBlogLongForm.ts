@@ -3,7 +3,7 @@ import {
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
-import { aiContentBlogLongForm } from "../axios/AIWriterApi";
+import { aiContentBlogLongForm } from "../../axios/AIWriterApi";
 
 export const useAiContentBlogLongForm = (
   hideToast?: boolean

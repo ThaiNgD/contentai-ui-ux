@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { console } from "inspector";
 import { useRouter } from "next/router";
-import { aiWebsiteOutlineMenu } from "../axios/AIWriterApi";
+import { aiWebsiteSubHeader } from "../../axios/AIWriterApi";
 
-export const useAIOutlineMenu = (
+export const useAiWebsiteSubHeader = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormOutlineMenu, unknown> => {
+): UseMutationResult<IResult, Error, IFormWebsiteSubHeader, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiWebsiteOutlineMenu.create,
+    mutationFn: aiWebsiteSubHeader.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/outline-homepage");
+        router.push("/home/ai-writer/website-subtitle");
       } else {
-        if (!(location.pathname === "home/ai-writer/outline-homepage")) {
+        if (!(location.pathname === "/home/ai-writer/website-subtitle")) {
         }
       }
     },

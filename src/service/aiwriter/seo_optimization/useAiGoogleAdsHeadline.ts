@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { aiFaqSeo } from "../axios/AIWriterApi";
+import { aiGoogleAdsHeadline } from "@/service/axios/AIWriterApi";
 
-export const useAiFaqSeo = (
+export const useAiGoogleAdsHeadline = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormFaqSeo, unknown> => {
+): UseMutationResult<IResult, Error, IFormGoogleAdsHeading, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiFaqSeo.create,
+    mutationFn: aiGoogleAdsHeadline.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/ai-writer/faq-seo");
+        router.push("/home/ai-writer/google-ad-title");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/ai-writer/faq-seo")) {
+        if (!(location.pathname === "/home/ai-writer/google-ad-title")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

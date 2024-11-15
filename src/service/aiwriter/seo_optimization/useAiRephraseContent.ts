@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { aiPrivacyPolicy } from "../axios/AIWriterApi";
+import { aiRephraseContent } from "../../axios/AIWriterApi";
 
-export const useAiPrivacyPolicy = (
+export const useAiRephraseContent = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormPrivacyPolicy, unknown> => {
+): UseMutationResult<IResult, Error, IFormRephraseContent, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiPrivacyPolicy.create,
+    mutationFn: aiRephraseContent.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/ai-writer/privacy-policy");
+        router.push("/ai-writer/rephrase-content");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/ai-writer/privacy-policy")) {
+        if (!(location.pathname === "/ai-writer/rephrase-content")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

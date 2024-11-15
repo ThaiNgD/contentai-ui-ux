@@ -1,22 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { aiInstagramBio } from "../axios/AIWriterApi";
+import { aiPasAdertising } from "../../axios/AIWriterApi";
 
-export const useAiInstagramBio = (
+export const useAiPasAdvertising = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormInstagramBio, unknown> => {
+): UseMutationResult<IResult, Error, IFormPasAdvertising, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiInstagramBio.create,
+    mutationFn: aiPasAdertising.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/instagram-bio-description");
+        router.push("/home/ai-writer/pas-advertising");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (
-          !(location.pathname === "/home/ai-writer/instagram-bio-descriptio")
-        ) {
+        if (!(location.pathname === "/home/ai-writer/pas-advertising")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

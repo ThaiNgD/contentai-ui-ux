@@ -1,20 +1,20 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { aiMetaTitle } from "../axios/AIWriterApi";
+import { aiContentStrategyApi } from "@/service/axios/AIWriterApi";
 
-export const useAiMetaTitle = (
+export const useAiContentStrategy = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormMetaTitles, unknown> => {
+): UseMutationResult<IResult, Error, IFormContentStrategy, unknown> => {
   const router = useRouter();
   console.log(hideToast);
   return useMutation({
-    mutationFn: aiMetaTitle.create,
+    mutationFn: aiContentStrategyApi.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/ai-writer/meta-titles");
+        router.push("/ai-writer/content-strategy");
         //!hideToast && toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/ai-writer/meta-titles")) {
+        if (!(location.pathname === "/ai-writer/content-strategy")) {
           //!hideToast && toast.error("Thất bại");
         }
       }

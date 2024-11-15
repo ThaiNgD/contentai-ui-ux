@@ -5,7 +5,7 @@ import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
 import { cn } from "@/helper/function";
-import { useAiCompetior } from "@/service/aiwriter/useAiCompetior";
+import { useAiCompetior } from "@/service/aiwriter/business/useAiCompetior";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect } from "react";

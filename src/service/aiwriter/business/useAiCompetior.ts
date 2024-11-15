@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { aiAnalysisApi } from "../axios/AIWriterApi";
+import { aiAnalysisApi } from "@/service/axios/AIWriterApi";
 
 export const useAiCompetior = (): UseMutationResult<
   IResult,
