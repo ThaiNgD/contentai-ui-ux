@@ -45,21 +45,12 @@ const InputContent = ({ setCkData }: InputProps) => {
       />
       <TextAreaField
         name={"description"}
-        placeholder="Mô tả Web"
-        title="Mô tả Web"
+        placeholder="Mô tả khách hàng"
+        title="Mô tả khách hàng"
         clsTitle="font-bold italic"
         className="h-[150px]"
         formik={formik}
       />
-      <InputField
-        name={"keyword"}
-        placeholder="Từ khóa"
-        title="Từ khóa"
-        clsTitle="font-bold italic"
-        className="h-[50px]"
-        formik={formik}
-      />
-
       <SelectField
         clsLabelWrapper="font-bold italic"
         label="Model"
