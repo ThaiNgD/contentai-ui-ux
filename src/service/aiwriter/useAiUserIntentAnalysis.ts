@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiUserIntentAnalytics, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiUserIntentAnalytics } from "../axios/AIWriterApi";
 
 export const useAiIntentAnalysis = (
   hidenToast?: boolean

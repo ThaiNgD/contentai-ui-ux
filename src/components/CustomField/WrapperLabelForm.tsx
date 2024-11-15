@@ -34,7 +34,7 @@ const WrapperLabelForm: FC<WrapperLabelFormProps> = ({
         </span>
       )}
 
-      <div className={cn("w-full", clsChildren)}>{children}</div>
+      <div className={cn("w-full h-full", clsChildren)}>{children}</div>
     </div>
   );
 };

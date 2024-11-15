@@ -1,12 +1,12 @@
 "use client";
 import Icon from "@/app/favicon.ico";
-import { AIWriterSelector } from "@/config/configAIWriterSelector";
+import { AISEOSelector } from "@/config/configAISEO";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaAngleRight, FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
-const SelectorComponent = ({ selector }: { selector: AIWriterSelector }) => {
+const SelectorComponent = ({ selector }: { selector: AISEOSelector }) => {
   const router = useRouter();
   const { locale } = useGetPathComponent();
   const handleCLickDiv = (): void => {

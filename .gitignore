@@ -9,7 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
+yarn.lock
 # testing
 /coverage
 
@@ -41,4 +41,6 @@ next-env.d.ts
 
 #husky
 
-.husky
+.husky/*
+/.husky/
+.husky/pre-commit

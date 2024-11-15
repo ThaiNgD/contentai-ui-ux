@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiCreateTitleSeo, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiCreateTitleSeo } from "../axios/AIWriterApi";
 
 export const useAiCreateTitleSeo = (
   hideToast?: boolean

@@ -3,6 +3,7 @@ import { BsFileRichtextFill } from "react-icons/bs";
 import { FaFolderOpen, FaHome } from "react-icons/fa";
 import { FaFilePdf } from "react-icons/fa6";
 import { GiBullseye } from "react-icons/gi";
+import { ImBlog } from "react-icons/im";
 import { IoImage } from "react-icons/io5";
 import {
   MdEditDocument,
@@ -33,6 +34,11 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     icon: RiSeoFill,
   },
   {
+    link: "/ai-blog",
+    title: "AI Blog",
+    icon: ImBlog,
+  },
+  {
     link: "/ai-chat",
     title: "AI Chat",
     icon: MdMarkUnreadChatAlt,
@@ -48,8 +54,8 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     icon: IoImage,
   },
   {
-    link: "/ai-pdf-image",
-    title: "AI PDF Image",
+    link: "/ai-pdf-chat",
+    title: "AI PDF Chat",
     icon: FaFilePdf,
   },
   {

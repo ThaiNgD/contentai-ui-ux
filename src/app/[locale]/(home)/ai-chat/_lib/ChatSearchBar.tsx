@@ -8,7 +8,7 @@ const ChatSearchBar = () => {
           id="input-search"
           type="text"
           placeholder="Search"
-          className="h-full px-[40px] shadow-inner border-black  bg-[#F5F9FC] focus:bg-white w-full rounded-2xl focus:!shadow-inner  !border-none focus:!border-none"
+          className="h-full px-[40px] shadow-inner border-black bg-[#F5F9FC] focus:bg-white w-full rounded-2xl focus:!shadow-inner  !border-none focus:!border-none"
         />
         <IoSearchOutline
           size={20}

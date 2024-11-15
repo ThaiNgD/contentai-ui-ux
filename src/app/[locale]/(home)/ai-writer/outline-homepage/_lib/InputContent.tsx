@@ -3,20 +3,29 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiWebsiteOutlineMenu } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { Dispatch, SetStateAction } from "react";
 
-const InputContent = () => {
-  const formik = useFormik({
+interface InputProps {
+  setCkData: Dispatch<SetStateAction<string>>;
+}
+
+const InputContent = ({ setCkData }: InputProps) => {
+  const formik = useFormik<IFormOutlineMenu>({
     initialValues: {
-      brand: "",
-      web_keyword: "",
+      brandName: "",
+      keyword: "",
       module: "",
       language: "",
     },
-    onSubmit: (values) => {
-      // Handle form submission
-      console.log(values);
+    onSubmit: async (values) => {
+      await aiWebsiteOutlineMenu.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+        // Handle form submission
+      });
     },
   });
   return (
@@ -26,7 +35,7 @@ const InputContent = () => {
       className="flex flex-col gap-4"
     >
       <InputField
-        name={"brand"}
+        name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold italic"
@@ -34,7 +43,7 @@ const InputContent = () => {
         formik={formik}
       />
       <InputField
-        name={"web_keyword"}
+        name={"keyword "}
         placeholder="Từ khóa cho Web"
         title="Từ khóa cho Web"
         clsTitle="font-bold italic"

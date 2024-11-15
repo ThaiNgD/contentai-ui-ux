@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { aiOutLineSeo, IResult } from "../axios/AIWriterApi";
 import { useRouter } from "next/router";
+import { aiOutLineSeo } from "../axios/AIWriterApi";
 
 export const useAiCreateOutlineSeo = (
   hideToast?: boolean

@@ -109,3 +109,8 @@ export const setLocalStore = (key: string, value: string): void => {
     localStorage.setItem(key, value);
   }
 };
+
+export const selectRandom = <T>(array: T[]): T => {
+  const random = Math.floor(Math.random() * array.length);
+  return array[random];
+};
