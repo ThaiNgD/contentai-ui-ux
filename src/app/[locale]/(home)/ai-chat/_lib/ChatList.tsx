@@ -1,26 +1,52 @@
 "use client";
 
 import ChatDisplayContainer from "@/components/ChatComponent/ChatDisplayContainer";
-import { conversationApi } from "@/service/ai-chat/conversationApi";
-import { useEffect, useState } from "react";
+import { useFetchConversationById } from "@/service/ai-chat/useFetchConversationById";
+import { conversationApi } from "@/service/axios/conversationApi";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface ChatListProps {
   conversation: IConversationResult[];
 }
-const ChatList = () => {
+const ChatList = ({
+  setChat,
+}: {
+  setChat: Dispatch<SetStateAction<IConversationResult | undefined>>;
+}) => {
+  const { data } = useFetchConversationById("", false);
   const [allChats, setAllChats] = useState<ChatListProps>();
   useEffect(() => {
+    console.log(data);
     const getAllChat = async (): Promise<ChatListProps> => {
       return await conversationApi.getAll();
     };
     getAllChat().then((value) => {
-      console.log(value);
       setAllChats(value);
     });
   }, []);
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-auto">
+      <ChatDisplayContainer
+        setChat={setChat}
+        chat={{
+          id: "aaa",
+          conversationName: "test",
+          createdAt: "test",
+          updatedAt: new Date(),
+        }}
+      />
+      <ChatDisplayContainer
+        setChat={setChat}
+        chat={{
+          id: "aaa",
+          conversationName: "test",
+          createdAt: "test",
+          updatedAt: new Date(),
+        }}
+      />
       {allChats?.conversation.map((chat, index) => {
-        return <ChatDisplayContainer chat={chat} key={index} />;
+        return (
+          <ChatDisplayContainer setChat={setChat} chat={chat} key={index} />
+        );
       })}
     </div>
   );

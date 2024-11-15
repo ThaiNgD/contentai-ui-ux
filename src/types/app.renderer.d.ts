@@ -12,4 +12,14 @@ declare global {
     tokenInput: string;
     tokenOutput: string;
   };
+  type IOptionSelectFormat = {
+    readonly label: string;
+    readonly value: string;
+  };
+  type IConversationResult = {
+    id: string;
+    conversationName: string;
+    createdAt: string;
+    updatedAt: Date;
+  };
 }

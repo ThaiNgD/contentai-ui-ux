@@ -1,17 +1,45 @@
+"use client";
 import { cn } from "@/helper/function";
+import { useFetchConversationById } from "@/service/ai-chat/useFetchConversationById";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
-import { FaLink } from "react-icons/fa6";
+import { FaLink, FaTrash } from "react-icons/fa6";
 import { IoChatboxEllipses } from "react-icons/io5";
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
   chat: IConversationResult;
+  setChat: Dispatch<SetStateAction<IConversationResult | undefined>>;
 }
 const ChatDisplayContainer = ({
   chat,
   isPdfChat,
+  setChat,
 }: ChatDisplayContainerProps) => {
+  const [isEnable, setIsEnable] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const { data } = useFetchConversationById(chat.id, isEnable);
+  useEffect(() => {
+    if (data) {
+      setChat(data);
+    }
+  }, [data]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setIsEnable(false);
+  //   }
+  // }, [error]);
   return (
-    <div className="w-full group border-b items-center shadow-inner flex gap-2 p-[20px] h-[80px]">
+    <div
+      className={cn(
+        "w-full group relative border-b items-center shadow-inner flex gap-2 p-[20px] h-[80px]",
+        isClicked && "border-l-2 border-l-blue-500"
+      )}
+      role="button"
+      onClick={(): void => {
+        setIsEnable(true);
+        setIsClicked(true);
+      }}
+    >
       <div
         className={cn("p-2 shadow-inner bg-gray-100 rounded-full h-fit w-fit")}
       >
@@ -37,6 +65,9 @@ const ChatDisplayContainer = ({
         <p className="text-xs opacity-50 text-black w-fit whitespace-nowrap overflow-hidden">
           {chat?.createdAt}
         </p>
+      </div>
+      <div className="absolute invisible group-hover:visible top-2 duration-200 right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border">
+        <FaTrash className="bg-gray-100" />
       </div>
     </div>
   );
