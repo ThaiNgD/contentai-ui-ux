@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div
-      className=" w-full duration-300 dark:border-black dark:bg-black dark:text-white flex items-center  px-[175px] justify-between  border-t py-[20px]"
+      className=" w-full duration-300 dark:border-black dark:bg-black dark:text-white flex items-center  2xl:px-[175px] px-[15px] justify-between  border-t py-[20px]"
 
       // style={{ width: "inherit" }}
     >

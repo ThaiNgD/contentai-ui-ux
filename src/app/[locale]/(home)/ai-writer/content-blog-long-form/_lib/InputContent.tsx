@@ -30,6 +30,7 @@ const InputContent = ({ submitForm, isPending }: InputContentProps) => {
     },
   });
   // console.log(data?.result);
+
   return (
     <div className="flex flex-col h-full">
       <form

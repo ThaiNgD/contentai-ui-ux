@@ -16,7 +16,7 @@ const SelectorGroup = ({
     setSelectedType(type);
   };
   return (
-    <div className="px-[175px] pb-[35px] gap-2 flex flex-wrap items-center justify-stretch">
+    <div className="2xl:px-[175px] px-[15px] pb-[35px] gap-2 flex flex-wrap items-center justify-stretch">
       {AIWriterSelectorType.map((selector, index) => {
         return selector === selectedType ? (
           <SelectedCompo key={index} title={selector.toUpperCase()} />

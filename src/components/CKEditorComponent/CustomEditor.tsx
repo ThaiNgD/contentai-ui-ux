@@ -1,6 +1,5 @@
 // components/custom-editor.js
 "use client";
-
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 import {
@@ -38,78 +37,92 @@ function CustomEditor({ data }: CKEDITORProps) {
   // Convert markdown to HTML
   useEffect(() => {
     if (data) {
-      setHtmlData(converter.makeHtml(data));
+      let i = 0;
+      const stringResponse = converter.makeHtml(data);
+      // converter.
+      const intervalId = setInterval(() => {
+        setHtmlData(stringResponse.slice(0, i));
+
+        i++;
+
+        if (i > stringResponse.length) {
+          clearInterval(intervalId);
+        }
+      }, 0.01);
+
+      return () => clearInterval(intervalId);
     }
   }, [data]);
-
   return (
-    <CKEditor
-      data={htmlData}
-      editor={ClassicEditor}
-      config={{
-        toolbar: {
-          items: [
-            "undo",
-            "redo",
-            "|",
-            "heading",
-            "|",
-            "fontfamily",
-            "fontsize",
-            "fontColor",
-            "fontBackgroundColor",
-            "|",
-            "bold",
-            "italic",
-            "strikethrough",
-            "subscript",
-            "superscript",
-            "code",
-            "|",
-            "link",
-            "uploadImage",
-            "blockQuote",
-            "codeBlock",
-            "|",
-            "alignment",
-            "|",
-            "bulletedList",
-            "numberedList",
-            "todoList",
-            "outdent",
-            "indent",
-          ],
-        },
-        plugins: [
-          FontFamily,
-          Heading,
-          Image,
-          Bold,
-          Essentials,
-          Italic,
-          Mention,
-          Paragraph,
-          Undo,
-          Alignment,
-          Autosave,
-          Autoformat,
-          List,
-          Code,
-          Strikethrough,
-          Subscript,
-          Superscript,
-          Underline,
-        ],
-        image: {
-          insert: {
-            // This is the default configuration, you do not need to provide
-            // this configuration key if the list content and order reflects your needs.
-            integrations: ["upload", "assetManager", "url"],
+    <>
+      <CKEditor
+        data={htmlData}
+        editor={ClassicEditor}
+        config={{
+          toolbar: {
+            items: [
+              "undo",
+              "redo",
+              "|",
+              "heading",
+              "|",
+              "fontfamily",
+              "fontsize",
+              "fontColor",
+              "fontBackgroundColor",
+              "|",
+              "bold",
+              "italic",
+              "strikethrough",
+              "subscript",
+              "superscript",
+              "code",
+              "|",
+              "link",
+              "uploadImage",
+              "blockQuote",
+              "codeBlock",
+              "|",
+              "alignment",
+              "|",
+              "bulletedList",
+              "numberedList",
+              "todoList",
+              "outdent",
+              "indent",
+            ],
           },
-        },
-        // initialData: "<p>Hello from CKEditor 5 in React!</p>",
-      }}
-    />
+          plugins: [
+            FontFamily,
+            Heading,
+            Image,
+            Bold,
+            Essentials,
+            Italic,
+            Mention,
+            Paragraph,
+            Undo,
+            Alignment,
+            Autosave,
+            Autoformat,
+            List,
+            Code,
+            Strikethrough,
+            Subscript,
+            Superscript,
+            Underline,
+          ],
+          image: {
+            insert: {
+              // This is the default configuration, you do not need to provide
+              // this configuration key if the list content and order reflects your needs.
+              integrations: ["upload", "assetManager", "url"],
+            },
+          },
+          // initialData: "<p>Hello from CKEditor 5 in React!</p>",
+        }}
+      />
+    </>
   );
 }
 

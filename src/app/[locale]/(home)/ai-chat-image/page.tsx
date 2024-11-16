@@ -8,7 +8,7 @@ const Page = () => {
   return (
     <>
       <Header />
-      <div className="p-[20px] px-[175px] bg-[#F5F9FC] h-[calc(100%-150px)]">
+      <div className="p-[20px] 2xl:px-[175px] px-[15px] bg-[#F5F9FC] h-[calc(100%-150px)]">
         <div className="border divide-x  grid grid-cols-[22rem_minmax(0,1fr)] bg-white rounded-xl shadow-lg h-full">
           <div className="grid divide-y grid-rows-[15%,85%]">
             <ChatSearchBar />

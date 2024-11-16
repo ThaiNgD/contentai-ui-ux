@@ -16,7 +16,7 @@ const axiosClient = Axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use(
   function (config) {
-    if (config?.url?.startsWith("/auth/logout")) {
+    if (config?.url?.startsWith("/vi/logout")) {
       return config;
     }
     // Do something before request is sent
@@ -49,11 +49,11 @@ axiosClient.interceptors.response.use(
 
     const status = error?.request?.status;
     const message = error?.response?.data?.message ?? "";
-    const isPathLogout = originalRequest?.url?.startsWith("auth/logout");
+    const isPathLogout = originalRequest?.url?.startsWith("vi/logout");
 
     if (
       status === 401 &&
-      !originalRequest?.url?.startsWith("auth/login") &&
+      !originalRequest?.url?.startsWith("vi/login") &&
       !isPathLogout
     ) {
       redirectLogin();

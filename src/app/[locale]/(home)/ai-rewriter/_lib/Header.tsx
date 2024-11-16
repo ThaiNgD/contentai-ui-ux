@@ -10,7 +10,7 @@ const Header = () => {
     setIsShowModalAddFolder(true);
   };
   return (
-    <div className="px-[175px] py-[35px] h-[150px] flex items-center justify-between border-b">
+    <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between border-b">
       <div className="flex flex-col gap-2">
         <span
           role="button"
