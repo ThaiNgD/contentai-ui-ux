@@ -1,6 +1,6 @@
 "use client";
 import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
-import { useAiContentBlogLongForm } from "@/service/aiwriter/useAiContentBlogLongForm";
+import { useAiContentBlogLongForm } from "@/service/aiwriter/seo_optimization/useAiContentBlogLongForm";
 import ChildHeader from "../_lib/ChildHeader";
 import InputContent from "./_lib/InputContent";
 

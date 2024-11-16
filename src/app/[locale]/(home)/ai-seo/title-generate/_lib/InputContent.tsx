@@ -3,6 +3,7 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiCreateTitle } from "@/service/axios/aiSeoApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { Dispatch, SetStateAction } from "react";
@@ -12,16 +13,17 @@ interface InputProps {
 }
 
 const InputContent = ({ setCkData }: InputProps) => {
-  const formik = useFormik({
+  const formik = useFormik<IFormCreateTitle>({
     initialValues: {
       keyword: "",
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
-      setCkData(values.keyword);
-      // Handle form submission
+      await aiCreateTitle.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (

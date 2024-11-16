@@ -43,12 +43,12 @@ function CustomEditor({ data }: CKEDITORProps) {
       const intervalId = setInterval(() => {
         setHtmlData(stringResponse.slice(0, i));
 
-        i++;
+        i += 20;
 
         if (i > stringResponse.length) {
           clearInterval(intervalId);
         }
-      }, 0.01);
+      }, 1);
 
       return () => clearInterval(intervalId);
     }
