@@ -10,7 +10,7 @@ const Header = () => {
     setIsShowModalAddFolder(true);
   };
   return (
-    <div className="px-[175px] py-[35px] h-[150px] flex items-center justify-between border-b">
+    <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between border-b">
       <div className="flex flex-col gap-2">
         <span
           role="button"
@@ -21,9 +21,10 @@ const Header = () => {
         </span>
         <h1 className="text-3xl font-extrabold">Generate Article</h1>
         <span className="text-sm opacity-70">
-          •  Tạo một bài viết hoàn chỉnh chỉ với một vài từ khóa hoặc câu gợi ý.<br />
-          •  Chọn phong cách viết, giọng điệu và độ dài mong muốn cho bài viết.<br />
-          •  Xem trước và chỉnh sửa bài viết trước khi lưu hoặc xuất bản.
+          • Tạo một bài viết hoàn chỉnh chỉ với một vài từ khóa hoặc câu gợi ý.
+          <br />
+          • Chọn phong cách viết, giọng điệu và độ dài mong muốn cho bài viết.
+          <br />• Xem trước và chỉnh sửa bài viết trước khi lưu hoặc xuất bản.
         </span>
       </div>
       <div className="flex flex-col h-full justify-center">
