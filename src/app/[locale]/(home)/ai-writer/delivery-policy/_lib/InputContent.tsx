@@ -1,6 +1,7 @@
 "use client";
 import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
+import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
 import { aiDeliveryPolicy } from "@/service/axios/AIWriterApi";
@@ -34,18 +35,18 @@ const InputContent = ({ setCkData }: InputProps) => {
     >
       <InputField
         name={"brandName"}
-        placeholder="Từ khóa"
-        title="Từ khóa"
+        placeholder="Tên thương hiệu"
+        title="Tên thương hiệu"
         clsTitle="font-bold italic"
         className="h-[50px]"
         formik={formik}
       />
-      <InputField
+      <TextAreaField
         name={"description"}
-        placeholder="Sản phẩm/dịch vụ"
-        title="Sản phẩm/dịch vụ"
+        placeholder="Mô tả sản phẩm/dịch vụ"
+        title="Mô tả sản phẩm/dịch vụ"
         clsTitle="font-bold italic"
-        className="h-[50px]"
+        clsTextArea="!h-[150px]"
         formik={formik}
       />
       <SelectField

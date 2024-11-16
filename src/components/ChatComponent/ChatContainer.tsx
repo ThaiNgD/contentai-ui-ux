@@ -7,11 +7,16 @@ import ChatInput from "./ChatInput";
 import UserChatContent from "./UserChatContent";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
 
-const ChatContainer = () => {
+interface ChatContainerProps {
+  chat?: IConversationResult;
+}
+
+const ChatContainer = ({ chat }: ChatContainerProps) => {
   const [isChat, setIsChat] = useState(false);
   const userImage = selectRandom(avatar);
   const onCLickButton = (): void => {
     setIsChat(true);
+    console.log(chat);
   };
   return (
     <div className="flex flex-col justify-between gap-2">
