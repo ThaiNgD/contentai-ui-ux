@@ -12,7 +12,7 @@ export default async function Page({
     <>
       <Header title={`Folder ${id}`} />
       <hr />
-      <div className="flex-auto flex flex-col my-[50px] px-[175px]">
+      <div className="flex-auto flex flex-col my-[50px] 2xl:px-[175px] px-[15px]">
         <FolderDisplay />
         <div className="flex-auto flex flex-col mb-[40px] gap-3 items-center justify-center">
           <NoTextDocument />

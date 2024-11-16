@@ -2,7 +2,7 @@ import RecentLaunchComponent from "@/components/ContentComponent.tsx/RecentLaunc
 
 const ContentDisplay = () => {
   return (
-    <div className="grid mt-[40px] grid-cols-5 gap-5">
+    <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
       <RecentLaunchComponent title="Folder" isFolderDisplay />
       <RecentLaunchComponent title="Folder" isFolderDisplay />
       <RecentLaunchComponent title="Folder" isFolderDisplay />

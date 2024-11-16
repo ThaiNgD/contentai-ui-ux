@@ -6,7 +6,7 @@ const page = () => {
     <>
       <Header />
       <hr className="w-full" />
-      <div className="px-[175px] my-[50px]">
+      <div className="2xl:px-[175px] px-[15px] my-[50px]">
         <FolderDisplay />
         <ContentDisplay />
         {/* <CustomEditor /> */}

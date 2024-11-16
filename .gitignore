@@ -44,4 +44,4 @@ next-env.d.ts
 
 .husky/*
 /.husky/
-.husky/pre-commit
+/.husky/pre-commit
