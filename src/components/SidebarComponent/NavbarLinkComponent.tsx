@@ -13,6 +13,7 @@ export interface NavbarLinkComponentProps {
   icon: IconType;
   title?: string;
   isOpen?: boolean;
+  isDisable?: boolean;
 }
 
 const NavbarLinkComponent = ({
@@ -22,18 +23,21 @@ const NavbarLinkComponent = ({
   icon,
   title,
   isOpen,
+  isDisable,
 }: NavbarLinkComponentProps) => {
   const Icon = icon;
   const [visible, setVisible] = useState(false);
   const pathName = usePathname();
   const path = pathName?.split("/").slice(0, 2).join("/");
+  console.log(isDisable);
   return (
     <>
       <div
         className={cn(
           "mt-1 w-full inset-0 group hover:bg-gray-200 relative flex items-center justify-center h-[40px]",
           classWrapper,
-          isOpen && "relative pl-[30px] justify-start"
+          isOpen && "relative pl-[30px] justify-start",
+          isDisable && "!pointer-events-none !opacity-60"
         )}
         onMouseEnter={(): void => {
           setVisible(true);
@@ -48,7 +52,8 @@ const NavbarLinkComponent = ({
           className={cn(
             "text-black w-full h-full items-center dark:text-white flex font-googleSans justify-between group-hover:text-blue-500 ",
             classLink,
-            !isOpen && "justify-center"
+            !isOpen && "justify-center",
+            isDisable && "!pointer-events-none !opacity-50"
           )}
         >
           <Icon size={20} />{" "}
