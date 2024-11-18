@@ -4,7 +4,6 @@ import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import { cn } from "@/helper/function";
 import { useState } from "react";
-import { IoIosChatbubbles } from "react-icons/io";
 const Layout = ({
   children,
 }: Readonly<{
@@ -29,12 +28,12 @@ const Layout = ({
         </div>
         <Footer />
       </div>
-      <div
+      {/* <div
         role="button"
         className="fixed duration-200 bottom-[40px] hover:scale-110  right-8 rounded-full p-2 bg-black dark:bg-white"
       >
         <IoIosChatbubbles size={40} className="text-white dark:text-black" />
-      </div>
+      </div> */}
     </div>
   );
 };

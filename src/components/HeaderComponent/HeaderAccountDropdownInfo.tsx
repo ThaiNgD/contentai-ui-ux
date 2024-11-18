@@ -40,9 +40,9 @@ const HeaderAccountDropdownInfo = () => {
           <span className="text-sm opacity-70">dinhthai1905@gmail.com</span>
         </div>
         <div className="flex flex-col items-end">
-          <div role="button" className="p-2 w-full text-end hover:bg-gray-200">
+          {/* <div role="button" className="p-2 w-full text-end hover:bg-gray-200">
             Help
-          </div>
+          </div> */}
           <div
             role="button"
             className="p-2 w-full text-end hover:bg-gray-200"
