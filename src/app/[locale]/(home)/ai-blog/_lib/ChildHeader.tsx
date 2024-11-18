@@ -9,7 +9,7 @@ interface ChildHeaderProps {
 }
 const ChildHeader = ({ title, description }: ChildHeaderProps) => {
   return (
-    <div className="px-[175px] py-[35px] h-[150px] flex items-center justify-between border-b dark:text-white">
+    <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between border-b dark:text-white">
       <div className="flex flex-col gap-2">
         <span
           role="button"

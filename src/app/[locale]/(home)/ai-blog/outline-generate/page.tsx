@@ -12,7 +12,7 @@ const Page = () => {
         title="Viết Outline"
         description="Lập dàn ý chi tiết cho bài viết và tổ chức nội dung một cách logic và hiệu quả."
       />
-      <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] px-[175px] py-[40px] gap-[30px] ">
+      <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] 2xl:px-[175px] px-[15px] py-[40px] gap-[30px] ">
         <InputContent setCkData={setCkData} />
         <div className="border-l"></div>
         <CustomEditor data={ckData} />

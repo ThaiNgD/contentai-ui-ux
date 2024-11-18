@@ -12,7 +12,7 @@ const Page = () => {
         title="Phân tích nội dung đối thủ"
         description="Phân tích nội dung bài viết của đối thủ cạnh tranh theo SEO."
       />
-      <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] px-[175px] py-[40px] gap-[30px] ">
+      <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] 2xl:px-[175px] px-[15px] py-[40px] gap-[30px] ">
         <InputContent setCkData={setCkData} />
         <div className="border-l"></div>
         <CustomEditor data={ckData} />
