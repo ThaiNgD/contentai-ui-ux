@@ -5,10 +5,12 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 
-export const useAiArticle = (
-  hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormAiArticle, unknown> => {
-  console.log(hideToast);
+export const useAiArticle = (): UseMutationResult<
+  IResult,
+  Error,
+  IFormAiArticle,
+  unknown
+> => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: aiArticle.create,

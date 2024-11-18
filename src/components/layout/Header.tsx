@@ -1,5 +1,7 @@
 "use client";
 
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
+import { useRouter } from "next/navigation";
 import { AiOutlineSetting } from "react-icons/ai";
 import ChangeLanguage from "../ChangeLanguage";
 import HeaderAccountDropdownInfo from "../HeaderComponent/HeaderAccountDropdownInfo";
@@ -7,6 +9,8 @@ import HeaderChangeTheme from "../HeaderComponent/HeaderChangeTheme";
 import HeaderNotification from "../HeaderComponent/HeaderNotification";
 import HeaderSearchBar from "../HeaderComponent/HeaderSearchBar";
 const Header = (): JSX.Element => {
+  const router = useRouter();
+  const { locale } = useGetPathComponent();
   return (
     <header className="h-[65px] duration-300 dark:border-black border-b">
       <div className="shadow-sm h-full">
@@ -17,8 +21,10 @@ const Header = (): JSX.Element => {
             <HeaderNotification />
             <AiOutlineSetting
               size={22}
-              className=" opacity-50 pointer-events-none"
               role="button"
+              onClick={(): void => {
+                router.push(`/${locale}/setting-ai`);
+              }}
             />
             <ChangeLanguage />
             <div className="border-l-2 h-[30px]"></div>
