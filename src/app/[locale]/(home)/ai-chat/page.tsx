@@ -7,7 +7,7 @@ import ChatSearchBar from "./_lib/ChatSearchBar";
 import Header from "./_lib/Header";
 
 const Page = () => {
-  const [chat, setChat] = useState<IConversationResult>();
+  const [chat, setChat] = useState<IConversationDetail>();
   return (
     <>
       <Header />
