@@ -2,7 +2,10 @@ import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
 import InputField from "@/components/CustomField/InputField";
 import { FaDownload } from "react-icons/fa";
 import { MdSaveAs } from "react-icons/md";
-const FormReport = () => {
+interface ResultsAi {
+  ckData: string;
+}
+const FormReport = ({ ckData }: ResultsAi) => {
   return (
     <form className="bg-white flex-auto shadow-lg p-[30px] flex flex-col items-center rounded-xl gap-3">
       <div className="flex w-full justify-between">
@@ -25,7 +28,7 @@ const FormReport = () => {
           </div>
         </div>
       </div>
-      <CustomEditor clsHeight="h-full" clsWidth="w-full" />
+      <CustomEditor data={ckData} clsHeight="h-full" clsWidth="w-full" />
     </form>
   );
 };

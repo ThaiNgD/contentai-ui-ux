@@ -1,16 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import http from "./httpClient";
 
-export interface IResult {
-  message: string;
-  statusCode: string;
-  active: boolean;
-  result: string;
-  tokenInput: string;
-  tokenOutput: string;
-}
-
 export const aiRewriter = {
+  pathKey: "ai_rewriter",
   queryKey: "ai_rewriter",
 
   create: async (payload: IFormAiReWriter) => {
@@ -21,10 +13,10 @@ export const aiRewriter = {
   },
 
   save: async () => {
-    return await http.post<any, IResult>(`${aiRewriter.queryKey}/save_rewrite`);
+    return await http.post<any, IResult>(`${aiRewriter.pathKey}/save_rewrite`);
   },
 
   get: async () => {
-    return await http.get<any, any>(`${aiRewriter.queryKey}/get_rewriter`);
+    return await http.get<any, any>(`${aiRewriter.pathKey}/get_rewriter`);
   },
 };

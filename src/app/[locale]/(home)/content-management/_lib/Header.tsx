@@ -12,7 +12,7 @@ const Header = () => {
     setIsShowModalAddFolder(true);
   };
   return (
-    <div className="px-[175px] py-[35px] h-[150px] flex items-center justify-between">
+    <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between">
       <h1 className="text-3xl font-extrabold">Tài liệu của tôi</h1>
       <div className="flex flex-col h-full justify-between">
         <div className="flex gap-4">

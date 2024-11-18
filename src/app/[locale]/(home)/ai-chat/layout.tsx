@@ -1,7 +1,17 @@
 import { ReactNode } from "react";
+import Header from "./_lib/Header";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      <div className="2xl:px-[175px] px-[15px] py-[20px] bg-[#F5F9FC] h-[calc(100%-150px)]">
+        <div className="border divide-x grid grid-cols-[25%,75%] bg-white rounded-xl shadow-lg h-full">
+          {children}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Layout;

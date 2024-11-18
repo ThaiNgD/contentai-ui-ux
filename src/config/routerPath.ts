@@ -1,5 +1,5 @@
 export const routerPath = {
   home: "/",
-  login: "/auth/login",
-  register: "/auth/register",
+  login: "/vi/login",
+  register: "/vi/register",
 };

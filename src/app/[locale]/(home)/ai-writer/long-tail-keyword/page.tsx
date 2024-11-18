@@ -10,7 +10,7 @@ const page = () => {
         title="Từ khóa dài"
         description="Tạo bảng từ khóa: từ khóa, lượt tìm kiếm, tiêu đề, ghi chú"
       />
-      <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] px-[175px] py-[40px] gap-[30px] ">
+      <div className="grid grid-cols-[35%,1fr,65%] h-[calc(100%-200px)] 2xl:px-[175px] px-[15px] py-[40px] gap-[30px] ">
         <InputContent />
         <div className="border-l"></div>
         <CustomEditor />

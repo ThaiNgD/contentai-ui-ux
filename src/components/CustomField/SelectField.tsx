@@ -84,8 +84,8 @@ export const SelectField = <T,>({
       menuPortalRef.current = window.document.body;
     }
   }, []);
-  const t = useTranslations();
-  //disable-eslint-next-line
+  const t = useTranslations("option");
+  //disable-eslint-next-line;
   const translatedOption = options?.map((option: any) => {
     return {
       value: option.value,

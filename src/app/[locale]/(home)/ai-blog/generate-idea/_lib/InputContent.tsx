@@ -3,6 +3,7 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiCreateIdeaBlog } from "@/service/axios/aiBlogApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { Dispatch, SetStateAction } from "react";
@@ -12,16 +13,17 @@ interface InputProps {
 }
 
 const InputContent = ({ setCkData }: InputProps) => {
-  const formik = useFormik({
+  const formik = useFormik<IFormIdeaBlog>({
     initialValues: {
-      target: "",
+      audience: "",
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
-      setCkData(values.target);
-      // Handle form submission
+      await aiCreateIdeaBlog.create(values).then((values) => {
+        console.log(values);
+        setCkData(values.result);
+      });
     },
   });
   return (
@@ -31,7 +33,7 @@ const InputContent = ({ setCkData }: InputProps) => {
       className="flex flex-col gap-4"
     >
       <TextAreaField
-        name={"keyword"}
+        name={"audience"}
         placeholder="Khách hàng mục tiêu"
         title="Khách hàng mục tiêu"
         clsTitle="font-bold italic"

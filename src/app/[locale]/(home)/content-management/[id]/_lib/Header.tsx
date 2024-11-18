@@ -18,7 +18,7 @@ const Header = ({ title }: HeaderProps) => {
     router.push("/content-management");
   };
   return (
-    <div className="px-[175px] py-[35px] h-[150px] flex items-center justify-between">
+    <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between">
       <div className="flex flex-col gap-2">
         <span
           role="button"
