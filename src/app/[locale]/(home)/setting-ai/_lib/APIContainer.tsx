@@ -34,7 +34,7 @@ const APIContainer = () => {
           className="!bg-[#F5F9FC] !shadow-inner"
         />
       </div>
-      <Button className="rounded-full w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
+      <Button className="rounded-full self-end w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
         Kho API
       </Button>
     </div>

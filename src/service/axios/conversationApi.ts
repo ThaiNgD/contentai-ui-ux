@@ -4,13 +4,16 @@ interface ChatListProps {
   conversation: IConversationResult[];
 }
 export const conversationApi = {
-  queryKey: "conversayion",
+  queryKey: "chat-box-ai/get-ai-chat-by-id",
   pathKey: "chat-box-ai/get-ai-chat-by-userId",
   getAll: async () => {
     return await http.get<any, ChatListProps>(`${conversationApi.pathKey}/1`);
   },
 
-  getConversationByParams: async () => {
-    return await http.get<any, any>(`${conversationApi.queryKey}/logout`);
+  //'get-ai-chat-by-userId/:userId'
+  getConversationByParams: async (conversationId: string) => {
+    return await http.get<any, any>(
+      `${conversationApi.queryKey}/${conversationId}`
+    );
   },
 };

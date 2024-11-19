@@ -8,40 +8,59 @@ import UserChatContent from "./UserChatContent";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
 
 interface ChatContainerProps {
-  chat?: IConversationResult;
+  chat?: IConversationDetail; // Kiểu props
 }
 
 const ChatContainer = ({ chat }: ChatContainerProps) => {
   const [isChat, setIsChat] = useState(false);
   const userImage = selectRandom(avatar);
-  const onCLickButton = (): void => {
+
+  const onClickButton = (): void => {
     setIsChat(true);
-    console.log(chat);
   };
+
   return (
-    <>
-      {!isChat ? (
-        <div className="flex flex-col gap-2">
-          <div className="h-full flex items-center justify-center">
-            <Button
-              className="w-fit h-fit rounded-full bg-blue-500 font-bold shadow-lg hover:translate-y-0.5 border-blue-500 hover:shadow-none"
-              onClick={onCLickButton}
-            >
-              Bắt đầu đoạn Chat mới
-            </Button>
-          </div>
+    <div className="flex flex-col justify-between gap-2">
+      {!isChat && !chat ? (
+        <div className="h-full flex items-center justify-center">
+          <Button
+            className="w-fit h-fit rounded-full bg-blue-500 font-bold shadow-lg hover:translate-y-0.5 border-blue-500 hover:shadow-none"
+            onClick={onClickButton}
+          >
+            Bắt đầu đoạn Chat mới
+          </Button>
         </div>
       ) : (
         <div className="p-[30px] max-w-full h-full flex flex-col justify-between">
           <div className="h-full flex flex-col overflow-auto pb-4 gap-4">
             <WelcomeUserChatContent imgUrl={userImage} />
-            <UserChatContent isUser={true} userImage={userImage} />
-            <UserChatContent imgUrl={userImage} />
+            {chat?.conversation?.map((con, index) => {
+              if (con.role === "assistant") {
+                return (
+                  <UserChatContent
+                    key={index}
+                    message={con.message}
+                    imgUrl={userImage}
+                    timeStamp={con.timestamp}
+                  />
+                );
+              } else {
+                return (
+                  <UserChatContent
+                    isUser={true}
+                    key={index}
+                    imgUrl={userImage}
+                    message={con.message}
+                    timeStamp={con.timestamp}
+                  />
+                );
+              }
+            })}
           </div>
           <ChatInput />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

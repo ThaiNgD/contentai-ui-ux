@@ -4,10 +4,10 @@ import { conversationApi } from "../axios/conversationApi";
 export const useFetchConversationById = (
   conversationId: string,
   isEnabled: boolean
-): UseQueryResult<IConversationResult, Error> => {
+): UseQueryResult<IConversationDetail, Error> => {
   return useQuery({
-    queryKey: ["aichat", conversationId],
-    queryFn: conversationApi.getConversationByParams,
+    queryKey: ["id", conversationId],
+    queryFn: () => conversationApi.getConversationByParams(conversationId), // Thêm conversationId vào đây
     enabled: isEnabled,
   });
 };

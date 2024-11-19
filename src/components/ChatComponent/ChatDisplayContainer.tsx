@@ -8,26 +8,23 @@ import { IoChatboxEllipses } from "react-icons/io5";
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
   chat: IConversationResult;
-  setChat: Dispatch<SetStateAction<IConversationResult | undefined>>;
+  setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
 }
 const ChatDisplayContainer = ({
   chat,
   isPdfChat,
   setChat,
 }: ChatDisplayContainerProps) => {
+  console.log("chat: ", chat);
   const [isEnable, setIsEnable] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const { data } = useFetchConversationById(chat.id, isEnable);
+  console.log("data nay:", data);
   useEffect(() => {
     if (data) {
       setChat(data);
     }
   }, [data]);
-  // useEffect(() => {
-  //   if (error) {
-  //     setIsEnable(false);
-  //   }
-  // }, [error]);
   return (
     <div
       className={cn(

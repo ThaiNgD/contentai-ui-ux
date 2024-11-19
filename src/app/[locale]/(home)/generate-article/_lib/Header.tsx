@@ -1,10 +1,17 @@
 "use client";
 
 import ModalNewFolder from "@/components/Modal/ModaNewFolder";
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { Button } from "flowbite-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 const Header = () => {
+  const router = useRouter();
+  const { locale } = useGetPathComponent();
+  const handleClickBack = (): void => {
+    router.push(`/${locale}/dashboard`);
+  };
   const [isShowModalAddFolder, setIsShowModalAddFolder] = useState(false);
   const handleClickAddNewFolder = (): void => {
     setIsShowModalAddFolder(true);
@@ -15,6 +22,7 @@ const Header = () => {
         <span
           role="button"
           className="text-sm hover:underline hover:opacity-100 flex gap-2 opacity-70"
+          onClick={handleClickBack}
         >
           <MdOutlineKeyboardBackspace size={16} />
           Trở về

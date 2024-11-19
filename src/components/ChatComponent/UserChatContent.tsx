@@ -7,32 +7,34 @@ interface UserChatContentProps {
   widthCls?: string;
   isUser?: boolean;
   userImage?: StaticImageData;
+  message?: string;
+  timeStamp?: number;
 }
 const UserChatContent = ({
   imgUrl,
   widthCls,
   isUser,
   userImage,
+  message,
+  timeStamp,
 }: UserChatContentProps) => {
-  const defaultChat =
-    "Last Messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
   const [chat, setChat] = useState("");
   useEffect(() => {
-    if (defaultChat) {
+    if (message) {
       let i = 0;
       const intervalId = setInterval(() => {
-        setChat(defaultChat.slice(0, i));
+        setChat(message.slice(0, i));
 
         i++;
 
-        if (i > defaultChat.length) {
+        if (i > message.length) {
           clearInterval(intervalId);
         }
       }, 4);
 
       return () => clearInterval(intervalId);
     }
-  }, [defaultChat]);
+  }, [message]);
   return (
     <div className={cn("flex gap-4 w-full", widthCls)}>
       {imgUrl && !isUser ? (
@@ -51,8 +53,8 @@ const UserChatContent = ({
         )}
       >
         <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] relative rounded-xl bg-gray-100">
-            <p className="text-sm text-wrap break-all p-2 text-gray-500 dark:text-gray-400">
+          <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
+            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
               {chat}
             </p>
             <div
@@ -71,7 +73,7 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            11:11 am
+            {timeStamp}
           </span>
           {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
