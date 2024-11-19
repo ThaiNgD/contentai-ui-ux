@@ -3,10 +3,10 @@ import { conversationApi } from "../axios/conversationApi";
 
 export const useFetchConversationById = (
   conversationId: string,
-  isEnabled: boolean
+  isEnabled: boolean = false
 ): UseQueryResult<IConversationDetail, Error> => {
   return useQuery({
-    queryKey: ["id", conversationId],
+    queryKey: ["conversation", conversationId],
     queryFn: () => conversationApi.getConversationByParams(conversationId), // Thêm conversationId vào đây
     enabled: isEnabled,
   });

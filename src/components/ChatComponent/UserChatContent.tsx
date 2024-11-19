@@ -53,8 +53,8 @@ const UserChatContent = ({
         )}
       >
         <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
-            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
+          <div className="w-fit relative  rounded-xl p-2 bg-gray-100">
+            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit text-gray-500 dark:text-gray-400">
               {chat}
             </p>
             <div

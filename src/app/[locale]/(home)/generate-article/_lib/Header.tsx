@@ -16,6 +16,9 @@ const Header = () => {
   const handleClickAddNewFolder = (): void => {
     setIsShowModalAddFolder(true);
   };
+  const handleClickFolderManagement = (): void => {
+    router.push(`/${locale}/content-management`);
+  };
   return (
     <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between border-b">
       <div className="flex flex-col gap-2">
@@ -38,12 +41,15 @@ const Header = () => {
       <div className="flex flex-col h-full justify-center">
         <div className="flex gap-4">
           <Button
-            onClick={handleClickAddNewFolder}
+            onClick={handleClickFolderManagement}
             className="bg-white text-black rounded-2xl shadow-md hover:bg-blue-500 font-bold hover:text-white"
           >
             Tài liệu của tôi
           </Button>
-          <Button className="bg-blue-500 border-blue-500 font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md hover:-translate-y-0.5">
+          <Button
+            onClick={handleClickAddNewFolder}
+            className="bg-blue-500 border-blue-500 font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md hover:-translate-y-0.5"
+          >
             + Tạo mới
           </Button>
         </div>
