@@ -33,12 +33,15 @@ const InputContent = ({ setCkData }: InputProps) => {
     }
   }, [data]);
   return (
-    <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
+    <form
+      onSubmit={formik.handleSubmit}
+      className="flex bg-white p-[32px] flex-col gap-4 rounded-xl shadow-lg"
+    >
       <InputField
         name={"brandName"}
         placeholder="Tên thương hiệu"
         title="Tên thương hiệu"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold italic mb-1"
         className="h-[50px]"
         formik={formik}
       />
@@ -46,14 +49,16 @@ const InputContent = ({ setCkData }: InputProps) => {
         name="productDescription"
         placeholder="Nhập mô tả"
         title="Mô tả sản phẩm"
-        clsTextArea="h-[200px]"
+        clsTitle="mb-1"
+        clsTextArea="min-h-[50px] h-[150px] max-h-[400px]"
         formik={formik}
       />
       <TextAreaField
         name="adCopy"
         title="Nội dung quảng cáo của đối thủ"
         placeholder="Nhập nội dung"
-        clsTextArea="h-[200px]"
+        clsTitle="mb-1"
+        clsTextArea="min-h-[50px] h-[150px] max-h-[400px]"
         formik={formik}
       />
       <SelectField

@@ -13,7 +13,7 @@ const HeaderSearchBar = () => {
         id="input-search"
         type="text"
         placeholder="Search"
-        className="h-full px-[40px]  bg-gray-100 focus:bg-white w-full rounded-2xl focus:!shadow-inner !shadow-blue-600 !border-none focus:!border-none"
+        className="h-full px-[40px] !pointer-events-none bg-gray-100 focus:bg-white w-full rounded-2xl focus:!shadow-inner !shadow-blue-600 !border-none focus:!border-none"
         onFocus={onClickInput}
         onBlur={onClickInput}
       />

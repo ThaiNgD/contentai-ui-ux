@@ -77,6 +77,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
                   link={sidebar.link}
                   key={index}
                   isOpen={!isOpen}
+                  isDisable={sidebar.isDisable}
                 />
               );
             })}

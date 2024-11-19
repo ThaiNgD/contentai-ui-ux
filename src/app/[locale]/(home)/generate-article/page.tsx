@@ -5,7 +5,8 @@ import FormReport from "./_lib/FormReport";
 import Header from "./_lib/Header";
 
 const Page = () => {
-  const [ckData, setCkData] = useState("");
+  const [ckData, setCkData] = useState<string>("");
+
   return (
     <>
       <Header />
