@@ -10,7 +10,7 @@ interface ChatListProps {
 const ChatList = ({
   setChat,
 }: {
-  setChat: Dispatch<SetStateAction<IConversationResult | undefined>>;
+  setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
 }) => {
   const { data } = useFetchConversationById("", false);
   const [allChats, setAllChats] = useState<ChatListProps>();

@@ -7,12 +7,16 @@ interface UserChatContentProps {
   widthCls?: string;
   isUser?: boolean;
   userImage?: StaticImageData;
+  message?: string;
+  timeStamp?: number;
 }
 const UserChatContent = ({
   imgUrl,
   widthCls,
   isUser,
   userImage,
+  message,
+  timeStamp,
 }: UserChatContentProps) => {
   const defaultChat =
     "Last Messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -51,9 +55,10 @@ const UserChatContent = ({
         )}
       >
         <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] relative rounded-xl bg-gray-100">
-            <p className="text-sm text-wrap break-all p-2 text-gray-500 dark:text-gray-400">
-              {chat}
+          <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
+            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
+              {message}
+
             </p>
             <div
               role="button"
@@ -71,7 +76,7 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            11:11 am
+            {timeStamp}
           </span>
           {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
