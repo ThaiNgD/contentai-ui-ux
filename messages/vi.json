@@ -44,6 +44,8 @@
     "urgent": "Khẩn cấp",
     "passionate": "Đam mê",
     "informative": "Cung cấp thông tin",
-    "funny": "Vui nhộn"
+    "funny": "Vui nhộn",
+    "allow": "Cho phép",
+    "deny": "Từ chối"
   }
 }

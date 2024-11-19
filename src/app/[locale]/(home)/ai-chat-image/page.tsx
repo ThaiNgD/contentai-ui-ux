@@ -1,4 +1,4 @@
-import ChatContainer from "@/components/ChatComponent/ChatContainer";
+import ImageChatContainer from "@/components/ChatComponent/ImageChatContainer";
 import ChatHeader from "./_lib/ChatHeader";
 import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
@@ -18,7 +18,7 @@ const Page = () => {
           </div>
           <div className="grid divide-y grid-rows-[15%,85%]">
             <ChatHeader />
-            <ChatContainer />
+            <ImageChatContainer />
           </div>
         </div>
       </div>
