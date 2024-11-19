@@ -31,8 +31,8 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
           </Button>
         </div>
       ) : (
-        <div className="p-[30px] h-full flex flex-col justify-between">
-          <div className="flex flex-col h-full overflow-auto pb-4 gap-4">
+        <div className="p-[30px] max-w-full h-full flex flex-col justify-between">
+          <div className="h-full flex flex-col overflow-auto pb-4 gap-4">
             <WelcomeUserChatContent imgUrl={userImage} />
             {chat?.conversation?.map((con, index) => {
               if (con.role === "assistant") {
@@ -60,7 +60,7 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
           <ChatInput />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
