@@ -1,6 +1,7 @@
 import { getAccessToken, removeAuthToken, routerPath } from "@/config";
 import { joinPathParent } from "@/helper/function";
 import Axios from "axios";
+import { toast } from "react-toastify";
 
 export const AUTH_TOKEN = process.env.NEXT_PUBLIC_AUTH_TOKEN || "MKTtoken";
 export const BASE_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:5000";
@@ -49,7 +50,6 @@ axiosClient.interceptors.response.use(
     const status = error?.request?.status;
     const message = error?.response?.data?.message ?? "";
     const isPathLogout = originalRequest?.url?.startsWith("vi/logout");
-
     if (
       status === 401 &&
       !originalRequest?.url?.startsWith("vi/login") &&
@@ -59,8 +59,8 @@ axiosClient.interceptors.response.use(
     }
     if (message && !isPathLogout) {
       const msg = Array.isArray(message) ? message?.[0] : message;
-      // toast.error(msg);
-      console.log(msg);
+      toast.error(msg);
+      // console.log(msg);
     }
 
     return Promise.reject(error);

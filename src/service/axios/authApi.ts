@@ -25,7 +25,7 @@ export const authApi = {
     return await http.get<any, any>(`${authApi.queryKey}/logout`);
   },
 
-  createUser: async (payload: any) => {
-    return await http.post<any>(`${authApi.queryKey}/create`, payload);
+  getProfile: async () => {
+    return await http.get<any, any>(`${authApi.queryKey}/profile`);
   },
 };

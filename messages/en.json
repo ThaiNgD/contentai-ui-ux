@@ -3,13 +3,13 @@
     "title": "Hello world!",
     "about": "Go to the about page",
     "welcome": "Welcome",
-    "welcome_to_content_ai": "Welcome to the Content AI software",
+    "welcome_to_content_ai": "Welcome to Content AI software",
     "day_left": "Days left",
     "word_left": "Words left",
     "image_left": "Images left",
     "second_number": "Seconds",
     "documents_created": "Documents created",
-    "contents": "Contents"
+    "contents": "Content"
   },
   "table": {
     "example_name": "Example name",
@@ -34,7 +34,7 @@
     "empathetic": "Empathetic",
     "inspiring": "Inspiring",
     "supportive": "Supportive",
-    "trusting": "Trusting",
+    "trusting": "Trustworthy",
     "playful": "Playful",
     "excited": "Excited",
     "positive": "Positive",
@@ -44,6 +44,17 @@
     "urgent": "Urgent",
     "passionate": "Passionate",
     "informative": "Informative",
-    "funny": "Funny"
+    "funny": "Funny",
+    "allow": "Allow",
+    "deny": "Deny",
+    "random_api_key": "Random API Key",
+    "main_api_key": "Use Main API Key"
+  },
+  "login": {
+    "remember_password": "Remember login"
+  },
+  "setting": {
+    "setting_api": "Set API to run",
+    "setting_running_config": "Set running configuration"
   }
 }
