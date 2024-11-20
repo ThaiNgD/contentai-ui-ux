@@ -10,6 +10,13 @@ const Layout = ({
   children: React.ReactNode;
 }>) => {
   const [isOpen, setIsOpen] = useState(false);
+  // const { locale } = useGetPathComponent();
+  // const { data: user } = useGetProfile(true);
+  // useLayoutEffect(() => {
+  //   if (!user) {
+  //     redirect(`/${locale}/login`);
+  //   }
+  // }, []);
 
   return (
     <div className="flex w-screen overflow-x-hidden h-screen relative">
@@ -28,12 +35,6 @@ const Layout = ({
         </div>
         <Footer />
       </div>
-      {/* <div
-        role="button"
-        className="fixed duration-200 bottom-[40px] hover:scale-110  right-8 rounded-full p-2 bg-black dark:bg-white"
-      >
-        <IoIosChatbubbles size={40} className="text-white dark:text-black" />
-      </div> */}
     </div>
   );
 };

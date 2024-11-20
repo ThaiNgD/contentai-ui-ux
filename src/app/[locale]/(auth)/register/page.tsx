@@ -80,7 +80,7 @@ function Register() {
       <div className="!mt-5 flex justify-center">
         <Button
           type="submit"
-          className="hover:bg-blue-600 bg-blue-500 min-w-[250px]"
+          className="hover:bg-blue-600 rounded-xl shadow-md hover:shadow-none duration-200 border-blue-500 hover:translate-y-0.5 font-bold bg-blue-500 min-h-[40px] min-w-[250px]"
           onClick={(): void => {
             console.log(1);
           }}

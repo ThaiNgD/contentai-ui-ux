@@ -17,13 +17,11 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   const handleToggleArrow = (): void => {
     setIsOpen((prevState) => !prevState);
   };
-  console.log(pathArray?.[pathArray?.length - 1]);
   return (
     <div
       className={cn("relative w-fit z-[50]", isOpen ? "w-[64px]" : "w-[256px]")}
     >
       <div
-        // style={{ width: "inherit" }}
         className={cn(
           `border-r dark:border-black text-black dark:text-white
                     fixed h-screen dark:bg-black bg-white transition-all 
