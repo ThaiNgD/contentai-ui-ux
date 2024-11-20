@@ -22,4 +22,14 @@ declare global {
     createdAt: string;
     updatedAt: Date;
   };
+
+  type IMessage = {
+    role: "user" | "assistant"; // Role of the sender (either 'user' or 'assistant')
+    message: string;
+    timestamp: number;
+  };
+
+  type IConversationDetail = {
+    conversation: IMessage[];
+  };
 }

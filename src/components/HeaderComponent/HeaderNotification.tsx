@@ -10,7 +10,12 @@ const HeaderNotification = () => {
   };
   return (
     <>
-      <IoNotificationsOutline role="button" size={20} onClick={handleClick} />
+      <IoNotificationsOutline
+        role="button"
+        className="pointer-events-none opacity-50"
+        size={20}
+        onClick={handleClick}
+      />
       {showModalNotification && (
         <ModalNotification
           isShow={showModalNotification}

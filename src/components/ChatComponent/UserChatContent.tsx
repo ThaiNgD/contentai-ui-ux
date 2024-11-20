@@ -1,20 +1,42 @@
 import { cn } from "@/helper/function";
 import Image, { StaticImageData } from "next/image";
+import { useEffect, useState } from "react";
 import { IoIosCopy } from "react-icons/io";
 interface UserChatContentProps {
   imgUrl?: StaticImageData;
   widthCls?: string;
   isUser?: boolean;
   userImage?: StaticImageData;
+  message?: string;
+  timeStamp?: number;
 }
 const UserChatContent = ({
   imgUrl,
   widthCls,
   isUser,
   userImage,
+  message,
+  timeStamp,
 }: UserChatContentProps) => {
+  const [chat, setChat] = useState("");
+  useEffect(() => {
+    if (message) {
+      let i = 0;
+      const intervalId = setInterval(() => {
+        setChat(message.slice(0, i));
+
+        i++;
+
+        if (i > message.length) {
+          clearInterval(intervalId);
+        }
+      }, 4);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [message]);
   return (
-    <div className={cn("flex  gap-4 ", widthCls)}>
+    <div className={cn("flex gap-4 w-full", widthCls)}>
       {imgUrl && !isUser ? (
         <Image
           alt="User Avatar"
@@ -31,9 +53,9 @@ const UserChatContent = ({
         )}
       >
         <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] relative  rounded-xl bg-gray-100">
-            <p className="text-sm text-cursor typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
-              Last Message
+          <div className="w-fit relative  rounded-xl p-2 bg-gray-100">
+            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit text-gray-500 dark:text-gray-400">
+              {chat}
             </p>
             <div
               role="button"
@@ -51,7 +73,7 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            11:11 am
+            {timeStamp}
           </span>
           {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>

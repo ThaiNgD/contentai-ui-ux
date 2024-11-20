@@ -6,7 +6,7 @@ import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
 
 const Page = () => {
-  const [chat, setChat] = useState<IConversationResult>();
+  const [chat, setChat] = useState<IConversationDetail>();
   return (
     <>
       <div className="grid divide-y grid-rows-[15%,85%]">
@@ -15,7 +15,7 @@ const Page = () => {
           <ChatList setChat={setChat} />
         </div>
       </div>
-      <div className="grid divide-y grid-rows-[15%,85%]">
+      <div className="grid divide-y justify-stretch items-stretch  w-full grid-rows-[15%,85%]">
         <ChatHeader />
         <ChatContainer chat={chat} />
       </div>

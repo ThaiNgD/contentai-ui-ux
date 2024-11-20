@@ -113,14 +113,14 @@ export const SelectField = <T,>({
   };
 
   const getValue = useCallback((): any => {
-    if (options && formik) {
+    if (translatedOption && formik) {
       const value = get(formik?.values, name);
       if (isMulti) {
         return (value ?? []).reduce(
           (total: IOptionSelectFormat[], current: any) => {
-            const currentOption = (options as IOptionSelectFormat[])?.find(
-              (opt) => opt?.value === current
-            );
+            const currentOption = (
+              translatedOption as IOptionSelectFormat[]
+            )?.find((opt) => opt?.value === current);
             if (currentOption) {
               total.push(currentOption);
             }
@@ -129,7 +129,7 @@ export const SelectField = <T,>({
           [] as IOptionSelectFormat[]
         );
       } else {
-        return options.filter((option: any) => option.value === value);
+        return translatedOption.filter((option: any) => option.value === value);
       }
     } else {
       return isMulti ? [] : ("" as any);
