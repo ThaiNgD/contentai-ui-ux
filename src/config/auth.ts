@@ -18,7 +18,6 @@ export const setAccessToken = (data: string, expireIn: number) =>
 
 export const removeAccessToken = () =>
   Cookies.remove(AUTH_TOKEN, {
-    // secure: false,
     path: "vi/dashboard",
   });
 
