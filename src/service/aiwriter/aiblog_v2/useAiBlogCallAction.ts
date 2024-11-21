@@ -1,6 +1,6 @@
 import { aiBlogCallAction } from "@/service/axios/AIWriterApi";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const useAiBlogCallAction = (
   hideToast?: boolean
