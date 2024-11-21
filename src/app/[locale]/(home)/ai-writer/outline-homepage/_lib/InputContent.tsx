@@ -43,7 +43,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         formik={formik}
       />
       <InputField
-        name={"keyword "}
+        name={"keyword"}
         placeholder="Từ khóa cho Web"
         title="Từ khóa cho Web"
         clsTitle="font-bold italic"
