@@ -3,7 +3,7 @@ import { authApi } from "../axios/authApi";
 
 export const useGetProfile = (
   isEnabled: boolean = false
-): UseQueryResult<IUserProfile[], Error> => {
+): UseQueryResult<IUserResponse, Error> => {
   return useQuery({
     queryKey: ["user"],
     queryFn: async () => await authApi.getProfile(),

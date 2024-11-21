@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import http from "./httpClient";
 
+export interface IAuthToken {
+  value: string;
+  expiresIn: number;
+  type: string;
+}
+
 export interface IResultAuth {
-  access_token: string;
-  id: string;
-  username: string;
-  active: boolean;
-  createAt: string;
-  updateAt: string;
-  token: string;
+  access_token: IAuthToken;
+  refresh_token: IAuthToken;
+  api_ai_token: IAuthToken;
 }
 
 export const authApi = {
