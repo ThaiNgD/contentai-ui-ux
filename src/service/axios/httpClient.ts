@@ -16,7 +16,6 @@ export const BASE_URL =
   process.env.NEXT_PUBLIC_URL || "https://content-ai-c4rx.onrender.com";
 
 const axiosClient = Axios.create({
-  withCredentials: true,
   baseURL: joinPathParent(BASE_URL, "/api/v1").slice(1),
   headers: {
     "Content-Type": "application/json",
