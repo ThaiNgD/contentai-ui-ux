@@ -1,5 +1,6 @@
 import { cn } from "@/helper/function";
 import Image, { StaticImageData } from "next/image";
+import { useEffect, useState } from "react";
 import { IoIosCopy } from "react-icons/io";
 interface UserChatContentProps {
   imgUrl?: StaticImageData;
@@ -17,8 +18,27 @@ const UserChatContent = ({
   message,
   timeStamp,
 }: UserChatContentProps) => {
+  const defaultChat =
+    "Last Messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+  const [chat, setChat] = useState("");
+  useEffect(() => {
+    if (defaultChat) {
+      let i = 0;
+      const intervalId = setInterval(() => {
+        setChat(defaultChat.slice(0, i));
+
+        i++;
+
+        if (i > defaultChat.length) {
+          clearInterval(intervalId);
+        }
+      }, 4);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [defaultChat]);
   return (
-    <div className={cn("flex  gap-4 ", widthCls)}>
+    <div className={cn("flex gap-4 w-full", widthCls)}>
       {imgUrl && !isUser ? (
         <Image
           alt="User Avatar"
@@ -38,6 +58,7 @@ const UserChatContent = ({
           <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
             <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
               {message}
+
             </p>
             <div
               role="button"

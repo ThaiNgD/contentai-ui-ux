@@ -1,20 +1,29 @@
 import { NavbarLinkComponentProps } from "@/components/SidebarComponent/NavbarLinkComponent";
 import { BsFileRichtextFill } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
+import { FaFilePdf, FaFolderOpen } from "react-icons/fa6";
+import { GiBullseye } from "react-icons/gi";
 import { ImBlog } from "react-icons/im";
-import { MdEditDocument, MdOutlinePostAdd } from "react-icons/md";
-import { RiSeoFill } from "react-icons/ri";
+import { IoImage } from "react-icons/io5";
+import {
+  MdEditDocument,
+  MdMarkUnreadChatAlt,
+  MdOutlinePostAdd,
+} from "react-icons/md";
+import { PiSpeakerHighFill } from "react-icons/pi";
+import { RiMenuSearchFill, RiSeoFill } from "react-icons/ri";
 export const sidebarList: NavbarLinkComponentProps[] = [
   {
     link: "dashboard",
     title: "Trang chủ",
     icon: FaHome,
   },
-  // {
-  //   link: "content-management",
-  //   title: "Quản lý nội dung",
-  //   icon: FaFolderOpen,
-  // },
+  {
+    link: "content-management",
+    title: "Quản lý nội dung",
+    icon: FaFolderOpen,
+    isDisable: true,
+  },
   {
     link: "ai-writer",
     title: "AI Writer",
@@ -30,26 +39,28 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     title: "AI Blog",
     icon: ImBlog,
   },
-  // {
-  //   link: "ai-chat",
-  //   title: "AI Chat",
-  //   icon: MdMarkUnreadChatAlt,
-  // },
-  // {
-  //   link: "ai-vision",
-  //   title: "AI Vision",
-  //   icon: GiBullseye,
-  // },
-  // {
-  //   link: "ai-chat-image",
-  //   title: "AI Chat Image",
-  //   icon: IoImage,
-  // },
-  // {
-  //   link: "ai-pdf-chat",
-  //   title: "AI PDF Chat",
-  //   icon: FaFilePdf,
-  // },
+  {
+    link: "ai-chat",
+    title: "AI Chat",
+    icon: MdMarkUnreadChatAlt,
+  },
+  {
+    link: "ai-vision",
+    title: "AI Vision",
+    icon: GiBullseye,
+  },
+  {
+    link: "ai-chat-image",
+    title: "AI Chat Image",
+    icon: IoImage,
+    // isDisable: true,
+  },
+  {
+    link: "ai-pdf-chat",
+    title: "AI PDF Chat",
+    icon: FaFilePdf,
+    // isDisable: true,
+  },
   {
     link: "ai-rewriter",
     title: "AI Rewriter",
@@ -60,19 +71,22 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     title: "Generate Article",
     icon: MdOutlinePostAdd,
   },
-  // {
-  //   link: "speech-to-text",
-  //   title: "Speech To Text",
-  //   icon: PiSpeakerHighFill,
-  // },
-  // {
-  //   link: "ai-plagiarism",
-  //   title: "AI Plagiarism",
-  //   icon: RiMenuSearchFill,
-  // },
+  {
+    link: "speech-to-text",
+    title: "Speech To Text",
+    icon: PiSpeakerHighFill,
+    isDisable: true,
+  },
+  {
+    link: "ai-plagiarism",
+    title: "AI Plagiarism",
+    icon: RiMenuSearchFill,
+    isDisable: true,
+  },
   // {
   //   link: "/ai-detector",
   //   title: "AI Detector",
   //   icon: PiDetectiveFill,
+  //   isDisable: true,
   // },
 ];

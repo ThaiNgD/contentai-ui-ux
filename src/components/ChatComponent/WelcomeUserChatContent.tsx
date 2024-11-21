@@ -25,7 +25,7 @@ const WelcomeUserChatContent = ({
       <div className={cn("flex-grow min-h-fit flex rounded-xl justify-start")}>
         <div className="flex relative group flex-col">
           <div className="w-fit group rounded-xl bg-gray-100 relative">
-            <p className="text-sm text-cursor typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
+            <p className="text-sm w-fit p-2 text-gray-500 dark:text-gray-400">
               Hello {userName}, How can I help you?
             </p>
             {/* <div

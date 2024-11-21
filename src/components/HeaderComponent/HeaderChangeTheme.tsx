@@ -16,9 +16,19 @@ const HeaderChangeTheme = () => {
   return (
     <>
       {onClick ? (
-        <IoMoonOutline role="button" size={20} onClick={handleClick} />
+        <IoMoonOutline
+          role="button"
+          className="pointer-events-none  opacity-50"
+          size={20}
+          onClick={handleClick}
+        />
       ) : (
-        <IoSunny role="button" size={20} onClick={handleClick} />
+        <IoSunny
+          role="button"
+          className="pointer-events-none opacity-50"
+          size={20}
+          onClick={handleClick}
+        />
       )}
     </>
   );

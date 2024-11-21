@@ -142,12 +142,6 @@ label {
 }
 
 /* Cursor */
-.text-cursor {
-  position: relative;
-  /* border-right: 2px solid rgba(255, 255, 255, 0.75); */
-  white-space: nowrap;
-  overflow: hidden;
-}
 /* Animation */
 .typewriter-animation {
   animation: typewriter 2s steps(100) 1 normal both,
