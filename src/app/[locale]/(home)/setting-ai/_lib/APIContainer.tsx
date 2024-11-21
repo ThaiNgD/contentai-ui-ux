@@ -26,7 +26,7 @@ const APIContainer = () => {
       </div>
       <div className="grid grid-cols-2 gap-[30px]">
         <InputField
-          label="OpenAI Secret Key"
+          label="Khóa OpenAI"
           isRequired
           isVertical
           clsLabelWrapper="italic font-bold mb-1"
@@ -36,7 +36,7 @@ const APIContainer = () => {
           formik={formik}
         />
         <SelectField
-          label="Personal OpenAI API Key "
+          label="Sử dụng API cá nhân"
           isRequired
           isVertical
           clsLabelWrapper="italic font-bold mb-1"
