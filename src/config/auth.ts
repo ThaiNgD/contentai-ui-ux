@@ -11,10 +11,12 @@ const setToken = (data: string, key: string) => {
 export const setAccessToken = (data: string) => setToken(data, AUTH_TOKEN);
 
 // remove cookie auth
-export const removeAccessToken = () =>
-  Cookies.remove(AUTH_TOKEN, {
+export const removeAccessToken = () => {
+  Cookies.remove("MKTtoken", {
     secure: false,
+    path: "vi/dashboard",
   });
+};
 
 export const removeAuthToken = () => {
   removeAccessToken();

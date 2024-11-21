@@ -2,6 +2,7 @@
 import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configAccessAllow from "@/config/configAccessAllow";
+import configUsageModel from "@/config/configUsageModel";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { AiFillOpenAI } from "react-icons/ai";
@@ -51,6 +52,7 @@ const APIContainer = () => {
           isVertical
           name="api_usage_mode"
           className="!bg-[#F5F9FC] !shadow-inner"
+          options={configUsageModel}
           formik={formik}
         />
       </div>

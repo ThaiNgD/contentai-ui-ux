@@ -4,10 +4,10 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { aiThankYouEmail } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { Dispatch, SetStateAction } from "react";
-import { aiThankYouEmail } from "@/service/axios/AIWriterApi";
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
@@ -32,7 +32,7 @@ const InputContent = ({ setCkData }: InputProps) => {
     <form
       id="form-submit"
       onSubmit={formik.handleSubmit}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 p-[30px] shadow-md bg-white rounded-xl"
     >
       <InputField
         name={"brandName"}
