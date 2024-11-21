@@ -32,4 +32,26 @@ declare global {
   type IConversationDetail = {
     conversation: IMessage[];
   };
+  type IUserProfile = {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    username: string;
+    email: string;
+    password_hash: string;
+    role: string;
+    authToken: string;
+    tokenType: string;
+    expiresIn: number;
+    expiresAt: number;
+    userId: string;
+    isVinhVien: boolean;
+    name: string;
+    max_words: number;
+    max_images: number;
+    max_minute: number;
+    minute_used: number;
+    image_used: number;
+    words_used: number;
+  };
 }

@@ -8,7 +8,8 @@ import {
   Autosave,
   Bold,
   ClassicEditor,
-  Code,
+  Clipboard,
+  ClipboardPipeline,
   Essentials,
   FontFamily,
   Heading,
@@ -17,11 +18,10 @@ import {
   List,
   Mention,
   Paragraph,
-  Strikethrough,
-  Subscript,
-  Superscript,
+  PastePlainText,
   Underline,
   Undo,
+  WordCount,
 } from "ckeditor5";
 import "ckeditor5/ckeditor5.css";
 import { useEffect, useState } from "react";
@@ -35,17 +35,19 @@ function CustomEditor({ data }: CKEDITORProps) {
   const converter = new showdown.Converter();
   const [htmlData, setHtmlData] = useState("");
   // Convert markdown to HTML
+
   useEffect(() => {
     if (data) {
       let i = 0;
       const stringResponse = converter.makeHtml(data);
       // converter.
+      console.log(stringResponse);
       const intervalId = setInterval(() => {
         setHtmlData(stringResponse.slice(0, i));
 
         i += 20;
 
-        if (i > stringResponse.length) {
+        if (i > stringResponse.length + 20) {
           clearInterval(intervalId);
         }
       }, 1);
@@ -90,6 +92,10 @@ function CustomEditor({ data }: CKEDITORProps) {
               "todoList",
               "outdent",
               "indent",
+              "|",
+              "wordCount",
+              "|",
+              "clipboard",
             ],
           },
           plugins: [
@@ -106,12 +112,21 @@ function CustomEditor({ data }: CKEDITORProps) {
             Autosave,
             Autoformat,
             List,
-            Code,
-            Strikethrough,
-            Subscript,
-            Superscript,
             Underline,
+            WordCount,
+            Clipboard,
+            ClipboardPipeline,
+            PastePlainText,
           ],
+          style: {
+            definitions: [
+              {
+                name: "Loader",
+                element: "div",
+                classes: ["dots-loader"],
+              },
+            ],
+          },
           image: {
             insert: {
               // This is the default configuration, you do not need to provide
@@ -119,6 +134,8 @@ function CustomEditor({ data }: CKEDITORProps) {
               integrations: ["upload", "assetManager", "url"],
             },
           },
+          // initialData: `<div class="dots-loader !size-[24px]">Hello</div>`,
+
           // initialData: "<p>Hello from CKEditor 5 in React!</p>",
         }}
       />

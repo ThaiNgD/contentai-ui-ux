@@ -3,10 +3,10 @@ import Cookies from "js-cookie";
 
 const setToken = (data: string, expireIn: number, key: string) => {
   Cookies.set(key, data ?? "", {
-    // secure: false,
+    secure: false,
     // path: "/vi",
     expires: new Date(Date.now() + expireIn),
-    path: "vi/dashboard",
+    path: "/",
   });
 };
 
@@ -18,12 +18,14 @@ export const setAccessToken = (data: string, expireIn: number) =>
 
 export const removeAccessToken = () =>
   Cookies.remove(AUTH_TOKEN, {
-    path: "vi/dashboard",
+    secure: false,
+    path: "/",
   });
 
 export const removeRefreshToken = () =>
   Cookies.remove(REFRESH_TOKEN, {
-    path: "vi/dashboard",
+    secure: false,
+    path: "/",
   });
 
 export const removeAuthToken = () => {

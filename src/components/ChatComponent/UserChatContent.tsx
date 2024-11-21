@@ -18,26 +18,24 @@ const UserChatContent = ({
   message,
   timeStamp,
 }: UserChatContentProps) => {
-  const defaultChat =
-    "Last Messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
   const [chat, setChat] = useState("");
   console.log(chat);
   useEffect(() => {
-    if (defaultChat) {
+    if (message) {
       let i = 0;
       const intervalId = setInterval(() => {
-        setChat(defaultChat.slice(0, i));
+        setChat(message.slice(0, i));
 
         i++;
 
-        if (i > defaultChat.length) {
+        if (i > message.length) {
           clearInterval(intervalId);
         }
       }, 4);
 
       return () => clearInterval(intervalId);
     }
-  }, [defaultChat]);
+  }, [message]);
   return (
     <div className={cn("flex gap-4 w-full", widthCls)}>
       {imgUrl && !isUser ? (
