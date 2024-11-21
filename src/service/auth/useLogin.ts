@@ -1,4 +1,4 @@
-import { setAccessToken, setRefreshToken } from "@/config";
+import { setAccessToken, setApiKeyToken, setRefreshToken } from "@/config";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,10 @@ export const useAuthLogin = (
         setRefreshToken(
           response.refresh_token.value,
           response.refresh_token.expiresIn
+        );
+        setApiKeyToken(
+          response.api_ai_token.value,
+          response.api_ai_token.expiresIn
         );
         toast.success("Đăng nhập thành công");
         router.push(`/${locale}/dashboard`);
