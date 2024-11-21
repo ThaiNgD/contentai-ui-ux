@@ -1,47 +1,45 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Node modules and yarn PnP files
 /node_modules
 /.pnp
 .pnp.*
 .yarn/*
+
+# Yarn patches, plugins, releases, and versions should be tracked
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
 yarn.lock
-# testing
+
+# Testing artifacts (coverage reports, etc.)
 /coverage
 
-# next.js
+# Next.js build directories
 .next
-/.next/
+/.next
 /out/
 
-# production
+# Production build artifacts
 /build
 
-# misc
+# OS-specific files
 .DS_Store
 *.pem
 
-# debug
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# env files (can opt-in for commiting if needed)
+# Environment variable files (can be opted-in if needed)
 .env*
 
-# vercel
+# Vercel specific files
 .vercel
 
-# typescript
+# TypeScript build information
 *.tsbuildinfo
 next-env.d.ts
 
-#husky
-
+# Husky git hooks
 .husky/
-/.husky
-/.husky/pre-commit
