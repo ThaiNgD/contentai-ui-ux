@@ -1,4 +1,4 @@
-import { setAccessToken } from "@/config";
+import { setAccessToken, setApiKeyToken, setRefreshToken } from "@/config";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -12,10 +12,20 @@ export const useAuthLogin = (
   const { locale } = useGetPathComponent();
   return useMutation({
     mutationFn: authApi.login,
-    onSuccess: (loginData) => {
-      console.log(loginData);
-      if (loginData) {
-        setAccessToken(loginData.access_token);
+    onSuccess: (response) => {
+      if (response) {
+        setAccessToken(
+          response.access_token.value,
+          response.access_token.expiresIn
+        );
+        setRefreshToken(
+          response.refresh_token.value,
+          response.refresh_token.expiresIn
+        );
+        setApiKeyToken(
+          response.api_ai_token.value,
+          response.api_ai_token.expiresIn
+        );
         toast.success("Đăng nhập thành công");
         router.push(`/${locale}/dashboard`);
       } else {

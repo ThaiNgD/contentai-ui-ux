@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { console } from "inspector";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { aiWebsiteSubHeader } from "../../axios/AIWriterApi";
 
 export const useAiWebsiteSubHeader = (

@@ -54,4 +54,8 @@ declare global {
     image_used: number;
     words_used: number;
   };
+  type IUserResponse = {
+    message: string;
+    user: IUserProfile;
+  };
 }

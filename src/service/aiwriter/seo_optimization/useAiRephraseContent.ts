@@ -1,5 +1,5 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { aiRephraseContent } from "../../axios/AIWriterApi";
 
 export const useAiRephraseContent = (

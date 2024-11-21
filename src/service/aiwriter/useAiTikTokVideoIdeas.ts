@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { aiTiktokVideoIdeas } from "../axios/AIWriterApi";
-import { useRouter } from "next/router";
 export const useAiTikTokVideoIdeas = (
   hideToast?: boolean
 ): UseMutationResult<IResult, Error, IFormTikTokVideoIdeas, unknown> => {
