@@ -1,7 +1,7 @@
 import {
+  API_AI_TOKEN,
   AUTH_TOKEN,
   REFRESH_TOKEN,
-  API_AI_TOKEN,
 } from "@/service/axios/httpClient";
 import Cookies from "js-cookie";
 
