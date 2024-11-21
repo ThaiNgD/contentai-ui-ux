@@ -13,6 +13,7 @@ export const useAuthLogin = (
   return useMutation({
     mutationFn: authApi.login,
     onSuccess: (loginData) => {
+      console.log(loginData);
       if (loginData) {
         setAccessToken(loginData.access_token);
         toast.success("Đăng nhập thành công");

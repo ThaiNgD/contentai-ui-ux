@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 const setToken = (data: string, key: string) => {
   Cookies.set(key, data ?? "", {
     secure: false,
-    path: "vi/dashboard",
+    path: "/",
   });
 };
 
@@ -14,7 +14,7 @@ export const setAccessToken = (data: string) => setToken(data, AUTH_TOKEN);
 export const removeAccessToken = () => {
   Cookies.remove("MKTtoken", {
     secure: false,
-    path: "vi/dashboard",
+    path: "/",
   });
 };
 
