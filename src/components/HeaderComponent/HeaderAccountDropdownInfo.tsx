@@ -1,5 +1,6 @@
 "use client";
 import Avatar from "@/assets/images/avatar.jpg";
+import { removeAuthToken } from "@/config";
 import { cn } from "@/helper/utils";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
@@ -18,6 +19,7 @@ const HeaderAccountDropdownInfo = () => {
 
   const logout = (): void => {
     router.push(`/${path.locale}/login`);
+    removeAuthToken();
   };
   return (
     <div className="relative">
