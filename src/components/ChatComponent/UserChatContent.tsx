@@ -21,6 +21,7 @@ const UserChatContent = ({
   const defaultChat =
     "Last Messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
   const [chat, setChat] = useState("");
+  console.log(chat);
   useEffect(() => {
     if (defaultChat) {
       let i = 0;
@@ -58,7 +59,6 @@ const UserChatContent = ({
           <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
             <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
               {message}
-
             </p>
             <div
               role="button"
