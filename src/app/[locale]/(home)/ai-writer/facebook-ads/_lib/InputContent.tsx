@@ -33,7 +33,7 @@ const InputContent = ({ setCkData }: InputProps) => {
     <form
       id="form-submit"
       onSubmit={formik.handleSubmit}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 p-[30px] shadow-md bg-white rounded-xl"
     >
       <InputField
         name={"brandName"}
@@ -56,7 +56,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Chân dung khách hàng"
         title="Chân dung khách hàng"
         clsTitle="font-bold italic"
-        className="h-[50px]"
+        className="h-[150px] min-h-[50px] max-h-[400px]"
         formik={formik}
       />
 
