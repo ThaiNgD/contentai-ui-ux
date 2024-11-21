@@ -60,7 +60,7 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
           <ChatInput />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

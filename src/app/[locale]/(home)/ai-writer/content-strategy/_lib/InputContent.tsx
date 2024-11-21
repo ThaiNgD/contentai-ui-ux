@@ -33,7 +33,7 @@ const InputContent = ({ setCkData }: InputProps) => {
     },
   });
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col p-[40px] rounded-lg shadow-lg  bg-white h-full">
       <form
         id="form-submit"
         onSubmit={formik.handleSubmit}
@@ -43,44 +43,45 @@ const InputContent = ({ setCkData }: InputProps) => {
           name={"goals"}
           placeholder="Mục tiêu kinh doanh"
           title="Mục tiêu kinh doanh"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold italic mb-1"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <InputField
           name={"targetAudience"}
           placeholder="Khách hàng mục tiêu"
           title="Khách hàng mục tiêu"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold italic mb-1"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <InputField
           name={"contentGeneration"}
           placeholder="Thể loại content"
-          title="Thể loại content"
-          className="h-[50px]"
+          title="Thể loại content "
+          clsTitle="font-bold italic mb-1"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <TextAreaField
           name={"product"}
           placeholder="Thông tin sản phẩm"
           title="Mô tả sản phẩm"
-          clsTextArea="h-[125px]"
+          clsTextArea="h-[125px] mt-1 !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <TextAreaField
           name={"contentPurpose"}
           title="Mục đích của content"
           placeholder="Nhập nội dung"
-          clsTextArea="h-[125px]"
+          clsTextArea="h-[125px] mt-1 !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <TextAreaField
           name={"otherContent"}
           title="Nội dung khác"
           placeholder="Nhập nội dung"
-          clsTextArea="h-[125px]"
+          clsTextArea="h-[125px] mt-1 !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <SelectField

@@ -15,7 +15,7 @@ const Page = () => {
           <ChatList setChat={setChat} />
         </div>
       </div>
-      <div className="grid divide-y justify-stretch items-stretch break-words whitespace-normal w-full grid-rows-[15%,85%]">
+      <div className="grid divide-y justify-stretch items-stretch  w-full grid-rows-[15%,85%]">
         <ChatHeader />
         <ChatContainer chat={chat} />
       </div>

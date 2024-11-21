@@ -25,7 +25,7 @@ const InputContent = ({ setCkData }: InputProps) => {
     },
   });
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full p-[30px] shadow-md bg-white rounded-xl">
       <form
         id="form-submit"
         onSubmit={formik.handleSubmit}

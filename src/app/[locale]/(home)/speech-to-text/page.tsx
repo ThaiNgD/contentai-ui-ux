@@ -13,6 +13,7 @@ const Page = () => {
             acceptedFile="audio/*"
             title="Chọn hoặc thả file âm thanh ở đây"
             desc="Chỉ chọn file .mp3,.mp4"
+            type="audio"
           />
           <Button className="rounded-full self-center border-blue-500 font-bold !text-xl bg-blue-500 shadow-lg hover:shadow-none duration-200 hover:translate-y-0.5 w-fit px-[50px]">
             Convert

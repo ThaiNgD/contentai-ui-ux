@@ -2,19 +2,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "@/helper/function";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { FcAudioFile } from "react-icons/fc";
 import { TbCloudUpload } from "react-icons/tb";
 import { toast } from "react-toastify";
-
 interface DragnDropFileProps {
   title?: string;
   desc?: string;
   acceptedFile?: string;
+  type?: "audio" | "image" | "video";
+  setFile?: Dispatch<SetStateAction<File | null | undefined>>;
 }
 const DragnDropFile = ({
   title = "Thả hoặc chọn ảnh ở đây",
   desc = "Chỉ cho phép chọn JPG,PNG,WEPG",
   acceptedFile = "image/*",
+  type = "image",
+  setFile: setFileSelected,
 }: DragnDropFileProps) => {
   const inputRef = useRef(null);
   const [file, setFile] = useState<string>("");
@@ -30,14 +34,20 @@ const DragnDropFile = ({
       !fileInput[0].type.includes("image/")
     ) {
       toast.error("File không phải là ảnh!!");
-    } else if (
+      return;
+    }
+    if (
       acceptedFile.includes("audio/") &&
       !fileInput[0].type.includes("audio/")
     ) {
       toast.error("File không phải là file âm thanh !!");
-    } else if (fileInput && fileInput.length > 0) {
+      return;
+    }
+
+    if (fileInput && fileInput.length > 0) {
       setFile(URL.createObjectURL(fileInput[0]));
       setIsFileEnter(false);
+      setFileSelected?.(fileInput);
     }
   };
   return (
@@ -94,14 +104,17 @@ const DragnDropFile = ({
         onChange={onInputChange}
       />
       {file ? (
-        <div className="flex items-center flex-col gap-2">
-          <Image
-            alt="Image"
-            src={file}
-            width={48}
-            height={48}
-            className="h-auto max-h-[200px] w-auto"
-          />
+        <div className="flex items-center justify-center text-center flex-col gap-2">
+          {type === "image" && (
+            <Image
+              alt="Image"
+              src={file}
+              width={48}
+              height={48}
+              className="h-auto max-h-[200px] w-auto"
+            />
+          )}
+          {type === "audio" && <FcAudioFile size={48} />}
           {file}
         </div>
       ) : (

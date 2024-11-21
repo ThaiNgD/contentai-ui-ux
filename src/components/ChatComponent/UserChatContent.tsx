@@ -18,25 +18,23 @@ const UserChatContent = ({
   message,
   timeStamp,
 }: UserChatContentProps) => {
-  const defaultChat =
-    "Last Messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
   const [chat, setChat] = useState("");
   useEffect(() => {
-    if (defaultChat) {
+    if (message) {
       let i = 0;
       const intervalId = setInterval(() => {
-        setChat(defaultChat.slice(0, i));
+        setChat(message.slice(0, i));
 
         i++;
 
-        if (i > defaultChat.length) {
+        if (i > message.length) {
           clearInterval(intervalId);
         }
       }, 4);
 
       return () => clearInterval(intervalId);
     }
-  }, [defaultChat]);
+  }, [message]);
   return (
     <div className={cn("flex gap-4 w-full", widthCls)}>
       {imgUrl && !isUser ? (
@@ -55,10 +53,9 @@ const UserChatContent = ({
         )}
       >
         <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
-            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
-              {message}
-
+          <div className="w-fit relative  rounded-xl p-2 bg-gray-100">
+            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit text-gray-500 dark:text-gray-400">
+              {chat}
             </p>
             <div
               role="button"

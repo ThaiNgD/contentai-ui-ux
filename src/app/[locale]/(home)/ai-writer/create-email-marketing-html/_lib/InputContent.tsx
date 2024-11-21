@@ -25,7 +25,7 @@ const InputContent = () => {
     <form
       id="form-submit"
       onSubmit={formik.handleSubmit}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 p-[30px] shadow-md bg-white rounded-xl"
     >
       <InputField
         name={"brand"}

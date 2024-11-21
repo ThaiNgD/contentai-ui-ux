@@ -2,11 +2,9 @@
 "use client";
 import CheckBoxField from "@/components/CustomField/CheckboxField";
 import InputField from "@/components/CustomField/InputField";
-import { setAccessToken, setRefreshToken } from "@/config"; // Update Start: Import thêm setRefreshToken
-import { authApi } from "@/service/axios/authApi";
+import { useAuthLogin } from "@/service/auth/useLogin";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
 import * as yup from "yup";
 
 const validateSchemaLogin = yup.object().shape({
@@ -15,7 +13,7 @@ const validateSchemaLogin = yup.object().shape({
 });
 
 function Login() {
-  const router = useRouter();
+  const { mutate: login, isPending } = useAuthLogin();
   const formik = useFormik<IFormLogin>({
     initialValues: {
       remember_password: false,
@@ -23,31 +21,18 @@ function Login() {
       password: "",
     },
     validationSchema: validateSchemaLogin,
-    onSubmit: async (value) => {
-      await authApi.login(value).then((response) => {
-        console.log(response);
-
-        // Update Start: Lưu access_token và refresh_token vào cookie
-        setAccessToken(
-          response.access_token.value,
-          response.access_token.expiresIn
-        );
-        setRefreshToken(
-          response.refresh_token.value,
-          response.refresh_token.expiresIn
-        );
-        // Update End
-
-        router.push("dashboard");
-      });
+    onSubmit: (value) => {
+      login(value);
     },
   });
   return (
-    <form className="space-y-3 w-full" onSubmit={formik.handleSubmit}>
+    <form className="space-y-3 py-[20px] w-full" onSubmit={formik.handleSubmit}>
       <InputField
         formik={formik}
         name="username"
         label="Tên đăng nhập"
+        clsLabelWrapper="mb-1 font-bold"
+        className="!bg-[#F5F9FC]"
         placeholder="Nhập email đăng nhập"
         isVertical
         isRequired
@@ -58,26 +43,37 @@ function Login() {
         type="password"
         name="password"
         label="Mật khẩu"
+        clsLabelWrapper="mb-1 font-bold"
         placeholder="Nhập mật khẩu"
+        className="!bg-[#F5F9FC]"
         isVertical
         isRequired
       />
 
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <CheckBoxField
           name="remember_password"
-          label={"Ghi nhớ đăng nhập"}
+          label={"login.remember_password"}
           formik={formik}
         />
-        <p className="underline text-blue-500">Quên mật khẩu ?</p>
+        <p
+          role="button"
+          className="text-sm font-bold hover:underline hover:text-blue-500"
+        >
+          Quên mật khẩu ?
+        </p>
       </div>
 
-      <div className="!mt-5 flex justify-center">
+      <div className="!mt-7 flex justify-center">
         <Button
           type="submit"
-          className="hover:bg-blue-600 bg-blue-500 min-w-[250px]"
+          className="hover:bg-blue-600 rounded-full shadow-md hover:shadow-none duration-200 border-blue-500 hover:translate-y-0.5 font-bold bg-blue-500 min-h-[36px] min-w-[250px]"
         >
-          Đăng nhập
+          {isPending ? (
+            <div className="loading size-[20px]"></div>
+          ) : (
+            "Đăng nhập"
+          )}
         </Button>
       </div>
     </form>

@@ -44,6 +44,17 @@
     "urgent": "Khẩn cấp",
     "passionate": "Đam mê",
     "informative": "Cung cấp thông tin",
-    "funny": "Vui nhộn"
+    "funny": "Vui nhộn",
+    "allow": "Cho phép",
+    "deny": "Từ chối",
+    "random_api_key": "API Key ngẫu nhiên",
+    "main_api_key": "Dùng API Key chính"
+  },
+  "login": {
+    "remember_password": "Ghi nhớ đăng nhập"
+  },
+  "setting": {
+    "setting_api": "Cài đặt API để chạy",
+    "setting_running_config": "Cài đặt cấu hình khi chạy"
   }
 }
