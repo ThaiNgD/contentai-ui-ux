@@ -2,7 +2,7 @@
 "use client";
 import CheckBoxField from "@/components/CustomField/CheckboxField";
 import InputField from "@/components/CustomField/InputField";
-import { setAccessToken } from "@/config";
+import { setAccessToken, setRefreshToken } from "@/config"; // Update Start: Import thêm setRefreshToken
 import { authApi } from "@/service/axios/authApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
@@ -24,10 +24,21 @@ function Login() {
     },
     validationSchema: validateSchemaLogin,
     onSubmit: async (value) => {
-      await authApi.login(value).then((value) => {
-        console.log(value);
+      await authApi.login(value).then((response) => {
+        console.log(response);
+
+        // Update Start: Lưu access_token và refresh_token vào cookie
+        setAccessToken(
+          response.access_token.value,
+          response.access_token.expiresIn
+        );
+        setRefreshToken(
+          response.refresh_token.value,
+          response.refresh_token.expiresIn
+        );
+        // Update End
+
         router.push("dashboard");
-        setAccessToken(value.access_token);
       });
     },
   });
