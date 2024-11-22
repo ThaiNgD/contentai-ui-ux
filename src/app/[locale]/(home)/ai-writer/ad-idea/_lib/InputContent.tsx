@@ -4,6 +4,7 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { cn } from "@/helper/function";
 import { useAiCreateAdsIdea } from "@/service/aiwriter/ads/useAiCreateAdsIdea";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
@@ -42,7 +43,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -50,7 +51,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"description"}
         placeholder="Mô tả sản phẩm"
         title="Mô tả sản phẩm"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[150px]"
         formik={formik}
       />
@@ -71,7 +72,10 @@ const InputContent = ({ setCkData }: InputProps) => {
       <Button
         form="form-submit"
         type="submit"
-        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className={cn(
+          "bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5",
+          isPending && "pointer-events-none"
+        )}
       >
         {isPending ? (
           <div className="loading size-[24px]"></div>

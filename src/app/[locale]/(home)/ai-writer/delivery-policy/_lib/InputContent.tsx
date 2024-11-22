@@ -37,7 +37,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"brandName"}
         placeholder="Tên thương hiệu"
         title="Tên thương hiệu"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -45,7 +45,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"description"}
         placeholder="Mô tả sản phẩm/dịch vụ"
         title="Mô tả sản phẩm/dịch vụ"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         clsTextArea="!h-[150px]"
         formik={formik}
       />

@@ -38,24 +38,24 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
-        clsTitle="font-bold italic"
-        className="h-[50px]"
+        clsTitle="font-bold mb-1 italic"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <InputField
         name={"numberOfCustomerPortraits"}
         placeholder="Số lượng"
         title="Số lượng"
-        clsTitle="font-bold italic"
-        className="h-[50px]"
+        clsTitle="font-bold mb-1 italic"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <TextAreaField
         name={"productDescription"}
         placeholder="Mô tả sản phẩm"
         title="Mô tả sản phẩm"
-        clsTitle="font-bold italic"
-        className="h-[125px]"
+        clsTitle="font-bold mb-1 italic"
+        className="h-[125px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
 

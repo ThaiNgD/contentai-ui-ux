@@ -3,15 +3,17 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiVideoAdScript } from "@/service/axios/AIWriterApi";
+import { cn } from "@/helper/function";
+import { useAiAdVideoScript } from "@/service/aiwriter/video-script/useAiAdVideoScript";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
+  const { isPending, data, mutate } = useAiAdVideoScript();
   const formik = useFormik<IFormVideoAdScript>({
     initialValues: {
       brandName: "",
@@ -20,13 +22,14 @@ const InputContent = ({ setCkData }: InputProps) => {
       language: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
-      await aiVideoAdScript.create(values).then((values) => {
-        console.log(values);
-        setCkData(values.result);
-      });
+      mutate(values);
     },
   });
+  useEffect(() => {
+    if (data && data.result) {
+      setCkData(data.result);
+    }
+  }, [data]);
   return (
     <form
       id="form-submit"
@@ -37,7 +40,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -45,7 +48,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"productDescription"}
         placeholder="Mô tả sản phẩm"
         title="Mô tả sản phẩm"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -66,9 +69,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       <Button
         form="form-submit"
         type="submit"
-        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className={cn(
+          "bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5",
+          isPending && "pointer-events-none"
+        )}
       >
-        Tạo nội dung
+        {isPending ? (
+          <div className="loading size-[24px]"></div>
+        ) : (
+          "Tạo nội dung"
+        )}
       </Button>
     </form>
   );

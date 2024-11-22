@@ -37,7 +37,7 @@ const InputContent = ({ setCkData }: InputProps) => {
           name={"rewrite"}
           placeholder="Đoạn văn cần viết lại"
           title="Đoạn văn cần viết lại"
-          clsTitle="font-bold italic"
+          clsTitle="font-bold mb-1 italic"
           className="h-[150px]"
           formik={formik}
         />

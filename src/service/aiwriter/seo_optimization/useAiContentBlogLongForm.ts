@@ -3,6 +3,7 @@ import {
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import { aiContentBlogLongForm } from "../../axios/AIWriterApi";
 
 export const useAiContentBlogLongForm = (
@@ -14,10 +15,12 @@ export const useAiContentBlogLongForm = (
     mutationFn: aiContentBlogLongForm.create,
     mutationKey: [aiContentBlogLongForm.queryKey],
     onSuccess: (isSuccess) => {
+      if (isSuccess) {
+        toast.success("Thành công");
+      } else {
+        return;
+      }
       queryClient.setQueryData([aiContentBlogLongForm.queryKey], isSuccess);
-      queryClient.invalidateQueries({
-        queryKey: [aiContentBlogLongForm.queryKey],
-      });
     },
   });
 };

@@ -168,12 +168,16 @@ label {
 /* ck-editor */
 .ck-editor {
   width: 100% !important;
+  border-radius: 50px !important;
 }
 
 .ck-content {
   /* animation: typewriter 2s steps(100) 1 normal both,
     blinkingCursor 200ms steps(100) infinite normal; */
   min-height: 400px;
+  background-color: #f5f9fc !important;
+  box-shadow: inset gray 0px 0px 25px -12px !important;
+  padding: 15px;
 }
 
 /* {

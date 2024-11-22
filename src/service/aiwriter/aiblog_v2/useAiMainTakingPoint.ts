@@ -1,23 +1,21 @@
+import { queryClient } from "@/provider/TanStackProvider";
 import { aiMainTakingPoints } from "@/service/axios/AIWriterApi";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export const useAiMainTakingpoint = (
   hideToast?: boolean
 ): UseMutationResult<IResult, Error, IFormMainTakingPoints, unknown> => {
-  const router = useRouter();
   console.log(hideToast);
   return useMutation({
     mutationFn: aiMainTakingPoints.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/main-talking-points");
-        //!hideToast && toast.success("Thành công");
+        toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/home/ai-writer/main-talking-points")) {
-          //!hideToast && toast.error("Thất bại");
-        }
+        return;
       }
+      queryClient.setQueryData([aiMainTakingPoints.queryKey], isSuccess);
     },
   });
 };
