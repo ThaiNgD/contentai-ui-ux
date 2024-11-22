@@ -29,34 +29,34 @@ const InputContent = ({ setCkData }: InputProps) => {
     },
   });
   return (
-    <div className="flex p-[30px] shadow-md bg-white rounded-xl flex-col h-full">
+    <div className="flex p-[30px] overflow-y-auto  shadow-md bg-white rounded-xl flex-col h-full">
       <form
         id="form-submit"
         onSubmit={formik.handleSubmit}
-        className="flex flex-col overflow-y-auto  gap-4"
+        className="flex flex-col gap-4"
       >
         <InputField
           name={"brandName"}
           placeholder="Thương hiệu"
           title="Thương hiệu"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <InputField
           name={"keywords"}
           placeholder="Từ khóa"
           title="Từ khóa"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <TextAreaField
           name={"customerPortrait"}
           placeholder="Chân dung khách hàng"
           title="Chân dung khách hàng"
-          clsTitle="font-bold italic"
-          className="h-[100px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[100px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <SelectField

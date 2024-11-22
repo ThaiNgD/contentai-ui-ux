@@ -38,7 +38,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"brandName"}
         placeholder="Từ khóa"
         title="Từ khóa"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -46,7 +46,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"description"}
         placeholder="Mô tả sản phẩm/dịch vụ"
         title="Mô tả sản phẩm/dịch vụ"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[150px]"
         formik={formik}
       />

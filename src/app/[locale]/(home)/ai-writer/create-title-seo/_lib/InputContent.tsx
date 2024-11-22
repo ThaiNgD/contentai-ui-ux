@@ -39,7 +39,7 @@ const InputContent = ({ setCkData }: Inputprops) => {
           name={"total_creating_title"}
           placeholder="Số tiêu đề tạo ra"
           title="Số tiêu đề tạo ra"
-          clsTitle="font-bold italic"
+          clsTitle="font-bold mb-1 italic"
           className="h-[50px]"
           type="number"
           formik={formik}
@@ -48,7 +48,7 @@ const InputContent = ({ setCkData }: Inputprops) => {
           name={"keywords"}
           placeholder="Từ khóa"
           title="Từ khóa"
-          clsTitle="font-bold italic"
+          clsTitle="font-bold mb-1 italic"
           className="h-[50px]"
           formik={formik}
         />
@@ -56,7 +56,7 @@ const InputContent = ({ setCkData }: Inputprops) => {
           name={"currentYear"}
           placeholder="2024"
           title="Năm tìm kiếm"
-          clsTitle="font-bold italic"
+          clsTitle="font-bold mb-1 italic"
           className="h-[50px]"
           type="number"
           formik={formik}
@@ -65,7 +65,7 @@ const InputContent = ({ setCkData }: Inputprops) => {
           name={"searchIntent"}
           placeholder="Ý định tìm kiếm"
           title="Tiêu đề"
-          clsTitle="font-bold italic"
+          clsTitle="font-bold mb-1 italic"
           className="h-[50px]"
           formik={formik}
         />

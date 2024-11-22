@@ -35,7 +35,7 @@ const InputContent = ({ setCkData }: InputProps) => {
           name={"keywords"}
           placeholder="Từ khóa"
           title="Từ khóa"
-          clsTitle="font-bold italic"
+          clsTitle="font-bold mb-1 italic"
           className="h-[50px]"
           formik={formik}
         />

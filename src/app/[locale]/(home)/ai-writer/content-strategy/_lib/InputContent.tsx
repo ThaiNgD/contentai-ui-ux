@@ -4,15 +4,17 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiContentStrategyApi } from "@/service/axios/AIWriterApi";
+import { cn } from "@/helper/function";
+import { useAiContentStrategy } from "@/service/aiwriter/business/useAiContentStrategy";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
+  const { mutate, isPending, data } = useAiContentStrategy();
   const formik = useFormik<IFormContentStrategy>({
     initialValues: {
       goals: "",
@@ -24,14 +26,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
       // Handle form submission
-      await aiContentStrategyApi.create(values).then((values) => {
-        console.log(values);
-        setCkData(values.result);
-      });
+      mutate(values);
     },
   });
+  useEffect(() => {
+    if (data?.result) {
+      setCkData(data?.result);
+    }
+  }, [data]);
   return (
     <div className="flex flex-col p-[40px] rounded-lg shadow-lg  bg-white h-full">
       <form
@@ -67,14 +71,14 @@ const InputContent = ({ setCkData }: InputProps) => {
           name={"product"}
           placeholder="Thông tin sản phẩm"
           title="Mô tả sản phẩm"
-          clsTextArea="h-[125px] mt-1 !bg-[#F5F9FC] shadow-inner"
+          clsTextArea="h-[125px] min-h-[50px] max-h-[400px] mt-1 !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <TextAreaField
           name={"contentPurpose"}
           title="Mục đích của content"
           placeholder="Nhập nội dung"
-          clsTextArea="h-[125px] mt-1 !bg-[#F5F9FC] shadow-inner"
+          clsTextArea="h-[125px] mt-1 min-h-[50px] max-h-[400px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <TextAreaField
@@ -102,9 +106,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       <Button
         form="form-submit"
         type="submit"
-        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className={cn(
+          "bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5",
+          isPending && "pointer-events-none"
+        )}
       >
-        Tạo nội dung
+        {isPending ? (
+          <div className="loading size-[24px]"></div>
+        ) : (
+          "Tạo nội dung"
+        )}
       </Button>
     </div>
   );

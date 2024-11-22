@@ -1,21 +1,21 @@
 import { queryClient } from "@/provider/TanStackProvider";
-import { aiLongTailKeyword } from "@/service/axios/AIWriterApi";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { aiVideoAdScript } from "../../axios/AIWriterApi";
 
-export const useAiLongTailKeyword = (
-  hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormLongTailKeywords, unknown> => {
-  console.log(hideToast);
+export const useAiAdVideoScript = (
+  hidenToast?: boolean
+): UseMutationResult<IResult, Error, IFormVideoAdScript, unknown> => {
+  console.log(hidenToast);
   return useMutation({
-    mutationFn: aiLongTailKeyword.create,
+    mutationFn: aiVideoAdScript.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
         toast.success("Thành công");
       } else {
         return;
       }
-      queryClient.setQueryData([aiLongTailKeyword.queryKey], isSuccess);
+      queryClient.setQueryData([aiVideoAdScript.queryKey], isSuccess);
     },
   });
 };

@@ -31,7 +31,7 @@ const InputContent = () => {
         name={"brand"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -39,7 +39,7 @@ const InputContent = () => {
         name={"link"}
         placeholder="Link URL cover Email"
         title="Link URL cover Email"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[50px]"
         formik={formik}
       />
@@ -47,7 +47,7 @@ const InputContent = () => {
         name={"email_content"}
         placeholder="Nội dung Email"
         title="Nội dung Email"
-        clsTitle="font-bold italic"
+        clsTitle="font-bold mb-1 italic"
         className="h-[150px]"
         formik={formik}
       />
