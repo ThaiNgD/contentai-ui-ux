@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/helper/function";
+import { useDeleteConversationById } from "@/service/ai-chat/useDeleteConversationById";
 import { useFetchConversationById } from "@/service/ai-chat/useFetchConversationById";
 import { conversationApi } from "@/service/axios/conversationApi";
 import { useQueryClient } from "@tanstack/react-query";
@@ -9,12 +10,14 @@ import { FaLink } from "react-icons/fa6";
 import { IoMdTrash } from "react-icons/io";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
+
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
   chat: IConversationResult;
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
   selectedChatId?: string | undefined;
   setSelectedChatId?: Dispatch<SetStateAction<string | undefined>>;
+  refetch?: () => Promise<void>;
 }
 const ChatDisplayContainer = ({
   chat,
@@ -26,17 +29,46 @@ const ChatDisplayContainer = ({
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
   const { data } = useFetchConversationById(chat.id);
+
+  // Sử dụng mutation để xóa
+  const deleteMutation = useDeleteConversationById(chat.id, () => {
+    // Callback khi xóa thành công
+    queryClient.invalidateQueries({
+      queryKey: ["all-chat"], // Định nghĩa query key
+    });
+    // Xóa cache danh sách
+    if (selectedChatId === chat.id) {
+      setSelectedChatId?.(undefined);
+    }
+  });
+
+  const handleDelete = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setChat(undefined);
+
+    deleteMutation.mutate(chat.id);
+    // await refetch();
+    // e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+    // if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
+    //   deleteMutation.mutate(chat.id); // Thực thi mutation để xóa
+    //   refetch();
+    //   setChat(undefined); // Reset chat hiện tại nếu bị xóa
+    // }
+  };
+
   const handleMouseEnter = (chatId: string) => {
     queryClient.prefetchQuery({
       queryKey: ["chat", chatId],
       queryFn: () => conversationApi.getConversationByParams(chatId),
     });
   };
+
   useEffect(() => {
     if (data && isClicked) {
       setChat(data);
     }
   }, [data, isClicked]);
+
   useEffect(() => {
     if (selectedChatId !== chat.id) {
       setIsClicked(false);
@@ -56,9 +88,6 @@ const ChatDisplayContainer = ({
         setIsClicked(true);
         setSelectedChatId?.(chat.id);
       }}
-      // onMouseEnter={() => {
-      //   handleMouseEnter(chat.id);
-      // }}
     >
       <div
         className={cn("p-2 shadow-inner bg-gray-100 rounded-full h-fit w-fit")}
@@ -86,10 +115,18 @@ const ChatDisplayContainer = ({
           {chat?.createdAt}
         </p>
       </div>
-      <div className="absolute invisible group-hover:visible top-2 duration-200 right-4 group-hover:right-[48px] z-50 p-2 rounded-full hover:text-yellow-300 border">
+      <div
+        className="absolute invisible group-hover:visible top-2 duration-200 right-4 group-hover:right-[48px] z-50 p-2 rounded-full hover:text-yellow-300 border"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <MdEdit />
       </div>
-      <div className="absolute invisible group-hover:visible top-2 duration-200 right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border">
+      <div
+        className="absolute invisible group-hover:visible top-2 duration-200 right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border"
+        onClick={handleDelete} // Gắn sự kiện xóa vào nút
+      >
         <IoMdTrash />
       </div>
     </div>

@@ -7,7 +7,8 @@ export const useDeleteConversationById = (
   onError?: (error: Error) => void // Optional callback for error
 ): UseMutationResult<IConversationDetail, Error> => {
   return useMutation({
-    mutationFn: () => conversationApi.deleteConversationById(chatId), // Giả sử API có phương thức deleteConversationById
+    mutationFn: async () =>
+      await conversationApi.deleteConversationById(chatId), // Giả sử API có phương thức deleteConversationById
     onSuccess: () => {
       // Xử lý sau khi thành công (ví dụ, gọi lại callback onSuccess)
       if (onSuccess) onSuccess();
