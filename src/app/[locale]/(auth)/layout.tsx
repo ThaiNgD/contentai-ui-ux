@@ -1,12 +1,19 @@
 import BackGroundImage from "@/assets/images/banner-load.png";
 import LogoImage from "@/assets/images/content-ai-2.png";
 import ChangeLanguage from "@/components/ChangeLanguage";
+import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-export default function layout({
+export default async function layout({
+  params,
   children,
 }: Readonly<{
+  params: Promise<{
+    locale: string;
+  }>;
   children: React.ReactNode;
 }>) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <div
       className={`px-[30px] flex items-center justify-between bg-white h-screen`}

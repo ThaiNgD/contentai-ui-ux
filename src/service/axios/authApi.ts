@@ -10,6 +10,7 @@ export interface IAuthToken {
 export interface IResultAuth {
   access_token: IAuthToken;
   refresh_token: IAuthToken;
+  api_ai_token: IAuthToken;
 }
 
 export const authApi = {

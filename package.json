@@ -20,6 +20,7 @@
     "flowbite": "^2.5.2",
     "flowbite-react": "^0.10.2",
     "formik": "^2.4.6",
+    "hotkeys-js": "^3.13.7",
     "http-proxy": "^1.18.1",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",

@@ -1,5 +1,5 @@
 import {
-  getAccessToken,
+  getApiAiToken,
   getRefreshToken,
   removeAuthToken,
   routerPath,
@@ -7,13 +7,15 @@ import {
 } from "@/config";
 import { joinPathParent } from "@/helper/function";
 import Axios from "axios";
-import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 
 export const AUTH_TOKEN = process.env.NEXT_PUBLIC_AUTH_TOKEN || "MKTtoken";
+export const API_AI_TOKEN =
+  process.env.NEXT_PUBLIC_API_AI_TOKEN || "MKapiaiTtoken";
 export const REFRESH_TOKEN =
   process.env.NEXT_PUBLIC_REFRESH_TOKEN || "MKTrefresh"; // Update Start: Thêm key refresh token
-export const BASE_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:5000";
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_URL || "https://content-ai-c4rx.onrender.com";
 
 const axiosClient = Axios.create({
   baseURL: joinPathParent(BASE_URL, "/api/v1").slice(1),
@@ -25,9 +27,9 @@ const axiosClient = Axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use(
   async function (config) {
-    const mktToken = getAccessToken();
-    if (mktToken) {
-      config.headers.Authorization = `Bearer ${mktToken}`;
+    const mktApiAiToken = getApiAiToken();
+    if (mktApiAiToken) {
+      config.headers.Authorization = `Bearer ${mktApiAiToken}`;
     }
     return config;
   },
@@ -79,7 +81,7 @@ axiosClient.interceptors.response.use(
 
     if (message && !isPathLogout) {
       const msg = Array.isArray(message) ? message?.[0] : message;
-      toast.error(msg);
+      // toast.error(msg);
       console.log(msg);
     }
     return Promise.reject(error);

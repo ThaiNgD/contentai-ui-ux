@@ -22,7 +22,7 @@ const FormInputContent = ({ setCkData }: InputProps) => {
       module: "",
       tone: "",
       language: "",
-      range: 500,
+      range: null,
     },
     onSubmit: (values) => {
       mutateFn(values);

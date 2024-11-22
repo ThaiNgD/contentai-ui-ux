@@ -6,6 +6,6 @@ declare global {
     tone: string;
     language: string;
     module: string;
-    range: number;
+    range: number | null;
   };
 }

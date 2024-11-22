@@ -50,8 +50,8 @@ const HeaderAccountDropdownInfo = () => {
             onMouseOver={handleToggleOpenAccountInfo}
           />
           <div className="p-2 flex flex-col items-end">
-            <p className="text-base font-bold">{user?.[0].username}</p>
-            <span className="text-sm opacity-70">{user?.[0].email}</span>
+            <p className="text-base font-bold">{user?.user.username}</p>
+            <span className="text-sm opacity-70">{user?.user.email}</span>
           </div>
         </div>
         <div
