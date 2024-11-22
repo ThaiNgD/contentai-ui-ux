@@ -42,6 +42,7 @@ const ChatDisplayContainer = ({
       setIsClicked(false);
     }
   });
+
   return (
     <div
       className={cn(
@@ -50,12 +51,14 @@ const ChatDisplayContainer = ({
       )}
       role="button"
       onClick={(): void => {
+        handleMouseEnter(chat.id);
+
         setIsClicked(true);
         setSelectedChatId?.(chat.id);
       }}
-      onMouseEnter={() => {
-        handleMouseEnter(chat.id);
-      }}
+      // onMouseEnter={() => {
+      //   handleMouseEnter(chat.id);
+      // }}
     >
       <div
         className={cn("p-2 shadow-inner bg-gray-100 rounded-full h-fit w-fit")}

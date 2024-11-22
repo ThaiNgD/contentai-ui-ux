@@ -58,7 +58,7 @@ axiosClient.interceptors.response.use(
       if (refreshToken) {
         try {
           const { accessToken } = await Axios.post(
-            `${BASE_URL}/auth/refresh`,
+            `${BASE_URL}/api/v1/auth/refresh`,
             null,
             {
               headers: { Authorization: `Bearer ${refreshToken}` },
