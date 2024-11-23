@@ -38,7 +38,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold mb-1 italic"
-        className="h-[50px]"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <TextAreaField
@@ -46,7 +46,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Nội dung kịch bản"
         title="Nội dung kịch bản"
         clsTitle="font-bold mb-1 italic"
-        className="h-[150px]"
+        className="h-[150px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <SelectField

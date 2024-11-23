@@ -16,6 +16,7 @@ const PDFChatContainer = () => {
   return (
     <div className="flex flex-col justify-between gap-2">
       <div className="p-[30px] h-full flex flex-col gap-3 justify-between">
+        {/* {file && <PDFViewer fileSrc={URL.createObjectURL(file)} />} */}
         {isChat ? (
           <>
             <div className="flex flex-col h-full overflow-auto pb-4 gap-4">
