@@ -14,8 +14,7 @@ export const API_AI_TOKEN =
   process.env.NEXT_PUBLIC_API_AI_TOKEN || "MKapiaiTtoken";
 export const REFRESH_TOKEN =
   process.env.NEXT_PUBLIC_REFRESH_TOKEN || "MKTrefresh"; // Update Start: Thêm key refresh token
-export const BASE_URL =
-  process.env.NEXT_PUBLIC_URL || "https://content-ai-c4rx.onrender.com";
+export const BASE_URL = "http://localhost:5000/";
 
 const axiosClient = Axios.create({
   baseURL: joinPathParent(BASE_URL, "/api/v1").slice(1),
@@ -60,7 +59,7 @@ axiosClient.interceptors.response.use(
       if (refreshToken) {
         try {
           const { accessToken } = await Axios.post(
-            `${BASE_URL}/auth/refresh`,
+            `${BASE_URL}/api/v1/auth/refresh`,
             null,
             {
               headers: { Authorization: `Bearer ${refreshToken}` },
