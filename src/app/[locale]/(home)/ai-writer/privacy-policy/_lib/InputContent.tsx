@@ -39,7 +39,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Tên thương hiệu"
         title="Tên thương hiệu"
         clsTitle="font-bold mb-1 italic"
-        className="h-[50px]"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <TextAreaField

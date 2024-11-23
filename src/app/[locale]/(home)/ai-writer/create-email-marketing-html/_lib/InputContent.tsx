@@ -32,7 +32,7 @@ const InputContent = () => {
         placeholder="Thương hiệu"
         title="Thương hiệu"
         clsTitle="font-bold mb-1 italic"
-        className="h-[50px]"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <InputField
@@ -40,7 +40,7 @@ const InputContent = () => {
         placeholder="Link URL cover Email"
         title="Link URL cover Email"
         clsTitle="font-bold mb-1 italic"
-        className="h-[50px]"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <TextAreaField
@@ -48,7 +48,7 @@ const InputContent = () => {
         placeholder="Nội dung Email"
         title="Nội dung Email"
         clsTitle="font-bold mb-1 italic"
-        className="h-[150px]"
+        className="h-[150px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <SelectField
