@@ -83,10 +83,10 @@ const ChatDisplayContainer = ({
           {chat?.createdAt}
         </p>
       </div>
-      <div className="absolute invisible group-hover:visible top-2 duration-200 right-4 group-hover:right-[48px] z-50 p-2 rounded-full hover:text-yellow-300 border">
+      <div className="absolute invisible group-hover:visible top-2 duration-200 right-4 group-hover:right-[48px] z-50 p-2 rounded-full shadow-inner hover:text-yellow-300 border">
         <MdEdit />
       </div>
-      <div className="absolute invisible group-hover:visible top-2 duration-200 right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border">
+      <div className="absolute invisible group-hover:visible top-2 duration-200 shadow-inner right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border">
         <IoMdTrash />
       </div>
     </div>
