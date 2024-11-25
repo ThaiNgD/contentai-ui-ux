@@ -2,11 +2,14 @@
 import BackgrounDashboard from "@/assets/images/bg-dashboard-v2.png";
 import InfoCard from "@/components/DashboardComponent/InfoCard";
 import ProgressBar from "@/components/DashboardComponent/ProgressBar";
+import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FaAddressBook } from "react-icons/fa";
 const DashboardInfo = () => {
   const t = useTranslations("dashboard");
+  const { data: info } = useFetchUserInfo();
+  console.log(info);
   return (
     <>
       <div
@@ -18,7 +21,7 @@ const DashboardInfo = () => {
         <div className="text-left mt-[30px] w-[35%]">
           <h6 className="text-black dark:text-white text-[30px] leading-[32px] font-bold text-left">
             {t("welcome")}, {/* {name} */}
-            <span className="">Thái</span>
+            <span className="">{}</span>
           </h6>
           <div className="flex justify-start gap-2 items-end">
             <div className="text-black dark:text-white text-base">
