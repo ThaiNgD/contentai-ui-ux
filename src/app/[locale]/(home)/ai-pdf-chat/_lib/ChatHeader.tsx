@@ -4,7 +4,7 @@ import { FaShareFromSquare } from "react-icons/fa6";
 import { TbFileExport } from "react-icons/tb";
 const ChatHeader = () => {
   return (
-    <div className="w-full flex gap-2 items-center justify-between px-5">
+    <div className="w-full h-[15%] flex gap-2 items-center justify-between px-5">
       <div className="flex gap-2 items-center">
         <Image
           src={Account}

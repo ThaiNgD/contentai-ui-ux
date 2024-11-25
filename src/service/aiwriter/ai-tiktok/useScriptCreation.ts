@@ -1,23 +1,21 @@
 import { queryClient } from "@/provider/TanStackProvider";
-import { aiWebsiteIntroduction } from "@/service/axios/AIWriterApi";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { aiTikTokVideoScript } from "../../axios/AIWriterApi";
 
-export const useAiWebsiteIntroduction = (): UseMutationResult<
-  IResult,
-  Error,
-  IFormWebsiteIntroduction,
-  unknown
-> => {
+export const useScriptCreation = (
+  hidenToast?: boolean
+): UseMutationResult<IResult, Error, IFormTikTokVideoScript, unknown> => {
+  console.log(hidenToast);
   return useMutation({
-    mutationFn: aiWebsiteIntroduction.create,
+    mutationFn: aiTikTokVideoScript.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
         toast.success("Thành công");
       } else {
         return;
       }
-      queryClient.setQueryData([aiWebsiteIntroduction.queryKey], isSuccess);
+      queryClient.setQueryData([aiTikTokVideoScript.queryKey], isSuccess);
     },
   });
 };

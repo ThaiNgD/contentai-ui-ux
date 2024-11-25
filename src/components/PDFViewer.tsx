@@ -9,7 +9,7 @@ interface PDFViewerProps {
 
 const PDFViewer = ({ fileSrc, height, width }: PDFViewerProps) => {
   return (
-    <div className={cn("h-[250px]", height, width)}>
+    <div className={cn("", height, width)}>
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
         <Viewer fileUrl={fileSrc} />
       </Worker>

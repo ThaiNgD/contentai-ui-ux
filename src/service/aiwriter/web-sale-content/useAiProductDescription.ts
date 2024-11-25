@@ -1,21 +1,21 @@
 import { queryClient } from "@/provider/TanStackProvider";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { aiWebsiteOutlineMenu } from "../../axios/AIWriterApi";
+import { aiProductDescriptionPost } from "../../axios/AIWriterApi";
 
-export const useAiOutlineMenu = (
+export const useAiProductDescription = (
   hidenToast?: boolean
-): UseMutationResult<IResult, Error, IFormOutlineMenu, unknown> => {
+): UseMutationResult<IResult, Error, IFormProductDescriptionPost, unknown> => {
   console.log(hidenToast);
   return useMutation({
-    mutationFn: aiWebsiteOutlineMenu.create,
+    mutationFn: aiProductDescriptionPost.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
         toast.success("Thành công");
       } else {
         return;
       }
-      queryClient.setQueryData([aiWebsiteOutlineMenu.queryKey], isSuccess);
+      queryClient.setQueryData([aiProductDescriptionPost.queryKey], isSuccess);
     },
   });
 };

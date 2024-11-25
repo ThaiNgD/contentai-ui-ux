@@ -1,21 +1,21 @@
 import { queryClient } from "@/provider/TanStackProvider";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { aiWebsiteOutlineMenu } from "../../axios/AIWriterApi";
+import { aiYoutubeVideoDescription } from "../../axios/AIWriterApi";
 
-export const useAiOutlineMenu = (
+export const useAiCreateYoutubeAd = (
   hidenToast?: boolean
-): UseMutationResult<IResult, Error, IFormOutlineMenu, unknown> => {
+): UseMutationResult<IResult, Error, IFormYoutubeVideoDescription, unknown> => {
   console.log(hidenToast);
   return useMutation({
-    mutationFn: aiWebsiteOutlineMenu.create,
+    mutationFn: aiYoutubeVideoDescription.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
         toast.success("Thành công");
       } else {
         return;
       }
-      queryClient.setQueryData([aiWebsiteOutlineMenu.queryKey], isSuccess);
+      queryClient.setQueryData([aiYoutubeVideoDescription.queryKey], isSuccess);
     },
   });
 };
