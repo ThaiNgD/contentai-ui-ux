@@ -22,7 +22,7 @@ const InputContent = ({ setCkData }: InputProps) => {
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
       mutate(values);
     },
   });
@@ -50,7 +50,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Mô tả sản phẩm/dịch vụ"
         title="Mô tả sản phẩm/dịch vụ"
         clsTitle="font-bold mb-1 italic"
-        clsTextArea="!h-[150px] !bg-[#F5F9FC] shadow-inner"
+        clsTextArea="h-[150px] min-h-[50px] max-h-[400px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <SelectField
