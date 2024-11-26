@@ -23,14 +23,14 @@ const InputContent = ({ setCkData }: InputProps) => {
       language: "",
     },
     onSubmit: async (values) => {
-     mutate(values)
+      mutate(values);
     },
   });
-   useEffect(() => {
-     if (data && data.result) {
-       setCkData(data.result);
-     }
-   }, [data]);
+  useEffect(() => {
+    if (data && data.result) {
+      setCkData(data.result);
+    }
+  }, [data]);
   return (
     <div className="flex flex-col h-full p-[30px] shadow-md bg-white rounded-xl">
       <form
@@ -43,7 +43,7 @@ const InputContent = ({ setCkData }: InputProps) => {
           placeholder="Thương hiệu"
           title="Thương hiệu"
           clsTitle="font-bold mb-1 italic"
-          className="h-[50px] bg-[#F5F9FC] shadow-inner"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <InputField
@@ -51,7 +51,7 @@ const InputContent = ({ setCkData }: InputProps) => {
           placeholder="Từ khóa"
           title="Từ khóa"
           clsTitle="font-bold mb-1 italic"
-          className="h-[50px] bg-[#F5F9FC] shadow-inner"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <SelectField

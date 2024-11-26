@@ -52,7 +52,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Mô tả sản phẩm"
         title="Mô tả sản phẩm"
         clsTitle="font-bold mb-1 italic"
-        className="h-[150px] !bg-[#F5F9FC] shadow-inner"
+        className="h-[150px] min-h-[50px] max-h-[400px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <TextAreaField
@@ -60,7 +60,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Chân dung khách hàng"
         title="Chân dung khách hàng"
         clsTitle="font-bold mb-1 italic"
-        className="h-[150px] min-h-[50px] max-h-[400px]"
+        className="h-[150px] !bg-[#F5F9FC] shadow-inner min-h-[50px] max-h-[400px]"
         formik={formik}
       />
 

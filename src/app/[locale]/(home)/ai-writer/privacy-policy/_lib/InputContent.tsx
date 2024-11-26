@@ -51,7 +51,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Mô tả sản phẩm/dịch vụ"
         title="Mô tả sản phẩm/dịch vụ"
         clsTitle="font-bold mb-1 italic"
-        clsTextArea="min-h-[50px] max-h-[400px]"
+        clsTextArea="min-h-[50px] h-[125px] !bg-[#F5F9FC] shadow-inner max-h-[400px]"
         formik={formik}
       />
       <TextAreaField
@@ -59,7 +59,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Chân dung khách hàng"
         title="Chân dung khách hàng"
         clsTitle="font-bold mb-1 italic"
-        clsTextArea="min-h-[50px] max-h-[400px]"
+        clsTextArea="min-h-[50px] h-[125px] !bg-[#F5F9FC] shadow-inner max-h-[400px]"
         formik={formik}
       />
       <SelectField
