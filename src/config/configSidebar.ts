@@ -43,7 +43,7 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     link: "ai-chat",
     title: "AI Chat",
     icon: MdMarkUnreadChatAlt,
-    isDisable: true,
+    // isDisable: true,
   },
   {
     link: "ai-vision",

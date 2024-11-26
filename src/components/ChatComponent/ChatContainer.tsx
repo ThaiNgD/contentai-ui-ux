@@ -18,6 +18,7 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
   const onClickButton = (): void => {
     setIsChat(true);
   };
+  console.log("chat?.messages?", chat);
 
   return (
     <div className="flex flex-col justify-between gap-2">
@@ -57,7 +58,7 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
               }
             })}
           </div>
-          <ChatInput />
+          <ChatInput threadId={chat?.threadId} />
         </div>
       )}
     </div>

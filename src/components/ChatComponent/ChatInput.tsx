@@ -5,8 +5,26 @@ import { IoSend } from "react-icons/io5";
 import { PiOpenAiLogo } from "react-icons/pi";
 import TextAreaField from "../CustomField/TextAreaField";
 import ModalSelectModule from "../Modal/ModalSelectModule";
-const ChatInput = () => {
+import { useAddMessage } from "@/service/ai-chat/useAddMessage";
+
+const ChatInput = ({ threadId }: { threadId: string }) => {
   const [isShowModal, setIsShowModal] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const addMessageMutation = useAddMessage(message, threadId);
+
+  const handleSendMessage = () => {
+    if (!message.trim()) return; // Không gửi tin nhắn rỗng
+    addMessageMutation.mutate(message, {
+      onSuccess: () => {
+        setMessage(""); // Xóa nội dung text sau khi gửi thành công
+      },
+      onError: (error) => {
+        console.error("Failed to send message:", error);
+      },
+    });
+  };
+
   return (
     <>
       <div className="flex items-center p-2 px-4 h-fit gap-2 bg-gray-200 justify-between rounded-xl ">
@@ -19,6 +37,10 @@ const ChatInput = () => {
           classWapper="w-[calc(100%-150px)]"
           clsTextArea="max-h-[100px] h-[40px] min-h-[40px] bg-white rounded-l-xl"
           placeholder="Nhập tin nhắn"
+          value={message}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setMessage(e.target.value)
+          }
         />
         <div className="flex gap-2 items-center">
           <div
@@ -31,6 +53,7 @@ const ChatInput = () => {
           <div
             className="p-2 ml-2 h-fit hover:scale-110 bg-blue-500 rounded-full"
             role="button"
+            onClick={handleSendMessage}
           >
             <IoSend size={20} className="-rotate-12 text-white" />
           </div>

@@ -47,7 +47,7 @@ const ChatList = ({
           updatedAt: new Date(),
         }}
       /> */}
-      {allChats?.conversation.map((chat, index) => {
+      {allChats?.conversation?.map((chat, index) => {
         return (
           <ChatDisplayContainer
             selectedChatId={selectedChatId}

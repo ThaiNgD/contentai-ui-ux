@@ -19,6 +19,7 @@ interface ChatDisplayContainerProps {
   setSelectedChatId?: Dispatch<SetStateAction<string | undefined>>;
   refetch?: () => Promise<void>;
 }
+
 const ChatDisplayContainer = ({
   chat,
   isPdfChat,
@@ -28,52 +29,54 @@ const ChatDisplayContainer = ({
 }: ChatDisplayContainerProps) => {
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
-  const { data } = useFetchConversationById(chat.id);
+  const [shouldFetch, setShouldFetch] = useState(false);
 
-  // Sử dụng mutation để xóa
-  const deleteMutation = useDeleteConversationById(chat.id, () => {
-    // Callback khi xóa thành công
-    queryClient.invalidateQueries({
-      queryKey: ["all-chat"], // Định nghĩa query key
-    });
-    // Xóa cache danh sách
-    if (selectedChatId === chat.id) {
-      setSelectedChatId?.(undefined);
-    }
-  });
+  // Sử dụng hook fetch dữ liệu
+  const { data } = useFetchConversationById(chat.id, shouldFetch);
 
+  // Mutation xóa cuộc hội thoại
+  const deleteMutation = useDeleteConversationById(chat.id);
+
+  // Hàm xử lý xóa
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    setChat(undefined);
-
-    deleteMutation.mutate(chat.id);
-    // await refetch();
-    // e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
-    // if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
-    //   deleteMutation.mutate(chat.id); // Thực thi mutation để xóa
-    //   refetch();
-    //   setChat(undefined); // Reset chat hiện tại nếu bị xóa
-    // }
+    if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
+      setChat(undefined);
+      deleteMutation.mutate(chat.id);
+    }
   };
 
-  const handleMouseEnter = (chatId: string) => {
-    queryClient.prefetchQuery({
-      queryKey: ["chat", chatId],
-      queryFn: () => conversationApi.getConversationByParams(chatId),
-    });
+  // Prefetch dữ liệu khi hover
+  const handleMouseEnter = async (chatId: string) => {
+    if (!queryClient.getQueryData(["chatDetail", chatId])) {
+      await queryClient.prefetchQuery({
+        queryKey: ["chatDetail", chatId],
+        queryFn: () => conversationApi.getConversationById(chatId),
+      });
+    }
   };
 
+  // Xử lý khi click vào chat
+  const handleClick = () => {
+    setIsClicked(true);
+    setSelectedChatId?.(chat.id);
+    setShouldFetch(true); // Bật fetch dữ liệu chi tiết
+  };
+
+  // Cập nhật state khi có dữ liệu mới
   useEffect(() => {
     if (data && isClicked) {
       setChat(data);
     }
-  }, [data, isClicked]);
+  }, [data, isClicked, setChat]);
 
+  // Reset trạng thái khi đổi selected chat
   useEffect(() => {
     if (selectedChatId !== chat.id) {
       setIsClicked(false);
+      setShouldFetch(false); // Tắt fetch nếu không phải chat đang chọn
     }
-  });
+  }, [selectedChatId, chat.id]);
 
   return (
     <div
@@ -82,11 +85,9 @@ const ChatDisplayContainer = ({
         isClicked && "border-l-2 border-l-blue-500"
       )}
       role="button"
-      onClick={(): void => {
-        handleMouseEnter(chat.id);
-
-        setIsClicked(true);
-        setSelectedChatId?.(chat.id);
+      onClick={handleClick} // Fetch khi click
+      onMouseOver={(): void => {
+        handleMouseEnter(chat.id); // Prefetch khi hover
       }}
     >
       <div
@@ -98,7 +99,7 @@ const ChatDisplayContainer = ({
           <IoChatboxEllipses size={20} />
         )}
       </div>
-      <div className="flex flex-col justify-center ">
+      <div className="flex flex-col justify-center">
         <span>{chat?.conversationName}</span>
         {isPdfChat && (
           <div className="flex gap-2 w-full">
@@ -117,15 +118,13 @@ const ChatDisplayContainer = ({
       </div>
       <div
         className="absolute invisible group-hover:visible top-2 duration-200 right-4 group-hover:right-[48px] z-50 p-2 rounded-full hover:text-yellow-300 border"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
+        onClick={(e) => e.stopPropagation()}
       >
         <MdEdit />
       </div>
       <div
         className="absolute invisible group-hover:visible top-2 duration-200 right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border"
-        onClick={handleDelete} // Gắn sự kiện xóa vào nút
+        onClick={handleDelete}
       >
         <IoMdTrash />
       </div>
