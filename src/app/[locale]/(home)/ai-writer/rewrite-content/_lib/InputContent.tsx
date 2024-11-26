@@ -42,7 +42,7 @@ const InputContent = ({ setCkData }: InputProps) => {
           placeholder="Đoạn văn cần viết lại"
           title="Đoạn văn cần viết lại"
           clsTitle="font-bold mb-1 italic"
-          className="h-300px] min-h-[50px] max-h-[400px] !bg-[#F5F9FC] shadow-inner"
+          className="h-[300px] min-h-[50px] max-h-[400px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
         />
         <SelectField
