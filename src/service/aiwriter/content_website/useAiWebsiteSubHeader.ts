@@ -1,22 +1,23 @@
+import { queryClient } from "@/provider/TanStackProvider";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { console } from "inspector";
-import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 import { aiWebsiteSubHeader } from "../../axios/AIWriterApi";
 
-export const useAiWebsiteSubHeader = (
-  hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormWebsiteSubHeader, unknown> => {
-  const router = useRouter();
-  console.log(hideToast);
+export const useAiWebsiteSubHeader = (): UseMutationResult<
+  IResult,
+  Error,
+  IFormWebsiteSubHeader,
+  unknown
+> => {
   return useMutation({
     mutationFn: aiWebsiteSubHeader.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/website-subtitle");
+        toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/home/ai-writer/website-subtitle")) {
-        }
+        return;
       }
+      queryClient.setQueryData([aiWebsiteSubHeader.queryKey], isSuccess);
     },
   });
 };

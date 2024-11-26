@@ -22,7 +22,7 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     link: "content-management",
     title: "Quản lý nội dung",
     icon: FaFolderOpen,
-    isDisable: true,
+    // isDisable: true,
   },
   {
     link: "ai-writer",

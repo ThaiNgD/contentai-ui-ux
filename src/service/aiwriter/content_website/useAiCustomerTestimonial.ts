@@ -1,22 +1,25 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { console } from "inspector";
-import { useRouter } from "next/router";
+import {
+  useMutation,
+  UseMutationResult,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import { aiCustomerTestimonial } from "../../axios/AIWriterApi";
 
 export const useAiCustomerTestimonial = (
   hideToast?: boolean
 ): UseMutationResult<IResult, Error, IFormCustomerTestimonial, unknown> => {
-  const router = useRouter();
+  const queryClient = useQueryClient();
   console.log(hideToast);
   return useMutation({
     mutationFn: aiCustomerTestimonial.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/customer-testimonials");
+        toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/home/ai-writer/customer-testimonials")) {
-        }
+        return;
       }
+      queryClient.setQueryData([aiCustomerTestimonial.queryKey], isSuccess);
     },
   });
 };

@@ -42,7 +42,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Tên thương hiệu"
         title="Tên thương hiệu"
         clsTitle="font-bold italic mb-1"
-        className="h-[50px]"
+        className="h-[50px] shadow-inner !bg-[#F5F9FC]"
         formik={formik}
       />
       <TextAreaField
@@ -50,7 +50,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         placeholder="Nhập mô tả"
         title="Mô tả sản phẩm"
         clsTitle="mb-1"
-        clsTextArea="min-h-[50px] h-[150px] max-h-[400px]"
+        clsTextArea="min-h-[50px] !bg-[#F5F9FC] shadow-inner h-[150px] max-h-[400px]"
         formik={formik}
       />
       <TextAreaField
@@ -58,7 +58,7 @@ const InputContent = ({ setCkData }: InputProps) => {
         title="Nội dung quảng cáo của đối thủ"
         placeholder="Nhập nội dung"
         clsTitle="mb-1"
-        clsTextArea="min-h-[50px] h-[150px] max-h-[400px]"
+        clsTextArea="min-h-[50px] shadow-inner !bg-[#F5F9FC] h-[150px] max-h-[400px]"
         formik={formik}
       />
       <SelectField

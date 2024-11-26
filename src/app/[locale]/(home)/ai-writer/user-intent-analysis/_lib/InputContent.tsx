@@ -3,29 +3,32 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiUserIntentAnalytics } from "@/service/axios/AIWriterApi";
+import { cn } from "@/helper/function";
+import { useAiIntentAnalysis } from "@/service/aiwriter/seo_optimization/useAiUserIntentAnalysis";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
+  const { mutate, isPending, data } = useAiIntentAnalysis();
   const formik = useFormik<IFormUserIntentAnalysis>({
     initialValues: {
       keywords: "",
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
-      await aiUserIntentAnalytics.create(values).then((values) => {
-        // Handle form submission
-        console.log(values);
-        setCkData(values.result);
-      });
+    onSubmit: (values) => {
+      mutate(values);
     },
   });
+  useEffect(() => {
+    if (data?.result) {
+      setCkData(data?.result);
+    }
+  }, [data]);
   return (
     <div className="flex p-[30px] shadow-md bg-white rounded-xl flex-col h-full">
       <form
@@ -37,18 +40,9 @@ const InputContent = ({ setCkData }: InputProps) => {
           name={"keywords"}
           placeholder="Từ khóa"
           title="Từ khóa"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[50px] !bg-[#F5F9FC] shadow-inner"
           formik={formik}
-        />
-        <InputField
-          name={"number_ouput"}
-          placeholder="Số lượng kết quả trả ra"
-          title="Số lượng kết quả trả ra"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
-          formik={formik}
-          type="number"
         />
         <SelectField
           clsLabelWrapper="font-bold italic"
@@ -68,9 +62,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       <Button
         form="form-submit"
         type="submit"
-        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className={cn(
+          "bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5",
+          isPending && "pointer-events-none"
+        )}
       >
-        Tạo nội dung
+        {isPending ? (
+          <div className="loading size-[24px]"></div>
+        ) : (
+          "Tạo nội dung"
+        )}
       </Button>
     </div>
   );

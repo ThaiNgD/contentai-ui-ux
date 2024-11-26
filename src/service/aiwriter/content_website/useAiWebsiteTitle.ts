@@ -1,23 +1,23 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { queryClient } from "@/provider/TanStackProvider";
 import { aiWebsiteTitle } from "@/service/axios/AIWriterApi";
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
-export const useAiWebsiteTitle = (
-  hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormWebsiteTitle, unknown> => {
-  const router = useRouter();
-  console.log(hideToast);
+export const useAiWebsiteTitle = (): UseMutationResult<
+  IResult,
+  Error,
+  IFormWebsiteTitle,
+  unknown
+> => {
   return useMutation({
     mutationFn: aiWebsiteTitle.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/website-title");
-        //!hideToast && toast.success("Thành công");
+        toast.success("Thành công");
       } else {
-        if (!(location.pathname === "/home/ai-writer/website-title")) {
-          //!hideToast && toast.error("Thất bại");
-        }
+        return;
       }
+      queryClient.setQueryData([aiWebsiteTitle.queryKey], isSuccess);
     },
   });
 };

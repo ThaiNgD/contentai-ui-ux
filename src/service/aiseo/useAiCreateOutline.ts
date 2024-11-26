@@ -4,6 +4,7 @@ import {
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 export const useAiCreateOutline = (
   hideToast?: boolean
@@ -13,10 +14,12 @@ export const useAiCreateOutline = (
   return useMutation({
     mutationFn: aiCreateOutline.create,
     onSuccess: (isSuccess) => {
+      if (isSuccess) {
+        toast.success("Thành công");
+      } else {
+        return;
+      }
       queryClient.setQueryData([aiCreateOutline.queryKey], isSuccess);
-      queryClient.invalidateQueries({
-        queryKey: [aiCreateOutline.queryKey],
-      });
     },
   });
 };

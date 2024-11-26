@@ -25,14 +25,13 @@ const InputContent = ({ submitForm, isPending }: InputContentProps) => {
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
       submitForm(values);
     },
   });
-  // console.log(data?.result);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex p-[30px] shadow-md bg-white rounded-xl flex-col h-full">
       <form
         id="form-submit"
         onSubmit={formik.handleSubmit}
@@ -42,24 +41,24 @@ const InputContent = ({ submitForm, isPending }: InputContentProps) => {
           name={"keywords"}
           placeholder="Từ khóa"
           title="Từ khóa"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[50px] shadow-inner !bg-[#F5F9FC]"
           formik={formik}
         />
         <InputField
           name={"title"}
           placeholder="Tiêu đề"
           title="Tiêu đề"
-          clsTitle="font-bold italic"
-          className="h-[50px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[50px] shadow-inner !bg-[#F5F9FC]"
           formik={formik}
         />
         <TextAreaField
           name={"outline"}
           placeholder="Outline"
           title="Ounline"
-          clsTitle="font-bold italic"
-          className="h-[150px]"
+          clsTitle="font-bold mb-1 italic"
+          className="h-[150px] shadow-inner !bg-[#F5F9FC] min-h-[50px] max-h-[400px]"
           formik={formik}
         />
         <SelectField

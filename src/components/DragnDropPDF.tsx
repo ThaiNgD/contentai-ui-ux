@@ -28,7 +28,7 @@ const DragnDropPDF = ({
     if (!fileInput[0].type.includes("/pdf")) {
       toast.error("File không phải là PDF");
     } else if (fileInput && fileInput.length > 0) {
-      setSelectedFile?.(fileInput);
+      setSelectedFile?.(fileInput[0]);
       setFile(URL.createObjectURL(fileInput[0]));
       setIsFileEnter(false);
     }

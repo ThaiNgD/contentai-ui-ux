@@ -3,14 +3,16 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiLandingPageOutline } from "@/service/axios/AIWriterApi";
+import { cn } from "@/helper/function";
+import { useAiLandingPageOutline } from "@/service/aiwriter/web-sale-content/useAiLandingPageOutline";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
+  const { mutate, isPending, data } = useAiLandingPageOutline();
   const formik = useFormik<IFormLandingPageOutLine>({
     initialValues: {
       brandName: "",
@@ -18,14 +20,15 @@ const InputContent = ({ setCkData }: InputProps) => {
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
-      console.log(values);
-      await aiLandingPageOutline.create(values).then((values) => {
-        console.log(values);
-        setCkData(values.result);
-      });
+    onSubmit: (values) => {
+      mutate(values);
     },
   });
+  useEffect(() => {
+    if (data && data.result) {
+      setCkData(data.result);
+    }
+  }, [data]);
   return (
     <form
       id="form-submit"
@@ -36,16 +39,16 @@ const InputContent = ({ setCkData }: InputProps) => {
         name={"brandName"}
         placeholder="Thương hiệu"
         title="Thương hiệu"
-        clsTitle="font-bold italic"
-        className="h-[50px]"
+        clsTitle="font-bold mb-1 italic"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <InputField
         name={"keywords"}
         placeholder="Từ khóa mong muốn"
         title="Từ khóa mong muốn"
-        clsTitle="font-bold italic"
-        className="h-[50px]"
+        clsTitle="font-bold mb-1 italic"
+        className="h-[50px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <SelectField
@@ -65,9 +68,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       <Button
         form="form-submit"
         type="submit"
-        className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
+        className={cn(
+          "bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5",
+          isPending && "pointer-events-none"
+        )}
       >
-        Tạo nội dung
+        {isPending ? (
+          <div className="loading size-[24px]"></div>
+        ) : (
+          "Tạo nội dung"
+        )}
       </Button>
     </form>
   );
