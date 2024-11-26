@@ -27,7 +27,7 @@ const ImageChatContainer = () => {
               />
               <UserChatContent message="AI" imgUrl={userImage} />
             </div>
-            <ChatInput />
+            <ChatInput threadId="" />
           </>
         ) : (
           <>

@@ -23,7 +23,7 @@ const PDFChatContainer = () => {
               <UserChatContent isUser={true} userImage={userImage} />
               <UserChatContent imgUrl={userImage} />
             </div>
-            <ChatInput />
+            <ChatInput threadId="" />
           </>
         ) : (
           <>

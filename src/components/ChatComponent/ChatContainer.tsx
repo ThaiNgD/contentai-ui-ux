@@ -58,7 +58,7 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
               }
             })}
           </div>
-          <ChatInput threadId={chat?.threadId} />
+          <ChatInput threadId={chat?.threadId || ""} />
         </div>
       )}
     </div>
