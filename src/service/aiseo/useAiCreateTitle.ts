@@ -1,20 +1,25 @@
-import { aiCreateTitle } from "@/service/axios/aiSeoApi";
 import {
   useMutation,
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { aiCreateTitleSeo } from "../axios/AIWriterApi";
 
 export const useAiCreateTitle = (
   hideToast?: boolean
-): UseMutationResult<IResult, Error, IFormCreateTitle, unknown> => {
+): UseMutationResult<IResult, Error, IFormCreateTitleSeo, unknown> => {
   console.log(hideToast);
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: aiCreateTitle.create,
+    mutationFn: aiCreateTitleSeo.create,
     onSuccess: (isSuccess) => {
-      queryClient.setQueryData([aiCreateTitle.queryKey], isSuccess);
-      queryClient.invalidateQueries({ queryKey: [aiCreateTitle.queryKey] });
+      if (isSuccess) {
+        toast.success("Thành công");
+      } else {
+        return;
+      }
+      queryClient.setQueryData([aiCreateTitleSeo.queryKey], isSuccess);
     },
   });
 };

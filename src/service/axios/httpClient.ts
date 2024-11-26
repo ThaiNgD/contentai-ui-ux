@@ -15,7 +15,8 @@ export const API_AI_TOKEN =
 export const REFRESH_TOKEN =
   process.env.NEXT_PUBLIC_REFRESH_TOKEN || "MKTrefresh"; // Update Start: Thêm key refresh token
 export const BASE_URL = "http://localhost:5000/";
-
+//"http://localhost:5000/";
+//https://content-ai-c4rx.onrender.com/
 const axiosClient = Axios.create({
   baseURL: joinPathParent(BASE_URL, "/api/v1").slice(1),
   headers: {

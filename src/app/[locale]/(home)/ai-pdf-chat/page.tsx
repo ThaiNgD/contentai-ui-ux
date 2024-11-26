@@ -8,15 +8,15 @@ const Page = () => {
   return (
     <>
       <Header />
-      <div className="p-[20px] 2xl:px-[175px] px-[15px] bg-[#F5F9FC] h-[calc(100%-150px)]">
-        <div className="border divide-x  grid grid-cols-[22rem_minmax(0,1fr)] bg-white rounded-xl shadow-lg h-full">
+      <div className="p-[20px] 2xl:px-[50px] px-[15px] bg-[#F5F9FC] h-[calc(100%-150px)]">
+        <div className="border divide-x  grid grid-cols-[22rem_minmax(0,1fr)] bg-white rounded-xl shadow-lg max-h-full h-full">
           <div className="grid divide-y grid-rows-[15%,85%]">
             <ChatSearchBar />
-            <div className="w-full max-h-full">
+            <div className="w-full ">
               <ChatList />
             </div>
           </div>
-          <div className="grid divide-y grid-rows-[15%,85%]">
+          <div className="flex flex-col divide-y">
             <ChatHeader />
             <PDFChatContainer />
           </div>

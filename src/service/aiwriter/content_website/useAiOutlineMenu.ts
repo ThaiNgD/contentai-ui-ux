@@ -1,22 +1,21 @@
+import { queryClient } from "@/provider/TanStackProvider";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
-import { console } from "inspector";
-import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import { aiWebsiteOutlineMenu } from "../../axios/AIWriterApi";
 
-export const useAIOutlineMenu = (
-  hideToast?: boolean
+export const useAiOutlineMenu = (
+  hidenToast?: boolean
 ): UseMutationResult<IResult, Error, IFormOutlineMenu, unknown> => {
-  const router = useRouter();
-  console.log(hideToast);
+  console.log(hidenToast);
   return useMutation({
     mutationFn: aiWebsiteOutlineMenu.create,
     onSuccess: (isSuccess) => {
       if (isSuccess) {
-        router.push("/home/ai-writer/outline-homepage");
+        toast.success("Thành công");
       } else {
-        if (!(location.pathname === "home/ai-writer/outline-homepage")) {
-        }
+        return;
       }
+      queryClient.setQueryData([aiWebsiteOutlineMenu.queryKey], isSuccess);
     },
   });
 };
