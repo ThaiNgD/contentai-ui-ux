@@ -6,6 +6,8 @@ import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FaAddressBook } from "react-icons/fa";
+import { FaQuestion } from "react-icons/fa6";
+import { Tooltip } from "react-tooltip";
 const DashboardInfo = () => {
   const t = useTranslations("dashboard");
   const { data: info } = useFetchUserInfo();
@@ -67,28 +69,34 @@ const DashboardInfo = () => {
               1,000,000
             </p>
           </div> */}
-          <div className="text-center z-10">
-            <span className="text-[#FFB951] text-base font-black shadow-custom items-center">
+          <div className="text-center flex flex-col items-center z-10">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px] font-black shadow-custom items-center">
               {"Giới hạn token"}
             </span>
-            <p className="shadow-number font-weight-800 text-blue-500 items-center text-xl font-extrabold">
+            <p className="shadow-number be-vietnam-pro-medium  text-blue-500 items-center  text-xl">
               {info && info.token_limit ? info.token_limit : 0}
             </p>
+            <div className="w-fit token-limit-tooltip cursor-pointer border bg-black text-white rounded-full p-1 ">
+              <FaQuestion size={12} />
+            </div>
+            <Tooltip anchorSelect=".token-limit-tooltip" place={"bottom"}>
+              Số token tối đa được sử dụng
+            </Tooltip>
           </div>
           <div className="text-center  z-10 ">
-            <span className="text-[#FFB951] text-base font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px]  font-black shadow-custom items-center">
               {t("word_left")}
             </span>
-            <p className="shadow-number font-weight-800 text-blue-500 items-center text-xl font-extrabold">
+            <p className="shadow-number be-vietnam-pro-medium text-blue-500 items-center text-xl font-extrabold">
               {/* {formatNumberWithCommas(maxWordsUserUse)} */}
               10
             </p>
           </div>
           <div className="text-center z-10 ">
-            <span className="text-[#FFB951] text-base font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px]  font-black shadow-custom items-center">
               {t("image_left")}
             </span>
-            <p className="shadow-number font-weight-800 text-blue-500 items-center text-xl font-extrabold">
+            <p className="shadow-number be-vietnam-pro-medium font-weight-800  text-blue-500 items-center text-xl font-extrabold">
               {info && info.max_images
                 ? Number(info.max_images - info.images_used)
                 : 0}
@@ -96,10 +104,10 @@ const DashboardInfo = () => {
             </p>
           </div>
           <div className="text-center z-10 ">
-            <span className="text-[#FFB951] text-base font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px] font-black shadow-custom items-center">
               {t("second_number")}
             </span>
-            <p className="shadow-number font-extrabold text-blue-500 items-center text-xl ">
+            <p className="shadow-number be-vietnam-pro-medium font-extrabold text-blue-500 items-center text-xl ">
               {info && info.max_minute ? Number(info.max_minute * 60) : 0}
               {/* {maxMinute} */}
             </p>
