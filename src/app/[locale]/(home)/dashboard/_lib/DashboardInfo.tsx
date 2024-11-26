@@ -18,9 +18,25 @@ const DashboardInfo = () => {
           borderRadius: "30px",
         }}
       >
+        {info?.option === "FREE" && (
+          <div className="ribbon-wrapper-green">
+            <div className="ribbon-green">NEWS</div>
+          </div>
+        )}
+        {info?.option === "PRO" && (
+          <div className="ribbon-wrapper-green">
+            <div className="ribbon-green">NEWS</div>
+          </div>
+        )}
+        {info?.option === "PREMIUM" && (
+          <div className="ribbon-wrapper-green">
+            <div className="ribbon-green">NEWS</div>
+          </div>
+        )}
+
         <div className="text-left mt-[30px] w-[35%]">
           <h6 className="text-black dark:text-white text-[30px] leading-[32px] font-bold text-left">
-            {t("welcome")}, {/* {name} */}
+            {t("welcome")}, {info && info.name ? info.name : info?.email}
             <span className="">{}</span>
           </h6>
           <div className="flex justify-start gap-2 items-end">
@@ -53,10 +69,10 @@ const DashboardInfo = () => {
           </div> */}
           <div className="text-center z-10">
             <span className="text-[#FFB951] text-base font-black shadow-custom items-center">
-              {t("day_left")}
+              {"Giới hạn token"}
             </span>
             <p className="shadow-number font-weight-800 text-blue-500 items-center text-xl font-extrabold">
-              81
+              {info && info.token_limit ? info.token_limit : 0}
             </p>
           </div>
           <div className="text-center  z-10 ">
@@ -73,7 +89,9 @@ const DashboardInfo = () => {
               {t("image_left")}
             </span>
             <p className="shadow-number font-weight-800 text-blue-500 items-center text-xl font-extrabold">
-              10
+              {info && info.max_images
+                ? Number(info.max_images - info.images_used)
+                : 0}
               {/* {maxImagesUser} */}
             </p>
           </div>
@@ -82,7 +100,7 @@ const DashboardInfo = () => {
               {t("second_number")}
             </span>
             <p className="shadow-number font-extrabold text-blue-500 items-center text-xl ">
-              10
+              {info && info.max_minute ? Number(info.max_minute * 60) : 0}
               {/* {maxMinute} */}
             </p>
           </div>
