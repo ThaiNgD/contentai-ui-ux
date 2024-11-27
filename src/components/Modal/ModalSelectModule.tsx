@@ -17,7 +17,7 @@ const ModalSelectModule: FC<ModalSelectModuleProps> = ({
   return (
     <Modal show={isShow} onClose={handleClose} className="modal-notifi modal">
       <Modal.Header className="px-5 py-3">Chọn Module</Modal.Header>
-      <Modal.Body className="px-5  pt-[30px] pb-4">
+      <Modal.Body className="px-5 pt-[30px] overflow-visible pb-4">
         <form className="flex flex-col gap-5">
           <SelectField
             name="module"

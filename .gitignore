@@ -32,7 +32,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Environment variable files (can be opted-in if needed)
-.env*
+.env
 
 # Vercel specific files
 .vercel
@@ -43,3 +43,4 @@ next-env.d.ts
 
 # Husky git hooks
 .husky/
+.husky*

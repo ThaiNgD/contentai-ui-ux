@@ -8,6 +8,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
+import "react-tooltip/dist/react-tooltip.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
