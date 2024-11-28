@@ -39,4 +39,11 @@ export const conversationApi = {
       { userId }
     );
   },
+
+  editConversationName: async (threadId: string, conversationName: string) => {
+    return await http.put<any, any>(
+      `${conversationApi.pathKey}/edit-ai-chat/${threadId}`,
+      { conversationName }
+    );
+  },
 };

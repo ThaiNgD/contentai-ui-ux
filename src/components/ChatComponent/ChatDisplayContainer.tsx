@@ -13,7 +13,7 @@ import { IoMdTrash } from "react-icons/io";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import InputField from "../CustomField/InputField";
-
+import { useEditConversationName } from "@/service/ai-chat/useEditConversationName";
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
   chat: IConversationResult;
@@ -38,13 +38,19 @@ const ChatDisplayContainer = ({
   const { data } = useFetchConversationById(chat.id, shouldFetch);
 
   const [isEdit, setIsEdit] = useState(false);
+
+  const editConversationNameMutation = useEditConversationName();
   const editFormik = useFormik({
     initialValues: {
-      rename: "",
+      rename: chat.conversationName,
     },
     onSubmit: (values) => {
       setIsEdit(false);
-      console.log(values);
+      editConversationNameMutation.mutate({
+        threadId: chat.id,
+        conversationName: values.rename,
+      });
+      console.log("initialValues", values);
     },
   });
 
