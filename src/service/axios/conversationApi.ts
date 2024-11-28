@@ -32,4 +32,11 @@ export const conversationApi = {
       payload
     );
   },
+
+  addConversation: async (userId: number) => {
+    return await http.post<any, any>(
+      `${conversationApi.pathKey}/add-new-ai-chat`,
+      { userId }
+    );
+  },
 };

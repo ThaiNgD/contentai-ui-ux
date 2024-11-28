@@ -17,6 +17,7 @@ interface ChatDisplayContainerProps {
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
   selectedChatId?: string | undefined;
   setSelectedChatId?: Dispatch<SetStateAction<string | undefined>>;
+  chatDetail: IConversationDetail | undefined;
   refetch?: () => Promise<void>;
 }
 
@@ -26,6 +27,7 @@ const ChatDisplayContainer = ({
   setChat,
   selectedChatId,
   setSelectedChatId,
+  chatDetail,
 }: ChatDisplayContainerProps) => {
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
@@ -41,8 +43,9 @@ const ChatDisplayContainer = ({
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
-      setChat(undefined);
       deleteMutation.mutate(chat.id);
+      setChat(undefined);
+      setSelectedChatId?.(undefined);
     }
   };
 
@@ -77,6 +80,23 @@ const ChatDisplayContainer = ({
       setShouldFetch(false); // Tắt fetch nếu không phải chat đang chọn
     }
   }, [selectedChatId, chat.id]);
+
+  useEffect(() => {
+    if (
+      chatDetail != undefined &&
+      !isClicked &&
+      !selectedChatId &&
+      chatDetail.threadId == chat.id
+    ) {
+      console.log("got it");
+      // setChat(data);
+      setShouldFetch(true); // Tắt fetch nếu không phải chat đang chọn
+      setIsClicked(true);
+      setSelectedChatId?.(chat.id);
+
+      console.log("con me no");
+    }
+  }, [data]);
 
   return (
     <div
