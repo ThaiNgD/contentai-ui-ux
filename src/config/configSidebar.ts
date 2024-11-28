@@ -49,19 +49,19 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     link: "ai-vision",
     title: "AI Vision",
     icon: GiBullseye,
-    isDisable: true,
+    // isDisable: true,
   },
   {
     link: "ai-chat-image",
     title: "AI Chat Image",
     icon: IoImage,
-    isDisable: true,
+    // isDisable: true,
   },
   {
     link: "ai-pdf-chat",
     title: "AI PDF Chat",
     icon: FaFilePdf,
-    isDisable: true,
+    // isDisable: true,
   },
   {
     link: "ai-rewriter",

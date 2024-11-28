@@ -20,8 +20,9 @@ const HeaderAccountDropdownInfo = () => {
     setIsShowAccountInfo(false);
   };
   const router = useRouter();
-  // const path = useGetPathComponent();
-
+  const handleMoveToUpdateAPI = (): void => {
+    router.push(`/${locale}/update-api`);
+  };
   const logout = (): void => {
     removeAuthToken();
     router.push(`/${locale}/login`);
@@ -57,6 +58,7 @@ const HeaderAccountDropdownInfo = () => {
         <div
           role="button"
           className="p-2 w-full flex gap-4 pr-4 justify-end items-center font-semibold hover:bg-gray-200 hover:text-blue-500"
+          onClick={handleMoveToUpdateAPI}
         >
           Upgrade API <FaAngleDoubleUp size={16} />
         </div>

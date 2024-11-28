@@ -14,6 +14,8 @@ import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import InputField from "../CustomField/InputField";
 import { useEditConversationName } from "@/service/ai-chat/useEditConversationName";
+import ModalConfirmDeleteChat from "../Modal/ModalConfirmDeleteChat";
+
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
   chat: IConversationResult;
@@ -40,6 +42,7 @@ const ChatDisplayContainer = ({
   const [isEdit, setIsEdit] = useState(false);
 
   const editConversationNameMutation = useEditConversationName();
+  const [isShowDeleteConfirm, setIsShowEditConfirm] = useState(false);
   const editFormik = useFormik({
     initialValues: {
       rename: chat.conversationName,
@@ -62,11 +65,16 @@ const ChatDisplayContainer = ({
   // Hàm xử lý xóa
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
-      deleteMutation.mutate(chat.id);
-      setChat(undefined);
-      setSelectedChatId?.(undefined);
-    }
+    setChat(undefined);
+    setIsShowEditConfirm(false);
+    deleteMutation.mutate(chat.id);
+    // await refetch();
+    // e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+    // if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
+    //   deleteMutation.mutate(chat.id); // Thực thi mutation để xóa
+    //   refetch();
+    //   setChat(undefined); // Reset chat hiện tại nếu bị xóa
+    // }
   };
 
   // Prefetch dữ liệu khi hover
@@ -203,11 +211,18 @@ const ChatDisplayContainer = ({
           </div>
           <div
             className="absolute invisible group-hover:visible top-[18px] duration-200 right-0 group-hover:right-2 z-50 p-[6px] rounded-full hover:text-red-500 border"
-            onClick={handleDelete} // Gắn sự kiện xóa vào nút
+            onClick={(): void => setIsShowEditConfirm(true)} // Gắn sự kiện xóa vào nút
           >
             <IoMdTrash />
           </div>
         </>
+      )}
+      {isShowDeleteConfirm && (
+        <ModalConfirmDeleteChat
+          isShow={isShowDeleteConfirm}
+          setIsShow={setIsShowEditConfirm}
+          handleDelete={handleDelete}
+        />
       )}
     </div>
   );

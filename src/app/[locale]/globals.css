@@ -470,6 +470,15 @@ label {
   right: -2px;
 }
 
+.ribbon-wrapper-purple {
+  width: 180px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
 .ribbon-green {
   font-weight: bold;
   font-family: Sans-Serif;
@@ -505,7 +514,7 @@ label {
   padding: 7px 0;
   left: -5px;
   top: 13px;
-  width: 120px;
+  width: 240px;
   background: -webkit-gradient(
     linear,
     left top,
@@ -518,27 +527,27 @@ label {
 }
 
 .ribbon-purple {
-  font-weight: bold;
+  font-weight: 600;
   font-family: Sans-Serif;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   text-align: center;
   text-shadow: white 0px 1px 0px;
-  transform: rotate(45deg);
+  transform: rotate(30deg);
   position: relative;
   padding: 7px 0;
   left: -5px;
   top: 13px;
-  width: 120px;
+  width: 260px;
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    from(#bfdc7a),
-    to(#8ebf45)
+    from(#fea5ff),
+    to(#ff00f4)
   );
-  color: #6a6340;
-  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  /* box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.3); */
 }
 
 .ribbon-green:before,
@@ -560,7 +569,9 @@ label {
 }
 
 /* be vietnamese font */
-
+.be-vietnam-pro {
+  font-family: "Be Vietnam Pro", sans-serif;
+}
 .be-vietnam-pro-thin {
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 100;
@@ -667,4 +678,153 @@ label {
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 900;
   font-style: italic;
+}
+/* glow word */
+
+.glow-word-blue {
+  font-size: 60px;
+  -webkit-animation: glow-blue 1s ease-in-out infinite alternate;
+  -moz-animation: glow-blue 1s ease-in-out infinite alternate;
+  animation: glow-blue 1s ease-in-out infinite alternate;
+}
+
+.glow-word-purple {
+  font-size: 60px;
+  -webkit-animation: glow-purple 1s ease-in-out infinite alternate;
+  -moz-animation: glow-purple 1s ease-in-out infinite alternate;
+  animation: glow-purple 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow-blue {
+  from {
+    /* text-shadow: 0 0 10px #fff, 0 0 13px #fff, 0 0 16px #019de4,
+      0 0 19px #019de4, 0 0 22px #019de4, 0 0 25px #019de4, 0 0 28px #019de4; */
+    color: #019de4;
+  }
+  to {
+    /* text-shadow: 0 0 20px #ceebf9, 0 0 23px #6cc3ed, 0 0 26px #6cc3ed,
+      0 0 29px #6cc3ed, 0 0 32px #6cc3ed, 0 0 35px #6cc3ed, 0 0 px #6cc3ed; */
+    color: #6cc3ed;
+  }
+}
+
+@-webkit-keyframes glow-purple {
+  from {
+    /* text-shadow: 0 0 10px #fff, 0 0 13px #fff, 0 0 16px #FF00F4,
+      0 0 19px #FF00F4, 0 0 22px #FF00F4, 0 0 25px #FF00F4, 0 0 28px #FF00F4; */
+    color: #ff00f4;
+  }
+  to {
+    /* text-shadow: 0 0 20px #FFD2F6, 0 0 23px #019de4, 0 0 26px #019de4,
+      0 0 29px #019de4, 0 0 32px #019de4, 0 0 35px #019de4, 0 0 px #019de4; */
+    color: #fea5ff;
+  }
+}
+
+.gradient-pink-button {
+  background-color: #ff00f4;
+  color: #fff;
+  fill: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  align-items: center;
+  appearance: none;
+  border: none;
+  border-color: transparent;
+  border-radius: #ff00f4;
+  box-shadow: none;
+  color: inherit;
+  font-size: 40px !important;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  letter-spacing: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0.1em 0.2em;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    background-color: #ff00f4;
+    color: #fff;
+    fill: #fff;
+    box-shadow: 0 0 10px rgba(255, 204, 126, 0.3);
+  }
+}
+
+.gradient-blue-button {
+  background-color: #6cc3ed;
+  color: #fff;
+  fill: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  align-items: center;
+  appearance: none;
+  border: none;
+  border-color: transparent;
+  border-radius: #6cc3ed;
+  box-shadow: none;
+  color: inherit;
+  font-size: 40px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  letter-spacing: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0.1em 0.2em;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    background-color: #6cc3ed;
+    color: #fff;
+    fill: #6cc3ed;
+    box-shadow: 0 0 10px rgba(255, 204, 126, 0.3);
+  }
+}
+
+/* .gradient-button:visited {
+  background-color: #019de4;
+  color: #fff;
+  fill: #fff;
+} */
+
+.gradient-pink-button::after {
+  background: radial-gradient(
+    123.32% 162.82% at 89.23% 142.31%,
+    rgba(255, 204, 126, 0) 35.8%,
+    rgba(255, 204, 126, 0) 57.12%,
+    rgba(255, 228, 157, 0.4) 64.76%,
+    rgba(255, 53, 89, 0.4) 100%
+  );
+  content: "";
+  display: block;
+  height: 100%;
+  opacity: 1;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.1s ease-in-out;
+  width: 100%;
+}
+
+.gradient-blue-button::after {
+  background: radial-gradient(
+    123.32% 162.82% at 89.23% 142.31%,
+    rgba(255, 204, 126, 0) 35.8%,
+    rgba(255, 204, 126, 0) 57.12%,
+    rgba(128, 207, 238, 0.4) 64.76%,
+    rgba(28, 104, 219, 0.4) 100%
+  );
+  content: "";
+  display: block;
+  height: 100%;
+  opacity: 1;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.1s ease-in-out;
+  width: 100%;
 }
