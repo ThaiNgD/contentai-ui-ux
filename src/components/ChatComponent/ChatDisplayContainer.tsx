@@ -13,6 +13,7 @@ import { IoMdTrash } from "react-icons/io";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import InputField from "../CustomField/InputField";
+import ModalConfirmDeleteChat from "../Modal/ModalConfirmDeleteChat";
 
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
@@ -33,6 +34,7 @@ const ChatDisplayContainer = ({
   const [isClicked, setIsClicked] = useState(false);
   const { data } = useFetchConversationById(chat.id);
   const [isEdit, setIsEdit] = useState(false);
+  const [isShowDeleteConfirm, setIsShowEditConfirm] = useState(false);
   const editFormik = useFormik({
     initialValues: {
       rename: "",
@@ -58,7 +60,7 @@ const ChatDisplayContainer = ({
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
     setChat(undefined);
-
+    setIsShowEditConfirm(false);
     deleteMutation.mutate(chat.id);
     // await refetch();
     // e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
@@ -174,11 +176,18 @@ const ChatDisplayContainer = ({
           </div>
           <div
             className="absolute invisible group-hover:visible top-[18px] duration-200 right-0 group-hover:right-2 z-50 p-[6px] rounded-full hover:text-red-500 border"
-            onClick={handleDelete} // Gắn sự kiện xóa vào nút
+            onClick={(): void => setIsShowEditConfirm(true)} // Gắn sự kiện xóa vào nút
           >
             <IoMdTrash />
           </div>
         </>
+      )}
+      {isShowDeleteConfirm && (
+        <ModalConfirmDeleteChat
+          isShow={isShowDeleteConfirm}
+          setIsShow={setIsShowEditConfirm}
+          handleDelete={handleDelete}
+        />
       )}
     </div>
   );

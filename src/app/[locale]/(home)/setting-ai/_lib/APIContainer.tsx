@@ -1,12 +1,15 @@
 "use client";
 import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
+import ModalShowAPI from "@/components/Modal/ModalShowAPI";
 import configAccessAllow from "@/config/configAccessAllow";
 import configUsageModel from "@/config/configUsageModel";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import { useState } from "react";
 import { AiFillOpenAI } from "react-icons/ai";
 const APIContainer = () => {
+  const [isShowModalAPI, setIsShowModalAPI] = useState(false);
   const formik = useFormik({
     initialValues: {
       api_key: "",
@@ -56,9 +59,22 @@ const APIContainer = () => {
           formik={formik}
         />
       </div>
-      <Button className="rounded-full self-end w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
-        Kho API
-      </Button>
+      <div className="flex gap-2 self-end">
+        <Button
+          className="rounded-full  w-fit px-[40px] bg-blue-500 shadow-md duration-200 hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500"
+          onClick={(): void => {
+            setIsShowModalAPI(true);
+          }}
+        >
+          Kho API
+        </Button>
+        <Button className="rounded-full duration-200 w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
+          Áp dụng
+        </Button>
+      </div>
+      {isShowModalAPI && (
+        <ModalShowAPI isShow={isShowModalAPI} setIsShow={setIsShowModalAPI} />
+      )}
     </form>
   );
 };
