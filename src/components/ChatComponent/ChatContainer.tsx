@@ -47,7 +47,7 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
         </div>
       ) : (
         <div className="p-[30px] max-w-full h-full flex flex-col justify-between">
-          <div className="h-full max-h-[40vh] flex flex-col overflow-auto pb-4 gap-4">
+          <div className="h-full max-h-[40vh] scrollbar-thin flex flex-col overflow-auto pb-4 gap-4">
             <WelcomeUserChatContent imgUrl={userImage} />
             {chat?.conversation?.map((con, index) => {
               return (

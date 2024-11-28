@@ -1,12 +1,10 @@
-import DeatailContent from "@/components/ContentComponent/DeatailContent"
+import DeatailContent from "@/components/ContentComponent/DeatailContent";
 
 const ContentDisplay = () => {
   return (
-    <div className="grid grid-cols-2 mb-[60px] gap-6">
-      <div className="flex border rounded-lg flex-col">
-        <h1 className="text-xl px-5 py-3 font-bold">
-          Contents
-        </h1>
+    <div className="grid  grid-cols-2 mb-[60px] gap-6">
+      <div className="flex shadow-lg border rounded-lg flex-col">
+        <h1 className="text-xl px-5 py-3 font-bold">Contents</h1>
         <hr />
         <DeatailContent />
         <hr />
@@ -18,10 +16,8 @@ const ContentDisplay = () => {
         <hr />
         <DeatailContent />
       </div>
-      <div className="flex border rounded-lg flex-col">
-        <h1 className="text-xl px-5 py-3 font-bold">
-          Favorite Content
-        </h1>
+      <div className="flex shadow-lg border rounded-lg flex-col">
+        <h1 className="text-xl px-5 py-3 font-bold">Favorite Content</h1>
         <hr />
         <DeatailContent />
         <hr />
@@ -34,7 +30,7 @@ const ContentDisplay = () => {
         <DeatailContent />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContentDisplay
+export default ContentDisplay;

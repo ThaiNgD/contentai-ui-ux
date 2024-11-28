@@ -4,12 +4,15 @@ import { useDeleteConversationById } from "@/service/ai-chat/useDeleteConversati
 import { useFetchConversationById } from "@/service/ai-chat/useFetchConversationById";
 import { conversationApi } from "@/service/axios/conversationApi";
 import { useQueryClient } from "@tanstack/react-query";
+import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { IoMdTrash } from "react-icons/io";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
+import InputField from "../CustomField/InputField";
 
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
@@ -32,9 +35,20 @@ const ChatDisplayContainer = ({
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
   const [shouldFetch, setShouldFetch] = useState(false);
+  const { data } = useFetchConversationById(chat.id, shouldFetch);
+
+  const [isEdit, setIsEdit] = useState(false);
+  const editFormik = useFormik({
+    initialValues: {
+      rename: "",
+    },
+    onSubmit: (values) => {
+      setIsEdit(false);
+      console.log(values);
+    },
+  });
 
   // Sử dụng hook fetch dữ liệu
-  const { data } = useFetchConversationById(chat.id, shouldFetch);
 
   // Mutation xóa cuộc hội thoại
   const deleteMutation = useDeleteConversationById(chat.id);
@@ -119,8 +133,21 @@ const ChatDisplayContainer = ({
           <IoChatboxEllipses size={20} />
         )}
       </div>
-      <div className="flex flex-col justify-center">
-        <span>{chat?.conversationName}</span>
+      <div className="flex flex-col justify-center ">
+        {isEdit ? (
+          <form id="edit-conversation" onSubmit={editFormik.handleSubmit}>
+            <InputField
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="!w-[100px] !px-2  h-[30px]"
+              name="rename"
+              formik={editFormik}
+            />
+          </form>
+        ) : (
+          <span>{chat?.conversationName}</span>
+        )}
         {isPdfChat && (
           <div className="flex gap-2 w-full">
             <FaLink size={20} />
@@ -136,18 +163,46 @@ const ChatDisplayContainer = ({
           {chat?.createdAt}
         </p>
       </div>
-      <div
-        className="absolute invisible group-hover:visible top-2 duration-200 right-4 group-hover:right-[48px] z-50 p-2 rounded-full hover:text-yellow-300 border"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <MdEdit />
-      </div>
-      <div
-        className="absolute invisible group-hover:visible top-2 duration-200 right-0 group-hover:right-2 z-50 p-2 rounded-full hover:text-red-500 border"
-        onClick={handleDelete}
-      >
-        <IoMdTrash />
-      </div>
+      {isEdit ? (
+        <>
+          <button
+            className="absolute top-[18px] duration-200 right-2 z-50 p-[6px] rounded-full hover:bg-green-500 hover:text-white border"
+            form="edit-conversation"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <FaCheck size={12} />
+          </button>
+          <button
+            className="absolute top-[18px] duration-200 right-[48px] z-50 p-[6px] rounded-full hover:bg-red-500 hover:text-white border"
+            form="edit-conversation"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <FaTimes size={12} />
+          </button>
+        </>
+      ) : (
+        <>
+          <div
+            className="absolute invisible group-hover:visible top-[18px] duration-200 right-4 group-hover:right-[48px] z-50 p-[6px] rounded-full hover:text-yellow-300 border"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsEdit(true);
+            }}
+          >
+            <MdEdit />
+          </div>
+          <div
+            className="absolute invisible group-hover:visible top-[18px] duration-200 right-0 group-hover:right-2 z-50 p-[6px] rounded-full hover:text-red-500 border"
+            onClick={handleDelete} // Gắn sự kiện xóa vào nút
+          >
+            <IoMdTrash />
+          </div>
+        </>
+      )}
     </div>
   );
 };

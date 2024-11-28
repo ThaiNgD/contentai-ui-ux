@@ -26,29 +26,7 @@ const ChatList = ({ chat, setChat }: ChatContainerProps) => {
     }
   }, [data]);
   return (
-    <div className="flex flex-col overflow-x-hidden overflow-y-auto">
-      {/* <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "2",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      /> */}
+    <div className="flex flex-col scrollbar-thin overflow-x-hidden overflow-y-auto">
       {allChats?.conversation?.map((chatResult, index) => {
         return (
           <ChatDisplayContainer

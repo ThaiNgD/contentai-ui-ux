@@ -29,7 +29,6 @@ const NavbarLinkComponent = ({
   const [visible, setVisible] = useState(false);
   const pathName = usePathname();
   const path = pathName?.split("/").slice(0, 2).join("/");
-  console.log(isDisable);
   return (
     <>
       <div
