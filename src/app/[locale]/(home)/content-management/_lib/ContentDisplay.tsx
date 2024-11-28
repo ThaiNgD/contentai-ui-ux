@@ -13,7 +13,6 @@ const ContentDisplay = () => {
       <RecentLaunchComponent title="Folder" isFolderDisplay />
       <RecentLaunchComponent title="Folder" isFolderDisplay />
       <RecentLaunchComponent title="Folder" isFolderDisplay />
-      <RecentLaunchComponent title="Folder" isFolderDisplay />
     </div>
   );
 };
