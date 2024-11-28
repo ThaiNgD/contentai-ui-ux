@@ -22,8 +22,6 @@ const ChatHeader = () => {
     setUserInfor(data);
   });
   if (userInfor) {
-    // const { user } = userInfo;
-    // console.log("userInfo", userInfo);
     return (
       <div className="w-full flex gap-2 items-center justify-between px-5">
         <div className="flex gap-2 items-center">

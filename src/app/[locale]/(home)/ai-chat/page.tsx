@@ -1,11 +1,11 @@
 "use client";
 import ChatContainer from "@/components/ChatComponent/ChatContainer";
+import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import ChatHeader from "./_lib/ChatHeader";
 import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
-import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 
 const Page = () => {
   const [chat, setChat] = useState<IConversationDetail>();
@@ -16,10 +16,7 @@ const Page = () => {
     e.stopPropagation();
     try {
       const test = await addNewMessageMutation.mutateAsync(1);
-      console.log("test", test);
-
-      // setIsChat(true);
-      // setChat(test); // Gán kết quả vào setChat
+      console.log(test);
     } catch (error) {
       console.error("Lỗi khi thêm cuộc trò chuyện mới:", error);
     }
