@@ -13,6 +13,7 @@ import { IoMdTrash } from "react-icons/io";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import InputField from "../CustomField/InputField";
+import { useEditConversationName } from "@/service/ai-chat/useEditConversationName";
 import ModalConfirmDeleteChat from "../Modal/ModalConfirmDeleteChat";
 
 interface ChatDisplayContainerProps {
@@ -21,42 +22,47 @@ interface ChatDisplayContainerProps {
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
   selectedChatId?: string | undefined;
   setSelectedChatId?: Dispatch<SetStateAction<string | undefined>>;
+  chatDetail: IConversationDetail | undefined;
   refetch?: () => Promise<void>;
 }
+
 const ChatDisplayContainer = ({
   chat,
   isPdfChat,
   setChat,
   selectedChatId,
   setSelectedChatId,
+  chatDetail,
 }: ChatDisplayContainerProps) => {
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
-  const { data } = useFetchConversationById(chat.id);
+  const [shouldFetch, setShouldFetch] = useState(false);
+  const { data } = useFetchConversationById(chat.id, shouldFetch);
+
   const [isEdit, setIsEdit] = useState(false);
+
+  const editConversationNameMutation = useEditConversationName();
   const [isShowDeleteConfirm, setIsShowEditConfirm] = useState(false);
   const editFormik = useFormik({
     initialValues: {
-      rename: "",
+      rename: chat.conversationName,
     },
     onSubmit: (values) => {
       setIsEdit(false);
-      console.log(values);
+      editConversationNameMutation.mutate({
+        threadId: chat.id,
+        conversationName: values.rename,
+      });
+      console.log("initialValues", values);
     },
   });
 
-  // Sử dụng mutation để xóa
-  const deleteMutation = useDeleteConversationById(chat.id, () => {
-    // Callback khi xóa thành công
-    queryClient.invalidateQueries({
-      queryKey: ["all-chat"], // Định nghĩa query key
-    });
-    // Xóa cache danh sách
-    if (selectedChatId === chat.id) {
-      setSelectedChatId?.(undefined);
-    }
-  });
+  // Sử dụng hook fetch dữ liệu
 
+  // Mutation xóa cuộc hội thoại
+  const deleteMutation = useDeleteConversationById(chat.id);
+
+  // Hàm xử lý xóa
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
     setChat(undefined);
@@ -71,24 +77,54 @@ const ChatDisplayContainer = ({
     // }
   };
 
-  const handleMouseEnter = (chatId: string) => {
-    queryClient.prefetchQuery({
-      queryKey: ["chat", chatId],
-      queryFn: () => conversationApi.getConversationByParams(chatId),
-    });
+  // Prefetch dữ liệu khi hover
+  const handleMouseEnter = async (chatId: string) => {
+    if (!queryClient.getQueryData(["chatDetail", chatId])) {
+      await queryClient.prefetchQuery({
+        queryKey: ["chatDetail", chatId],
+        queryFn: () => conversationApi.getConversationById(chatId),
+      });
+    }
   };
 
+  // Xử lý khi click vào chat
+  const handleClick = () => {
+    setIsClicked(true);
+    setSelectedChatId?.(chat.id);
+    setShouldFetch(true); // Bật fetch dữ liệu chi tiết
+  };
+
+  // Cập nhật state khi có dữ liệu mới
   useEffect(() => {
     if (data && isClicked) {
       setChat(data);
     }
-  }, [data, isClicked]);
+  }, [data, isClicked, setChat]);
 
+  // Reset trạng thái khi đổi selected chat
   useEffect(() => {
     if (selectedChatId !== chat.id) {
       setIsClicked(false);
+      setShouldFetch(false); // Tắt fetch nếu không phải chat đang chọn
     }
-  });
+  }, [selectedChatId, chat.id]);
+
+  useEffect(() => {
+    if (
+      chatDetail != undefined &&
+      !isClicked &&
+      !selectedChatId &&
+      chatDetail.threadId == chat.id
+    ) {
+      console.log("got it");
+      // setChat(data);
+      setShouldFetch(true); // Tắt fetch nếu không phải chat đang chọn
+      setIsClicked(true);
+      setSelectedChatId?.(chat.id);
+
+      console.log("con me no");
+    }
+  }, [data]);
 
   return (
     <div
@@ -97,10 +133,9 @@ const ChatDisplayContainer = ({
         isClicked && "border-l-2 border-l-blue-500"
       )}
       role="button"
-      onClick={(): void => {
-        handleMouseEnter(chat.id);
-        setIsClicked(true);
-        setSelectedChatId?.(chat.id);
+      onClick={handleClick} // Fetch khi click
+      onMouseOver={(): void => {
+        handleMouseEnter(chat.id); // Prefetch khi hover
       }}
     >
       <div

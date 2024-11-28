@@ -1,31 +1,46 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
 import { avatar } from "@/assets/images/avatar-image";
 import { selectRandom } from "@/helper/function";
 import { Button } from "flowbite-react";
-import { useState } from "react";
 import ChatInput from "./ChatInput";
 import UserChatContent from "./UserChatContent";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
+import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 
+// Cập nhật kiểu dữ liệu cho props
 interface ChatContainerProps {
-  chat?: IConversationDetail; // Kiểu props
+  chat?: IConversationDetail;
+  setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
 }
 
-const ChatContainer = ({ chat }: ChatContainerProps) => {
-  const [isChat, setIsChat] = useState(false);
+const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
+  // const [isChat, setIsChat] = useState(false);
   const userImage = selectRandom(avatar);
 
-  const onClickButton = (): void => {
-    setIsChat(true);
+  const addNewMessageMutation = useAddConversation(1);
+
+  const handleAddNew = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const test = await addNewMessageMutation.mutateAsync(1);
+      console.log("test", test);
+
+      // setIsChat(true);
+      setChat(test); // Gán kết quả vào setChat
+    } catch (error) {
+      console.error("Lỗi khi thêm cuộc trò chuyện mới:", error);
+    }
   };
 
   return (
     <div className="flex flex-col justify-between gap-2">
-      {!isChat && !chat ? (
+      {/* {!isChat && !chat ? ( */}
+      {!chat ? (
         <div className="h-full flex items-center justify-center">
           <Button
             className="w-fit h-fit rounded-full bg-blue-500 font-bold shadow-lg hover:translate-y-0.5 border-blue-500 duration-200 hover:shadow-none"
-            onClick={onClickButton}
+            onClick={handleAddNew}
           >
             Bắt đầu đoạn Chat mới
           </Button>
@@ -35,29 +50,18 @@ const ChatContainer = ({ chat }: ChatContainerProps) => {
           <div className="h-full max-h-[40vh] scrollbar-thin flex flex-col overflow-auto pb-4 gap-4">
             <WelcomeUserChatContent imgUrl={userImage} />
             {chat?.conversation?.map((con, index) => {
-              if (con.role === "assistant") {
-                return (
-                  <UserChatContent
-                    key={index}
-                    message={con.message}
-                    imgUrl={userImage}
-                    timeStamp={con.timestamp}
-                  />
-                );
-              } else {
-                return (
-                  <UserChatContent
-                    isUser={true}
-                    key={index}
-                    imgUrl={userImage}
-                    message={con.message}
-                    timeStamp={con.timestamp}
-                  />
-                );
-              }
+              return (
+                <UserChatContent
+                  key={index}
+                  isUser={con.role !== "assistant"}
+                  message={con.message}
+                  imgUrl={userImage}
+                  timeStamp={con.timestamp}
+                />
+              );
             })}
           </div>
-          <ChatInput />
+          <ChatInput threadId={chat?.threadId || ""} />
         </div>
       )}
     </div>

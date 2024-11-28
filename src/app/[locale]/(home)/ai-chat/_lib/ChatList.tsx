@@ -6,11 +6,13 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface ChatListProps {
   conversation: IConversationResult[];
 }
-const ChatList = ({
-  setChat,
-}: {
+
+interface ChatContainerProps {
+  chat?: IConversationDetail;
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
-}) => {
+}
+
+const ChatList = ({ chat, setChat }: ChatContainerProps) => {
   const [allChats, setAllChats] = useState<ChatListProps>();
   const [selectedChatId, setSelectedChatId] = useState<string>();
   const { data } = useFetchAllChat();
@@ -25,147 +27,14 @@ const ChatList = ({
   }, [data]);
   return (
     <div className="flex flex-col scrollbar-thin overflow-x-hidden overflow-y-auto">
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "2",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "1",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-      <ChatDisplayContainer
-        selectedChatId={selectedChatId}
-        setSelectedChatId={setSelectedChatId}
-        setChat={setChat}
-        chat={{
-          id: "2",
-          conversationName: "string",
-          createdAt: "string",
-          updatedAt: new Date(),
-        }}
-      />
-
-      {allChats?.conversation.map((chat, index) => {
+      {allChats?.conversation?.map((chatResult, index) => {
         return (
           <ChatDisplayContainer
             selectedChatId={selectedChatId}
             setSelectedChatId={setSelectedChatId}
             setChat={setChat}
-            chat={chat}
+            chat={chatResult}
+            chatDetail={chat}
             key={index}
           />
         );

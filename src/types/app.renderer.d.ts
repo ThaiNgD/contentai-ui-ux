@@ -30,6 +30,7 @@ declare global {
   };
 
   type IConversationDetail = {
+    threadId: string;
     conversation: IMessage[];
   };
   type IUserProfile = {
