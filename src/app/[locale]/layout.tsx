@@ -42,7 +42,7 @@ export default async function RootLayout({
           <TanStackProvider>
             <NextIntlClientProvider messages={messages}>
               <ThemeProvider
-                defaultTheme="system"
+                defaultTheme="light"
                 enableSystem
                 attribute={"class"}
               >

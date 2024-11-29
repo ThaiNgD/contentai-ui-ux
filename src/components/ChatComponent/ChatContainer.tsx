@@ -25,7 +25,6 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
     try {
       const test = await addNewMessageMutation.mutateAsync(1);
       console.log("test", test);
-
       setChat(test);
     } catch (error) {
       toast.error("Lỗi khi thêm cuộc trò chuyện mới");

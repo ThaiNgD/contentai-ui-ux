@@ -35,7 +35,7 @@ const WelcomeUserChatContent = ({
               <IoIosCopy size={16} />
             </div> */}
           </div>
-          <span className={cn("text-xs opacity-50 ml-1")}>11:11 am</span>
+          {/* <span className={cn("text-xs opacity-50 ml-1")}>11:11 am</span> */}
           {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
       </div>

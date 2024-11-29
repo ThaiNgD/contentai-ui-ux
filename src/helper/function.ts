@@ -132,3 +132,20 @@ export function readURL(input: HTMLInputElement): void {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+export function convertToVietnameseDate(isoDate: string): string {
+  // Parse the ISO date
+  const date = new Date(isoDate);
+
+  // Extract components
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth() + 1; // Months are 0-indexed in JavaScript
+  const year = date.getUTCFullYear();
+  const hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+
+  // Format to Vietnamese date string
+  return `${(hours + 7).toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}, ${day}/${month}/${year}`;
+}
