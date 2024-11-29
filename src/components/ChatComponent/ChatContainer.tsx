@@ -33,7 +33,7 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-between gap-2">
+    <div className="flex h-[calc(100%-100px)] flex-col justify-between gap-2">
       {!chat ? (
         <div className="h-full flex items-center justify-center">
           <Button

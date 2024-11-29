@@ -160,7 +160,7 @@ const ChatDisplayContainer = ({
           <IoChatboxEllipses size={20} />
         )}
       </div>
-      <div className="flex flex-col justify-center ">
+      <div className="flex w-[calc(100%-100px)] flex-col justify-center ">
         {isEdit ? (
           <form id="edit-conversation" onSubmit={editFormik.handleSubmit}>
             <InputField
