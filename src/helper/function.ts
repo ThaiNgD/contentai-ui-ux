@@ -149,3 +149,13 @@ export function convertToVietnameseDate(isoDate: string): string {
     .toString()
     .padStart(2, "0")}, ${day}/${month}/${year}`;
 }
+
+// Sorted  Chat
+
+export function sortConversationByTime(
+  conversation: IConversationResult[]
+): IConversationResult[] {
+  return conversation.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}

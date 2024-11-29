@@ -26,7 +26,7 @@ const Page = () => {
     <>
       <div className="grid divide-y h-full w-full box-border grid-rows-[15%,85%]">
         <ChatSearchBar />
-        <div className="h-[calc(100%-100px)] row-span-1 py-[2px] w-full flex max-h-full flex-col gap-2 ">
+        <div className="h-[calc(100%-100px)] max-h-[680px] row-span-1 py-[2px] w-full flex flex-col gap-2 ">
           {chat && (
             <Button
               className="rounded-full w-fit px-[30px] my-5 bg-blue-500 shadow-md font-bold mx-auto border-blue-500 hover:shadow-none hover:translate-y-0.5 duration-200"
