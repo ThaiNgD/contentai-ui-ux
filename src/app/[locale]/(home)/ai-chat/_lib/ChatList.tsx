@@ -1,6 +1,7 @@
 "use client";
 
 import ChatDisplayContainer from "@/components/ChatComponent/ChatDisplayContainer";
+import { sortConversationByTime } from "@/helper/function";
 import { useFetchAllChat } from "@/service/ai-chat/useFetchAllChat";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface ChatListProps {
@@ -83,7 +84,9 @@ const ChatList = ({ chat, setChat }: ChatContainerProps) => {
         </>
       ) : (
         <>
-          {allChats?.conversation?.map((chatResult, index) => {
+          {sortConversationByTime(
+            allChats?.conversation ? allChats?.conversation : []
+          )?.map((chatResult, index) => {
             return (
               <ChatDisplayContainer
                 selectedChatId={selectedChatId}

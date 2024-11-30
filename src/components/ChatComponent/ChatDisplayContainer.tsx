@@ -224,7 +224,10 @@ const ChatDisplayContainer = ({
           </div>
           <div
             className="absolute invisible group-hover:visible top-[18px] duration-200 right-0 group-hover:right-2 z-50 p-[6px] rounded-full hover:text-red-500 border"
-            onClick={(): void => setIsShowEditConfirm(true)} // Gắn sự kiện xóa vào nút
+            onClick={(e): void => {
+              e.stopPropagation();
+              setIsShowEditConfirm(true);
+            }} // Gắn sự kiện xóa vào nút
           >
             <IoMdTrash />
           </div>

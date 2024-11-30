@@ -1,4 +1,4 @@
-import { cn } from "@/helper/function";
+import { cn, formatDateToVietnamese } from "@/helper/function";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 import { IoIosCopy } from "react-icons/io";
@@ -8,8 +8,9 @@ interface UserChatContentProps {
   isUser?: boolean;
   userImage?: StaticImageData;
   message?: string;
-  timeStamp?: number;
+  timeStamp: number;
 }
+
 const UserChatContent = ({
   imgUrl,
   widthCls,
@@ -78,9 +79,8 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            {timeStamp}
+            {formatDateToVietnamese(timeStamp * 1000)}
           </span>
-          {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
       </div>
       {userImage && isUser ? (
