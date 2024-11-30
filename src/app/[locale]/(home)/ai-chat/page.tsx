@@ -9,7 +9,6 @@ import ChatSearchBar from "./_lib/ChatSearchBar";
 
 const Page = () => {
   const [chat, setChat] = useState<IConversationDetail>();
-
   const addNewMessageMutation = useAddConversation(1);
 
   const handleAddNew = async (e: React.MouseEvent) => {

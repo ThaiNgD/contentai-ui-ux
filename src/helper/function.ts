@@ -159,3 +159,17 @@ export function sortConversationByTime(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
 }
+
+// Converted Date
+export function formatDateToVietnamese(date: number): string {
+  // Ensure the input is a Date object
+  const d = new Date(date);
+
+  // Extract date components
+  const day = d.getDate().toString().padStart(2, "0"); // Day with leading zero
+  const month = (d.getMonth() + 1).toString().padStart(2, "0"); // Month with leading zero (0-based index)
+  const year = d.getFullYear().toString(); // Full year
+
+  // Combine components in Vietnamese format dd/MM/yyyy
+  return `${day}/${month}/${year}`;
+}

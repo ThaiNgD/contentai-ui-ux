@@ -24,8 +24,9 @@ const ImageChatContainer = () => {
                 message="Thai"
                 isUser={true}
                 userImage={userImage}
+                timeStamp={0}
               />
-              <UserChatContent message="AI" imgUrl={userImage} />
+              <UserChatContent timeStamp={0} message="AI" imgUrl={userImage} />
             </div>
             <ChatInput threadId="" />
           </>
