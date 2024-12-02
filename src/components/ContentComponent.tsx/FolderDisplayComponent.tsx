@@ -32,7 +32,7 @@ const FolderDisplayComponent = ({
       role="button"
       onClick={(): void => {
         setIsSelected(true);
-        router.push(`${pathWithoutLocale}/${1}`);
+        router.push(`${pathWithoutLocale}/folder/${1}`);
       }}
     >
       <FaFolderOpen

@@ -55,12 +55,12 @@ const UserChatContent = ({
       >
         <div
           className={cn(
-            "flex relative group flex-col ",
+            "flex relative group max-w-[80%] flex-col ",
             !isUser ? "items-start" : "items-end"
           )}
         >
-          <div className="w-fit max-w-[80%] relative rounded-xl bg-gray-100">
-            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
+          <div className="w-fitrelative rounded-xl p-2 bg-gray-100">
+            <p className="text-sm text-cursor whitespace-normal text-center typewriter-animation w-fit text-gray-500 dark:text-gray-400 box-border text-wrap">
               {message}
               {/* <svg
                 className="w-[20px]"
@@ -139,7 +139,7 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            {formatDateToVietnamese(timeStamp * 1000)}
+            {formatDateToVietnamese(timeStamp * 1000).formattedTime}
           </span>
         </div>
       </div>

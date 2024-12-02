@@ -1,5 +1,8 @@
+"use client";
 import { COLORS } from "@/helper/const";
 import { cn, getRandomColor } from "@/helper/utils";
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
+import { useRouter } from "next/navigation";
 import { FaRegStar } from "react-icons/fa6";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 export interface RecentLaunchComponentProps {
@@ -9,13 +12,16 @@ export interface RecentLaunchComponentProps {
   isFolderDisplay?: boolean;
 }
 const RecentLaunchComponent = ({
-  image,
   title,
   content,
   isFolderDisplay = true,
 }: RecentLaunchComponentProps) => {
   const color = getRandomColor(COLORS);
-  console.log(image);
+  const router = useRouter();
+  const { locale } = useGetPathComponent();
+  const handleGetDocument = () => {
+    router.push(`/${locale}/content-management/document/1`);
+  };
   return (
     <div
       role="button"
@@ -23,6 +29,7 @@ const RecentLaunchComponent = ({
         "shadow-lg rounded-xl dark:bg-[#0D0B0B] duration-200 hover:-translate-y-1 p-3 hover:shadow-2xl  h-[220px] w-[240px]",
         color && ""
       )}
+      onClick={handleGetDocument}
     >
       <div className="flex justify-between h-[28px] items-center">
         <p
