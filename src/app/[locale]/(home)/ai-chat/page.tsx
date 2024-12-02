@@ -1,25 +1,21 @@
 "use client";
 import ChatContainer from "@/components/ChatComponent/ChatContainer";
+import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import ChatHeader from "./_lib/ChatHeader";
 import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
-import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 
 const Page = () => {
   const [chat, setChat] = useState<IConversationDetail>();
-
   const addNewMessageMutation = useAddConversation(1);
 
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
       const test = await addNewMessageMutation.mutateAsync(1);
-      console.log("test", test);
-
-      // setIsChat(true);
-      // setChat(test); // Gán kết quả vào setChat
+      console.log(test);
     } catch (error) {
       console.error("Lỗi khi thêm cuộc trò chuyện mới:", error);
     }
@@ -27,9 +23,9 @@ const Page = () => {
 
   return (
     <>
-      <div className="grid divide-y h-fit w-full box-border grid-rows-[15%,85%]">
+      <div className="grid divide-y h-full w-full box-border grid-rows-[15%,85%]">
         <ChatSearchBar />
-        <div className="row-span-1 py-[2px] w-full flex max-h-full flex-col gap-2  h-[600px]">
+        <div className="h-[calc(100%-100px)] max-h-[680px] row-span-1 py-[2px] w-full flex flex-col gap-2 ">
           {chat && (
             <Button
               className="rounded-full w-fit px-[30px] my-5 bg-blue-500 shadow-md font-bold mx-auto border-blue-500 hover:shadow-none hover:translate-y-0.5 duration-200"

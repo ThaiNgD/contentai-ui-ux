@@ -132,3 +132,44 @@ export function readURL(input: HTMLInputElement): void {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+export function convertToVietnameseDate(isoDate: string): string {
+  // Parse the ISO date
+  const date = new Date(isoDate);
+
+  // Extract components
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth() + 1; // Months are 0-indexed in JavaScript
+  const year = date.getUTCFullYear();
+  const hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+
+  // Format to Vietnamese date string
+  return `${(hours + 7).toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}, ${day}/${month}/${year}`;
+}
+
+// Sorted  Chat
+
+export function sortConversationByTime(
+  conversation: IConversationResult[]
+): IConversationResult[] {
+  return conversation.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
+
+// Converted Date
+export function formatDateToVietnamese(date: number): string {
+  // Ensure the input is a Date object
+  const d = new Date(date);
+
+  // Extract date components
+  const day = d.getDate().toString().padStart(2, "0"); // Day with leading zero
+  const month = (d.getMonth() + 1).toString().padStart(2, "0"); // Month with leading zero (0-based index)
+  const year = d.getFullYear().toString(); // Full year
+
+  // Combine components in Vietnamese format dd/MM/yyyy
+  return `${day}/${month}/${year}`;
+}
