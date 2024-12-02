@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import ChatInput from "./ChatInput";
 import UserChatContent from "./UserChatContent";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
+import { queryClient } from "@/provider/TanStackProvider";
 
 // Cập nhật kiểu dữ liệu cho props
 interface ChatContainerProps {
@@ -16,15 +17,31 @@ interface ChatContainerProps {
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
 }
 
+interface UserInfo {
+  user: {
+    userDbId: string;
+    email: string;
+    name: string | null;
+    userId: string;
+    username: string;
+  };
+  message: string;
+}
+
 const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
-  const userImage = selectRandom(avatar);
-  const addNewMessageMutation = useAddConversation(1);
   const { data: user } = useFetchUserInfo();
+  const userImage = selectRandom(avatar);
+  const data = queryClient.getQueryData<UserInfo>(["user"]);
+  const addNewMessageMutation = useAddConversation(
+    Number(data?.user?.userDbId)
+  );
 
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      const test = await addNewMessageMutation.mutateAsync(1);
+      const test = await addNewMessageMutation.mutateAsync(
+        Number(data?.user?.userDbId)
+      );
       console.log("test", test);
       setChat(test);
     } catch (error) {

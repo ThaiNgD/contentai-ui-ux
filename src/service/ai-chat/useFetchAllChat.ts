@@ -4,10 +4,12 @@ import { conversationApi } from "../axios/conversationApi";
 interface ChatListProps {
   conversation: IConversationResult[];
 }
-export const useFetchAllChat = (): UseQueryResult<ChatListProps, Error> => {
+export const useFetchAllChat = (
+  userId: number
+): UseQueryResult<ChatListProps, Error> => {
   return useQuery({
     queryKey: ["all-chat"],
-    queryFn: () => conversationApi.getAll(), // Thêm conversationId vào đây
+    queryFn: () => conversationApi.getAll(userId), // Thêm conversationId vào đây
     // enabled: isEnabled,
     enabled: true,
   });
