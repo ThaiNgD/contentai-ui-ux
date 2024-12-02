@@ -26,7 +26,8 @@ const WelcomeUserChatContent = ({
         <div className="flex relative group flex-col">
           <div className="w-fit group rounded-xl bg-gray-100 relative">
             <p className="text-sm w-fit p-2 text-gray-500 dark:text-gray-400">
-              Hello {userName}, How can I help you?
+              Hello <span className="font-bold text-black">{userName}</span>,
+              How can I help you?
             </p>
             {/* <div
               role="button"
@@ -35,7 +36,7 @@ const WelcomeUserChatContent = ({
               <IoIosCopy size={16} />
             </div> */}
           </div>
-          <span className={cn("text-xs opacity-50 ml-1")}>11:11 am</span>
+          {/* <span className={cn("text-xs opacity-50 ml-1")}>11:11 am</span> */}
           {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
       </div>

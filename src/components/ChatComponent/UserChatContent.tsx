@@ -1,4 +1,4 @@
-import { cn } from "@/helper/function";
+import { cn, formatDateToVietnamese } from "@/helper/function";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 import { IoIosCopy } from "react-icons/io";
@@ -8,8 +8,9 @@ interface UserChatContentProps {
   isUser?: boolean;
   userImage?: StaticImageData;
   message?: string;
-  timeStamp?: number;
+  timeStamp: number;
 }
+
 const UserChatContent = ({
   imgUrl,
   widthCls,
@@ -18,8 +19,7 @@ const UserChatContent = ({
   message,
   timeStamp,
 }: UserChatContentProps) => {
-  const [chat, setChat] = useState("");
-  console.log(chat);
+  const [, setChat] = useState("");
   useEffect(() => {
     if (message) {
       let i = 0;
@@ -53,8 +53,13 @@ const UserChatContent = ({
           !isUser ? "justify-start" : "justify-end"
         )}
       >
-        <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
+        <div
+          className={cn(
+            "flex relative group flex-col ",
+            !isUser ? "items-start" : "items-end"
+          )}
+        >
+          <div className="w-fit max-w-[80%] relative rounded-xl bg-gray-100">
             <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
               {message}
             </p>
@@ -74,9 +79,8 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            {timeStamp}
+            {formatDateToVietnamese(timeStamp * 1000)}
           </span>
-          {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
       </div>
       {userImage && isUser ? (
