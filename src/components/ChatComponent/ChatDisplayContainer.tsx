@@ -76,6 +76,8 @@ const ChatDisplayContainer = ({
     setChat(undefined);
     setIsShowEditConfirm(false);
     deleteMutation.mutate(chat.id);
+    setIsClicked(false);
+    setSelectedChatId?.(undefined);
   };
 
   // Prefetch dữ liệu khi hover
