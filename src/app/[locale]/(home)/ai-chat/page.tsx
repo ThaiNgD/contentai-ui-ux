@@ -1,12 +1,12 @@
 "use client";
 import ChatContainer from "@/components/ChatComponent/ChatContainer";
+import { queryClient } from "@/provider/TanStackProvider";
 import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import ChatHeader from "./_lib/ChatHeader";
 import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
-import { queryClient } from "@/provider/TanStackProvider";
 
 interface UserInfo {
   user: {
@@ -34,9 +34,6 @@ const Page = () => {
         Number(userData?.user?.userDbId)
       );
       console.log("test", test);
-
-      // setIsChat(true);
-      // setChat(test); // Gán kết quả vào setChat
     } catch (error) {
       console.error("Lỗi khi thêm cuộc trò chuyện mới:", error);
     }

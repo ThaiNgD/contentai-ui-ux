@@ -19,7 +19,7 @@ const UserChatContent = ({
   message,
   timeStamp,
 }: UserChatContentProps) => {
-  const [, setChat] = useState("");
+  const [chat, setChat] = useState("");
   useEffect(() => {
     if (message) {
       let i = 0;
@@ -32,7 +32,6 @@ const UserChatContent = ({
           clearInterval(intervalId);
         }
       }, 4);
-
       return () => clearInterval(intervalId);
     }
   }, [message]);
@@ -59,9 +58,9 @@ const UserChatContent = ({
             !isUser ? "items-start" : "items-end"
           )}
         >
-          <div className="w-fitrelative rounded-xl p-2 bg-gray-100">
-            <p className="text-sm text-cursor whitespace-normal text-center typewriter-animation w-fit text-gray-500 dark:text-gray-400 box-border text-wrap">
-              {message}
+          <div className="w-fit relative rounded-xl p-2 bg-gray-100">
+            <p className="text-sm whitespace-normal w-fit text-gray-500 dark:text-gray-400 box-border text-wrap">
+              {chat}
               {/* <svg
                 className="w-[20px]"
                 xmlns="http://www.w3.org/2000/svg"
