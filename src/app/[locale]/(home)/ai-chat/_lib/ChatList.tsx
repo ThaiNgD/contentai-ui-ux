@@ -1,6 +1,7 @@
 "use client";
 
 import ChatDisplayContainer from "@/components/ChatComponent/ChatDisplayContainer";
+import { queryClient } from "@/provider/TanStackProvider";
 import { useFetchAllChat } from "@/service/ai-chat/useFetchAllChat";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface ChatListProps {
@@ -10,12 +11,25 @@ interface ChatListProps {
 interface ChatContainerProps {
   chat?: IConversationDetail;
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
+  // userData: number;
+}
+
+interface UserInfo {
+  user: {
+    userDbId: string;
+    email: string;
+    name: string | null;
+    userId: string;
+    username: string;
+  };
+  message: string;
 }
 
 const ChatList = ({ chat, setChat }: ChatContainerProps) => {
   const [allChats, setAllChats] = useState<ChatListProps>();
   const [selectedChatId, setSelectedChatId] = useState<string>();
-  const { data } = useFetchAllChat();
+  const userData = queryClient.getQueryData<UserInfo>(["user"]);
+  const { data } = useFetchAllChat(Number(userData?.user.userDbId));
   useEffect(() => {
     console.log(selectedChatId);
   }, [selectedChatId]);

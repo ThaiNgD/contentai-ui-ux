@@ -6,16 +6,33 @@ import ChatHeader from "./_lib/ChatHeader";
 import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
 import { useAddConversation } from "@/service/ai-chat/useAddConversation";
+import { queryClient } from "@/provider/TanStackProvider";
+
+interface UserInfo {
+  user: {
+    userDbId: string;
+    email: string;
+    name: string | null;
+    userId: string;
+    username: string;
+  };
+  message: string;
+}
 
 const Page = () => {
   const [chat, setChat] = useState<IConversationDetail>();
 
-  const addNewMessageMutation = useAddConversation(1);
+  const userData = queryClient.getQueryData<UserInfo>(["user"]);
+  const addNewMessageMutation = useAddConversation(
+    Number(userData?.user?.userDbId)
+  );
 
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      const test = await addNewMessageMutation.mutateAsync(1);
+      const test = await addNewMessageMutation.mutateAsync(
+        Number(userData?.user?.userDbId)
+      );
       console.log("test", test);
 
       // setIsChat(true);
@@ -38,7 +55,11 @@ const Page = () => {
               Thêm đoạn chat
             </Button>
           )}
-          <ChatList chat={chat} setChat={setChat} />
+          <ChatList
+            // userData={Number(userData?.user?.userDbId)}
+            chat={chat}
+            setChat={setChat}
+          />
         </div>
       </div>
       <div className="grid divide-y justify-stretch items-stretch w-full grid-rows-[15%,85%]">

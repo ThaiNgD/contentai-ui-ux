@@ -68,6 +68,8 @@ const ChatDisplayContainer = ({
     setChat(undefined);
     setIsShowEditConfirm(false);
     deleteMutation.mutate(chat.id);
+    setIsClicked(false);
+    setSelectedChatId?.(undefined);
     // await refetch();
     // e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
     // if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
@@ -116,13 +118,10 @@ const ChatDisplayContainer = ({
       !selectedChatId &&
       chatDetail.threadId == chat.id
     ) {
-      console.log("got it");
       // setChat(data);
       setShouldFetch(true); // Tắt fetch nếu không phải chat đang chọn
       setIsClicked(true);
       setSelectedChatId?.(chat.id);
-
-      console.log("con me no");
     }
   }, [data]);
 
