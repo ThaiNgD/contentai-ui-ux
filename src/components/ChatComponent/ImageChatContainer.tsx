@@ -18,7 +18,7 @@ const ImageChatContainer = () => {
       <div className="p-[30px] h-full flex flex-col gap-3 justify-between">
         {isChat ? (
           <>
-            <div className="flex flex-col h-full overflow-auto pb-4 gap-4">
+            <div className="flex flex-col h-[calc(100%-150px)] overflow-auto pb-4 gap-4">
               <WelcomeUserChatContent imgUrl={userImage} />
               <UserChatContent
                 message="Thai"

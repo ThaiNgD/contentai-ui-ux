@@ -14,12 +14,12 @@ const PDFChatContainer = () => {
   const [file, setFile] = useState<File | null>();
   const [isChat, setIsChat] = useState(false);
   return (
-    <div className="flex h-[85%] flex-col justify-between gap-2">
+    <div className="flex h-[85%] max-h-[600px] flex-col justify-between gap-2">
       <div className="p-[30px] h-full flex justify-between gap-3">
         {file && (
           <PDFViewer
             height="h-full"
-            width="w-[45%]"
+            width="w-[60%]"
             fileSrc={URL.createObjectURL(file)}
           />
         )}

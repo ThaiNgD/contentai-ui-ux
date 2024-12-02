@@ -1,6 +1,7 @@
 "use client";
 import { avatar } from "@/assets/images/avatar-image";
-import { selectRandom } from "@/helper/function";
+import { selectRandom, sortMessageByTime } from "@/helper/function";
+import { queryClient } from "@/provider/TanStackProvider";
 import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { Button } from "flowbite-react";
@@ -9,7 +10,6 @@ import { toast } from "react-toastify";
 import ChatInput from "./ChatInput";
 import UserChatContent from "./UserChatContent";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
-import { queryClient } from "@/provider/TanStackProvider";
 
 // Cập nhật kiểu dữ liệu cho props
 interface ChatContainerProps {
@@ -68,7 +68,7 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
               userName={user && user?.name ? user.name : user?.email}
               imgUrl={userImage}
             />
-            {chat?.conversation?.map((con, index) => {
+            {sortMessageByTime(chat?.conversation).map((con, index) => {
               return (
                 <UserChatContent
                   key={index}

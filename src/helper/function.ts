@@ -160,8 +160,17 @@ export function sortConversationByTime(
   );
 }
 
+export function sortMessageByTime(conversation: IMessage[]): IMessage[] {
+  return conversation.sort(
+    (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+  );
+}
+
 // Converted Date
-export function formatDateToVietnamese(date: number): string {
+export function formatDateToVietnamese(date: number): {
+  formattedDate: string;
+  formattedTime: string;
+} {
   // Ensure the input is a Date object
   const d = new Date(date);
 
@@ -169,7 +178,11 @@ export function formatDateToVietnamese(date: number): string {
   const day = d.getDate().toString().padStart(2, "0"); // Day with leading zero
   const month = (d.getMonth() + 1).toString().padStart(2, "0"); // Month with leading zero (0-based index)
   const year = d.getFullYear().toString(); // Full year
-
+  const hour = d.getHours().toString();
+  const minute = d.getMinutes().toString();
   // Combine components in Vietnamese format dd/MM/yyyy
-  return `${day}/${month}/${year}`;
+  return {
+    formattedDate: `${day}/${month}/${year}`,
+    formattedTime: `${hour}:${minute}`,
+  };
 }
