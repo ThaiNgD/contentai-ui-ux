@@ -19,11 +19,11 @@ import ModalConfirmDeleteChat from "../Modal/ModalConfirmDeleteChat";
 
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
-  chat: IConversationResult;
+  chat: IConversationDetail | undefined;
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
   selectedChatId?: string | undefined;
   setSelectedChatId?: Dispatch<SetStateAction<string | undefined>>;
-  chatDetail: IConversationDetail | undefined;
+  chatDetail: IConversationResult;
   refetch?: () => Promise<void>;
 }
 
@@ -38,7 +38,7 @@ const ChatDisplayContainer = ({
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
   const [shouldFetch, setShouldFetch] = useState(false);
-  const { data } = useFetchConversationById(chat.id, shouldFetch);
+  const { data } = useFetchConversationById(chatDetail.id, shouldFetch);
   const [isEdit, setIsEdit] = useState(false);
   const editConversationNameMutation = useEditConversationName();
   const [isShowDeleteConfirm, setIsShowEditConfirm] = useState(false);
@@ -52,7 +52,7 @@ const ChatDisplayContainer = ({
 
   const editFormik = useFormik({
     initialValues: {
-      rename: chat.conversationName,
+      rename: chatDetail.conversationName,
     },
     onSubmit: (values) => {
       if (values.rename.length === 0) {
@@ -61,24 +61,26 @@ const ChatDisplayContainer = ({
       }
       setIsEdit(false);
       editConversationNameMutation.mutate({
-        threadId: chat.id,
+        threadId: chatDetail.id,
         conversationName: values.rename,
       });
     },
   });
 
   // Mutation xóa cuộc hội thoại
-  const deleteMutation = useDeleteConversationById(chat.id);
+  const deleteMutation = useDeleteConversationById(chatDetail.id);
 
   // Hàm xử lý xóa
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
     setChat(undefined);
     setIsShowEditConfirm(false);
-    deleteMutation.mutate(chat.id);
+    deleteMutation.mutate(chatDetail.id);
     setIsClicked(false);
     setSelectedChatId?.(undefined);
   };
+
+  //AutoFocus TextArea
 
   // Prefetch dữ liệu khi hover
   const handleMouseEnter = async (chatId: string) => {
@@ -92,8 +94,10 @@ const ChatDisplayContainer = ({
 
   // Xử lý khi click vào chat
   const handleClick = () => {
+    const messageDiv = document.getElementById("message");
+    messageDiv?.focus();
     setIsClicked(true);
-    setSelectedChatId?.(chat.id);
+    setSelectedChatId?.(chatDetail.id);
     setShouldFetch(true); // Bật fetch dữ liệu chi tiết
   };
 
@@ -106,22 +110,22 @@ const ChatDisplayContainer = ({
 
   // Reset trạng thái khi đổi selected chat
   useEffect(() => {
-    if (selectedChatId !== chat.id) {
+    if (selectedChatId !== chatDetail.id) {
       setIsClicked(false);
       setShouldFetch(false); // Tắt fetch nếu không phải chat đang chọn
     }
-  }, [selectedChatId, chat.id]);
+  }, [selectedChatId, chatDetail.id]);
 
   useEffect(() => {
     if (
-      chatDetail != undefined &&
+      chat != undefined &&
       !isClicked &&
       !selectedChatId &&
-      chatDetail.threadId == chat.id
+      chat?.threadId == chatDetail.id
     ) {
-      setShouldFetch(true); // Tắt fetch nếu không phải chat đang chọn
+      setShouldFetch(true);
       setIsClicked(true);
-      setSelectedChatId?.(chat.id);
+      setSelectedChatId?.(chatDetail.id);
     }
   }, [data]);
 
@@ -150,7 +154,7 @@ const ChatDisplayContainer = ({
       role="button"
       onClick={handleClick}
       onMouseOver={(): void => {
-        handleMouseEnter(chat.id); // Prefetch khi hover
+        handleMouseEnter(chatDetail.id); // Prefetch khi hover
       }}
     >
       <div
@@ -177,7 +181,7 @@ const ChatDisplayContainer = ({
           </form>
         ) : (
           <span className="font-bold overflow-hidden text-ellipsis !text-nowrap">
-            {chat?.conversationName}
+            {chatDetail?.conversationName}
           </span>
         )}
         {isPdfChat && (
@@ -192,7 +196,7 @@ const ChatDisplayContainer = ({
           </div>
         )}
         <p className="text-xs opacity-50 text-black w-fit whitespace-nowrap overflow-hidden">
-          {convertToVietnameseDate(chat?.createdAt)}
+          {convertToVietnameseDate(chatDetail?.createdAt)}
         </p>
       </div>
       {isEdit ? (
