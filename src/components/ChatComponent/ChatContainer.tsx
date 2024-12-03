@@ -1,6 +1,7 @@
 "use client";
 import { avatar } from "@/assets/images/avatar-image";
-import { selectRandom } from "@/helper/function";
+import { selectRandom, sortMessageByTime } from "@/helper/function";
+import { queryClient } from "@/provider/TanStackProvider";
 import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { Button } from "flowbite-react";
@@ -16,15 +17,31 @@ interface ChatContainerProps {
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
 }
 
+interface UserInfo {
+  user: {
+    userDbId: string;
+    email: string;
+    name: string | null;
+    userId: string;
+    username: string;
+  };
+  message: string;
+}
+
 const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
-  const userImage = selectRandom(avatar);
-  const addNewMessageMutation = useAddConversation(1);
   const { data: user } = useFetchUserInfo();
+  const userImage = selectRandom(avatar);
+  const data = queryClient.getQueryData<UserInfo>(["user"]);
+  const addNewMessageMutation = useAddConversation(
+    Number(data?.user?.userDbId)
+  );
 
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      const test = await addNewMessageMutation.mutateAsync(1);
+      const test = await addNewMessageMutation.mutateAsync(
+        Number(data?.user?.userDbId)
+      );
       console.log("test", test);
       setChat(test);
     } catch (error) {
@@ -51,7 +68,7 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
               userName={user && user?.name ? user.name : user?.email}
               imgUrl={userImage}
             />
-            {chat?.conversation?.map((con, index) => {
+            {sortMessageByTime(chat?.conversation).map((con, index) => {
               return (
                 <UserChatContent
                   key={index}
