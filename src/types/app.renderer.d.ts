@@ -59,4 +59,15 @@ declare global {
     message: string;
     user: IUserProfile;
   };
+
+  interface UserInfo {
+    user: {
+      userDbId: string;
+      email: string;
+      name: string | null;
+      userId: string;
+      username: string;
+    };
+    message: string;
+  }
 }

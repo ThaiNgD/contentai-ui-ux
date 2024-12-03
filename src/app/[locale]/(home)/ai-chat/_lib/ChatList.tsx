@@ -1,8 +1,8 @@
 "use client";
 
 import ChatDisplayContainer from "@/components/ChatComponent/ChatDisplayContainer";
-import { queryClient } from "@/provider/TanStackProvider";
 import { sortConversationByTime } from "@/helper/function";
+import { queryClient } from "@/provider/TanStackProvider";
 import { useFetchAllChat } from "@/service/ai-chat/useFetchAllChat";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface ChatListProps {
@@ -15,31 +15,18 @@ interface ChatContainerProps {
   // userData: number;
 }
 
-interface UserInfo {
-  user: {
-    userDbId: string;
-    email: string;
-    name: string | null;
-    userId: string;
-    username: string;
-  };
-  message: string;
-}
-
 const ChatList = ({ chat, setChat }: ChatContainerProps) => {
   const [allChats, setAllChats] = useState<ChatListProps>();
   const [selectedChatId, setSelectedChatId] = useState<string>();
   const userData = queryClient.getQueryData<UserInfo>(["user"]);
   const { data, isPending } = useFetchAllChat(Number(userData?.user.userDbId));
   useEffect(() => {
-    console.log(selectedChatId);
-  }, [selectedChatId]);
-  useEffect(() => {
     if (data) setAllChats(data);
     else {
       setAllChats(undefined);
     }
   }, [data]);
+
   return (
     <div className="flex flex-col scrollbar-thin overflow-x-hidden overflow-y-auto">
       {isPending ? (
@@ -106,8 +93,8 @@ const ChatList = ({ chat, setChat }: ChatContainerProps) => {
                 selectedChatId={selectedChatId}
                 setSelectedChatId={setSelectedChatId}
                 setChat={setChat}
-                chat={chatResult}
-                chatDetail={chat}
+                chat={chat}
+                chatDetail={chatResult}
                 key={index}
               />
             );

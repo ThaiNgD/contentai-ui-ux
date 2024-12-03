@@ -178,8 +178,8 @@ export function formatDateToVietnamese(date: number): {
   const day = d.getDate().toString().padStart(2, "0"); // Day with leading zero
   const month = (d.getMonth() + 1).toString().padStart(2, "0"); // Month with leading zero (0-based index)
   const year = d.getFullYear().toString(); // Full year
-  const hour = d.getHours().toString();
-  const minute = d.getMinutes().toString();
+  const hour = d.getHours().toString().padStart(2, "0"); // Hour with leading zero
+  const minute = d.getMinutes().toString().padStart(2, "0");
   // Combine components in Vietnamese format dd/MM/yyyy
   return {
     formattedDate: `${day}/${month}/${year}`,

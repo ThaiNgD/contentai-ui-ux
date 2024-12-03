@@ -35,7 +35,6 @@ function CustomEditor({ data }: CKEDITORProps) {
   const converter = new showdown.Converter();
   const [htmlData, setHtmlData] = useState("");
   // Convert markdown to HTML
-
   useEffect(() => {
     if (data) {
       let i = 0;
