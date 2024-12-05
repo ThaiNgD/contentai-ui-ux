@@ -5,7 +5,7 @@ interface ChatListProps {
   conversation: IConversationResult[];
 }
 export const useFetchAllChat = (
-  userId: number
+  userId: string
 ): UseQueryResult<ChatListProps, Error> => {
   return useQuery({
     queryKey: ["all-chat"],

@@ -19,7 +19,7 @@ const ChatList = ({ chat, setChat }: ChatContainerProps) => {
   const [allChats, setAllChats] = useState<ChatListProps>();
   const [selectedChatId, setSelectedChatId] = useState<string>();
   const userData = queryClient.getQueryData<UserInfo>(["user"]);
-  const { data, isPending } = useFetchAllChat(Number(userData?.user.userDbId));
+  const { data, isPending } = useFetchAllChat(String(userData?.user.userId));
   useEffect(() => {
     if (data) setAllChats(data);
     else {

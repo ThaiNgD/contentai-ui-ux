@@ -6,7 +6,7 @@ import {
 import { conversationApi } from "../axios/conversationApi";
 
 export const useAddConversation = (
-  userId: number
+  userId: string
 ): UseMutationResult<IConversationDetail, Error> => {
   const queryClient = useQueryClient();
 
