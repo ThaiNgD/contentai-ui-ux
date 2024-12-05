@@ -12,11 +12,10 @@ export const aiRewriter = {
     );
   },
 
-  save: async () => {
-    return await http.post<any, IResult>(`${aiRewriter.pathKey}/save_rewrite`);
-  },
-
-  get: async () => {
-    return await http.get<any, any>(`${aiRewriter.pathKey}/get_rewriter`);
+  saveRewriter: async (aiModelId: string, payload: IFormDocument) => {
+    return await http.post<any, IResult>(
+      `${aiRewriter.pathKey}/save_rewiter/${aiModelId}`,
+      payload
+    );
   },
 };
