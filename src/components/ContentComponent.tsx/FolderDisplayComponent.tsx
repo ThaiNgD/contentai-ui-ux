@@ -8,16 +8,19 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 export interface FolderDisplayComponentProps {
   title: string;
   time: string;
+  folder_id: string;
   clsContainerWidth?: string;
 }
 const FolderDisplayComponent = ({
   title,
   time,
+  folder_id,
   clsContainerWidth,
 }: FolderDisplayComponentProps) => {
   const router = useRouter();
   const { pathWithoutLocale } = useGetPathComponent();
   const [isSelected, setIsSelected] = useState(false);
+  console.log(folder_id);
   return (
     <div
       className={cn(
@@ -32,7 +35,7 @@ const FolderDisplayComponent = ({
       role="button"
       onClick={(): void => {
         setIsSelected(true);
-        router.push(`${pathWithoutLocale}/folder/${1}`);
+        router.push(`${pathWithoutLocale}/folder/${title}`);
       }}
     >
       <FaFolderOpen
