@@ -7,33 +7,33 @@ export const featureAI = {
 
   createFeature: async (payload: IFormFeatureAi) => {
     return await http.post<AnalyserNode, IResult>(
-      `${featureAI.queryKey}/create_feature`,
+      `${featureAI.pathKey}/create_feature`,
       payload
     );
   },
 
   createAiModel: async (payload: IFormAiModel) => {
     return await http.post<AnalyserNode, IResult>(
-      `${featureAI.queryKey}/create_ai_model`,
+      `${featureAI.pathKey}/create_ai_model`,
       payload
     );
   },
 
   getAllFeature: async () => {
     return await http.get<AnalyserNode[], IResult>(
-      `${featureAI.queryKey}/features`
+      `${featureAI.pathKey}/features`
     );
   },
 
   getAiModelByFeature: async (featureAiId: string) => {
     return await http.get<AnalyserNode, IResult>(
-      `${featureAI.queryKey}/ai_model_by_feature_id/${featureAiId}`
+      `${featureAI.pathKey}/ai_model_by_feature_id/${featureAiId}`
     );
   },
 
   getAiModelFavourite: async (featureAiId: string) => {
     return await http.get<AnalyserNode, IResult>(
-      `${featureAI.queryKey}/ai_model_favourite/${featureAiId}`
+      `${featureAI.pathKey}/ai_model_favourite/${featureAiId}`
     );
   },
 };
