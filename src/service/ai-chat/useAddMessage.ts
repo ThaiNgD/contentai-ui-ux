@@ -17,7 +17,8 @@ export const useAddMessage = (
       message: string;
     }): Promise<IConversationDetail> =>
       await conversationApi.addMessage({ message, threadId }), // Giả sử API có phương thức deleteConversationById
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log(data);
       // queryClient.setQueryData([conversationApi.queryKey], isSuccess);
       queryClient.invalidateQueries({
         queryKey: ["chatDetail", threadId], // Định nghĩa query key

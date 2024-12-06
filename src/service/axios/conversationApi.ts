@@ -7,9 +7,9 @@ interface ChatListProps {
 export const conversationApi = {
   queryKey: "all-chat",
   pathKey: "chat-box-ai",
-  getAll: async (userId: number) => {
+  getAll: async () => {
     return await http.get<any, ChatListProps>(
-      `${conversationApi.pathKey}/get-ai-chat-by-userId/${userId}`
+      `${conversationApi.pathKey}/get-ai-chat-by-userId`
     );
   },
 
@@ -33,7 +33,7 @@ export const conversationApi = {
     );
   },
 
-  addConversation: async (userId: number) => {
+  addConversation: async (userId: string) => {
     return await http.post<any, any>(
       `${conversationApi.pathKey}/add-new-ai-chat`,
       { userId }
