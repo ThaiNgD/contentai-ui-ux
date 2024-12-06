@@ -7,9 +7,9 @@ interface ChatListProps {
 export const conversationApi = {
   queryKey: "all-chat",
   pathKey: "chat-box-ai",
-  getAll: async (userId: string) => {
+  getAll: async () => {
     return await http.get<any, ChatListProps>(
-      `${conversationApi.pathKey}/get-ai-chat-by-userId/${userId}`
+      `${conversationApi.pathKey}/get-ai-chat-by-userId`
     );
   },
 

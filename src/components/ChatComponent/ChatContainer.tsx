@@ -34,9 +34,7 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const userImage = selectRandom(avatar);
   const data = queryClient.getQueryData<UserInfo>(["user"]);
-  const addNewMessageMutation = useAddConversation(
-    Number(data?.user?.userDbId)
-  );
+  const addNewMessageMutation = useAddConversation(String(data?.user?.userId));
   const [isTypingText, setIsTypingText] = useState(false);
   // const [timeArray, setTimeArray] = useState<Array<string>>();
 
@@ -45,8 +43,9 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
     setIsLoading(true);
     try {
       const test = await addNewMessageMutation.mutateAsync(
-        Number(data?.user?.userDbId)
+        String(data?.user?.userId)
       );
+      console.log(test);
       setChat(test);
       setIsLoading(false);
     } catch (error) {

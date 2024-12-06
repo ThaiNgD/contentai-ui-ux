@@ -2,7 +2,7 @@
 
 import ChatDisplayContainer from "@/components/ChatComponent/ChatDisplayContainer";
 import { sortConversationByTime } from "@/helper/function";
-import { queryClient } from "@/provider/TanStackProvider";
+//import { queryClient } from "@/provider/TanStackProvider";
 import { useFetchAllChat } from "@/service/ai-chat/useFetchAllChat";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface ChatListProps {
@@ -18,8 +18,8 @@ interface ChatContainerProps {
 const ChatList = ({ chat, setChat }: ChatContainerProps) => {
   const [allChats, setAllChats] = useState<ChatListProps>();
   const [selectedChatId, setSelectedChatId] = useState<string>();
-  const userData = queryClient.getQueryData<UserInfo>(["user"]);
-  const { data, isPending } = useFetchAllChat(String(userData?.user.userId));
+  //const userData = queryClient.getQueryData<UserInfo>(["user"]);
+  const { data, isPending } = useFetchAllChat();
   useEffect(() => {
     if (data) setAllChats(data);
     else {
