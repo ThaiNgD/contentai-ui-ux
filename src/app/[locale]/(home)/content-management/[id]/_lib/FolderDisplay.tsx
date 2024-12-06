@@ -10,6 +10,7 @@ const FolderDisplay = () => {
         <MdKeyboardBackspace size={30} />
       </div>
       <FolderDisplayComponent
+        folder_id=""
         title="Folder"
         time="1 tháng trước"
         clsContainerWidth="w-full"
