@@ -7,4 +7,12 @@ declare global {
     folderId: string;
     aiModelId: string;
   };
+
+  type IFormFavourite = {
+    favourite: boolean;
+  };
+
+  type IFormFolderForDocuments = {
+    folderId: string;
+  };
 }

@@ -12,6 +12,13 @@ export const folder = {
     );
   },
 
+  updateTag: async (payload: IFormTag, folderId: string) => {
+    return await http.post<any, any>(
+      `${folder.queryKey}/update_tag//${folderId}`,
+      payload
+    );
+  },
+
   getFolderForUser: async () => {
     return await http.get<AnalyserNode[], IResult>(
       `${folder.queryKey}/folder_for_user`
