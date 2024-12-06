@@ -77,7 +77,6 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     link: "speech-to-text",
     title: "Speech To Text",
     icon: PiSpeakerHighFill,
-    isDisable: true,
   },
   {
     link: "ai-plagiarism",

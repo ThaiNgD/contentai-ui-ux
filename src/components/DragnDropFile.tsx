@@ -47,7 +47,7 @@ const DragnDropFile = ({
     if (fileInput && fileInput.length > 0) {
       setFile(URL.createObjectURL(fileInput[0]));
       setIsFileEnter(false);
-      setFileSelected?.(fileInput);
+      setFileSelected?.(fileInput[0]);
     }
   };
   return (
@@ -80,6 +80,8 @@ const DragnDropFile = ({
           [...e.dataTransfer.items].forEach((item) => {
             if (item.kind === "file") {
               const file = item.getAsFile();
+              setFileSelected?.(file);
+
               console.log(file);
               if (file && file.type.includes("image/")) {
                 const blobUrl = URL.createObjectURL(file);

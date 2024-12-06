@@ -1,23 +1,30 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { GrAttachment } from "react-icons/gr";
 import { IoSend } from "react-icons/io5";
 import { PiOpenAiLogo } from "react-icons/pi";
 import TextAreaField from "../CustomField/TextAreaField";
 import ModalSelectModule from "../Modal/ModalSelectModule";
-import { useAddMessage } from "@/service/ai-chat/useAddMessage";
+import { useAddMessagePdfChat } from "@/service/ai-pdf-chat/useAddMessagePdfChat";
 
-const ChatInput = ({ threadId }: { threadId: string }) => {
+const ChatInput = ({
+  threadId,
+  setShouldFetch,
+}: {
+  threadId: string;
+  setShouldFetch?: Dispatch<SetStateAction<boolean>>;
+}) => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [message, setMessage] = useState("");
 
-  const addMessageMutation = useAddMessage(message, threadId);
+  const addMessageMutation = useAddMessagePdfChat(message, threadId);
 
   const handleSendMessage = () => {
     if (!message.trim()) return; // Không gửi tin nhắn rỗng
     addMessageMutation.mutate(message, {
       onSuccess: () => {
         setMessage(""); // Xóa nội dung text sau khi gửi thành công
+        setShouldFetch?.(true);
       },
       onError: (error) => {
         console.error("Failed to send message:", error);

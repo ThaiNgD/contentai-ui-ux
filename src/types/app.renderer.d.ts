@@ -59,4 +59,17 @@ declare global {
     message: string;
     user: IUserProfile;
   };
+
+  type IPdfChatConversation = {
+    threadId: string;
+  };
+
+  type ISpeechToText = {
+    transcribedText: string;
+  };
+
+  type IAiVision = {
+    message: string;
+    data: string;
+  };
 }
