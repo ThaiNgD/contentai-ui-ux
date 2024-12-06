@@ -10,12 +10,6 @@ export const aiAnalysezKeyword = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiAnalysezKeyword.pathKey}/save_seo`
-    );
-  },
 };
 
 export const aiCreateTitle = {
@@ -27,10 +21,6 @@ export const aiCreateTitle = {
       `${aiCreateTitle.pathKey}/create_title`,
       payload
     );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(`${aiCreateTitle.pathKey}/save_seo`);
   },
 };
 
@@ -44,10 +34,6 @@ export const aiCreateOutline = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(`${aiCreateTitle.pathKey}/save_seo`);
-  },
 };
 
 export const aiCreateDetail = {
@@ -60,8 +46,16 @@ export const aiCreateDetail = {
       payload
     );
   },
+};
 
-  save: async () => {
-    return await http.post<any, IResult>(`${aiCreateTitle.pathKey}/save_seo`);
+export const aiSeo = {
+  pathKey: "ai_seo",
+  queryKey: "ai_seo",
+
+  saveSeo: async (aiModelId: string, payload: IFormDocument) => {
+    return await http.post<any, IResult>(
+      `${aiSeo.pathKey}/save_seo/${aiModelId}`,
+      payload
+    );
   },
 };

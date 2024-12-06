@@ -12,11 +12,9 @@ export const aiArticle = {
     );
   },
 
-  save: async () => {
-    return await http.post<any, IResult>(`${aiArticle.pathKey}/save_article`);
-  },
-
-  get: async () => {
-    return await http.get<any, any>(`${aiArticle.pathKey}/get_article`);
+  save: async (aiModelId: string) => {
+    return await http.post<any, IResult>(
+      `${aiArticle.pathKey}/save_article/${aiModelId}`
+    );
   },
 };

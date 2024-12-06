@@ -62,3 +62,15 @@ export const aiSeoOptimize = {
     );
   },
 };
+
+export const aiBlog = {
+  pathKey: "ai_blog",
+  queryKey: "ai_blog",
+
+  saveBlog: async (aiModelId: string, payload: IFormDocument) => {
+    return await http.post<any, IResult>(
+      `${aiBlog.pathKey}/save_blog/${aiModelId}`,
+      payload
+    );
+  },
+};
