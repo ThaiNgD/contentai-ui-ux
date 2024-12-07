@@ -53,7 +53,7 @@ const DragnDropFile = ({
   return (
     <div
       className={cn(
-        "border p-[20px] w-full border-dashed bg-white hover:bg-blue-300/85  min-h-[280px] hover:opacity-40 flex flex-col items-center justify-center rounded-lg",
+        "border p-[20px] w-full border-dashed bg-white hover:bg-blue-300/85 h-full min-h-[280px] hover:opacity-40 flex flex-col items-center justify-center rounded-lg",
         isFileEnter && "bg-blue-300/85 opacity-40"
       )}
       role="button"

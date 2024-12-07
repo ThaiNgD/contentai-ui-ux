@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DragnDropPDF from "../DragnDropPDF";
 import PDFViewer from "../PDFViewer";
-import ChatInput from "./ChatInput";
+import PDFChatInput from "./PDFChatInput";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
 import { useUploadPdf } from "@/service/ai-pdf-chat/useUploadPdf";
 import UserChatContent from "./UserChatContent";
@@ -37,12 +37,12 @@ const PDFChatContainer = () => {
     }
   }, [file]); // Khi file thay đổi, gọi hàm upload
   return (
-    <div className="flex h-[85%] flex-col justify-between gap-2">
+    <div className="flex h-[85%] max-h-[600px] flex-col justify-between gap-2">
       <div className="p-[30px] h-full flex justify-between gap-3">
         {file && (
           <PDFViewer
             height="h-full"
-            width="w-[45%]"
+            width="w-[60%]"
             fileSrc={URL.createObjectURL(file)}
           />
         )}
@@ -70,7 +70,10 @@ const PDFChatContainer = () => {
                   />
                 );
               })}
-              <ChatInput setShouldFetch={setShouldFetch} threadId={threadId} />
+              <PDFChatInput
+                setShouldFetch={setShouldFetch}
+                threadId={threadId}
+              />
             </>
           ) : (
             <>

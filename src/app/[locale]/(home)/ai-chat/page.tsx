@@ -1,12 +1,13 @@
 "use client";
 import ChatContainer from "@/components/ChatComponent/ChatContainer";
+import { cn } from "@/helper/function";
+import { queryClient } from "@/provider/TanStackProvider";
 import { useAddConversation } from "@/service/ai-chat/useAddConversation";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import ChatHeader from "./_lib/ChatHeader";
 import ChatList from "./_lib/ChatList";
 import ChatSearchBar from "./_lib/ChatSearchBar";
-import { queryClient } from "@/provider/TanStackProvider";
 
 interface UserInfo {
   user: {
@@ -21,22 +22,22 @@ interface UserInfo {
 
 const Page = () => {
   const [chat, setChat] = useState<IConversationDetail>();
-
+  const [isLoading, setIsLoading] = useState(false);
   const userData = queryClient.getQueryData<UserInfo>(["user"]);
-  const addNewMessageMutation = useAddConversation(
+  const { mutateAsync: addNewMessageMutation } = useAddConversation(
     Number(userData?.user?.userDbId)
   );
 
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
+    setIsLoading(true);
     try {
-      const test = await addNewMessageMutation.mutateAsync(
-        Number(userData?.user?.userDbId)
+      await addNewMessageMutation(Number(userData?.user?.userDbId)).then(
+        (value) => {
+          setChat(value);
+          setIsLoading(false);
+        }
       );
-      console.log("test", test);
-
-      // setIsChat(true);
-      // setChat(test); // Gán kết quả vào setChat
     } catch (error) {
       console.error("Lỗi khi thêm cuộc trò chuyện mới:", error);
     }
@@ -49,10 +50,17 @@ const Page = () => {
         <div className="h-[calc(100%-100px)] max-h-[680px] row-span-1 py-[2px] w-full flex flex-col gap-2 ">
           {chat && (
             <Button
-              className="rounded-full w-fit px-[30px] my-5 bg-blue-500 shadow-md font-bold mx-auto border-blue-500 hover:shadow-none hover:translate-y-0.5 duration-200"
+              className={cn(
+                "rounded-full w-fit px-[30px] my-5 bg-blue-500 shadow-md font-bold mx-auto border-blue-500 hover:shadow-none hover:translate-y-0.5 duration-200",
+                isLoading && "pointer-events-none"
+              )}
               onClick={handleAddNew}
             >
-              Thêm đoạn chat
+              {isLoading ? (
+                <div className="loading size-[20px]"></div>
+              ) : (
+                "Thêm đoạn chat"
+              )}
             </Button>
           )}
           <ChatList

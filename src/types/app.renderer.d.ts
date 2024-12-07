@@ -72,4 +72,20 @@ declare global {
     message: string;
     data: string;
   };
+
+  type IAiChatImage = {
+    message: string;
+    data: string;
+  };
+
+  interface UserInfo {
+    user: {
+      userDbId: string;
+      email: string;
+      name: string | null;
+      userId: string;
+      username: string;
+    };
+    message: string;
+  }
 }

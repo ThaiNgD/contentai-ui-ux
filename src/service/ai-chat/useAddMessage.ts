@@ -6,13 +6,16 @@ import {
 import { conversationApi } from "../axios/conversationApi";
 
 export const useAddMessage = (
-  message: string,
   threadId: string
-): UseMutationResult<IConversationDetail, Error> => {
+): UseMutationResult<IConversationDetail, Error, { message: string }> => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async () =>
+    mutationFn: async ({
+      message,
+    }: {
+      message: string;
+    }): Promise<IConversationDetail> =>
       await conversationApi.addMessage({ message, threadId }), // Giả sử API có phương thức deleteConversationById
     onSuccess: () => {
       // queryClient.setQueryData([conversationApi.queryKey], isSuccess);

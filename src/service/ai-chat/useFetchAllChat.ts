@@ -10,7 +10,6 @@ export const useFetchAllChat = (
   return useQuery({
     queryKey: ["all-chat"],
     queryFn: () => conversationApi.getAll(userId), // Thêm conversationId vào đây
-    // enabled: isEnabled,
     enabled: true,
   });
 };
