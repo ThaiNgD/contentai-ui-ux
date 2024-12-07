@@ -8,9 +8,14 @@ import TextAreaField from "../CustomField/TextAreaField";
 interface ModalNewFolderProps {
   isShow: boolean;
   setIsShow?: Dispatch<SetStateAction<boolean>>;
+  setShouldFetch?: Dispatch<SetStateAction<boolean>>;
 }
 
-const ModalNewFolder: FC<ModalNewFolderProps> = ({ isShow, setIsShow }) => {
+const ModalNewFolder: FC<ModalNewFolderProps> = ({
+  isShow,
+  setIsShow,
+  setShouldFetch,
+}) => {
   const handleClose = (): void => setIsShow && setIsShow(false);
   const { mutate, isPending } = useCreateFolder();
   const formik = useFormik({
@@ -19,8 +24,8 @@ const ModalNewFolder: FC<ModalNewFolderProps> = ({ isShow, setIsShow }) => {
       folder_desc: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       mutate(values);
+      setShouldFetch?.(true);
       handleClose();
     },
   });

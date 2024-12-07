@@ -36,8 +36,6 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
   const data = queryClient.getQueryData<UserInfo>(["user"]);
   const addNewMessageMutation = useAddConversation(String(data?.user?.userId));
   const [isTypingText, setIsTypingText] = useState(false);
-  // const [timeArray, setTimeArray] = useState<Array<string>>();
-
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsLoading(true);
@@ -45,7 +43,6 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
       const test = await addNewMessageMutation.mutateAsync(
         String(data?.user?.userId)
       );
-      console.log(test);
       setChat(test);
       setIsLoading(false);
     } catch (error) {
@@ -60,9 +57,6 @@ const ChatContainer = ({ chat, setChat }: ChatContainerProps) => {
   const scrollToBottom = () => {
     messageRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  console.log(chat);
-
   useEffect(() => {
     scrollToBottom();
   }, [chat?.conversation]);
