@@ -60,6 +60,24 @@ declare global {
     user: IUserProfile;
   };
 
+  type IPdfChatConversation = {
+    threadId: string;
+  };
+
+  type ISpeechToText = {
+    transcribedText: string;
+  };
+
+  type IAiVision = {
+    message: string;
+    data: string;
+  };
+
+  type IAiChatImage = {
+    message: string;
+    data: string;
+  };
+
   interface UserInfo {
     user: {
       userDbId: string;
