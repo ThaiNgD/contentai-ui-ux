@@ -2,7 +2,7 @@ export {};
 
 declare global {
   type IFormFolder = {
-    folderName: string;
+    folder_name: string;
   };
 
   type IFormTag = {

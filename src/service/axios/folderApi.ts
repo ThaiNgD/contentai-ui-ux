@@ -1,33 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { FolderProps } from "../content-management/useFetchFolder";
 import http from "./httpClient";
 
-export const folder = {
+export const folderApi = {
   pathKey: "folder",
   queryKey: "folder",
 
   createFolder: async (payload: IFormFolder) => {
     return await http.post<any, IResult>(
-      `${folder.queryKey}/create_folder`,
+      `${folderApi.queryKey}/create_folder`,
       payload
     );
   },
 
   updateTag: async (payload: IFormTag, folderId: string) => {
     return await http.post<any, any>(
-      `${folder.queryKey}/update_tag/${folderId}`,
+      `${folderApi.queryKey}/update_tag/${folderId}`,
       payload
     );
   },
 
   getFolderForUser: async () => {
-    return await http.get<AnalyserNode[], IResult>(
-      `${folder.queryKey}/folder_for_user`
+    return await http.get<AnalyserNode[], FolderProps[]>(
+      `${folderApi.queryKey}/folder_for_user`
     );
   },
 
   getFolderForUserById: async (folderId: string) => {
     return await http.get<AnalyserNode[], IResult>(
-      `${folder.queryKey}/folder_by_id/${folderId}`
+      `${folderApi.queryKey}/folder_by_id/${folderId}`
     );
   },
 };

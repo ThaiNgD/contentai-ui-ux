@@ -44,8 +44,7 @@ export const document = {
 
   saveDocument: async (payload: IFormDocument, aiModelId: string) => {
     return await http.post<any, any>(
-      `${document.pathKey}/save_document/${aiModelId}
-`,
+      `${document.pathKey}/save_document/${aiModelId}`,
       payload
     );
   },
