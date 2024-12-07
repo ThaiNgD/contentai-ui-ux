@@ -15,7 +15,7 @@ export const folderApi = {
 
   updateTag: async (payload: IFormTag, folderId: string) => {
     return await http.post<any, any>(
-      `${folder.queryKey}/update_tag//${folderId}`,
+      `${folderApi.queryKey}/update_tag/${folderId}`,
       payload
     );
   },
