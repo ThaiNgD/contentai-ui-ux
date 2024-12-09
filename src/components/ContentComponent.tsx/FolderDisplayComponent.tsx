@@ -14,13 +14,12 @@ export interface FolderDisplayComponentProps {
 const FolderDisplayComponent = ({
   title,
   time,
-  folder_id,
+  // folder_id,
   clsContainerWidth,
 }: FolderDisplayComponentProps) => {
   const router = useRouter();
   const { pathWithoutLocale } = useGetPathComponent();
   const [isSelected, setIsSelected] = useState(false);
-  console.log(folder_id);
   return (
     <div
       className={cn(

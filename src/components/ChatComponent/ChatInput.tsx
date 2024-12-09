@@ -24,7 +24,6 @@ const ChatInput = ({
     initialValues: { message: "", chat_model: "", file: "" },
     onSubmit: (values) => {
       const questionTime = new Date().getTime();
-      console.log(questionTime);
       if (!values.message.trim()) return;
       setChat?.((prev) => {
         if (!prev?.conversation) {
@@ -47,8 +46,6 @@ const ChatInput = ({
         { message: values.message },
         {
           onSuccess: () => {
-            // setChat?.(data);
-
             setIsTypingText?.(false);
           },
           onError: (error) => {
