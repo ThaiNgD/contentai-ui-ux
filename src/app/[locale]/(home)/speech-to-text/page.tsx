@@ -1,21 +1,21 @@
 "use client";
 import DragnDropImage from "@/components/DragnDropFile";
+import { useTranscribeAudio } from "@/service/ai-speech-to-text/useTranscribeAudio";
 import { Button } from "flowbite-react";
+import { useState } from "react";
 import FormReport from "./_lib/FormReport";
 import Header from "./_lib/Header";
-import { useState } from "react";
-import { useTranscribeAudio } from "@/service/ai-speech-to-text/useTranscribeAudio";
 
 const Page = () => {
   const [file, setFile] = useState<File | null>();
   const [transcribedText, setTranscribedText] = useState("");
-  const TranscribeAudio = useTranscribeAudio();
+  const { mutate: TranscribeAudio, isPending } = useTranscribeAudio();
 
   const handleTranscribeAudio = () => {
     if (file)
-      TranscribeAudio.mutate(file, {
+      TranscribeAudio(file, {
         onSuccess: (data) => {
-          setTranscribedText(data.transcribedText);
+          setTranscribedText(data.transcript);
           console.log("data", data);
         },
       });
@@ -41,7 +41,11 @@ const Page = () => {
               handleTranscribeAudio();
             }}
           >
-            Convert
+            {isPending ? (
+              <div className="loading size-[24px]"></div>
+            ) : (
+              "Convert"
+            )}
           </Button>
         </div>
         <FormReport transcribedText={transcribedText} />
