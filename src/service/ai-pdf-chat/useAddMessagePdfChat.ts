@@ -6,13 +6,12 @@ import {
 import { aiPdfChatApi } from "../axios/aiPdfChatApi";
 
 export const useAddMessagePdfChat = (
-  message: string,
   threadId: string
-): UseMutationResult<IConversationDetail, Error> => {
+): UseMutationResult<IConversationDetail, Error, { message: string }> => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async () =>
+    mutationFn: async ({ message }: { message: string }) =>
       await aiPdfChatApi.addMessage({ message, threadId }), // Giả sử API có phương thức deleteConversationById
     onSuccess: () => {
       queryClient.invalidateQueries({

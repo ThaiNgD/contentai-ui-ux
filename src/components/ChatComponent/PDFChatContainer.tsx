@@ -5,53 +5,55 @@ import { useFetchConversationById } from "@/service/ai-chat/useFetchConversation
 import { useUploadPdf } from "@/service/ai-pdf-chat/useUploadPdf";
 import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { Button } from "flowbite-react";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import DragnDropPDF from "../DragnDropPDF";
 import PDFViewer from "../PDFViewer";
 import PDFChatInput from "./PDFChatInput";
+import TypingText from "./TypingText";
 import UserChatContent from "./UserChatContent";
 import WelcomeUserChatContent from "./WelcomeUserChatContent";
 
 const PDFChatContainer = () => {
   const userImage = selectRandom(avatar);
-  // const [chat, setChat] = useState();
+  const [chat, setChat] = useState<IConversationDetail>();
   const { data: user } = useFetchUserInfo();
   const [file, setFile] = useState<File | null>();
   const [isChat, setIsChat] = useState(false);
-  const [shouldFetch, setShouldFetch] = useState(false);
   const [threadId, setThreadId] = useState("");
-  const { data } = useFetchConversationById(threadId, shouldFetch);
+  const { data } = useFetchConversationById(threadId);
+  const [isTypingText, setIsTypingText] = useState(false);
   const { mutate: uploadPdfMutation, isPending } = useUploadPdf();
   const startPdfChat = () => {
     if (file) {
-      if (file) {
-        uploadPdfMutation(file, {
-          onSuccess: (data) => {
-            setIsChat(true);
-            toast.success("File đã được tải lên thành công!");
-            setThreadId(data.threadId);
-          },
-          onError: () => {
-            toast.error("Có lỗi xảy ra trong quá trình tải lên");
-          },
-        });
-      }
+      uploadPdfMutation(file, {
+        onSuccess: (data) => {
+          setIsChat(true);
+          toast.success("File đã được tải lên thành công!");
+          setThreadId(data.threadId);
+        },
+        onError: () => {
+          toast.error("Có lỗi xảy ra trong quá trình tải lên");
+        },
+      });
     } else {
       toast.error("Chưa có file nhập vào");
     }
   };
 
+  const src = useMemo(() => {
+    if (!file) return "";
+    return URL.createObjectURL(file);
+  }, [file]);
+
+  useEffect(() => {
+    setChat(data);
+  }, [data]);
+
   return (
     <div className="flex h-[85%] max-h-[600px] flex-col justify-between gap-2">
-      <div className="p-[30px] h-full flex justify-between gap-3">
-        {file && (
-          <PDFViewer
-            height="h-full"
-            width="w-[55%]"
-            fileSrc={URL.createObjectURL(file)}
-          />
-        )}
+      <div className="p-[30px] h-full flex justify-between gap-[30px]">
+        {file && <PDFViewer height="h-full" width="w-[52%]" fileSrc={src} />}
         <div
           className={cn(
             "flex flex-col justify-between gap-3",
@@ -66,7 +68,7 @@ const PDFChatContainer = () => {
                   imgUrl={userImage}
                 />
                 {sortMessageByTime(
-                  data?.conversation ? data?.conversation : []
+                  chat?.conversation ? chat?.conversation : []
                 ).map((con, index) => {
                   return (
                     <UserChatContent
@@ -78,11 +80,13 @@ const PDFChatContainer = () => {
                     />
                   );
                 })}
+                {isTypingText && <TypingText imgUrl={userImage} />}
               </div>
 
               <PDFChatInput
-                setShouldFetch={setShouldFetch}
+                setChat={setChat}
                 threadId={threadId}
+                setTyping={setIsTypingText}
               />
             </>
           ) : (
