@@ -27,7 +27,7 @@ const Page = () => {
               <FaList className="text-gray-500" size={18} />
             </div>
             <div role="button" className="bg-gray-200 rounded-md p-[6px]">
-              <FiGrid className="text-black" size={18} />
+              <FiGrid className="text-blue-500" size={18} />
             </div>
           </div>
         </div>

@@ -24,7 +24,7 @@ const ImageChatContainer = () => {
             alt="place-holder"
             width="50"
             height="50"
-            className="h-auto shadow-md max-h-[300px] w-auto"
+            className="h-auto shadow-md max-h-[300px] w-auto max-w-[40%]"
             objectFit="cover"
           />
           <div className="flex flex-col h-full flex-auto gap-3 justify-between">

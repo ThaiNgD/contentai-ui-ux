@@ -30,7 +30,7 @@ const Layout = ({
         }
       >
         <Header />
-        <div className="h-[calc(100%-130px)] flex flex-col min-h-fit duration-300 bg-white dark:bg-[#1F1F1F]">
+        <div className="h-[calc(100%-130px)] shadow-inner flex flex-col min-h-fit duration-300 bg-white dark:bg-[#1F1F1F]">
           {children}
         </div>
         <Footer />
