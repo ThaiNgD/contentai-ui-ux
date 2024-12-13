@@ -19,7 +19,10 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   };
   return (
     <div
-      className={cn("relative w-fit z-[50]", isOpen ? "w-[64px]" : "w-[256px]")}
+      className={cn(
+        "relative shadow-md w-fit z-[50]",
+        isOpen ? "w-[64px]" : "w-[256px]"
+      )}
     >
       <div
         className={cn(
