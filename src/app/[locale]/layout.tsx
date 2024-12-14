@@ -9,8 +9,9 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
 import "react-tooltip/dist/react-tooltip.css";
+import "../../assets/css/ck-content.css";
+import "../../assets/css/ck-editor.css";
 import "./globals.css";
-
 export const metadata: Metadata = {
   title: "Content AI",
   description: "Tạo ra bởi Phần mềm Marketing",

@@ -1,27 +1,37 @@
 // components/custom-editor.js
 "use client";
+import { EMOJIS_ARRAY } from "@/helper/const";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 import {
-  Alignment,
   Autoformat,
-  Autosave,
+  Base64UploadAdapter,
+  BlockQuote,
   Bold,
   ClassicEditor,
-  Clipboard,
-  ClipboardPipeline,
+  CloudServices,
+  Code,
+  CodeBlock,
   Essentials,
-  FontFamily,
   Heading,
+  HorizontalLine,
   Image,
+  ImageToolbar,
+  ImageUpload,
   Italic,
+  Link,
   List,
+  Markdown,
   Mention,
   Paragraph,
-  PastePlainText,
-  Underline,
-  Undo,
-  WordCount,
+  SourceEditing,
+  SpecialCharacters,
+  SpecialCharactersEssentials,
+  Strikethrough,
+  Table,
+  TableToolbar,
+  TextTransformation,
+  TodoList,
 } from "ckeditor5";
 import "ckeditor5/ckeditor5.css";
 import { useEffect, useState } from "react";
@@ -54,68 +64,52 @@ function CustomEditor({ data }: CKEDITORProps) {
       return () => clearInterval(intervalId);
     }
   }, [data]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function SpecialCharactersEmoji(this: any, editor: any): void {
+    if (!editor.plugins.get("SpecialCharacters")) {
+      return;
+    }
+
+    this.afterInit = function (): void {
+      editor.plugins.get("SpecialCharacters").addItems("Emoji", EMOJIS_ARRAY);
+    };
+  }
+
   return (
     <>
       <CKEditor
         data={htmlData}
         editor={ClassicEditor}
         config={{
-          toolbar: {
-            items: [
-              "undo",
-              "redo",
-              "|",
-              "heading",
-              "|",
-              "fontfamily",
-              "fontsize",
-              "fontColor",
-              "fontBackgroundColor",
-              "|",
-              "bold",
-              "italic",
-              "strikethrough",
-              "subscript",
-              "superscript",
-              "code",
-              "|",
-              "link",
-              "uploadImage",
-              "blockQuote",
-              "codeBlock",
-              "|",
-              "alignment",
-              "|",
-              "bulletedList",
-              "numberedList",
-              "todoList",
-              "outdent",
-              "indent",
-              "|",
-              "wordCount",
-              "|",
-              "clipboard",
-            ],
-          },
           plugins: [
-            FontFamily,
-            Heading,
-            Image,
+            Autoformat,
+            BlockQuote,
             Bold,
+            CloudServices,
+            Code,
+            CodeBlock,
             Essentials,
+            Heading,
+            HorizontalLine,
+            Image,
+            ImageToolbar,
+            ImageUpload,
+            Base64UploadAdapter,
             Italic,
+            Link,
+            List,
+            Markdown,
             Mention,
             Paragraph,
-            Undo,
-            Alignment,
-            Autosave,
-            Autoformat,
-            List,
-            Underline,
-            WordCount,
-            Clipboard,
-            ClipboardPipeline,
-            PastePlainText,
+            SourceEditing,
+            SpecialCharacters,
+            SpecialCharactersEmoji,
+            SpecialCharactersEssentials,
+            Strikethrough,
+            Table,
+            TableToolbar,
+            TextTransformation,
+            TodoList,
           ],
           style: {
             definitions: [
@@ -126,16 +120,90 @@ function CustomEditor({ data }: CKEDITORProps) {
               },
             ],
           },
-          image: {
-            insert: {
-              // This is the default configuration, you do not need to provide
-              // this configuration key if the list content and order reflects your needs.
-              integrations: ["upload", "assetManager", "url"],
-            },
+          toolbar: [
+            "undo",
+            "redo",
+            "|",
+            "sourceEditing",
+            "|",
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "strikethrough",
+            "code",
+            "|",
+            "bulletedList",
+            "numberedList",
+            "todoList",
+            "|",
+            "link",
+            "uploadImage",
+            "insertTable",
+            "blockQuote",
+            "codeBlock",
+            "horizontalLine",
+            "specialCharacters",
+          ],
+          codeBlock: {
+            languages: [
+              { language: "css", label: "CSS" },
+              { language: "html", label: "HTML" },
+              { language: "javascript", label: "JavaScript" },
+              { language: "php", label: "PHP" },
+            ],
           },
-          // initialData: `<div class="dots-loader !size-[24px]">Hello</div>`,
-
-          // initialData: "<p>Hello from CKEditor 5 in React!</p>",
+          heading: {
+            options: [
+              {
+                model: "paragraph",
+                title: "Paragraph",
+                class: "ck-heading_paragraph",
+              },
+              {
+                model: "heading1",
+                view: "h1",
+                title: "Heading 1",
+                class: "ck-heading_heading1",
+              },
+              {
+                model: "heading2",
+                view: "h2",
+                title: "Heading 2",
+                class: "ck-heading_heading2",
+              },
+              {
+                model: "heading3",
+                view: "h3",
+                title: "Heading 3",
+                class: "ck-heading_heading3",
+              },
+              {
+                model: "heading4",
+                view: "h4",
+                title: "Heading 4",
+                class: "ck-heading_heading4",
+              },
+              {
+                model: "heading5",
+                view: "h5",
+                title: "Heading 5",
+                class: "ck-heading_heading5",
+              },
+              {
+                model: "heading6",
+                view: "h6",
+                title: "Heading 6",
+                class: "ck-heading_heading6",
+              },
+            ],
+          },
+          image: {
+            toolbar: ["imageTextAlternative"],
+          },
+          table: {
+            contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
+          },
         }}
       />
     </>

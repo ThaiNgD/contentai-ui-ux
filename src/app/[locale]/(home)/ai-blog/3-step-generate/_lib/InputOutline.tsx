@@ -3,27 +3,35 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
+import { useAiCreateOutline } from "@/service/aiblog/useAiCreateOutline";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
+  idea: string;
 }
 
-const InputOutline = ({ setCkData }: InputProps) => {
+const InputOutline = ({ setCkData, idea }: InputProps) => {
+  const { mutate: aiCreateOutline, isPending, data } = useAiCreateOutline();
   const formik = useFormik({
     initialValues: {
-      idea: "",
+      idea: idea,
       module: "",
       language: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
-      setCkData(values.idea);
-      // Handle form submission
+      aiCreateOutline(values);
     },
   });
+
+  useEffect(() => {
+    if (data) {
+      setCkData(data.result);
+    }
+  }, [data]);
+
   return (
     <form
       id="form-submit"
@@ -35,7 +43,7 @@ const InputOutline = ({ setCkData }: InputProps) => {
         placeholder="Nhập ý tưởng"
         title="Ý tưởng bài viết"
         clsTitle="font-bold italic"
-        className="h-[150px]"
+        className="h-[150px] !bg-[#F5F9FC] shadow-inner"
         clsTextArea="min-h-[50px]"
         formik={formik}
       />
@@ -58,7 +66,11 @@ const InputOutline = ({ setCkData }: InputProps) => {
         type="submit"
         className="bg-blue-500 w-fit mx-auto px-[50px] mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
       >
-        Tạo Outline
+        {isPending ? (
+          <div className="loading size-[24px]"></div>
+        ) : (
+          "Tạo Outline"
+        )}
       </Button>
     </form>
   );

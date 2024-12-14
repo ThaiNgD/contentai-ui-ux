@@ -1,6 +1,8 @@
 "use client";
 
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { Button } from "flowbite-react";
+import { useRouter } from "next/navigation";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 interface ChildHeaderProps {
@@ -8,12 +10,18 @@ interface ChildHeaderProps {
   description?: string;
 }
 const ChildHeader = ({ title, description }: ChildHeaderProps) => {
+  const router = useRouter();
+  const { locale } = useGetPathComponent();
+  const handleClickBack = () => {
+    router.push(`/${locale}/ai-seo`);
+  };
   return (
     <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between border-b dark:text-white">
       <div className="flex flex-col gap-2">
         <span
           role="button"
           className="text-sm hover:underline hover:opacity-100 flex gap-2 opacity-70"
+          onClick={handleClickBack}
         >
           <MdOutlineKeyboardBackspace size={16} />
           Trở về
