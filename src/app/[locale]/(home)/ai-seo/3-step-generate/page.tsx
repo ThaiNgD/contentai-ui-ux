@@ -11,16 +11,6 @@ const Page = () => {
   const [steps, setSteps] = useState(configAISEOStep);
   const [title, setTitle] = useState<string>("");
   const [outline, setOutline] = useState<string>("");
-  // const setStepsKeyword = (): void => {
-  //   setSteps((prevs) => {
-  //     return prevs.map((prev, index) => {
-  //       return {
-  //         ...prev,
-  //         isActive: index === 0,
-  //       };
-  //     });
-  //   });
-  // };
   const setStepsOutline = (): void => {
     setSteps((prevs) => {
       return prevs.map((prev, index) => {
