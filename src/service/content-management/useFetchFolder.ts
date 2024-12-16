@@ -13,6 +13,5 @@ export const useFetchFolder = (): UseQueryResult<FolderProps[], Error> => {
     queryKey: ["folder-info"],
     queryFn: () => folderApi.getFolderForUser(),
     enabled: true,
-    staleTime: 0,
   });
 };

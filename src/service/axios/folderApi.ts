@@ -7,10 +7,11 @@ export const folderApi = {
   queryKey: "folder",
 
   createFolder: async (payload: IFormFolder) => {
-    return await http.post<any, IResult>(
+    const data = await http.post<any, IResult>(
       `${folderApi.queryKey}/create_folder`,
       payload
     );
+    return data;
   },
 
   updateTag: async (payload: IFormTag, folderId: string) => {
@@ -21,9 +22,11 @@ export const folderApi = {
   },
 
   getFolderForUser: async () => {
-    return await http.get<AnalyserNode[], FolderProps[]>(
+    const data = await http.get<AnalyserNode[], FolderProps[]>(
       `${folderApi.queryKey}/folder_for_user`
     );
+    console.log(data);
+    return data;
   },
 
   getFolderForUserById: async (folderId: string) => {

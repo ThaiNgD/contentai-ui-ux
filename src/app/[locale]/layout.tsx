@@ -2,6 +2,7 @@
 import { routing } from "@/i18n/routing";
 import TanStackProvider from "@/provider/TanStackProvider";
 import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import "@mantine/core/styles.layer.css";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
