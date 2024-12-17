@@ -25,7 +25,6 @@ const FormInputContent = ({ setCkData }: InputProps) => {
     onSubmit: async (values) => {
       await aiRewriter.create(values).then((values) => {
         setCkData(values.result);
-        console.log(values);
       });
     },
   });
@@ -54,7 +53,7 @@ const FormInputContent = ({ setCkData }: InputProps) => {
       <TextAreaField
         name="content"
         placeholder="Nhập nội dung"
-        clsTextArea="min-h-[200px] max-h-[400px] "
+        clsTextArea="min-h-[200px] !bg-[#F1F9FC] shadow-inner max-h-[400px] "
         formik={formik}
       />
       <SelectField

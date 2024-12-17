@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/helper/function";
 import { useState } from "react";
 import { FaList } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
@@ -8,6 +9,10 @@ import FolderDisplay from "./_lib/FolderDisplay";
 import Header from "./_lib/Header";
 const Page = () => {
   const [shouldFetch, setShouldFetch] = useState(false);
+  const [isSelectStarred, setIsSelectStarred] = useState(false);
+  const handleClickStar = () => {
+    setIsSelectStarred(!isSelectStarred);
+  };
   return (
     <>
       <Header setShouldFetch={setShouldFetch} />
@@ -20,8 +25,18 @@ const Page = () => {
         <div className="border-b flex items-center justify-between pt-[50px] pb-[20px]">
           <p className="text-xl font-bold">Danh sách tài liệu</p>
           <div className="flex gap-2 justify-end pr-2">
-            <div role="button" className="p-[6px] rounded-md">
-              <FaStar className="text-gray-500" size={18} />
+            <div
+              role="button"
+              className={cn("p-[6px] rounded-md")}
+              onClick={handleClickStar}
+            >
+              <FaStar
+                className={cn(
+                  "text-gray-500",
+                  isSelectStarred && "text-yellow-300"
+                )}
+                size={18}
+              />
             </div>
             <div role="button" className="p-[6px] rounded-md">
               <FaList className="text-gray-500" size={18} />

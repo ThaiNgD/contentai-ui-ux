@@ -35,6 +35,7 @@ export interface CustomSelectProps<T>
   formik?: FormikProps<T>;
   clsChildren?: string;
   msgError?: string;
+  isTranslate?: boolean;
   changeSelected?: (
     selected?: Record<string, string> | Array<Record<string, string>>
   ) => void;
@@ -67,6 +68,7 @@ export const SelectField = <T,>({
   title,
   clsTitle,
   formik,
+  isTranslate,
   height = "42px",
   clsChildren,
   isVertical,
@@ -86,12 +88,14 @@ export const SelectField = <T,>({
   }, []);
   const t = useTranslations("option");
   //disable-eslint-next-line;
-  const translatedOption = options?.map((option: any) => {
-    return {
-      value: option.value,
-      label: t(option.label),
-    };
-  });
+  const translatedOption = isTranslate
+    ? options?.map((option: any) => {
+        return {
+          value: option.value,
+          label: t(option.label),
+        };
+      })
+    : options;
   const onChange = (
     option: IOptionSelectFormat | IOptionSelectFormat[]
   ): void => {

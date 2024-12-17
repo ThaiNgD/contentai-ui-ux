@@ -90,7 +90,7 @@ const FolderDisplayComponent = ({
             />
             Sửa tên
           </div>
-          <div className="p-1 text-sm grid group hover:text-red-500 grid-cols-[25%,75%]">
+          <div className="p-1 text-sm  grid group hover:text-red-500 grid-cols-[25%,75%]">
             <IoMdTrash
               size={18}
               className="text-gray-500 group-hover:text-red-500"
