@@ -2,16 +2,22 @@
 import BackgrounDashboard from "@/assets/images/bg-dashboard-v2.png";
 import InfoCard from "@/components/DashboardComponent/InfoCard";
 import ProgressBar from "@/components/DashboardComponent/ProgressBar";
+import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaAddressBook } from "react-icons/fa";
 import { FaQuestion } from "react-icons/fa6";
 import { Tooltip } from "react-tooltip";
 const DashboardInfo = () => {
   const t = useTranslations("dashboard");
   const { data: info } = useFetchUserInfo();
-  console.log(info);
+  const { locale } = useGetPathComponent();
+  const router = useRouter();
+  const moveToUpdateApi = (): void => {
+    router.push(`/${locale}/update-api`);
+  };
   return (
     <>
       <div
@@ -22,17 +28,17 @@ const DashboardInfo = () => {
       >
         {info?.option === "FREE" && (
           <div className="ribbon-wrapper-green">
-            <div className="ribbon-green">NEWS</div>
+            <div className="ribbon-blue">NEWS</div>
           </div>
         )}
         {info?.option === "PRO" && (
           <div className="ribbon-wrapper-green">
-            <div className="ribbon-green">NEWS</div>
+            <div className="ribbon-blue">PRO</div>
           </div>
         )}
         {info?.option === "PREMIUM" && (
           <div className="ribbon-wrapper-green">
-            <div className="ribbon-green">NEWS</div>
+            <div className="ribbon-blue">PREMIUM</div>
           </div>
         )}
 
@@ -48,9 +54,13 @@ const DashboardInfo = () => {
               </p>
             </div>
           </div>
-          {/* <button className="text-black rounded-lg bg-[#FDB300] update px-7 py-2 cursor-default -z-5 mt-3">
+          <button
+            role="button"
+            className="font-bold !text-[20px] rounded-lg glow-bg-blue update px-7 py-2 -z-5 mt-3 hover:!transition-none duration-200 hover:animate-none hover:bg-sky-500"
+            onClick={moveToUpdateApi}
+          >
             UPGRADE NOW
-          </button> */}
+          </button>
         </div>
         <div className="limit justify-between mt-[38px] mb-[40px] grid grid-cols-4 w-[60%] divide-x-2 divide-black dark:divide-white-light">
           {/* <div className="z-50 text-center cursor-default">
@@ -123,7 +133,7 @@ const DashboardInfo = () => {
         />
 
         <Image
-          className="right-0 z-[0] absolute rotate-[30deg]"
+          className="right-0 top-[10%] z-[0] absolute rotate-[30deg]"
           src={BackgrounDashboard}
           alt="dashboard"
         />

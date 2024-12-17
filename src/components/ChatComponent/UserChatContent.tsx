@@ -1,15 +1,18 @@
-import { cn } from "@/helper/function";
+import { cn, formatDateToVietnamese } from "@/helper/function";
+import removeMarkdown from "markdown-to-text";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 import { IoIosCopy } from "react-icons/io";
+
 interface UserChatContentProps {
   imgUrl?: StaticImageData;
   widthCls?: string;
   isUser?: boolean;
   userImage?: StaticImageData;
   message?: string;
-  timeStamp?: number;
+  timeStamp: number;
 }
+
 const UserChatContent = ({
   imgUrl,
   widthCls,
@@ -19,20 +22,22 @@ const UserChatContent = ({
   timeStamp,
 }: UserChatContentProps) => {
   const [chat, setChat] = useState("");
-  console.log(chat);
   useEffect(() => {
-    if (message) {
+    if (!message) {
+      return;
+    }
+    const convertedMessage = removeMarkdown(message);
+    if (convertedMessage) {
       let i = 0;
       const intervalId = setInterval(() => {
-        setChat(message.slice(0, i));
+        setChat(convertedMessage.slice(0, i));
 
         i++;
 
-        if (i > message.length) {
+        if (i > convertedMessage.length) {
           clearInterval(intervalId);
         }
       }, 4);
-
       return () => clearInterval(intervalId);
     }
   }, [message]);
@@ -53,16 +58,81 @@ const UserChatContent = ({
           !isUser ? "justify-start" : "justify-end"
         )}
       >
-        <div className="flex relative group flex-col">
-          <div className="w-fit min-w-[100px] max-w-[80%] relative  rounded-xl bg-gray-100">
-            <p className="text-sm text-cursor whitespace-normal typewriter-animation w-fit p-2 text-gray-500 dark:text-gray-400">
-              {message}
+        <div
+          className={cn(
+            "flex relative group max-w-[80%] flex-col ",
+            !isUser ? "items-start" : "items-end"
+          )}
+        >
+          <div className="w-fit relative rounded-xl p-2 bg-gray-100">
+            <p className="text-sm whitespace-normal w-fit text-gray-500 dark:text-gray-400 box-border text-wrap">
+              {chat}
+              {/* <svg
+                className="w-[20px]"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 200 200"
+              >
+                <circle
+                  fill="#BFCCD2"
+                  stroke="#BFCCD2"
+                  stroke-width="15"
+                  r="15"
+                  cx="40"
+                  cy="100"
+                >
+                  <animate
+                    attributeName="opacity"
+                    calcMode="spline"
+                    dur="2"
+                    values="1;0;1;"
+                    keySplines=".5 0 .5 1;.5 0 .5 1"
+                    repeatCount="indefinite"
+                    begin="-.4"
+                  ></animate>
+                </circle>
+                <circle
+                  fill="#BFCCD2"
+                  stroke="#BFCCD2"
+                  stroke-width="15"
+                  r="15"
+                  cx="100"
+                  cy="100"
+                >
+                  <animate
+                    attributeName="opacity"
+                    calcMode="spline"
+                    dur="2"
+                    values="1;0;1;"
+                    keySplines=".5 0 .5 1;.5 0 .5 1"
+                    repeatCount="indefinite"
+                    begin="-.2"
+                  ></animate>
+                </circle>
+                <circle
+                  fill="#BFCCD2"
+                  stroke="#BFCCD2"
+                  stroke-width="15"
+                  r="15"
+                  cx="160"
+                  cy="100"
+                >
+                  <animate
+                    attributeName="opacity"
+                    calcMode="spline"
+                    dur="2"
+                    values="1;0;1;"
+                    keySplines=".5 0 .5 1;.5 0 .5 1"
+                    repeatCount="indefinite"
+                    begin="0"
+                  ></animate>
+                </circle>
+              </svg> */}
             </p>
             <div
               role="button"
               className={cn(
-                "group-hover:block absolute bg-white text-gray-400 border rounded-full -bottom-5 hidden p-[6px]",
-                isUser ? "-left-3" : "-right-3"
+                "group-hover:block absolute bg-white text-gray-400 border rounded-full bottom-[2px] hidden p-[6px]",
+                isUser ? "-left-[40px]" : "-right-[40px]"
               )}
             >
               <IoIosCopy size={16} />
@@ -74,9 +144,8 @@ const UserChatContent = ({
               isUser ? "mr-1 self-end" : "ml-1"
             )}
           >
-            {timeStamp}
+            {formatDateToVietnamese(timeStamp * 1000).formattedTime}
           </span>
-          {/* <div className="absolute invisible group-hover:visible w-[30px] h-[30px] right-0 top-0 bg-gray-300 rounded-full" /> */}
         </div>
       </div>
       {userImage && isUser ? (

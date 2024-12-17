@@ -22,11 +22,11 @@ InfoCardProps): JSX.Element => {
         <Icon size={20} />
       </div>
       <div className="flex flex-col overflow-hidden justify-center w-[calc(100%-50px)] ">
-        <p className="text-black dark:text-white  text-sm opacity-60 text-ellipsis">
+        <p className="text-black dark:text-white whitespace-nowrap text-sm opacity-60 text-ellipsis">
           {title}
         </p>
         <span className="text-black dark:text-white text-xl font-bold text-ellipsis flex gap-2">
-          {value} <p className="font-normal">{contents}</p>
+          {value} <p className="font-normal whitespace-nowrap">{contents}</p>
         </span>
       </div>
       {/* {renderSVG(svgType)} */}

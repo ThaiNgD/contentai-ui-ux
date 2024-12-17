@@ -8,7 +8,6 @@ export const useFetchAllChat = (): UseQueryResult<ChatListProps, Error> => {
   return useQuery({
     queryKey: ["all-chat"],
     queryFn: () => conversationApi.getAll(), // Thêm conversationId vào đây
-    // enabled: isEnabled,
     enabled: true,
   });
 };

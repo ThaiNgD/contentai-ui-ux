@@ -13,7 +13,7 @@ const Header = (): JSX.Element => {
   const router = useRouter();
   const { locale } = useGetPathComponent();
   return (
-    <header className="h-[65px] duration-300 dark:border-black border-b">
+    <header className="h-[65px] shadow-xl duration-300 dark:border-black border-b">
       <div className="shadow-sm h-full">
         <div className="relative h-full flex w-full items-center duration-300 2xl:px-[175px] px-[15px] py-2.5 dark:bg-black">
           <HeaderSearchBar />

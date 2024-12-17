@@ -47,13 +47,13 @@ const DragnDropFile = ({
     if (fileInput && fileInput.length > 0) {
       setFile(URL.createObjectURL(fileInput[0]));
       setIsFileEnter(false);
-      setFileSelected?.(fileInput);
+      setFileSelected?.(fileInput[0]);
     }
   };
   return (
     <div
       className={cn(
-        "border p-[20px] w-full border-dashed bg-white hover:bg-blue-300/85  min-h-[280px] hover:opacity-40 flex flex-col items-center justify-center rounded-lg",
+        "border p-[20px] w-full border-dashed bg-white hover:bg-blue-300/85 h-full min-h-[280px] hover:opacity-40 flex flex-col items-center justify-center rounded-lg",
         isFileEnter && "bg-blue-300/85 opacity-40"
       )}
       role="button"
@@ -80,6 +80,8 @@ const DragnDropFile = ({
           [...e.dataTransfer.items].forEach((item) => {
             if (item.kind === "file") {
               const file = item.getAsFile();
+              setFileSelected?.(file);
+
               console.log(file);
               if (file && file.type.includes("image/")) {
                 const blobUrl = URL.createObjectURL(file);

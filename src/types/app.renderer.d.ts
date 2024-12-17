@@ -30,6 +30,7 @@ declare global {
   };
 
   type IConversationDetail = {
+    threadId: string;
     conversation: IMessage[];
   };
   type IUserProfile = {
@@ -58,4 +59,33 @@ declare global {
     message: string;
     user: IUserProfile;
   };
+
+  type IPdfChatConversation = {
+    threadId: string;
+  };
+
+  type ISpeechToText = {
+    transcript: string;
+  };
+
+  type IAiVision = {
+    message: string;
+    data: string;
+  };
+
+  type IAiChatImage = {
+    message: string;
+    data: string;
+  };
+
+  interface UserInfo {
+    user: {
+      userDbId: string;
+      email: string;
+      name: string | null;
+      userId: string;
+      username: string;
+    };
+    message: string;
+  }
 }

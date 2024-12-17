@@ -1,6 +1,6 @@
 "use client";
 
-import ModalNewFolder from "@/components/Modal/ModaNewFolder";
+import ModalNewFolder from "@/components/Modal/ModalNewFolder";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { Button } from "flowbite-react";
 import { useRouter } from "next/navigation";

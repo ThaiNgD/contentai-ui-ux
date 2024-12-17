@@ -54,6 +54,7 @@ const TextAreaField = <T,>({
         autoComplete="off"
         {...spread}
         name={name}
+        autoFocus
         id={name}
         placeholder={placeholder}
         onChange={formik ? formik.handleChange : spread?.onChange}

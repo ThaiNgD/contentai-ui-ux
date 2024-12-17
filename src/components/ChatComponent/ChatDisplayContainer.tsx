@@ -1,104 +1,160 @@
 "use client";
-import { cn } from "@/helper/function";
+import { cn, convertToVietnameseDate } from "@/helper/function";
 import { useDeleteConversationById } from "@/service/ai-chat/useDeleteConversationById";
+import { useEditConversationName } from "@/service/ai-chat/useEditConversationName";
 import { useFetchConversationById } from "@/service/ai-chat/useFetchConversationById";
 import { conversationApi } from "@/service/axios/conversationApi";
 import { useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { IoMdTrash } from "react-icons/io";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
+import { toast } from "react-toastify";
 import InputField from "../CustomField/InputField";
+import ModalConfirmDeleteChat from "../Modal/ModalConfirmDeleteChat";
 
 interface ChatDisplayContainerProps {
   isPdfChat?: boolean;
-  chat: IConversationResult;
+  chat: IConversationDetail | undefined;
   setChat: Dispatch<SetStateAction<IConversationDetail | undefined>>;
   selectedChatId?: string | undefined;
   setSelectedChatId?: Dispatch<SetStateAction<string | undefined>>;
+  chatDetail: IConversationResult;
   refetch?: () => Promise<void>;
 }
+
 const ChatDisplayContainer = ({
   chat,
   isPdfChat,
   setChat,
   selectedChatId,
   setSelectedChatId,
+  chatDetail,
 }: ChatDisplayContainerProps) => {
   const queryClient = useQueryClient();
   const [isClicked, setIsClicked] = useState(false);
-  const { data } = useFetchConversationById(chat.id);
+  const [, setShouldFetch] = useState(false);
+  const { data } = useFetchConversationById(chatDetail.id);
   const [isEdit, setIsEdit] = useState(false);
+  const editConversationNameMutation = useEditConversationName();
+  const [isShowDeleteConfirm, setIsShowEditConfirm] = useState(false);
+  const ref = useRef(null);
+
+  const cancelEdit = (e: React.MouseEvent) => {
+    setIsEdit(false);
+    e.stopPropagation();
+    editFormik.resetForm();
+  };
+
   const editFormik = useFormik({
     initialValues: {
-      rename: "",
+      rename: chatDetail.conversationName,
     },
     onSubmit: (values) => {
+      if (values.rename.length === 0) {
+        toast.warning("Vui lòng nhập tên cuộc trò chuyện");
+        return;
+      }
       setIsEdit(false);
-      console.log(values);
+      editConversationNameMutation.mutate({
+        threadId: chatDetail.id,
+        conversationName: values.rename,
+      });
     },
   });
 
-  // Sử dụng mutation để xóa
-  const deleteMutation = useDeleteConversationById(chat.id, () => {
-    // Callback khi xóa thành công
-    queryClient.invalidateQueries({
-      queryKey: ["all-chat"], // Định nghĩa query key
-    });
-    // Xóa cache danh sách
-    if (selectedChatId === chat.id) {
-      setSelectedChatId?.(undefined);
-    }
-  });
+  // Mutation xóa cuộc hội thoại
+  const deleteMutation = useDeleteConversationById(chatDetail.id);
 
+  // Hàm xử lý xóa
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
     setChat(undefined);
-
-    deleteMutation.mutate(chat.id);
-    // await refetch();
-    // e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
-    // if (window.confirm("Bạn có chắc chắn muốn xóa cuộc hội thoại này không?")) {
-    //   deleteMutation.mutate(chat.id); // Thực thi mutation để xóa
-    //   refetch();
-    //   setChat(undefined); // Reset chat hiện tại nếu bị xóa
-    // }
+    setIsShowEditConfirm(false);
+    deleteMutation.mutate(chatDetail.id);
+    setIsClicked(false);
+    setSelectedChatId?.(undefined);
   };
 
-  const handleMouseEnter = (chatId: string) => {
-    queryClient.prefetchQuery({
-      queryKey: ["chat", chatId],
-      queryFn: () => conversationApi.getConversationByParams(chatId),
-    });
+  //AutoFocus TextArea
+
+  // Prefetch dữ liệu khi hover
+  const handleMouseEnter = async (chatId: string) => {
+    if (!queryClient.getQueryData(["chatDetail", chatId])) {
+      await queryClient.prefetchQuery({
+        queryKey: ["chatDetail", chatId],
+        queryFn: () => conversationApi.getConversationById(chatId),
+      });
+    }
   };
 
+  // Xử lý khi click vào chat
+  const handleClick = () => {
+    const messageDiv = document.getElementById("message");
+    messageDiv?.focus();
+    setIsClicked(true);
+    setSelectedChatId?.(chatDetail.id);
+    setShouldFetch(true); // Bật fetch dữ liệu chi tiết
+  };
+
+  // Cập nhật state khi có dữ liệu mới
   useEffect(() => {
     if (data && isClicked) {
       setChat(data);
     }
-  }, [data, isClicked]);
+  }, [data, isClicked, setChat]);
+
+  // Reset trạng thái khi đổi selected chat
+  useEffect(() => {
+    if (selectedChatId !== chatDetail.id) {
+      setIsClicked(false);
+      setShouldFetch(false); // Tắt fetch nếu không phải chat đang chọn
+    }
+  }, [selectedChatId, chatDetail.id]);
 
   useEffect(() => {
-    if (selectedChatId !== chat.id) {
-      setIsClicked(false);
+    if (
+      chat != undefined &&
+      !isClicked &&
+      !selectedChatId &&
+      chat?.threadId == chatDetail.id
+    ) {
+      setShouldFetch(true);
+      setIsClicked(true);
+      setSelectedChatId?.(chatDetail.id);
     }
-  });
+  }, [data]);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function handleClickOutside(event: any) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (ref.current && !(ref.current as any).contains(event.target)) {
+        setIsEdit(false);
+        editFormik.resetForm();
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
 
   return (
     <div
+      ref={ref}
       className={cn(
         "w-full group relative border-b items-center shadow-inner flex gap-2 p-[20px] h-[80px]",
         isClicked && "border-l-2 border-l-blue-500"
       )}
       role="button"
-      onClick={(): void => {
-        handleMouseEnter(chat.id);
-        setIsClicked(true);
-        setSelectedChatId?.(chat.id);
+      onClick={handleClick}
+      onMouseOver={(): void => {
+        handleMouseEnter(chatDetail.id); // Prefetch khi hover
       }}
     >
       <div
@@ -110,20 +166,23 @@ const ChatDisplayContainer = ({
           <IoChatboxEllipses size={20} />
         )}
       </div>
-      <div className="flex flex-col justify-center ">
+      <div className="flex w-[calc(100%-100px)] flex-col justify-center ">
         {isEdit ? (
           <form id="edit-conversation" onSubmit={editFormik.handleSubmit}>
             <InputField
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="!w-[100px] !px-2  h-[30px]"
+              className="border-none !border-b-2 underline underline-offset-2 !p-0 !text-base "
               name="rename"
               formik={editFormik}
+              autoFocus
             />
           </form>
         ) : (
-          <span>{chat?.conversationName}</span>
+          <span className="font-bold overflow-hidden text-ellipsis !text-nowrap">
+            {chatDetail?.conversationName}
+          </span>
         )}
         {isPdfChat && (
           <div className="flex gap-2 w-full">
@@ -137,7 +196,7 @@ const ChatDisplayContainer = ({
           </div>
         )}
         <p className="text-xs opacity-50 text-black w-fit whitespace-nowrap overflow-hidden">
-          {chat?.createdAt}
+          {convertToVietnameseDate(chatDetail?.createdAt)}
         </p>
       </div>
       {isEdit ? (
@@ -153,10 +212,7 @@ const ChatDisplayContainer = ({
           </button>
           <button
             className="absolute top-[18px] duration-200 right-[48px] z-50 p-[6px] rounded-full hover:bg-red-500 hover:text-white border"
-            form="edit-conversation"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
+            onClick={cancelEdit}
           >
             <FaTimes size={12} />
           </button>
@@ -174,11 +230,21 @@ const ChatDisplayContainer = ({
           </div>
           <div
             className="absolute invisible group-hover:visible top-[18px] duration-200 right-0 group-hover:right-2 z-50 p-[6px] rounded-full hover:text-red-500 border"
-            onClick={handleDelete} // Gắn sự kiện xóa vào nút
+            onClick={(e): void => {
+              e.stopPropagation();
+              setIsShowEditConfirm(true);
+            }} // Gắn sự kiện xóa vào nút
           >
             <IoMdTrash />
           </div>
         </>
+      )}
+      {isShowDeleteConfirm && (
+        <ModalConfirmDeleteChat
+          isShow={isShowDeleteConfirm}
+          setIsShow={setIsShowEditConfirm}
+          handleDelete={handleDelete}
+        />
       )}
     </div>
   );

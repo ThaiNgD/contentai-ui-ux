@@ -2,6 +2,7 @@
 import { routing } from "@/i18n/routing";
 import TanStackProvider from "@/provider/TanStackProvider";
 import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import "@mantine/core/styles.layer.css";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
@@ -9,8 +10,9 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
 import "react-tooltip/dist/react-tooltip.css";
+import "../../assets/css/ck-content.css";
+import "../../assets/css/ck-editor.css";
 import "./globals.css";
-
 export const metadata: Metadata = {
   title: "Content AI",
   description: "Tạo ra bởi Phần mềm Marketing",
@@ -42,7 +44,7 @@ export default async function RootLayout({
           <TanStackProvider>
             <NextIntlClientProvider messages={messages}>
               <ThemeProvider
-                defaultTheme="system"
+                defaultTheme="light"
                 enableSystem
                 attribute={"class"}
               >

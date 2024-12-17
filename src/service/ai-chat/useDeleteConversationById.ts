@@ -1,21 +1,23 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import {
+  useMutation,
+  UseMutationResult,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { conversationApi } from "../axios/conversationApi";
 
 export const useDeleteConversationById = (
-  chatId: string,
-  onSuccess?: () => void, // Optional callback for success
-  onError?: (error: Error) => void // Optional callback for error
+  chatId: string
 ): UseMutationResult<IConversationDetail, Error> => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: async () =>
       await conversationApi.deleteConversationById(chatId), // Giả sử API có phương thức deleteConversationById
-    onSuccess: () => {
-      // Xử lý sau khi thành công (ví dụ, gọi lại callback onSuccess)
-      if (onSuccess) onSuccess();
-    },
-    onError: (error: Error) => {
-      // Xử lý lỗi nếu có (ví dụ, gọi lại callback onError)
-      if (onError) onError(error);
+    onSuccess: (isSuccess) => {
+      queryClient.setQueryData([conversationApi.queryKey], isSuccess);
+      queryClient.invalidateQueries({
+        queryKey: [conversationApi.queryKey], // Định nghĩa query key
+      });
     },
   });
 };
