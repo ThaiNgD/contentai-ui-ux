@@ -8,9 +8,10 @@ export default async function Page({
   params: Promise<{ id: string | number }>;
 }) {
   const id = (await params).id;
+  const folder_name = typeof id === "string" && decodeURIComponent(id);
   return (
     <>
-      <Header title={`Folder ${id}`} />
+      <Header title={`Folder ${folder_name}`} />
       <hr />
       <div className="flex-auto flex flex-col my-[50px] 2xl:px-[175px] px-[15px]">
         <FolderDisplay />

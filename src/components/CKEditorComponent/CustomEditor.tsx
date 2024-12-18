@@ -4,6 +4,7 @@ import { EMOJIS_ARRAY } from "@/helper/const";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 import {
+  Alignment,
   Autoformat,
   Base64UploadAdapter,
   BlockQuote,
@@ -46,7 +47,7 @@ interface CKEDITORProps {
   clsHeight?: string;
 }
 function CustomEditor({ data }: CKEDITORProps) {
-  const converter = new showdown.Converter();
+  const converter = new showdown.Converter({ tables: true });
   const [htmlData, setHtmlData] = useState("");
   // Convert markdown to HTML
   useEffect(() => {
@@ -87,6 +88,7 @@ function CustomEditor({ data }: CKEDITORProps) {
         config={{
           plugins: [
             Autoformat,
+            Alignment,
             BlockQuote,
             Bold,
             CloudServices,
@@ -140,6 +142,8 @@ function CustomEditor({ data }: CKEDITORProps) {
             "italic",
             "strikethrough",
             "code",
+            "|",
+            "alignment",
             "|",
             "fontFamily",
             "fontSize",

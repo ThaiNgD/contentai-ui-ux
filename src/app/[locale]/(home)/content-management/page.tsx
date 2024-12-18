@@ -9,6 +9,7 @@ import FolderDisplay from "./_lib/FolderDisplay";
 import Header from "./_lib/Header";
 const Page = () => {
   const [shouldFetch, setShouldFetch] = useState(false);
+  const [contentDisplay, setContentDisplay] = useState<"grid" | "list">("grid");
   const [isSelectStarred, setIsSelectStarred] = useState(false);
   const handleClickStar = () => {
     setIsSelectStarred(!isSelectStarred);
@@ -38,11 +39,41 @@ const Page = () => {
                 size={18}
               />
             </div>
-            <div role="button" className="p-[6px] rounded-md">
-              <FaList className="text-gray-500" size={18} />
+            <div
+              role="button"
+              className={cn(
+                "p-[6px] rounded-md",
+                contentDisplay === "list" && "bg-gray-200"
+              )}
+              onClick={(): void => {
+                setContentDisplay("list");
+              }}
+            >
+              <FaList
+                className={cn(
+                  "text-gray-500",
+                  contentDisplay === "list" && "text-blue-500"
+                )}
+                size={18}
+              />
             </div>
-            <div role="button" className="bg-gray-200 rounded-md p-[6px]">
-              <FiGrid className="text-blue-500" size={18} />
+            <div
+              role="button"
+              className={cn(
+                "p-[6px] rounded-md",
+                contentDisplay === "grid" && "bg-gray-200"
+              )}
+              onClick={(): void => {
+                setContentDisplay("grid");
+              }}
+            >
+              <FiGrid
+                className={cn(
+                  "text-gray-500",
+                  contentDisplay === "grid" && "text-blue-500"
+                )}
+                size={18}
+              />
             </div>
           </div>
         </div>
