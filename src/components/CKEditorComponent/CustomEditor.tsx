@@ -47,7 +47,10 @@ interface CKEDITORProps {
   clsHeight?: string;
 }
 function CustomEditor({ data }: CKEDITORProps) {
-  const converter = new showdown.Converter({ tables: true });
+  const converter = new showdown.Converter({
+    tables: true,
+    completeHTMLDocument: true,
+  });
   const [htmlData, setHtmlData] = useState("");
   // Convert markdown to HTML
   useEffect(() => {
