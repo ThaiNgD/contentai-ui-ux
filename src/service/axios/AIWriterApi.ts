@@ -11,18 +11,6 @@ export const aiAnalysisApi = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiAnalysisApi.pathKey}/save_competitor_analysis`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiAnalysisApi.pathKey}/get_competitor_analysis`
-    );
-  },
 };
 
 export const aiContentStrategyApi = {
@@ -33,18 +21,6 @@ export const aiContentStrategyApi = {
     return await http.post<any, IResult>(
       `${aiContentStrategyApi.pathKey}/content_strategy`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiContentStrategyApi.pathKey}/save_content_strategy`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiContentStrategyApi.pathKey}/get_content_strategy`
     );
   },
 };
@@ -59,18 +35,6 @@ export const aiUserIntentAnalytics = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiUserIntentAnalytics.pathKey}/save_user_intent_analysis`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiUserIntentAnalytics.pathKey}/get_user_intent_analysis`
-    );
-  },
 };
 
 export const aiRephraseContent = {
@@ -81,18 +45,6 @@ export const aiRephraseContent = {
     return await http.post<any, IResult>(
       `${aiRephraseContent.pathKey}/rephrase_content`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiRephraseContent.pathKey}/save_rephrase_content`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiRephraseContent.pathKey}/get_rephrase_content`
     );
   },
 };
@@ -107,14 +59,6 @@ export const aiFaqSeo = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(`${aiFaqSeo.pathKey}/save_faq_seo`);
-  },
-
-  get: async () => {
-    return await http.get<any, any>(`${aiFaqSeo.pathKey}/get_faq_seo`);
-  },
 };
 
 export const aiMetaTitle = {
@@ -125,18 +69,6 @@ export const aiMetaTitle = {
     return await http.post<any, IResult>(
       `${aiMetaTitle.pathKey}/meta_title_seo`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiMetaTitle.pathKey}/save_meta_title_seo`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiMetaTitle.pathKey}/get_meta_title_seo`
     );
   },
 };
@@ -151,18 +83,6 @@ export const aiMetaDescription = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiMetaDescription.pathKey}/save_meta_description_seo`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiMetaDescription.pathKey}/get_meta_description_seo`
-    );
-  },
 };
 
 export const aiLongTailKeyword = {
@@ -175,18 +95,6 @@ export const aiLongTailKeyword = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiLongTailKeyword.pathKey}/save_long_tail_keyword`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiLongTailKeyword.pathKey}/get_long_tail_keyword`
-    );
-  },
 };
 
 export const aiContentBlogLongForm = {
@@ -196,18 +104,6 @@ export const aiContentBlogLongForm = {
     return await http.post<any, IResult>(
       `${aiContentBlogLongForm.pathKey}/content_blog_long_form`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiContentBlogLongForm.pathKey}/save_content_blog_long_form`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiContentBlogLongForm.pathKey}/get_content_blog_long_form`
     );
   },
 };
@@ -222,16 +118,6 @@ export const aiOutLineSeo = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiOutLineSeo.pathKey}/save_outline_seo`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(`${aiOutLineSeo.pathKey}/get_outline_seo`);
-  },
 };
 
 export const aiCreateTitleSeo = {
@@ -242,18 +128,6 @@ export const aiCreateTitleSeo = {
     return await http.post<any, IResult>(
       `${aiCreateTitleSeo.pathKey}/create_title_seo`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiCreateTitleSeo.pathKey}/save_create_title_seo`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiCreateTitleSeo.pathKey}/get_create_title_seo`
     );
   },
 };
@@ -268,18 +142,6 @@ export const aiDeliveryPolicy = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiDeliveryPolicy.pathKey}/save_delivery_policy`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiDeliveryPolicy.pathKey}/get_delivery_policy`
-    );
-  },
 };
 
 export const aiPrivacyPolicy = {
@@ -290,18 +152,6 @@ export const aiPrivacyPolicy = {
     return await http.post<any, IResult>(
       `${aiPrivacyPolicy.pathKey}/privacy_policy`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiPrivacyPolicy.pathKey}/save_privacy_policy`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiPrivacyPolicy.pathKey}/get_privacy_policy`
     );
   },
 };
@@ -316,18 +166,6 @@ export const aiWebsiteTitle = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiWebsiteTitle.pathKey}/save_website_title`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiWebsiteTitle.pathKey}/get_website_title`
-    );
-  },
 };
 
 export const aiTiktokVideoIdeas = {
@@ -337,18 +175,6 @@ export const aiTiktokVideoIdeas = {
     return await http.post<any, IResult>(
       `${aiTiktokVideoIdeas.queryKey}/generate-ideas`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiTiktokVideoIdeas.queryKey}/save-generate-ideas`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiTiktokVideoIdeas.queryKey}/get-generate-ideas`
     );
   },
 };
@@ -362,18 +188,6 @@ export const aiThankYouEmail = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiThankYouEmail.queryKey}/save-generate-email`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiThankYouEmail.queryKey}/get-generate-email`
-    );
-  },
 };
 
 export const aiLiveStreamScript = {
@@ -383,18 +197,6 @@ export const aiLiveStreamScript = {
     return await http.post<any, IResult>(
       `${aiLiveStreamScript.queryKey}/generate-script`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiLiveStreamScript.queryKey}/save-generate-script`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiLiveStreamScript.queryKey}/get-generate-script`
     );
   },
 };
@@ -408,18 +210,6 @@ export const aiVideoIntroScript = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiVideoIntroScript.queryKey}/save-generate-intro-script`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiVideoIntroScript.queryKey}/get-generate-intro-script`
-    );
-  },
 };
 
 export const aiVideoAdScript = {
@@ -429,18 +219,6 @@ export const aiVideoAdScript = {
     return await http.post<any, IResult>(
       `${aiVideoAdScript.queryKey}/generate-script`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiVideoAdScript.queryKey}/save-generate-script`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiVideoAdScript.queryKey}/get-generate-script`
     );
   },
 };
@@ -454,18 +232,6 @@ export const aiYoutubeVideoDescription = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiYoutubeVideoDescription.queryKey}/save-generate-description`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiYoutubeVideoDescription.queryKey}/get-generate-description`
-    );
-  },
 };
 
 export const aiEmailSubject = {
@@ -475,18 +241,6 @@ export const aiEmailSubject = {
     return await http.post<any, IResult>(
       `${aiEmailSubject.queryKey}/generate-email-subject`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiEmailSubject.queryKey}/save-generate-email-subject`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiEmailSubject.queryKey}/get-generate-email-subject`
     );
   },
 };
@@ -500,18 +254,6 @@ export const aiCancelOrderEmail = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiCancelOrderEmail.queryKey}/save-generate-email`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiCancelOrderEmail.queryKey}/get-generate-email`
-    );
-  },
 };
 
 export const aiEmailWriting = {
@@ -521,18 +263,6 @@ export const aiEmailWriting = {
     return await http.post<any, IResult>(
       `${aiEmailWriting.queryKey}/generate-email`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiEmailWriting.queryKey}/save-generate-email`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiEmailWriting.queryKey}/get-generate-email`
     );
   },
 };
@@ -546,18 +276,6 @@ export const aiSalesPitch = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiSalesPitch.queryKey}/save-generate-pitch`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiSalesPitch.queryKey}/get-generate-pitch`
-    );
-  },
 };
 
 export const aiBeforeAterPost = {
@@ -567,18 +285,6 @@ export const aiBeforeAterPost = {
     return await http.post<any, IResult>(
       `${aiBeforeAterPost.queryKey}/generate-post`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiBeforeAterPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiBeforeAterPost.queryKey}/get-generate-post`
     );
   },
 };
@@ -592,18 +298,6 @@ export const aiProblemSolutionPost = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiProblemSolutionPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiProblemSolutionPost.queryKey}/get-generate-post`
-    );
-  },
 };
 
 export const aiLandingPageOutline = {
@@ -613,18 +307,6 @@ export const aiLandingPageOutline = {
     return await http.post<any, IResult>(
       `${aiLandingPageOutline.queryKey}/generate-post`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiLandingPageOutline.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiLandingPageOutline.queryKey}/get-generate-post`
     );
   },
 };
@@ -638,18 +320,6 @@ export const aiProductBenefitsPost = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiProductBenefitsPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiProductBenefitsPost.queryKey}/get-generate-post`
-    );
-  },
 };
 
 export const aiProductDescriptionPost = {
@@ -659,18 +329,6 @@ export const aiProductDescriptionPost = {
     return await http.post<any, IResult>(
       `${aiProductDescriptionPost.queryKey}/generate-post`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiProductDescriptionPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiProductDescriptionPost.queryKey}/get-generate-post`
     );
   },
 };
@@ -684,18 +342,6 @@ export const aiProductTitle = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiProductTitle.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiProductTitle.queryKey}/get-generate-post`
-    );
-  },
 };
 
 export const aiBuyerPersonas = {
@@ -705,18 +351,6 @@ export const aiBuyerPersonas = {
     return await http.post<any, IResult>(
       `${aiBuyerPersonas.queryKey}/generate-post`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiBuyerPersonas.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiBuyerPersonas.queryKey}/get-generate-post`
     );
   },
 };
@@ -730,18 +364,6 @@ export const aiHeroJourneyPost = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiHeroJourneyPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiHeroJourneyPost.queryKey}/get-generate-post`
-    );
-  },
 };
 
 export const aiStoryTellingPost = {
@@ -751,18 +373,6 @@ export const aiStoryTellingPost = {
     return await http.post<any, IResult>(
       `${aiStoryTellingPost.queryKey}/generate-post`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiStoryTellingPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiStoryTellingPost.queryKey}/get-generate-post`
     );
   },
 };
@@ -776,18 +386,6 @@ export const aiHoneyCombPost = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiHoneyCombPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiHoneyCombPost.queryKey}/get-generate-post`
-    );
-  },
 };
 
 export const aiInvertedPyramidFormulaPost = {
@@ -797,18 +395,6 @@ export const aiInvertedPyramidFormulaPost = {
     return await http.post<any, IResult>(
       `${aiInvertedPyramidFormulaPost.queryKey}/generate-post`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiInvertedPyramidFormulaPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiInvertedPyramidFormulaPost.queryKey}/get-generate-post`
     );
   },
 };
@@ -822,16 +408,6 @@ export const aiFABPost = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiFABPost.queryKey}/save-generate-post`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(`${aiFABPost.queryKey}/get-generate-post`);
-  },
 };
 
 export const aiTikTokVideoHook = {
@@ -843,18 +419,6 @@ export const aiTikTokVideoHook = {
       payLoad
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiTikTokVideoHook.queryKey}/save-generate-hook`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiTikTokVideoHook.queryKey}/get-generate-hook`
-    );
-  },
 };
 
 export const aiTikTokVideoScript = {
@@ -864,18 +428,6 @@ export const aiTikTokVideoScript = {
     return await http.post<any, IResult>(
       `${aiTikTokVideoScript.queryKey}/generate-script`,
       payLoad
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiTikTokVideoScript.queryKey}/save-generate-script`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiTikTokVideoScript.queryKey}/get-generate-script`
     );
   },
 };
@@ -890,18 +442,6 @@ export const aiWebsiteSubHeader = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiWebsiteSubHeader.pathKey}/save_website_subheadings`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiWebsiteSubHeader.pathKey}/get_website_subheadings`
-    );
-  },
 };
 
 export const aiWebsiteDescription = {
@@ -912,18 +452,6 @@ export const aiWebsiteDescription = {
     return await http.post<any, IResult>(
       `${aiWebsiteDescription.pathKey}/website_description`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiWebsiteDescription.pathKey}/save_website_description`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiWebsiteDescription.pathKey}/get_website_description`
     );
   },
 };
@@ -938,18 +466,6 @@ export const aiWebsiteIntroduction = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiWebsiteIntroduction.pathKey}/save_website_introduction`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiWebsiteIntroduction.pathKey}/get_website_introduction`
-    );
-  },
 };
 
 export const aiWebsiteBenefits = {
@@ -960,18 +476,6 @@ export const aiWebsiteBenefits = {
     return await http.post<any, IResult>(
       `${aiWebsiteBenefits.pathKey}/website_benefits`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiWebsiteBenefits.pathKey}/save_website_benefits`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiWebsiteBenefits.pathKey}/get_website_benefits`
     );
   },
 };
@@ -986,18 +490,6 @@ export const aiCustomerTestimonial = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiCustomerTestimonial.pathKey}/save_customer_testimonials`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiCustomerTestimonial.pathKey}/get_customer_testimonials`
-    );
-  },
 };
 
 export const aiWebsiteFaq = {
@@ -1010,14 +502,6 @@ export const aiWebsiteFaq = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(`${aiWebsiteFaq.pathKey}/save_faq`);
-  },
-
-  get: async () => {
-    return await http.get<any, any>(`${aiWebsiteFaq.pathKey}/get_faq`);
-  },
 };
 
 export const aiWebsiteOutlineMenu = {
@@ -1028,18 +512,6 @@ export const aiWebsiteOutlineMenu = {
     return await http.post<any, IResult>(
       `${aiWebsiteOutlineMenu.pathKey}/outline_menu`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiWebsiteOutlineMenu.pathKey}/save_outline_menu`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiWebsiteOutlineMenu.pathKey}/get_outline_menu`
     );
   },
 };
@@ -1054,18 +526,6 @@ export const aiFacebookAds = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiFacebookAds.pathKey}/save_facebook_ads`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiFacebookAds.pathKey}/get_facebook_ads`
-    );
-  },
 };
 
 export const aiInstagramBio = {
@@ -1076,18 +536,6 @@ export const aiInstagramBio = {
     return await http.post<any, IResult>(
       `${aiInstagramBio.pathKey}/instagram_bio`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiInstagramBio.pathKey}/save_instagram_bio`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiInstagramBio.pathKey}/get_instagram_bio`
     );
   },
 };
@@ -1102,18 +550,6 @@ export const aiCreateAdsIdea = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiCreateAdsIdea.pathKey}/save_create_ads_ideas`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiCreateAdsIdea.pathKey}/get_create_ads_ideas`
-    );
-  },
 };
 
 export const aiPasAdertising = {
@@ -1124,18 +560,6 @@ export const aiPasAdertising = {
     return await http.post<any, IResult>(
       `${aiPasAdertising.pathKey}/pas_advertising`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiPasAdertising.pathKey}/save_pas_advertising`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiPasAdertising.pathKey}/get_pas_advertising`
     );
   },
 };
@@ -1150,18 +574,6 @@ export const aiGoogleAdsHeadline = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiGoogleAdsHeadline.pathKey}/save_google_ads_headlines`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiGoogleAdsHeadline.pathKey}/get_google_ads_headlines`
-    );
-  },
 };
 
 export const aiMetaDescriptionSeo = {
@@ -1172,18 +584,6 @@ export const aiMetaDescriptionSeo = {
     return await http.post<any, IResult>(
       `${aiMetaDescriptionSeo.pathKey}/blog_meta_description_seo`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiMetaDescriptionSeo.pathKey}/save_blog_meta_description_seo`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiMetaDescriptionSeo.pathKey}/get_blog_meta_description_seo`
     );
   },
 };
@@ -1198,18 +598,6 @@ export const aiBlogIntroduction = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiBlogIntroduction.pathKey}/save_blog_introduction`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiBlogIntroduction.pathKey}/get_blog_introduction`
-    );
-  },
 };
 
 export const aiMainTakingPoints = {
@@ -1220,18 +608,6 @@ export const aiMainTakingPoints = {
     return await http.post<any, IResult>(
       `${aiMainTakingPoints.pathKey}/blog_main_point`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiMainTakingPoints.pathKey}/save_blog_main_point`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiMainTakingPoints.pathKey}/get_blog_main_point`
     );
   },
 };
@@ -1246,18 +622,6 @@ export const aiBlogConclusion = {
       payload
     );
   },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiBlogConclusion.pathKey}/save_blog_conclusion`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiBlogConclusion.pathKey}/get_blog_conclusion`
-    );
-  },
 };
 
 export const aiBlogCallAction = {
@@ -1268,18 +632,6 @@ export const aiBlogCallAction = {
     return await http.post<any, IResult>(
       `${aiBlogCallAction.pathKey}/blog_call_to_action`,
       payload
-    );
-  },
-
-  save: async () => {
-    return await http.post<any, IResult>(
-      `${aiBlogCallAction.pathKey}/save_blog_call_to_action`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiBlogCallAction.pathKey}/get_blog_call_to_action`
     );
   },
 };
@@ -1294,16 +646,16 @@ export const aiBlogListicle = {
       payload
     );
   },
+};
 
-  save: async () => {
+export const aiWriter = {
+  pathKey: "ai_writer",
+  queryKey: "ai_writer",
+
+  save: async (aiModelId: string, payload: IFormDocument) => {
     return await http.post<any, IResult>(
-      `${aiBlogListicle.pathKey}/save_blog_listicle`
-    );
-  },
-
-  get: async () => {
-    return await http.get<any, any>(
-      `${aiBlogListicle.pathKey}/get_blog_listicle`
+      `${aiWriter.pathKey}/save_writer/${aiModelId}`,
+      payload
     );
   },
 };

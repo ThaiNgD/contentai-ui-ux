@@ -25,14 +25,15 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const userData = queryClient.getQueryData<UserInfo>(["user"]);
   const { mutateAsync: addNewMessageMutation } = useAddConversation(
-    Number(userData?.user?.userDbId)
+    // Number(userData?.user?.userDbId)
+    String(userData?.user?.userId)
   );
 
   const handleAddNew = async (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsLoading(true);
     try {
-      await addNewMessageMutation(Number(userData?.user?.userDbId)).then(
+      await addNewMessageMutation(String(userData?.user?.userId)).then(
         (value) => {
           setChat(value);
           setIsLoading(false);

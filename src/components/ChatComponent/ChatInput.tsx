@@ -47,6 +47,8 @@ const ChatInput = ({
         { message: values.message },
         {
           onSuccess: () => {
+            // setChat?.(data);
+
             setIsTypingText?.(false);
           },
           onError: (error) => {
