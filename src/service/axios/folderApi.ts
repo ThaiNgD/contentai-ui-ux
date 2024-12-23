@@ -22,7 +22,7 @@ export const folderApi = {
 
   getFolderForUser: async () => {
     return await http.get<AnalyserNode[], FolderProps[]>(
-      `${folderApi.queryKey}/folder_for_user`
+      `${folderApi.queryKey}/folder_for_user/1`
     );
   },
 

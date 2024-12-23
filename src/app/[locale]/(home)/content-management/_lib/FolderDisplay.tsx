@@ -5,10 +5,9 @@ import { useFetchFolder } from "@/service/content-management/useFetchFolder";
 
 const FolderDisplay = () => {
   const { data } = useFetchFolder();
-  console.log(typeof data, data);
   return (
     <div className="grid grid-cols-3 gap-5">
-      {data?.map((folder, index) => (
+      {data?.data.map((folder, index) => (
         <FolderDisplayComponent
           folder_id={folder.folder_id}
           key={index}

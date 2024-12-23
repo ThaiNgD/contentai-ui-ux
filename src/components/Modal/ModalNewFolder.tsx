@@ -16,7 +16,7 @@ const ModalNewFolder: FC<ModalNewFolderProps> = ({ isShow, setIsShow }) => {
   const formik = useFormik({
     initialValues: {
       folder_name: "",
-      folder_desc: "",
+      description: "",
     },
     onSubmit: (values) => {
       console.log(values);
@@ -42,7 +42,7 @@ const ModalNewFolder: FC<ModalNewFolderProps> = ({ isShow, setIsShow }) => {
             formik={formik}
           />
           <TextAreaField
-            name="folder_desc"
+            name="description"
             label="Miêu tả"
             clsLabelWrapper="text-lg self-start font-bold"
             placeholder="Nhập miêu tả cho thư mục"

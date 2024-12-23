@@ -1,10 +1,12 @@
 import {
+  QueryClient,
   useMutation,
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { folderApi } from "../axios/folderApi";
+import { queryKeys } from "../queryKeys";
 
 export const useCreateFolder = (): UseMutationResult<
   IResult,
@@ -21,6 +23,9 @@ export const useCreateFolder = (): UseMutationResult<
       } else {
         return;
       }
+      queryClient.invalidateQueries({
+        queryKey: ["all-folder"]
+      })
       queryClient.setQueryData([folderApi.queryKey], isSuccess);
     },
   });
