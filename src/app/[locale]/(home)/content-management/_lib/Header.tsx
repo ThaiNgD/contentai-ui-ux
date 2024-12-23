@@ -2,9 +2,13 @@
 
 import ModalNewFolder from "@/components/Modal/ModalNewFolder";
 import { Button } from "flowbite-react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  setShouldFetch?: Dispatch<SetStateAction<boolean>>;
+}
+
+const Header = ({ setShouldFetch }: HeaderProps) => {
   const [isShowModalAddFolder, setIsShowModalAddFolder] = useState(false);
   const handleClickAddNewFolder = (): void => {
     setIsShowModalAddFolder(true);
@@ -27,6 +31,7 @@ const Header = () => {
       </div>
       {isShowModalAddFolder && (
         <ModalNewFolder
+          setShouldFetch={setShouldFetch}
           isShow={isShowModalAddFolder}
           setIsShow={setIsShowModalAddFolder}
         />

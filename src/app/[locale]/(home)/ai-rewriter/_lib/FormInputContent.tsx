@@ -3,10 +3,10 @@ import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
 import configSelectTone from "@/config/configSelectTone";
-import { aiRewriter } from "@/service/axios/aiRewriterApi";
+import { useRewriter } from "@/service/ai-rewriter/useRewriter";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { AiFillEdit } from "react-icons/ai";
 
 interface InputProps {
@@ -15,6 +15,7 @@ interface InputProps {
 
 const FormInputContent = ({ setCkData }: InputProps) => {
   //const { mutate: mutateFN, data } = useAiBlogCallAction();
+  const { data, mutate: rewriter, isPending } = useRewriter();
   const formik = useFormik<IFormAiReWriter>({
     initialValues: {
       request: "",
@@ -22,14 +23,15 @@ const FormInputContent = ({ setCkData }: InputProps) => {
       language: "",
       module: "",
     },
-    onSubmit: async (values) => {
-      await aiRewriter.create(values).then((values) => {
-        setCkData(values.result);
-        console.log(values);
-      });
+    onSubmit: (values) => {
+      rewriter(values);
     },
   });
-
+  useEffect(() => {
+    if (data?.result) {
+      setCkData(data.result);
+    }
+  }, [data]);
   return (
     <form
       id="form-submit"
@@ -54,7 +56,7 @@ const FormInputContent = ({ setCkData }: InputProps) => {
       <TextAreaField
         name="content"
         placeholder="Nhập nội dung"
-        clsTextArea="min-h-[200px] max-h-[400px] "
+        clsTextArea="min-h-[200px] !bg-[#F1F9FC] shadow-inner max-h-[400px] "
         formik={formik}
       />
       <SelectField
@@ -82,7 +84,7 @@ const FormInputContent = ({ setCkData }: InputProps) => {
         type="submit"
         className="rounded-full self-center w-[300px] border-blue-500 font-bold !text-xl bg-blue-500 mt-1 shadow-lg hover:shadow-none hover:translate-y-0.5"
       >
-        Rewrite
+        {isPending ? <div className="loading size-[24px]"></div> : "Rewrite"}
       </Button>
     </form>
   );

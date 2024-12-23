@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 const VisionContainer = () => {
   const [file, setFile] = useState<File | null>();
 
-  const { mutate, data } = useAnalyzeImage();
+  const { mutate, data, isPending } = useAnalyzeImage();
 
   const [ckData, setCkData] = useState("");
   const formik = useFormik({
@@ -55,7 +55,11 @@ const VisionContainer = () => {
             className="border-blue-500 bg-blue-500 rounded-full
       px-[50px] font-semibold shadow-md hover:shadow-none hover:translate-y-0.5 w-fit duration-200 h-fit"
           >
-            Phân tích ảnh
+            {isPending ? (
+              <div className="loading size-[24px]"></div>
+            ) : (
+              "Phân tích ảnh"
+            )}
           </Button>
         </div>
         {ckData && <CustomEditor data={ckData} />}

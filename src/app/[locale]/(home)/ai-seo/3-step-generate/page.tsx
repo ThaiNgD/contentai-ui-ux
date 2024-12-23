@@ -9,16 +9,8 @@ import SelectorStep from "./_lib/SelectorStep";
 
 const Page = () => {
   const [steps, setSteps] = useState(configAISEOStep);
-  // const setStepsKeyword = (): void => {
-  //   setSteps((prevs) => {
-  //     return prevs.map((prev, index) => {
-  //       return {
-  //         ...prev,
-  //         isActive: index === 0,
-  //       };
-  //     });
-  //   });
-  // };
+  const [title, setTitle] = useState<string>("");
+  const [outline, setOutline] = useState<string>("");
   const setStepsOutline = (): void => {
     setSteps((prevs) => {
       return prevs.map((prev, index) => {
@@ -60,13 +52,21 @@ const Page = () => {
         <SelectorStep steps={steps} setStepsIndex={setStepsIndex} />
         {steps.filter((step) => {
           return step.isActive;
-        })[0].step === 1 && <InputKeyword setStepsOutline={setStepsOutline} />}
+        })[0].step === 1 && (
+          <InputKeyword setStepsOutline={setStepsOutline} setTitle={setTitle} />
+        )}
         {steps.filter((step) => {
           return step.isActive;
-        })[0].step === 2 && <InputOutlineForm setStepsPost={setStepsPost} />}
+        })[0].step === 2 && (
+          <InputOutlineForm
+            title={title}
+            setOutline={setOutline}
+            setStepsPost={setStepsPost}
+          />
+        )}
         {steps.filter((step) => {
           return step.isActive;
-        })[0].step === 3 && <InputPostForm />}
+        })[0].step === 3 && <InputPostForm outline={outline} />}
       </div>
     </>
   );

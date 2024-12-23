@@ -3,42 +3,46 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiContentAnalysis } from "@/service/axios/aiBlogApi";
+import { useAiContentAnalysis } from "@/service/aiblog/useAiContentAnalysis";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
   setCkData: Dispatch<SetStateAction<string>>;
 }
 
 const InputContent = ({ setCkData }: InputProps) => {
+  const { mutate: aiContentAnalysis, data, isPending } = useAiContentAnalysis();
   const formik = useFormik<IFormContentAnalys>({
     initialValues: {
       content: "",
       module: "",
       language: "",
     },
-    onSubmit: async (values) => {
-      await aiContentAnalysis.create(values).then((values) => {
-        console.log(values);
-        setCkData(values.result);
-        // Handle form submission
-      });
+    onSubmit: (values) => {
+      aiContentAnalysis(values);
     },
   });
+
+  useEffect(() => {
+    if (data) {
+      setCkData(data.result);
+    }
+  }, [data]);
+
   return (
     <form
       id="form-submit"
       onSubmit={formik.handleSubmit}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 p-[30px] shadow-md bg-white rounded-xl"
     >
       <TextAreaField
         name={"content"}
         placeholder="Nhập nội dung"
         title="Nội dung cần kiểm tra"
         clsTitle="font-bold italic"
-        className="h-[150px]"
+        className="h-[150px] !bg-[#F5F9FC] shadow-inner"
         formik={formik}
       />
       <SelectField
@@ -60,7 +64,11 @@ const InputContent = ({ setCkData }: InputProps) => {
         type="submit"
         className="bg-blue-500 mt-[30px] shadow-lg duration-200 rounded-full hover:shadow-none hover:translate-y-0.5"
       >
-        Tạo tiêu đề
+        {isPending ? (
+          <div className="loading size-[24px]"></div>
+        ) : (
+          "Phân tích nội dung"
+        )}
       </Button>
     </form>
   );

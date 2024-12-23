@@ -26,4 +26,9 @@ declare global {
     tokenInput: string;
     tokenOutput: string;
   }
+
+  type Emoji = {
+    character: string;
+    title: string;
+  };
 }

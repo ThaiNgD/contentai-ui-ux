@@ -8,19 +8,24 @@ import TextAreaField from "../CustomField/TextAreaField";
 interface ModalNewFolderProps {
   isShow: boolean;
   setIsShow?: Dispatch<SetStateAction<boolean>>;
+  setShouldFetch?: Dispatch<SetStateAction<boolean>>;
 }
 
-const ModalNewFolder: FC<ModalNewFolderProps> = ({ isShow, setIsShow }) => {
+const ModalNewFolder: FC<ModalNewFolderProps> = ({
+  isShow,
+  setIsShow,
+  setShouldFetch,
+}) => {
   const handleClose = (): void => setIsShow && setIsShow(false);
-  const { mutate, isPending } = useCreateFolder();
+  const { mutateAsync, isPending } = useCreateFolder();
   const formik = useFormik({
     initialValues: {
       folder_name: "",
       description: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
-      mutate(values);
+    onSubmit: async (values) => {
+      await mutateAsync(values);
+      setShouldFetch?.(true);
       handleClose();
     },
   });
@@ -38,12 +43,14 @@ const ModalNewFolder: FC<ModalNewFolderProps> = ({ isShow, setIsShow }) => {
             label="Tên thư mục"
             clsLabelWrapper="text-lg self-start font-bold"
             isRequired
+            autoFocus
             placeholder="Nhập tên thư mục"
             formik={formik}
           />
           <TextAreaField
             name="description"
             label="Miêu tả"
+            autoFocus={false}
             clsLabelWrapper="text-lg self-start font-bold"
             placeholder="Nhập miêu tả cho thư mục"
             clsTextArea="h-[150px]  min-h-[50px] max-h-[450px]"

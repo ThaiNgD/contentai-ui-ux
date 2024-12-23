@@ -510,5 +510,6 @@ export const configAIWriterSelector: AIWriterSelector[] = [
 ];
 
 export const AIWriterSelectorType: SelectedType[] = [
+  "all",
   ...new Set(configAIWriterSelector.map((selector) => selector.category)),
 ];

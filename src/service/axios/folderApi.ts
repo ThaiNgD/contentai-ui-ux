@@ -7,10 +7,11 @@ export const folderApi = {
   queryKey: "folder",
 
   createFolder: async (payload: IFormFolder) => {
-    return await http.post<any, IResult>(
+    const data = await http.post<any, IResult>(
       `${folderApi.queryKey}/create_folder`,
       payload
     );
+    return data;
   },
 
   updateTag: async (payload: IFormTag, folderId: string) => {

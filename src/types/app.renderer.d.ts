@@ -65,7 +65,7 @@ declare global {
   };
 
   type ISpeechToText = {
-    transcribedText: string;
+    transcript: string;
   };
 
   type IAiVision = {
