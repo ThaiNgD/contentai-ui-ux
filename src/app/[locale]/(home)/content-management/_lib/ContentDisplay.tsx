@@ -1,4 +1,4 @@
-import RecentLaunchComponent from "@/components/ContentComponent.tsx/RecentLaunchComponent";
+import RecentLaunchComponent from "@/components/FolderComponent/RecentLaunchComponent";
 
 const ContentDisplay = () => {
   return (

@@ -1,6 +1,6 @@
 "use client";
-import FolderDisplayComponent from "@/components/ContentComponent.tsx/FolderDisplayComponent";
-import FolderDisplayLoading from "@/components/ContentComponent.tsx/FolderDisplayLoading";
+import FolderDisplayComponent from "@/components/FolderComponent/FolderDisplayComponent";
+import FolderDisplayLoading from "@/components/FolderComponent/FolderDisplayLoading";
 import { CustomPaginate } from "@/components/layout/Pagnigation";
 import { chunk, convertToVietnameseDate } from "@/helper/function";
 import { useFetchFolder } from "@/service/content-management/useFetchFolder";
