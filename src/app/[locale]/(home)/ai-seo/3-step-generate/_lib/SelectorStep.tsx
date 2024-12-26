@@ -14,7 +14,7 @@ const SelectorStep = ({ steps, setStepsIndex }: SelectorStep) => {
       <div className="rounded-full p-2 px-[30px] flex items-center gap-[40px] shadow-lg w-fit mx-auto dark:bg-black bg-white">
         {steps.map((step, index) => {
           return (
-            <>
+            <div key={index} className="flex items-center gap-[40px]">
               <StepComponent
                 setStepsIndex={setStepsIndex}
                 key={index}
@@ -29,7 +29,7 @@ const SelectorStep = ({ steps, setStepsIndex }: SelectorStep) => {
                   size={20}
                 />
               )}
-            </>
+            </div>
           );
         })}
       </div>

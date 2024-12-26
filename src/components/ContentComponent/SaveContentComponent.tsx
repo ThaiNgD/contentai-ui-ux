@@ -1,4 +1,5 @@
 import { useFetchFolder } from "@/service/content-management/useFetchFolder";
+import { useMemo } from "react";
 import { MdSaveAs } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import InputField from "../CustomField/InputField";
@@ -6,9 +7,11 @@ import { SelectField } from "../CustomField/SelectField";
 
 const SaveContentComponent = () => {
   const { data: folder } = useFetchFolder();
-  const folder_option = folder?.map((f) => {
-    return { label: f.folder_name, value: f.folder_id };
-  });
+  const folder_option = useMemo(() => {
+    return folder?.map((f) => {
+      return { label: f.folder_name, value: f.folder_id };
+    });
+  }, [folder]);
   return (
     <div className="flex w-full justify-between">
       <div className="flex gap-3">
