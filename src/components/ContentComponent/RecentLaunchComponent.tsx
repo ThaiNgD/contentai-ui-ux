@@ -12,7 +12,6 @@ export interface RecentLaunchComponentProps {
   documentId?:string
 }
 const RecentLaunchComponent = ({
-  image,
   title,
   content,
   date,

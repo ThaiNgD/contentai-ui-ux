@@ -12,12 +12,7 @@ export default function Page({
   params: Promise<{ id: string; title: string  }>;
 }) {
   const [id, setId] = useState<string | undefined>(undefined);
-  const [title, setTitle] = useState<string | undefined>(undefined);
-
-  // const folder_name = typeof id === "string" && decodeURIComponent(id);
-  const folder_name = typeof title === "string" && decodeURIComponent(title);
-
-  const { data, isPending } = useGetDocumentByFolder(String(id));
+  const { data } = useGetDocumentByFolder(String(id));
   const storedTitle = sessionStorage.getItem("folderTitle");
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +30,7 @@ export default function Page({
     <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
 {
    data?.map((document, index)=>(
-  <RecentLaunchComponent title={document.document_name} content={document.content} date={document.created_at} documentId = {document.document_id}/>
+  <RecentLaunchComponent key={index} title={document.document_name} content={document.content} date={document.created_at} documentId = {document.document_id}/>
   
 ))
 }

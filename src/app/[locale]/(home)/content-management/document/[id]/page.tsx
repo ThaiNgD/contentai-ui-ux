@@ -22,7 +22,7 @@ export default function Page({
   }, [params]);
 
   // Lấy dữ liệu tài liệu khi id đã có
-  const { data, isPending } = useGetDocumentById(id || "1");
+  const { data } = useGetDocumentById(id || "1");
 
   return (
     <>

@@ -1,11 +1,9 @@
 "use client";
 import { useFetchFolder } from "@/service/content-management/useFetchFolder";
 import { useSaveDocument } from "@/service/document/useSaveDocument";
-import { Dispatch, SetStateAction, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { MdSaveAs } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import InputField from "../CustomField/InputField";
 import { SelectField } from "../CustomField/SelectField";
 import { useFormik } from "formik";
@@ -17,7 +15,7 @@ interface InputProps {
 
 const SaveContentComponent = ({ data }: InputProps) => {
   const { data: folder } = useFetchFolder();
-  const { mutate: mutateFn, isPending } = useSaveDocument();
+  const { mutate: mutateFn } = useSaveDocument();
   const formik = useFormik({
     initialValues: {
       document_name: "",

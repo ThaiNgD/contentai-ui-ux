@@ -3,7 +3,7 @@ import { useGetAllDocument } from "@/service/document/useGetAllDocument";
 
 const ContentDisplay = () => {
 
-  const {isPending, data:documents,refetch } = useGetAllDocument()
+  const {isPending, data:documents } = useGetAllDocument()
 
 
 

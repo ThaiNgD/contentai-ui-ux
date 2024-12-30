@@ -21,9 +21,8 @@ const FolderDisplayComponent = ({
   title,
   time,
   clsContainerWidth,
-  setShouldFetch
 }: FolderDisplayComponentProps) => {
-  const {mutate: mutateFn, isPending} = useDeleteFolder()
+  const {mutate: mutateFn} = useDeleteFolder()
   const router = useRouter();
   const { pathWithoutLocale } = useGetPathComponent();
   const divRef = useRef<HTMLDivElement>(null);
