@@ -49,6 +49,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
                     time={convertToVietnameseDate(
                       f.created_at as unknown as string
                     )}
+                    setShouldFetch={setShouldFetch}
                   />
                 ))}
               </>

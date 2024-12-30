@@ -32,4 +32,11 @@ export const folderApi = {
       `${folderApi.queryKey}/folder_by_id/${folderId}`
     );
   },
+
+  deleteFolder: async (folderId: string) => {
+    const data = await http.delete<any, IResult>(
+      `${folderApi.queryKey}/delete_folder/${folderId}`,
+    );
+    return data;
+  },
 };

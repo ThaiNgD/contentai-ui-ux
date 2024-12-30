@@ -1,8 +1,10 @@
 "use client";
 import { cn } from "@/helper/utils";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
+import { useDeleteFolder } from "@/service/content-management/useDeleteFolder";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { FaFolderOpen } from "react-icons/fa";
 import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -12,13 +14,16 @@ export interface FolderDisplayComponentProps {
   time: string;
   folder_id: string;
   clsContainerWidth?: string;
+  setShouldFetch?: Dispatch<SetStateAction<boolean>>
 }
 const FolderDisplayComponent = ({
+  folder_id,
   title,
   time,
-  // folder_id,
   clsContainerWidth,
+  setShouldFetch
 }: FolderDisplayComponentProps) => {
+  const {mutate: mutateFn, isPending} = useDeleteFolder()
   const router = useRouter();
   const { pathWithoutLocale } = useGetPathComponent();
   const divRef = useRef<HTMLDivElement>(null);
@@ -35,6 +40,13 @@ const FolderDisplayComponent = ({
       setIsOption(false); // Close the div
     }
   };
+
+  const handleDelete = () => {
+    const isConfirmed = window.confirm("Bạn có chắc chắn muốn xóa không? Hành động này không thể hoàn tác!");
+    if (isConfirmed) 
+        mutateFn(folder_id); // Thực hiện xóa
+    // setShouldFetch?.(true)
+  }
 
   useEffect(() => {
     // Attach the click event listener when the component mounts
@@ -60,7 +72,9 @@ const FolderDisplayComponent = ({
       role="button"
       onClick={(): void => {
         setIsSelected(true);
-        router.push(`${pathWithoutLocale}/folder/${title}`);
+        sessionStorage.setItem("folderTitle", title);
+        router.push(`${pathWithoutLocale}/folder/${folder_id}`,
+        );
       }}
     >
       <FaFolderOpen
@@ -90,7 +104,9 @@ const FolderDisplayComponent = ({
             />
             Sửa tên
           </div>
-          <div className="p-1 text-sm  grid group hover:text-red-500 grid-cols-[25%,75%]">
+          <div className="p-1 text-sm  grid group hover:text-red-500 grid-cols-[25%,75%]"
+               onClick={handleDelete}
+          >
             <IoMdTrash
               size={18}
               className="text-gray-500 group-hover:text-red-500"
