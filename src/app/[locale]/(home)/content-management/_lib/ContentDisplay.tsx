@@ -1,5 +1,5 @@
-import RecentLaunchComponent from "@/components/ContentComponent.tsx/RecentLaunchComponent";
 import { useGetAllDocument } from "@/service/document/useGetAllDocument";
+import RecentLaunchComponent from "@/components/FolderComponent/RecentLaunchComponent";
 
 const ContentDisplay = () => {
 

@@ -1,4 +1,4 @@
-import FolderDisplayComponent from "@/components/ContentComponent.tsx/FolderDisplayComponent";
+import FolderDisplayComponent from "@/components/FolderComponent/FolderDisplayComponent";
 import { MdKeyboardBackspace } from "react-icons/md";
 const FolderDisplay = () => {
   return (
