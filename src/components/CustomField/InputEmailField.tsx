@@ -1,5 +1,5 @@
 "use client";
-import { cn } from "@/helper/utils";
+import { cn } from "@/helper/function";
 import { useState } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 const InputEmailField = () => {
