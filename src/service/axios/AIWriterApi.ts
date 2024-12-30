@@ -649,12 +649,12 @@ export const aiBlogListicle = {
 };
 
 export const aiWriter = {
-  pathKey: "ai_writer",
-  queryKey: "ai_writer",
+  pathKey: "document",
+  queryKey: "document",
 
-  save: async (aiModelId: string, payload: IFormDocument) => {
+  save: async ( payload: IFormDocument) => {
     return await http.post<any, IResult>(
-      `${aiWriter.pathKey}/save_writer/${aiModelId}`,
+      `${aiWriter.pathKey}/save-document`,
       payload
     );
   },

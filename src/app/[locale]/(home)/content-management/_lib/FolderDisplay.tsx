@@ -19,7 +19,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
   const chunkedData = useMemo(() => {
     return folder
       ? chunk(
-          folder.map((f, index) => ({ id: index, ...f })),
+          folder.data.map((f, index) => ({ id: index, ...f })),
           9
         )
       : [];
@@ -39,7 +39,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
       <div className="grid grid-cols-3 gap-5">
         {!isPending ? (
           <>
-            {folder && folder.length > 0 ? (
+            {folder && folder.data.length > 0 ? (
               <>
                 {chunkedData[activePage - 1]?.map((f, index) => (
                   <FolderDisplayComponent
@@ -49,6 +49,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
                     time={convertToVietnameseDate(
                       f.created_at as unknown as string
                     )}
+                    setShouldFetch={setShouldFetch}
                   />
                 ))}
               </>

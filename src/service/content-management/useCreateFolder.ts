@@ -21,6 +21,9 @@ export const useCreateFolder = (): UseMutationResult<
       } else {
         return;
       }
+      queryClient.invalidateQueries({
+        queryKey: ["all-folder"]
+      })
       queryClient.setQueryData([folderApi.queryKey], isSuccess);
     },
   });

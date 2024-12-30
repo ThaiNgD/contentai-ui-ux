@@ -1,5 +1,3 @@
-# ##!/bin/sh
-     # . "$(dirname "$0")/_/husky.sh"
-     # . "$(dirname "$0")/common.sh"
-yarn lint 
-yarn typecheck
+#!/bin/sh
+echo "Running pre-commit hook..."
+npm run lint

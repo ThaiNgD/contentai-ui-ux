@@ -88,4 +88,22 @@ declare global {
     };
     message: string;
   }
+
+  type IGetAllDocumentsResponse = {
+    data: IDocument[];
+    total: number;
+    page: string;
+    limit: number;
+  }
+
+  type IDocument = {
+    document_id: string;
+    document_name: string;
+    content: string;
+    created_at: string;
+    favourite: boolean;
+    userId: string;
+    folderId: string | null;
+    aiModelId: string;
+  }
 }

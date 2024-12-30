@@ -9,18 +9,22 @@ export interface RecentLaunchComponentProps {
   image?: string;
   title: string;
   content?: string;
+  date?:string
   isFolderDisplay?: boolean;
+  documentId?:string
 }
 const RecentLaunchComponent = ({
   title,
   content,
   isFolderDisplay = true,
+  date,
+  documentId
 }: RecentLaunchComponentProps) => {
   const color = getRandomColor(COLORS);
   const router = useRouter();
   const { locale } = useGetPathComponent();
   const handleGetDocument = () => {
-    router.push(`/${locale}/content-management/document/1`);
+    router.push(`/${locale}/content-management/document/${documentId}`);
   };
   return (
     <div
@@ -49,13 +53,13 @@ const RecentLaunchComponent = ({
 
       <div className="py-5 border-b">
         <p className="whitespace-normal overflow-hidden overflow-ellipsis ">
-          New Workbook : Certainly! Please provide me with the specific topic or
-          focus you would like the arti...
-          {content}
+          {content ||
+          "New Workbook : Certainly! Please provide me with the specific topic or focus you would like the arti..."
+          }
         </p>
       </div>
       <div className="flex py-2 items-center justify-between">
-        <p>Oct 31 2024</p>
+        <p>{date}</p>
         <HiOutlineDotsVertical size={20} />
       </div>
     </div>
