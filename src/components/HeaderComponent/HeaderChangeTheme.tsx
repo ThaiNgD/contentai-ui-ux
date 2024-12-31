@@ -18,14 +18,14 @@ const HeaderChangeTheme = () => {
       {onClick ? (
         <IoMoonOutline
           role="button"
-          className="pointer-events-none  opacity-50"
+          className=" opacity-50"
           size={20}
           onClick={handleClick}
         />
       ) : (
         <IoSunny
           role="button"
-          className="pointer-events-none opacity-50"
+          className="opacity-50"
           size={20}
           onClick={handleClick}
         />

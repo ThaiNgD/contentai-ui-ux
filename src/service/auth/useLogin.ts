@@ -28,13 +28,11 @@ export const useAuthLogin = (
         );
         toast.success("Đăng nhập thành công");
         router.push(`/${locale}/dashboard`);
-      } else {
-        // if (!(location.pathname === `/${locale}/login`)) {
-        //   router.push(`/${locale}/login`);
-        // }
-        console.log(hideToast);
-        toast.error("Đăng nhập thất bại");
       }
+    },
+    onError: () => {
+      console.log(hideToast);
+      toast.error("Sai thông tin đăng nhập");
     },
   });
 };
