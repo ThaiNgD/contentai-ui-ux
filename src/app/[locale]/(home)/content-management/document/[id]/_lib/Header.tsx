@@ -1,10 +1,12 @@
 "use client";
-
+import InputField from "@/components/CustomField/InputField";
 import ModalNewFolder from "@/components/Modal/ModalNewFolder";
+import { cn } from "@/helper/function";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { Button } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FaCheck, FaPenClip, FaXmark } from "react-icons/fa6";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 interface HeaderProps {
   title: string;
@@ -14,10 +16,21 @@ const Header = ({ title }: HeaderProps) => {
   const handleClickAddNewFolder = (): void => {
     setIsShowModalAddFolder(true);
   };
+  const [editDocumentName, setEditDocumentName] = useState(false);
   const router = useRouter();
   const { locale } = useGetPathComponent();
   const handleClickBack = (): void => {
     router.push(`/${locale}/content-management`);
+  };
+  const handleEditDocumentName = () => {
+    setEditDocumentName(true);
+  };
+  const handleEditDone = (): void => {
+    setEditDocumentName(false);
+  };
+
+  const handleEditCancel = (): void => {
+    setEditDocumentName(false);
   };
   return (
     <div className="2xl:px-[175px] px-[15px] py-[35px] h-[150px] flex items-center justify-between">
@@ -30,7 +43,46 @@ const Header = ({ title }: HeaderProps) => {
           <MdOutlineKeyboardBackspace size={16} />
           Trở về
         </span>
-        <h1 className="text-3xl font-extrabold">{title}</h1>
+        {editDocumentName ? (
+          <form className={cn("relative w-full")}>
+            <InputField
+              name="edit-title"
+              className={cn("!border-blue-400 !border-2")}
+              placeholder={title}
+            />
+            <div
+              role="button"
+              className="p-[4px] rounded-full group hover:bg-green-400 border-green-400 border h-fit absolute top-2 right-2"
+              onClick={handleEditDone}
+            >
+              <FaCheck
+                size={12}
+                className="group-hover:text-white text-green-400"
+              />
+            </div>
+            <div
+              role="button"
+              className="p-[4px] rounded-full group hover:bg-red-600 border-red-600 border h-fit absolute top-2 right-10"
+              onClick={handleEditCancel}
+            >
+              <FaXmark
+                size={12}
+                className="group-hover:text-white text-red-600"
+              />
+            </div>
+          </form>
+        ) : (
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-extrabold">{title}</h1>
+            <div
+              role="button"
+              className="p-2 h-fit rounded-full hover:translate-y-0.5 bg-gray-200"
+              onClick={handleEditDocumentName}
+            >
+              <FaPenClip size={16} />
+            </div>
+          </div>
+        )}
       </div>
       <div className="flex flex-col h-full justify-center">
         <div className="flex gap-4">
