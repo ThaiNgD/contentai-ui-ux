@@ -44,7 +44,10 @@ const DashboardInfo = () => {
 
         <div className="text-left mt-[30px] w-[35%]">
           <h6 className="text-black dark:text-white text-[30px] leading-[32px] font-bold text-left">
-            {t("welcome")}, {info && info.name ? info.name : info?.email}
+            {t("welcome")},{" "}
+            <span className="text-[#019de4]">
+              {info && info.name ? info.name : info?.email}
+            </span>
             <span className="">{}</span>
           </h6>
           <div className="flex justify-start gap-2 items-end">
