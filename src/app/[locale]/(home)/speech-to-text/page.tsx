@@ -27,7 +27,7 @@ const Page = () => {
     <>
       <Header />
       <div className="py-[40px] flex-auto bg-[#F5F9FC] px-[50px] grid grid-cols-[35%,calc(65%-16px)] gap-4">
-        <div className="p-[20px] bg-white justify-center flex flex-col gap-3">
+        <div className="p-[20px] bg-white shadow-lg rounded-xl justify-center flex flex-col gap-3">
           <DragnDropImage
             setFile={setFile}
             acceptedFile="audio/*"

@@ -24,9 +24,9 @@ const Layout = ({
       <div
         className={
           (cn(
-            "flex flex-col overflow-y-auto scrollbar-none flex-auto transition-all duration-300"
+            "flex w-full flex-col overflow-y-auto scrollbar-none flex-auto transition-all duration-300"
           ),
-          isOpen ? "w-[calc(100%-64px)]" : "w-[calc(100%-256px)]")
+          isOpen ? "md:w-[calc(100%-64px)]" : "md:w-[calc(100%-256px)]")
         }
       >
         <Header />
