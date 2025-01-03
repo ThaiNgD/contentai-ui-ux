@@ -1,14 +1,10 @@
 "use client";
 import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
-import Header from "./_lib/Header";
-import { useState, useEffect } from "react";
 import { useGetDocumentById } from "@/service/document/useGetDocumentById";
+import { useEffect, useState } from "react";
+import Header from "./_lib/Header";
 
-export default function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
   // const [documentDetail, setDocumentDetail] = useState<IDocument | undefined>(undefined);
   const [id, setId] = useState<string | undefined>(undefined);
 
@@ -26,7 +22,7 @@ export default function Page({
 
   return (
     <>
-      <Header title={`${data?.document_name}`}/>
+      <Header title={`${data?.document_name}`} />
       <hr />
       <div className="flex-auto flex flex-col my-[50px] 2xl:px-[175px] px-[15px]">
         {/* <FolderDisplay /> */}

@@ -19,15 +19,13 @@ const Layout = ({
   // }, []);
 
   return (
-    <div className="flex w-screen overflow-x-hidden h-screen relative">
+    <div className="flex w-screen overflow-x-hidden scrollbar-none md:scrollbar-thin h-screen relative">
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div
-        className={
-          (cn(
-            "flex w-full flex-col overflow-y-auto scrollbar-none flex-auto transition-all duration-300"
-          ),
-          isOpen ? "md:w-[calc(100%-64px)]" : "md:w-[calc(100%-256px)]")
-        }
+        className={cn(
+          "flex w-full flex-col overflow-y-auto scrollbar-none flex-auto transition-all duration-300 ",
+          isOpen ? "md:w-[calc(100%-64px)]" : "md:w-[calc(100%-256px)]"
+        )}
       >
         <Header />
         <div className="h-[calc(100%-130px)] shadow-inner flex flex-col min-h-fit duration-300 bg-white dark:bg-[#1F1F1F]">

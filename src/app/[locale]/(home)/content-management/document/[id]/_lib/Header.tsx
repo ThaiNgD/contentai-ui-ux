@@ -8,14 +8,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaCheck, FaPenClip, FaXmark } from "react-icons/fa6";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { RiFileAddFill } from "react-icons/ri";
+import { Tooltip } from "react-tooltip";
 interface HeaderProps {
   title: string;
 }
 const Header = ({ title }: HeaderProps) => {
   const [isShowModalAddFolder, setIsShowModalAddFolder] = useState(false);
-  const handleClickAddNewFolder = (): void => {
-    setIsShowModalAddFolder(true);
-  };
   const [editDocumentName, setEditDocumentName] = useState(false);
   const router = useRouter();
   const { locale } = useGetPathComponent();
@@ -38,7 +37,7 @@ const Header = ({ title }: HeaderProps) => {
         <span
           role="button"
           onClick={handleClickBack}
-          className="text-sm hover:underline hover:opacity-100 flex gap-2 opacity-70"
+          className="text-xs md:text-sm hover:underline hover:opacity-100 flex gap-2 opacity-70"
         >
           <MdOutlineKeyboardBackspace size={16} />
           Trở về
@@ -73,7 +72,7 @@ const Header = ({ title }: HeaderProps) => {
           </form>
         ) : (
           <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-extrabold">{title}</h1>
+            <h1 className="text-xl md:text-3xl font-extrabold">{title}</h1>
             <div
               role="button"
               className="p-2 h-fit rounded-full hover:translate-y-0.5 bg-gray-200"
@@ -86,14 +85,14 @@ const Header = ({ title }: HeaderProps) => {
       </div>
       <div className="flex flex-col h-full justify-center">
         <div className="flex gap-4">
-          <Button
-            onClick={handleClickAddNewFolder}
-            className="bg-white text-black rounded-2xl shadow-md hover:bg-blue-500 font-bold hover:text-white"
-          >
-            + Thư mục mới
-          </Button>
-          <Button className="bg-blue-500 font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md hover:-translate-y-0.5">
+          <Button className="bg-blue-500  md:block hidden font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md duration-200 hover:-translate-y-0.5">
             + Bài viết mới
+          </Button>
+          <Tooltip anchorSelect=".document-plus" place={"top"}>
+            + Bài viết mới
+          </Tooltip>
+          <Button className="bg-blue-500 document-plus md:hidden font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md duration-200 hover:-translate-y-0.5">
+            <RiFileAddFill size={20} />
           </Button>
         </div>
       </div>
