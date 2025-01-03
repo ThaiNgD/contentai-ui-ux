@@ -15,7 +15,7 @@ const HeaderSearchBar = () => {
     inputSearch?.focus();
   });
   return (
-    <div className="flex relative rounded-2xl w-[400px] h-[35px] bg-gray-200 ">
+    <div className="hidden lg:flex relative rounded-2xl w-[400px] h-[35px] bg-gray-200 ">
       <input
         id="input-search"
         type="text"
