@@ -54,7 +54,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
                 ))}
               </>
             ) : (
-              <div className="flex col-start-2 flex-col h-[150px] w-fit gap-2 items-center shadow-md justify-center bg-gray-200 rounded-xl">
+              <div className="flex w-full col-start-2 flex-col h-[150px] gap-2 items-center shadow-md justify-center bg-gray-200 rounded-xl">
                 <div className="pl-3 py-2 pr-2 w-fit h-fit bg-white rounded-xl shadow-md relative mb-2">
                   <FaFolderOpen size={50} className="text-yellow-300" />
                   <FaInfoCircle
