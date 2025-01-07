@@ -7,12 +7,16 @@ import { useGetProfile } from "@/service/auth/useGetProfile";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { AiOutlineSetting } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import { FaAngleDoubleUp } from "react-icons/fa";
 const HeaderAccountDropdownInfo = () => {
   const [isShowAccountInfo, setIsShowAccountInfo] = useState(false);
   const { data: user } = useGetProfile(true);
   const { locale } = useGetPathComponent();
+  const handleOnclickToggle = (): void => {
+    setIsShowAccountInfo(!isShowAccountInfo);
+  };
   const handleToggleOpenAccountInfo = (): void => {
     setIsShowAccountInfo(true);
   };
@@ -35,6 +39,7 @@ const HeaderAccountDropdownInfo = () => {
         alt="Avatar"
         onMouseOver={handleToggleOpenAccountInfo}
         role="button"
+        onClick={handleOnclickToggle}
       />
       <div
         className={cn(
@@ -61,6 +66,20 @@ const HeaderAccountDropdownInfo = () => {
           onClick={handleMoveToUpdateAPI}
         >
           Upgrade API <FaAngleDoubleUp size={16} />
+        </div>
+        <div
+          role="button"
+          className="p-2 md:hidden flex w-full gap-4 pr-4 justify-end items-center font-semibold hover:bg-gray-200 hover:text-blue-500"
+          onClick={handleMoveToUpdateAPI}
+        >
+          Settings{" "}
+          <AiOutlineSetting
+            size={18}
+            role="button"
+            onClick={(): void => {
+              router.push(`/${locale}/setting-ai`);
+            }}
+          />
         </div>
         <div
           role="button"

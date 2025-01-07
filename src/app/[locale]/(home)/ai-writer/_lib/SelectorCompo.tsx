@@ -7,7 +7,7 @@ interface SelectorCompo {
 const SelectorCompo = ({ title, onClick }: SelectorCompo) => {
   return (
     <div
-      className="border hover:bg-blue-500 hover:text-white p-1 px-2 rounded-xl text-xs font-thin"
+      className="border hover:bg-blue-500 hover:text-white p-1 px-2 rounded-xl md:text-md text-xs font-thin"
       role="button"
       onClick={onClick}
     >

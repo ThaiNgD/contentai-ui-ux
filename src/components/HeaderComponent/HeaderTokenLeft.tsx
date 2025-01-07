@@ -16,7 +16,7 @@ const HeaderTokenLeft = () => {
       >
         <RiAddLine size={16} />
       </div>
-      <Tooltip anchorSelect=".token-tooltip" place="bottom">
+      <Tooltip anchorSelect=".token-tooltip" className="z-50" place="bottom">
         Mua thêm token ở đây.
       </Tooltip>
     </div>

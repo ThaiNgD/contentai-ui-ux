@@ -42,9 +42,12 @@ const DashboardInfo = () => {
           </div>
         )}
 
-        <div className="text-left mt-[30px] w-[35%]">
+        <div className="text-left z-10 mt-[30px] w-full md:w-[35%] lg:w-[35%]">
           <h6 className="text-black dark:text-white text-[30px] leading-[32px] font-bold text-left">
-            {t("welcome")}, {info && info.name ? info.name : info?.email}
+            {t("welcome")},{" "}
+            <span className="text-[#019de4]">
+              {info && info.name ? info.name : info?.email}
+            </span>
             <span className="">{}</span>
           </h6>
           <div className="flex justify-start gap-2 items-end">
@@ -62,7 +65,7 @@ const DashboardInfo = () => {
             UPGRADE NOW
           </button>
         </div>
-        <div className="limit justify-between mt-[38px] mb-[40px] grid grid-cols-4 w-[60%] divide-x-2 divide-black dark:divide-white-light">
+        <div className="limit justify-between mt-[38px] mb-[40px] grid grid-cols-2 lg:grid-cols-4 w-full md:w-[50%] lg:w-[60%] divide-x-2 divide-black dark:divide-white-light">
           {/* <div className="z-50 text-center cursor-default">
             <span className="text-black text-base font-black shadow-custom items-center">
               {t("dashboard.character_left")}
@@ -102,8 +105,8 @@ const DashboardInfo = () => {
               10
             </p>
           </div>
-          <div className="text-center z-10 ">
-            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px]  font-black shadow-custom items-center">
+          <div className="text-center z-10 !border-0 ">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px] font-black shadow-custom items-center">
               {t("image_left")}
             </span>
             <p className="shadow-number be-vietnam-pro-medium font-weight-800  text-blue-500 items-center text-xl font-extrabold">

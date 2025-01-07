@@ -5,7 +5,7 @@ import { sidebarList } from "@/config/configSidebar";
 import { cn } from "@/helper/function";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { FaAngleRight } from "react-icons/fa";
 import NavbarLinkComponent from "../SidebarComponent/NavbarLinkComponent";
 interface SidebarProps {
@@ -17,10 +17,30 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   const handleToggleArrow = (): void => {
     setIsOpen((prevState) => !prevState);
   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        setIsOpen(true); // Close sidebar
+      } else {
+        setIsOpen(false); // Open sidebar
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div
       className={cn(
-        "relative shadow-md w-fit z-[50]",
+        "hidden md:block relative shadow-md w-fit z-[50]",
         isOpen ? "w-[64px]" : "w-[256px]"
       )}
     >

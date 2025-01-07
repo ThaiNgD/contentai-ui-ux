@@ -1,15 +1,15 @@
 "use client";
+import RecentLaunchComponent from "@/components/ContentComponent/RecentLaunchComponent";
+import { useGetDocumentByFolder } from "@/service/document/useGetDocumentByFolder";
+import { useEffect, useState } from "react";
 import FolderDisplay from "./_lib/FolderDisplay";
 import Header from "./_lib/Header";
 import NoTextDocument from "./_lib/NoTextDocument";
-import { useEffect, useState } from "react";
-import { useGetDocumentByFolder } from "@/service/document/useGetDocumentByFolder";
-import RecentLaunchComponent from "@/components/ContentComponent/RecentLaunchComponent";
 
 export default function Page({
   params,
 }: {
-  params: Promise<{ id: string; title: string  }>;
+  params: Promise<{ id: string; title: string }>;
 }) {
   const [id, setId] = useState<string | undefined>(undefined);
   const { data } = useGetDocumentByFolder(String(id));

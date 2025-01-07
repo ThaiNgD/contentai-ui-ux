@@ -1,12 +1,8 @@
-import { useGetAllDocument } from "@/service/document/useGetAllDocument";
 import RecentLaunchComponent from "@/components/FolderComponent/RecentLaunchComponent";
+import { useGetAllDocument } from "@/service/document/useGetAllDocument";
 
 const ContentDisplay = () => {
-
-  const {isPending, data:documents } = useGetAllDocument()
-
-
-
+  const { isPending, data: documents } = useGetAllDocument();
 
   return (
     <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
