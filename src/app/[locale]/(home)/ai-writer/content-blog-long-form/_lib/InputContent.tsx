@@ -4,19 +4,16 @@ import { SelectField } from "@/components/CustomField/SelectField";
 import TextAreaField from "@/components/CustomField/TextAreaField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { UseMutateFunction } from "@tanstack/react-query";
+import { useAiContentBlogLongForm } from "@/service/aiwriter/seo_optimization/useAiContentBlogLongForm";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-interface InputContentProps {
-  submitForm: UseMutateFunction<
-    IResult,
-    Error,
-    IFormContentBlogLongForm,
-    unknown
-  >;
-  isPending: boolean;
+import { Dispatch, SetStateAction, useEffect } from "react";
+interface InputProps {
+setCkData: Dispatch<SetStateAction<IResult>>;
 }
-const InputContent = ({ submitForm, isPending }: InputContentProps) => {
+const InputContent = ({ setCkData }: InputProps) => {
+    const { data, mutate: mutateFn, isPending } = useAiContentBlogLongForm();
+  
   const formik = useFormik<IFormContentBlogLongForm>({
     initialValues: {
       title: "",
@@ -26,9 +23,15 @@ const InputContent = ({ submitForm, isPending }: InputContentProps) => {
       language: "",
     },
     onSubmit: (values) => {
-      submitForm(values);
+      mutateFn(values);
     },
   });
+
+    useEffect(() => {
+      if (data) {
+        setCkData(data);
+      }
+    }, [data]);
 
   return (
     <div className="flex p-[30px] shadow-md bg-white rounded-xl flex-col h-full">

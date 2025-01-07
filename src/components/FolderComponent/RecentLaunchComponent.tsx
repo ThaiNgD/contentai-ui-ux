@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FaRegStar } from "react-icons/fa6";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 export interface RecentLaunchComponentProps {
+  aiModelName?: string;
   image?: string;
   title: string;
   content?: string;
@@ -14,6 +15,7 @@ export interface RecentLaunchComponentProps {
   documentId?:string
 }
 const RecentLaunchComponent = ({
+  aiModelName,
   title,
   content,
   isFolderDisplay = true,
@@ -42,15 +44,23 @@ const RecentLaunchComponent = ({
             backgroundColor: color,
           }}
         >
-          {title}
+          {aiModelName}
         </p>
+
         {isFolderDisplay && (
           <div className="p-[6px] hover:bg-blue-500 hover:-translate-y-0.5 hover:shadow-md duration-200 hover:text-white hover:shadow-blue-500 rounded-full shadow-md">
             <FaRegStar size={16} />
           </div>
         )}
       </div>
-
+        <p
+          className={cn("text-sm text-black opacity-90 px-2 mt-1 w-fit rounded-lg")}
+          style={{
+            backgroundColor: color,
+          }}
+        >
+          {title}
+        </p>
       <div className="py-5 border-b">
         <p className="whitespace-normal overflow-hidden overflow-ellipsis ">
           {content ||

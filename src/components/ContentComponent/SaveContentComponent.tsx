@@ -10,12 +10,13 @@ import { useFormik } from "formik";
 import { Button } from "flowbite-react";
 
 interface InputProps {
-  data: string;
+  data: IResult
 }
 
 const SaveContentComponent = ({ data }: InputProps) => {
   const { data: folder } = useFetchFolder();
   const { mutate: mutateFn } = useSaveDocument();
+
   const formik = useFormik({
     initialValues: {
       document_name: "",
@@ -26,8 +27,8 @@ const SaveContentComponent = ({ data }: InputProps) => {
           {
             document_name: values.document_name,
             folderId: values.folderId,
-            aiModelId: "2003e07f-1966-4610-9d3f-c4c8fbd3695a",
-            content: data
+            aiModelName: data.aiModelName,
+            content: data.result
           },
         )
       },
@@ -47,7 +48,7 @@ const SaveContentComponent = ({ data }: InputProps) => {
   // });
 
   return (
-        <form id="form-submit" onSubmit={formik.handleSubmit}>
+        <form id="form-submit-save" onSubmit={formik.handleSubmit}>
           <div className="flex w-full justify-between">
             <div className="flex gap-3">
               <InputField
@@ -67,7 +68,7 @@ const SaveContentComponent = ({ data }: InputProps) => {
             </div>
             <div className="flex gap-3">
               <Button
-          form="form-submit"
+          form="form-submit-save"
           type="submit">
               <div
           className="p-2 save-button hover:text-white duration-200 hover:-translate-y-0.5 hover:bg-blue-500 rounded-lg shadow-inner border bg-[#F1F9FC]"

@@ -30,7 +30,7 @@ export default function Page({
     <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
 {
    data?.map((document, index)=>(
-  <RecentLaunchComponent key={index} title={document.document_name} content={document.content} date={document.created_at} documentId = {document.document_id}/>
+  <RecentLaunchComponent key={index} aiModelName={document.aiModelName} title={document.document_name} content={document.content} date={document.created_at} documentId = {document.document_id}/>
   
 ))
 }
