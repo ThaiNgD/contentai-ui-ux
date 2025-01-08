@@ -18,7 +18,7 @@ const ImageChatContainer = () => {
     <div className="flex h-full flex-col p-[30px]  justify-between gap-2">
       {" "}
       {isChat && file ? (
-        <div className="flex items-center gap-[20px] h-full ">
+        <div className="flex md:flex-row flex-col items-center gap-[20px] h-full ">
           <Image
             src={URL.createObjectURL(file)}
             alt="place-holder"
@@ -27,7 +27,7 @@ const ImageChatContainer = () => {
             className="h-auto shadow-md max-h-[300px] w-auto max-w-[40%]"
             objectFit="cover"
           />
-          <div className="flex flex-col h-full flex-auto gap-3 justify-between">
+          <div className="flex flex-col  h-full flex-auto gap-3 justify-between">
             <div className="flex flex-col h-[calc(100%-150px)] overflow-auto pb-4 gap-4">
               <WelcomeUserChatContent imgUrl={userImage} />
               <UserChatContent

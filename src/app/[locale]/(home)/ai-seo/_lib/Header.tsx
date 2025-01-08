@@ -5,13 +5,12 @@ import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { Button } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FaRegFolderOpen } from "react-icons/fa";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   const [isShowModalAddFolder, setIsShowModalAddFolder] = useState(false);
-  const handleClickAddNewFolder = (): void => {
-    setIsShowModalAddFolder(true);
-  };
   const router = useRouter();
   const { locale } = useGetPathComponent();
   const handleClickBack = (): void => {
@@ -25,13 +24,13 @@ const Header = () => {
       <div className="flex flex-col gap-2">
         <span
           role="button"
-          className="text-sm hover:underline hover:opacity-100 flex gap-2 opacity-70"
+          className="md:text-sm text-xs hover:underline hover:opacity-100 flex gap-2 opacity-70"
           onClick={handleClickBack}
         >
           <MdOutlineKeyboardBackspace size={16} />
           Trở về
         </span>
-        <h1 className="text-3xl font-extrabold">AI SEO</h1>
+        <h1 className="md:text-3xl text-xl font-extrabold">AI SEO</h1>
         <span className="text-sm opacity-70">
           Tối ưu bài viết theo tiêu chuẩn SEO
         </span>
@@ -40,16 +39,16 @@ const Header = () => {
         <div className="flex gap-4">
           <Button
             onClick={handleClickFolderManagement}
-            className="bg-white text-black rounded-2xl shadow-md hover:bg-blue-500 font-bold hover:text-white"
+            className="bg-white md:block hidden text-black rounded-2xl shadow-md hover:bg-blue-500 font-bold hover:text-white"
           >
             + Tài liệu của tôi
           </Button>
-          <Button
-            onClick={handleClickAddNewFolder}
-            className="bg-blue-500 font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md hover:-translate-y-0.5"
-          >
-            + Tạo Template
+          <Button className="bg-white my-document md:hidden text-black rounded-2xl shadow-md hover:bg-blue-500 font-bold hover:text-white">
+            <FaRegFolderOpen size={20} />
           </Button>
+          <Tooltip anchorSelect=".my-document" place={"top"}>
+            + Tài liệu của tôi
+          </Tooltip>
         </div>
       </div>
       {isShowModalAddFolder && (

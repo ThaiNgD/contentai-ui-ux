@@ -53,7 +53,7 @@ const VisionContainer = () => {
             form="form-submit"
             type="submit"
             className="border-blue-500 bg-blue-500 rounded-full
-      px-[50px] font-semibold shadow-md hover:shadow-none hover:translate-y-0.5 w-fit duration-200 h-fit"
+      px-2 md:px-[50px]  font-semibold shadow-md hover:shadow-none hover:translate-y-0.5 w-fit duration-200 h-fit"
           >
             {isPending ? (
               <div className="loading size-[24px]"></div>
