@@ -27,7 +27,7 @@ const APIContainer = () => {
         <AiFillOpenAI size={24} />
         Open AI
       </div>
-      <div className="grid grid-cols-2 gap-[30px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
         <InputField
           label="Khóa OpenAI"
           isRequired
@@ -61,15 +61,19 @@ const APIContainer = () => {
       </div>
       <div className="flex gap-2 self-end">
         <Button
-          className="rounded-full  w-fit px-[40px] bg-blue-500 shadow-md duration-200 hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500"
+          className="rounded-full  w-fit px-[40px]  bg-blue-500 shadow-md duration-200 hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500"
           onClick={(): void => {
             setIsShowModalAPI(true);
           }}
         >
-          Kho API
+          <span className="md:!text-base whitespace-nowrap !text-xs">
+            Kho API
+          </span>
         </Button>
-        <Button className="rounded-full duration-200 w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
-          Áp dụng
+        <Button className="rounded-full md:!text-base !text-xs duration-200 w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
+          <span className="md:!text-base whitespace-nowrap !text-xs">
+            Áp dụng
+          </span>
         </Button>
       </div>
       {isShowModalAPI && (

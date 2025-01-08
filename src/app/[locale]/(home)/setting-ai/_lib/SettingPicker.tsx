@@ -24,7 +24,7 @@ const APIContainer = () => {
         <TbSettingsBolt size={24} />
         Cài đặt cấu hình khi chạy
       </div>
-      <div className="grid grid-cols-2 gap-[30px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
         <SelectField
           label="Mô hình mặc định"
           isRequired
@@ -58,7 +58,9 @@ const APIContainer = () => {
         />
       </div>
       <Button className="rounded-full self-end w-fit px-[40px] bg-blue-500 shadow-md hover:shadow-none font-bold hover:translate-y-0.5 border-blue-500">
-        Áp dụng
+        <span className="md:!text-base whitespace-nowrap !text-xs">
+          Áp dụng
+        </span>
       </Button>
     </form>
   );

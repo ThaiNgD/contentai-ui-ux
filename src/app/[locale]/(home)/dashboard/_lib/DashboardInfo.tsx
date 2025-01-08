@@ -43,15 +43,15 @@ const DashboardInfo = () => {
         )}
 
         <div className="text-left z-10 mt-[30px] w-full md:w-[35%] lg:w-[35%]">
-          <h6 className="text-black dark:text-white text-[30px] leading-[32px] font-bold text-left">
+          <h6 className="text-black dark:text-white text-lg md:text-[30px] leading-[32px] font-bold text-left">
             {t("welcome")},{" "}
-            <span className="text-[#019de4]">
+            <span className="text-[#019de4] font-bold">
               {info && info.name ? info.name : info?.email}
             </span>
             <span className="">{}</span>
           </h6>
           <div className="flex justify-start gap-2 items-end">
-            <div className="text-black dark:text-white text-base">
+            <div className="text-black dark:text-white text-sm md:text-base">
               <p className="mt-[10px] opacity-85 italic">
                 {t("welcome_to_content_ai")}
               </p>
@@ -59,7 +59,7 @@ const DashboardInfo = () => {
           </div>
           <button
             role="button"
-            className="font-bold !text-[20px] rounded-lg glow-bg-blue update px-7 py-2 -z-5 mt-3 hover:!transition-none duration-200 hover:animate-none hover:bg-sky-500"
+            className="font-bold text-sm md:!text-[20px] rounded-lg glow-bg-blue update px-7 py-2 -z-5 mt-3 hover:!transition-none duration-200 hover:animate-none hover:bg-sky-500"
             onClick={moveToUpdateApi}
           >
             UPGRADE NOW
@@ -83,10 +83,10 @@ const DashboardInfo = () => {
             </p>
           </div> */}
           <div className="text-center flex flex-col items-center z-10">
-            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px] font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-base md:text-lg md:text-[16px] font-black shadow-custom items-center">
               {"Giới hạn token"}
             </span>
-            <p className="shadow-number be-vietnam-pro-medium  text-blue-500 items-center  text-xl">
+            <p className="shadow-number be-vietnam-pro-medium  text-blue-500 items-center text-base md:text-xl">
               {info && info.token_limit ? info.token_limit : 0}
             </p>
             <div className="w-fit token-limit-tooltip cursor-pointer border bg-black text-white rounded-full p-1 ">
@@ -97,19 +97,19 @@ const DashboardInfo = () => {
             </Tooltip>
           </div>
           <div className="text-center  z-10 ">
-            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px]  font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-base md:text-lg md:text-[16px]  font-black shadow-custom items-center">
               {t("word_left")}
             </span>
-            <p className="shadow-number be-vietnam-pro-medium text-blue-500 items-center text-xl font-extrabold">
+            <p className="shadow-number be-vietnam-pro-medium text-blue-500 items-center text-base md:text-xl font-extrabold">
               {/* {formatNumberWithCommas(maxWordsUserUse)} */}
               10
             </p>
           </div>
           <div className="text-center z-10 !border-0 ">
-            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px] font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-base md:text-lg md:text-[16px] font-black shadow-custom items-center">
               {t("image_left")}
             </span>
-            <p className="shadow-number be-vietnam-pro-medium font-weight-800  text-blue-500 items-center text-xl font-extrabold">
+            <p className="shadow-number be-vietnam-pro-medium font-weight-800  text-blue-500 items-center text-base md:text-xl font-extrabold">
               {info && info.max_images
                 ? Number(info.max_images - info.images_used)
                 : 0}
@@ -117,10 +117,10 @@ const DashboardInfo = () => {
             </p>
           </div>
           <div className="text-center z-10 ">
-            <span className="be-vietnam-pro-medium text-[#FFB951] text-lg text-[16px] font-black shadow-custom items-center">
+            <span className="be-vietnam-pro-medium text-[#FFB951] text-base md:text-lg md:text-[16px] font-black shadow-custom items-center">
               {t("second_number")}
             </span>
-            <p className="shadow-number be-vietnam-pro-medium font-extrabold text-blue-500 items-center text-xl ">
+            <p className="shadow-number be-vietnam-pro-medium font-extrabold text-blue-500 items-center text-base md:text-xl ">
               {info && info.max_minute ? Number(info.max_minute * 60) : 0}
               {/* {maxMinute} */}
             </p>
@@ -129,18 +129,18 @@ const DashboardInfo = () => {
 
         <ProgressBar
           title="Tài liệu của bạn"
-          className="border  border-blue-500 w-full h-[25px]  z-10 rounded-xl"
+          className="border border-blue-500 w-full h-[25px]  z-10 rounded-xl"
           value={35}
           clsContainer="mt-[30px] mb-[45px] gap-1"
           size={"xl"}
         />
 
         <Image
-          className="right-0 top-[10%] z-[0] absolute rotate-[30deg]"
+          className="right-0 bottom-3 md:top-[10%] z-[0] absolute rotate-[30deg]"
           src={BackgrounDashboard}
           alt="dashboard"
         />
-        <div className="relative z-10 grid grid-cols-5 mb-[60px] gap-3 justify-around w-full">
+        <div className="relative z-10 grid grid-cols-2 lg:grid-cols-5 mb-[60px] gap-3 justify-around w-full">
           <InfoCard
             title={t("documents_created")}
             value={10}
