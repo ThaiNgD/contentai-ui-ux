@@ -1,5 +1,6 @@
 "use client";
 import { COLORS } from "@/helper/const";
+import { convertToVietnameseDate } from "@/helper/function";
 import { cn, getRandomColor } from "@/helper/utils";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { useRouter } from "next/navigation";
@@ -9,15 +10,15 @@ export interface RecentLaunchComponentProps {
   image?: string;
   title: string;
   content?: string;
-  date?:string
-  documentId?:string
+  date?: string;
+  documentId?: string;
 }
 const RecentLaunchComponent = ({
   aiModelName,
   title,
   content,
   date,
-  documentId
+  documentId,
 }: RecentLaunchComponentProps) => {
   const color = getRandomColor(COLORS);
   const router = useRouter();
@@ -42,24 +43,24 @@ const RecentLaunchComponent = ({
       >
         {aiModelName}
       </p>
-        <p
-          className={cn("text-sm text-black opacity-90 px-2 mt-1 w-fit rounded-lg")}
-          style={{
-            backgroundColor: color,
-          }}
-        >
-          {title}
-        </p>
+      <p
+        className={cn(
+          "text-sm text-black opacity-90 px-2 mt-1 w-fit rounded-lg"
+        )}
+        style={{
+          backgroundColor: color,
+        }}
+      >
+        {title}
+      </p>
       <div className="py-5 border-b">
         <p className="whitespace-normal overflow-hidden overflow-ellipsis ">
-          {content
-          ||
-          "New Workbook : Certainly! Please provide me with the specific topic or focus you would like the arti..."
-          }
+          {content ||
+            "New Workbook : Certainly! Please provide me with the specific topic or focus you would like the arti..."}
         </p>
       </div>
       <div className="flex py-2 items-center justify-between">
-        <p>{date}</p>
+        <p>{date ? convertToVietnameseDate(date) : ""}</p>
         <HiOutlineDotsVertical size={20} />
       </div>
     </div>

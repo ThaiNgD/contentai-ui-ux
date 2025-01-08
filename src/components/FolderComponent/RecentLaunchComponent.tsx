@@ -1,5 +1,6 @@
 "use client";
 import { COLORS } from "@/helper/const";
+import { convertToVietnameseDate } from "@/helper/function";
 import { cn, getRandomColor } from "@/helper/utils";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { useRouter } from "next/navigation";
@@ -119,7 +120,7 @@ const RecentLaunchComponent = ({
           </p>
         </div>
         <div className="flex pt-1 items-center justify-between">
-          <p>{date}</p>
+          <p>{date ? convertToVietnameseDate(date) : ""}</p>
           <div
             ref={divRef}
             className={`${
