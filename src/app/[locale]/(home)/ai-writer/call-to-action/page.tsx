@@ -13,7 +13,7 @@ const Page = () => {
         title="Tạo kêu gọi hành động"
         description="Viết lời kêu gọi hành động cho bài viết blog, tiêu đề và từ khóa"
       />
-      <div className="grid grid-cols-[35%,calc(65%-30px)] justify-between flex-auto bg-[#F5F9FC] px-[40px] py-[40px] gap-[30px] ">
+      <div className="flex flex-col md:grid md:grid-cols-[35%,calc(65%-30px)] justify-between flex-auto bg-[#F5F9FC] p-[10px] md:p-[40px] gap-[30px] ">
         <InputContent setCkData={setCkData} />
         <div className="bg-white flex flex-col gap-2 shadow-lg  p-[32px] rounded-xl">
           <SaveContentComponent />

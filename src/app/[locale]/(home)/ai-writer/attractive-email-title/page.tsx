@@ -12,7 +12,7 @@ const Page = () => {
         title="Tiêu đề email thu hút"
         description="Viết tiêu đề email hấp dẫn, có emoji, viết hoa chữ đầu"
       />
-      <div className="grid grid-cols-[35%,calc(65%-30px)] justify-between flex-auto bg-[#F5F9FC] px-[40px] py-[40px] gap-[30px] ">
+      <div className="flex flex-col md:grid md:grid-cols-[35%,calc(65%-30px)] justify-between flex-auto bg-[#F5F9FC] md:p-[40px] p-[10px] gap-[30px] ">
         <InputContent setCkData={setCkData} />
         <div className="bg-white flex flex-col gap-2 shadow-lg  p-[32px] rounded-xl">
           <SaveContentComponent />

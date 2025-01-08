@@ -16,7 +16,7 @@ const Page = () => {
           return selectedSetting === setting ? (
             <div
               key={index}
-              className="bg-blue-500 hover:bg-blue- shadow-md py-2 px-3 text-white font-bold rounded-full pointer-events-none"
+              className="bg-blue-500 hover:bg-blue-600 shadow-md py-2 px-3 md:text-base text-xs text-white font-bold rounded-full pointer-events-none"
             >
               {t(setting)}
             </div>
@@ -24,7 +24,7 @@ const Page = () => {
             <div
               key={index}
               onClick={() => setSelectedSetting(setting)}
-              className="bg-white hover:bg-blue-500 py-2 px-3 text-black font-bold hover:text-white shadow-md duration-200 rounded-full"
+              className="bg-white hover:bg-blue-500 py-2 px-3 md:text-base text-xs text-black font-bold hover:text-white shadow-md duration-200 rounded-full"
               role="button"
             >
               {t(setting)}
