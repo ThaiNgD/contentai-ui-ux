@@ -2,7 +2,7 @@
 import { IoSearchOutline } from "react-icons/io5";
 const ChatSearchBar = () => {
   return (
-    <div className="flex max-h-[90px] h-[90px] items-center justify-center">
+    <div className="md:flex invisible max-h-[90px] h-[90px] items-center justify-center">
       <div className="flex relative items-center rounded-2xl w-[80%] h-[35px] ">
         <input
           id="input-search"

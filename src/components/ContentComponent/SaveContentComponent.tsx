@@ -48,7 +48,7 @@ const SaveContentComponent = ({ data }: InputProps) => {
       className="flex w-full justify-between"
       onSubmit={formik.handleSubmit}
     >
-      <div className="flex gap-3">
+      <div className="flex flex-col gap-3">
         <InputField
           name="document_name"
           placeholder="Tên document"

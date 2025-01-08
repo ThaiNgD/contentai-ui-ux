@@ -46,7 +46,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="md:grid hidden divide-y h-full w-full box-border grid-rows-[15%,85%]">
+      <div className="grid divide-y h-full w-full box-border grid-rows-[15%,85%]">
         <ChatSearchBar />
         <div className="h-[calc(100%-100px)] max-h-[680px] row-span-1 py-[2px] w-full flex flex-col gap-2 ">
           {chat && (
