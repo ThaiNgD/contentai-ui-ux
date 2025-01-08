@@ -95,17 +95,7 @@ const RecentLaunchComponent = ({
         )}
         onClick={handleGetDocument}
       >
-        <div className="flex flex-col justify-between h-[28px] items-center">
-          <p
-            className={cn(
-              "text-sm text-black opacity-90 px-2 w-fit rounded-lg"
-            )}
-            style={{
-              backgroundColor: color,
-            }}
-          >
-            Tên: {title}
-          </p>
+        <div className="flex justify-between h-[28px] items-center">
           <p
             className={cn(
               "text-sm text-black opacity-90 px-2 w-fit rounded-lg mt-1"
@@ -114,7 +104,7 @@ const RecentLaunchComponent = ({
               backgroundColor: color,
             }}
           >
-            Loại: {aiModelName}
+            {aiModelName ? aiModelName : "null"} - {title}
           </p>
           {isFolderDisplay && (
             <div className="p-[6px] hover:bg-blue-500 hover:-translate-y-0.5 hover:shadow-md duration-200 hover:text-white hover:shadow-blue-500 rounded-full shadow-md">
@@ -122,7 +112,6 @@ const RecentLaunchComponent = ({
             </div>
           )}
         </div>
-
         <div className="py-5 border-b">
           <p className="whitespace-normal overflow-hidden overflow-ellipsis limit-three-lines">
             {content ||

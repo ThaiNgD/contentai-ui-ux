@@ -15,10 +15,6 @@ const Page = () => {
     tokenOutput: "",
     aiModelName: "",
   });
-
-  if (ckData) {
-    console.log(ckData);
-  }
   return (
     <>
       <ChildHeader
