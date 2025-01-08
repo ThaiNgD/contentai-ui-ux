@@ -44,3 +44,6 @@ next-env.d.ts
 # Husky git hooks
 .husky/
 .husky*
+
+
+.vscode

@@ -11,7 +11,7 @@ import Axios from "axios";
 
 export const AUTH_TOKEN = process.env.NEXT_PUBLIC_AUTH_TOKEN || "MKTtoken";
 export const API_AI_TOKEN =
-  process.env.NEXT_PUBLIC_API_AI_TOKEN || "MKapiaiTtoken";
+  process.env.NEXT_PUBLIC_API_AI_TOKEN || "MKTapiaitoken";
 export const REFRESH_TOKEN =
   process.env.NEXT_PUBLIC_REFRESH_TOKEN || "MKTrefresh"; // Update Start: Thêm key refresh token
 export const BASE_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:5000/";

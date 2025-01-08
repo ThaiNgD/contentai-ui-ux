@@ -354,15 +354,15 @@ export const configAIWriterSelector: AIWriterSelector[] = [
     slug: "dratf-email",
     category: "write-email",
   },
-  {
-    title: "Tạo Email marketing HTML tùy chỉnh",
-    description:
-      "Tạo mẫu email marketing HTML, tùy chỉnh với màu sắc, font, hình ảnh, và nội dung đáp ứng với mobile, desktop",
-    // image: "/images/writer_b.jpg",
-    isFavorite: true,
-    slug: "create-email-marketing-html",
-    category: "write-email",
-  },
+  // {
+  //   title: "Tạo Email marketing HTML tùy chỉnh",
+  //   description:
+  //     "Tạo mẫu email marketing HTML, tùy chỉnh với màu sắc, font, hình ảnh, và nội dung đáp ứng với mobile, desktop",
+  //   // image: "/images/writer_b.jpg",
+  //   isFavorite: true,
+  //   slug: "create-email-marketing-html",
+  //   category: "write-email",
+  // },
   {
     title: "Bài chào hàng hiệu quả",
     description:

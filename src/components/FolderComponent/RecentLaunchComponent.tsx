@@ -11,6 +11,7 @@ import { TbArrowsExchange } from "react-icons/tb";
 import ModalChangeFolder from "../Modal/ModalChangeFolder";
 import ModalConfirm from "../Modal/ModalConfirm";
 export interface RecentLaunchComponentProps {
+  aiModelName?: string;
   image?: string;
   title: string;
   content?: string;
@@ -19,6 +20,7 @@ export interface RecentLaunchComponentProps {
   documentId?: string;
 }
 const RecentLaunchComponent = ({
+  aiModelName,
   title,
   content,
   isFolderDisplay = true,
@@ -93,7 +95,7 @@ const RecentLaunchComponent = ({
         )}
         onClick={handleGetDocument}
       >
-        <div className="flex justify-between h-[28px] items-center">
+        <div className="flex flex-col justify-between h-[28px] items-center">
           <p
             className={cn(
               "text-sm text-black opacity-90 px-2 w-fit rounded-lg"
@@ -102,7 +104,17 @@ const RecentLaunchComponent = ({
               backgroundColor: color,
             }}
           >
-            {title}
+            Tên: {title}
+          </p>
+          <p
+            className={cn(
+              "text-sm text-black opacity-90 px-2 w-fit rounded-lg mt-1"
+            )}
+            style={{
+              backgroundColor: color,
+            }}
+          >
+            Loại: {aiModelName}
           </p>
           {isFolderDisplay && (
             <div className="p-[6px] hover:bg-blue-500 hover:-translate-y-0.5 hover:shadow-md duration-200 hover:text-white hover:shadow-blue-500 rounded-full shadow-md">

@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
-  setCkData: Dispatch<SetStateAction<string>>;
+  setCkData: Dispatch<SetStateAction<IResult>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
   const { mutate, isPending, data } = useAiContentStrategy();
@@ -32,8 +32,8 @@ const InputContent = ({ setCkData }: InputProps) => {
     },
   });
   useEffect(() => {
-    if (data?.result) {
-      setCkData(data?.result);
+    if (data) {
+      setCkData(data);
     }
   }, [data]);
   return (

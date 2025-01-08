@@ -10,7 +10,7 @@ import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface Inputprops {
-  setCkData: Dispatch<SetStateAction<string>>;
+  setCkData: Dispatch<SetStateAction<IResult>>;
 }
 const InputContent = ({ setCkData }: Inputprops) => {
   const { mutate, data, isPending } = useAiCreateTitle();
@@ -27,8 +27,8 @@ const InputContent = ({ setCkData }: Inputprops) => {
     },
   });
   useEffect(() => {
-    if (data && data.result) {
-      setCkData(data.result);
+    if (data) {
+      setCkData(data);
     }
   }, [data]);
   return (

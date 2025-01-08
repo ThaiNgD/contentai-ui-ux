@@ -3,16 +3,15 @@ import InputField from "@/components/CustomField/InputField";
 import { SelectField } from "@/components/CustomField/SelectField";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import configModuleSelector from "@/config/configModule";
-import { aiBlogCallAction } from "@/service/axios/AIWriterApi";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
-import { Dispatch, SetStateAction } from "react";
-
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { useAiBlogCallAction } from "@/service/aiwriter/aiblog_v2/useAiBlogCallAction";
 interface InputProps {
-  setCkData: Dispatch<SetStateAction<string>>;
+  setCkData: Dispatch<SetStateAction<IResult>>;
 }
-
 const InputContent = ({ setCkData }: InputProps) => {
+  const { data, mutate: mutateFn } = useAiBlogCallAction();
   const formik = useFormik<IFormBlogCallAction>({
     initialValues: {
       brandName: "",
@@ -21,13 +20,16 @@ const InputContent = ({ setCkData }: InputProps) => {
       language: "",
     },
     onSubmit: async (values) => {
-      await aiBlogCallAction.create(values).then((values) => {
-        setCkData(values.result);
-        // Handle form submission
-        console.log(values);
-      });
+      mutateFn(values);
     },
   });
+
+  useEffect(() => {
+    if (data) {
+      setCkData(data);
+    }
+  }, [data]);
+
   return (
     <form
       id="form-submit"

@@ -11,6 +11,7 @@ declare global {
     result: string;
     tokenInput: string;
     tokenOutput: string;
+    aiModelName:string;
   };
   type IOptionSelectFormat = {
     readonly label: string;
@@ -104,6 +105,6 @@ declare global {
     favourite: boolean;
     userId: string;
     folderId: string | null;
-    aiModelId: string;
+    aiModelName: string;
   }
 }
