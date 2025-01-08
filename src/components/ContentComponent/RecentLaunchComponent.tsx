@@ -5,6 +5,7 @@ import { useGetPathComponent } from "@/hook/useGetPathComponent";
 import { useRouter } from "next/navigation";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 export interface RecentLaunchComponentProps {
+  aiModelName?: string;
   image?: string;
   title: string;
   content?: string;
@@ -12,6 +13,7 @@ export interface RecentLaunchComponentProps {
   documentId?:string
 }
 const RecentLaunchComponent = ({
+  aiModelName,
   title,
   content,
   date,
@@ -38,8 +40,16 @@ const RecentLaunchComponent = ({
           backgroundColor: color,
         }}
       >
-        {title}
+        {aiModelName}
       </p>
+        <p
+          className={cn("text-sm text-black opacity-90 px-2 mt-1 w-fit rounded-lg")}
+          style={{
+            backgroundColor: color,
+          }}
+        >
+          {title}
+        </p>
       <div className="py-5 border-b">
         <p className="whitespace-normal overflow-hidden overflow-ellipsis ">
           {content

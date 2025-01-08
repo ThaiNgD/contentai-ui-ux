@@ -12,7 +12,15 @@ const CustomEditor = dynamic(
   }
 );
 const Page = () => {
-  const [ckData, setCkData] = useState("");
+  const [ckData, setCkData] = useState<IResult>({
+    message: "",
+    statusCode: "",
+    active: false,
+    result: "",
+    tokenInput: "",
+    tokenOutput: "",
+    aiModelName: "",
+  });
   return (
     <>
       <ChildHeader
@@ -23,7 +31,7 @@ const Page = () => {
         <InputContent setCkData={setCkData} />
         <div className="bg-white flex flex-col gap-2 shadow-lg  p-[32px] rounded-xl">
           <SaveContentComponent data={ckData} />
-          <CustomEditor data={ckData} />
+          <CustomEditor data={ckData.result} />
         </div>
       </div>
     </>

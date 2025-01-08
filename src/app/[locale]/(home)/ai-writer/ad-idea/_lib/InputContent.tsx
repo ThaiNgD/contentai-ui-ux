@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
-  setCkData: Dispatch<SetStateAction<string>>;
+  setCkData: Dispatch<SetStateAction<IResult>>;
 }
 
 const InputContent = ({ setCkData }: InputProps) => {
@@ -29,13 +29,12 @@ const InputContent = ({ setCkData }: InputProps) => {
     },
   });
   useEffect(() => {
-    if (data && data.result) {
-      setCkData(data.result);
+    if (data) {
+      setCkData(data);
     }
   }, [data]);
   return (
     <form
-      id="form-submit"
       onSubmit={formik.handleSubmit}
       className="flex flex-col gap-4 p-[30px] shadow-md bg-white rounded-xl"
     >

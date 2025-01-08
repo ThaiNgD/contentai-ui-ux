@@ -27,17 +27,14 @@ export default function Page({
       <hr />
       <div className="flex-auto flex flex-col my-[50px] 2xl:px-[175px] px-[15px]">
         <FolderDisplay />
-        <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
-          {(Array.isArray(data) ? data : []).map((document, index) => (
-            <RecentLaunchComponent
-              key={index}
-              title={document.document_name}
-              content={document.content}
-              date={document.created_at}
-              documentId={document.document_id}
-            />
-          ))}
-        </div>
+    <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
+{
+   data?.map((document, index)=>(
+  <RecentLaunchComponent key={index} aiModelName={document.aiModelName} title={document.document_name} content={document.content} date={document.created_at} documentId = {document.document_id}/>
+  
+))
+}
+</div>
 
         <div className="flex-auto flex flex-col mb-[40px] gap-3 items-center justify-center">
           {!data && <NoTextDocument />}

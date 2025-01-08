@@ -11,7 +11,7 @@ import {
   MdOutlinePostAdd,
 } from "react-icons/md";
 import { PiSpeakerHighFill } from "react-icons/pi";
-import { RiMenuSearchFill, RiSeoFill } from "react-icons/ri";
+import { RiSeoFill } from "react-icons/ri";
 export const sidebarList: NavbarLinkComponentProps[] = [
   {
     link: "dashboard",
@@ -55,7 +55,7 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     link: "ai-chat-image",
     title: "AI Chat Image",
     icon: IoImage,
-    // isDisable: true,
+    isDisable: true,
   },
   {
     link: "ai-pdf-chat",
@@ -78,12 +78,12 @@ export const sidebarList: NavbarLinkComponentProps[] = [
     title: "Speech To Text",
     icon: PiSpeakerHighFill,
   },
-  {
-    link: "ai-plagiarism",
-    title: "AI Plagiarism",
-    icon: RiMenuSearchFill,
-    isDisable: true,
-  },
+  // {
+  //   link: "ai-plagiarism",
+  //   title: "AI Plagiarism",
+  //   icon: RiMenuSearchFill,
+  //   isDisable: true,
+  // },
   // {
   //   link: "/ai-detector",
   //   title: "AI Detector",

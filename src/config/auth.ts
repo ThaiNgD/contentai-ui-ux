@@ -35,9 +35,16 @@ export const removeRefreshToken = () =>
     path: "/",
   });
 
+  export const removeMKTapiaitoken = () =>
+    Cookies.remove(API_AI_TOKEN, {
+      secure: false,
+      path: "/",
+    });
+
 export const removeAuthToken = () => {
   removeAccessToken();
   removeRefreshToken(); // Update: Xóa luôn refresh token khi logout
+  removeMKTapiaitoken()
 };
 
 export const getRefreshToken = () => Cookies.get(REFRESH_TOKEN);

@@ -9,25 +9,28 @@ import InputField from "../CustomField/InputField";
 import { SelectField } from "../CustomField/SelectField";
 
 interface InputProps {
-  data?: string;
+  data: IResult
 }
 
 const SaveContentComponent = ({ data }: InputProps) => {
   const { data: folder } = useFetchFolder();
   const { mutate: mutateFn } = useSaveDocument();
+
   const formik = useFormik({
     initialValues: {
       document_name: "",
       folderId: "",
     },
     onSubmit: (values) => {
-      mutateFn({
-        document_name: values.document_name,
-        folderId: values.folderId,
-        aiModelId: "2003e07f-1966-4610-9d3f-c4c8fbd3695a",
-        content: data ? data : "",
-      });
-    },
+      mutateFn(
+          {
+            document_name: values.document_name,
+            folderId: values.folderId,
+            aiModelName: data.aiModelName,
+            content: data.result
+          },
+        )
+      },
   });
 
   const folder_option = useMemo(() => {
@@ -44,7 +47,7 @@ const SaveContentComponent = ({ data }: InputProps) => {
 
   return (
     <form
-      id="form-submit"
+      id="form-submit-save"
       className="flex w-full justify-between"
       onSubmit={formik.handleSubmit}
     >
