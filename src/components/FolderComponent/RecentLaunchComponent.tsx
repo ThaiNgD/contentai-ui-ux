@@ -9,9 +9,14 @@ import { FaRegStar } from "react-icons/fa6";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoMdTrash } from "react-icons/io";
 import { TbArrowsExchange } from "react-icons/tb";
+import { Tooltip } from "react-tooltip";
 import ModalChangeFolder from "../Modal/ModalChangeFolder";
 import ModalConfirm from "../Modal/ModalConfirm";
 export interface RecentLaunchComponentProps {
+  tooltip?: {
+    tooltip_id: string;
+    tooltip_content: string;
+  };
   aiModelName?: string;
   image?: string;
   title: string;
@@ -21,6 +26,7 @@ export interface RecentLaunchComponentProps {
   documentId?: string;
 }
 const RecentLaunchComponent = ({
+  tooltip,
   aiModelName,
   title,
   content,
@@ -87,19 +93,20 @@ const RecentLaunchComponent = ({
   return (
     <>
       <div
+        id={tooltip?.tooltip_id}
         role="button"
         className={cn(
-          "shadow-lg rounded-xl dark:bg-[#0D0B0B] duration-200 p-3  h-[220px] w-[240px]",
+          "shadow-lg rounded-xl dark:bg-[#0D0B0B] duration-200 p-3  h-[220px] w-[240px] ",
           color && "",
           !isOption &&
             "hover:cursor-pointer  hover:-translate-y-0.5 hover:hover:shadow-2xl "
         )}
         onClick={handleGetDocument}
       >
-        <div className="flex justify-between h-[28px] items-center">
+        <div className="flex justify-between gap-3 h-[28px] items-center">
           <p
             className={cn(
-              "text-sm text-black opacity-90 px-2 w-fit rounded-lg mt-1"
+              "text-sm whitespace-nowrap overflow-hidden text-ellipsis text-black opacity-90 px-2 w-fit rounded-lg mt-1"
             )}
             style={{
               backgroundColor: color,
@@ -167,6 +174,11 @@ const RecentLaunchComponent = ({
         setIsShow={setShowModalDelete}
         content="Bạn có chắc chắn muốn xóa không? Hành động này không thể hoàn tác!"
         action={deleteAction}
+      />
+      <Tooltip
+        anchorSelect={`#${tooltip?.tooltip_id}`}
+        content={tooltip?.tooltip_content}
+        place="top"
       />
     </>
   );

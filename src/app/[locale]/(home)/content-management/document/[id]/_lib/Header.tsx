@@ -7,7 +7,7 @@ import { Button } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaCheck, FaPenClip, FaXmark } from "react-icons/fa6";
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { MdOutlineKeyboardBackspace, MdSave } from "react-icons/md";
 import { RiFileAddFill } from "react-icons/ri";
 import { Tooltip } from "react-tooltip";
 interface HeaderProps {
@@ -85,6 +85,15 @@ const Header = ({ title }: HeaderProps) => {
       </div>
       <div className="flex flex-col h-full justify-center">
         <div className="flex gap-4">
+          <Button className="bg-blue-500  md:block hidden font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md duration-200 hover:-translate-y-0.5">
+            Lưu lại
+          </Button>
+          <Tooltip anchorSelect=".save-document" place={"top"}>
+            Lưu lại
+          </Tooltip>
+          <Button className="bg-blue-500 save-document md:hidden font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md duration-200 hover:-translate-y-0.5">
+            <MdSave size={20} />
+          </Button>
           <Button className="bg-blue-500  md:block hidden font-bold rounded-2xl text-white hover:shadow-blue-400 hover:shadow-md duration-200 hover:-translate-y-0.5">
             + Bài viết mới
           </Button>
