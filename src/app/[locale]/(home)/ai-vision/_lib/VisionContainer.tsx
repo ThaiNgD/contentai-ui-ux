@@ -1,12 +1,16 @@
 "use client";
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
 import { SelectField } from "@/components/CustomField/SelectField";
 import DragnDropImage from "@/components/DragnDropFile";
 import configLanguageSelector from "@/config/configLanguageSelector";
 import { useAnalyzeImage } from "@/service/ai-vision/useAnalyzeImage";
 import { Button } from "flowbite-react";
 import { useFormik } from "formik";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 const VisionContainer = () => {
   const [file, setFile] = useState<File | null>();

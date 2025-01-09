@@ -1,8 +1,12 @@
 "use client";
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
 import { useGetDocumentById } from "@/service/document/useGetDocumentById";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import Header from "./_lib/Header";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   // const [documentDetail, setDocumentDetail] = useState<IDocument | undefined>(undefined);
