@@ -896,3 +896,13 @@ label {
 .skeleton-footer {
   width: 30%;
 }
+
+/* limit 3 lines */
+
+.limit-three-lines {
+  display: -webkit-box; /* Create a flexible box */
+  -webkit-box-orient: vertical; /* Specify the box orientation as vertical */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  -webkit-line-clamp: 4; /* Limit to 3 lines */
+}

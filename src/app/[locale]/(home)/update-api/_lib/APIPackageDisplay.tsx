@@ -3,7 +3,7 @@ import PackagePriceComponents from "@/components/UpdateApi/PackagePriceComponent
 import { RiVipCrown2Fill, RiVipDiamondFill } from "react-icons/ri";
 const APIPackageDisplay = () => {
   return (
-    <div className="flex min-h-[calc(100%-150px)] items-center gap-[60px] 2xl:px-[175px] px-[20px] py-[30px] justify-center bg-[#F5F9FC]">
+    <div className="flex min-h-[calc(100%-150px)] md:flex-row flex-col items-center gap-[60px] 2xl:px-[175px] px-[20px] py-[30px] justify-center bg-[#F5F9FC]">
       <PackagePriceComponents
         price={"1.500.000"}
         titleCls="glow-word-blue"

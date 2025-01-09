@@ -1,6 +1,6 @@
 "use client";
-import FolderDisplayComponent from "@/components/ContentComponent.tsx/FolderDisplayComponent";
-import FolderDisplayLoading from "@/components/ContentComponent.tsx/FolderDisplayLoading";
+import FolderDisplayComponent from "@/components/FolderComponent/FolderDisplayComponent";
+import FolderDisplayLoading from "@/components/FolderComponent/FolderDisplayLoading";
 import { CustomPaginate } from "@/components/layout/Pagnigation";
 import { chunk, convertToVietnameseDate } from "@/helper/function";
 import { useFetchFolder } from "@/service/content-management/useFetchFolder";
@@ -19,7 +19,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
   const chunkedData = useMemo(() => {
     return folder
       ? chunk(
-          folder.map((f, index) => ({ id: index, ...f })),
+          folder.data.map((f, index) => ({ id: index, ...f })),
           9
         )
       : [];
@@ -36,10 +36,10 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="md:grid md:grid-cols-3 justify-center flex items-center gap-5">
         {!isPending ? (
           <>
-            {folder && folder.length > 0 ? (
+            {folder && folder.data.length > 0 ? (
               <>
                 {chunkedData[activePage - 1]?.map((f, index) => (
                   <FolderDisplayComponent
@@ -49,11 +49,12 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
                     time={convertToVietnameseDate(
                       f.created_at as unknown as string
                     )}
+                    setShouldFetch={setShouldFetch}
                   />
                 ))}
               </>
             ) : (
-              <div className="flex col-start-2 flex-col h-[150px] w-full gap-2 items-center shadow-md justify-center bg-gray-200 rounded-xl">
+              <div className="flex w-full col-start-2 flex-col h-[150px] gap-2 items-center shadow-md justify-center bg-gray-200 rounded-xl">
                 <div className="pl-3 py-2 pr-2 w-fit h-fit bg-white rounded-xl shadow-md relative mb-2">
                   <FaFolderOpen size={50} className="text-yellow-300" />
                   <FaInfoCircle
@@ -61,7 +62,7 @@ const FolderDisplay = ({ shouldFetch, setShouldFetch }: FolderDisplayProps) => {
                     className="text-blue-500 absolute right-0 top-0"
                   />
                 </div>
-                <span className="text-xl be-vietnam-pro-light">
+                <span className="md:text-xl text-lg whitespace-nowrap be-vietnam-pro-light px-2">
                   Chưa có thư mục nào
                 </span>
               </div>

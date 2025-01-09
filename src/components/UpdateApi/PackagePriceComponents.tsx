@@ -29,9 +29,7 @@ const PackagePriceComponents = ({
 // promotion,
 PackagePriceComponentsProps) => {
   const PackageIcon = icon;
-  const onClickPackage = (): void => {
-    window.alert("Mua gói thành công");
-  };
+  const onClickPackage = (): void => {};
   return (
     <div className="w-[400px] relative h-[600px] flex flex-col gap-[20px] bg-white rounded-xl shadow-lg p-[40px] justify-between">
       {isBestChoice && (

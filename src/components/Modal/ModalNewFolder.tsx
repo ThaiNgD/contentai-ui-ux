@@ -21,7 +21,7 @@ const ModalNewFolder: FC<ModalNewFolderProps> = ({
   const formik = useFormik({
     initialValues: {
       folder_name: "",
-      folder_desc: "",
+      description: "",
     },
     onSubmit: async (values) => {
       await mutateAsync(values);
@@ -48,7 +48,7 @@ const ModalNewFolder: FC<ModalNewFolderProps> = ({
             formik={formik}
           />
           <TextAreaField
-            name="folder_desc"
+            name="description"
             label="Miêu tả"
             autoFocus={false}
             clsLabelWrapper="text-lg self-start font-bold"

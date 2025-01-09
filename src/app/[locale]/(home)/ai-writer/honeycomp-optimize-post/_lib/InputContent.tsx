@@ -10,7 +10,7 @@ import { Button } from "flowbite-react";
 import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect } from "react";
 interface InputProps {
-  setCkData: Dispatch<SetStateAction<string>>;
+  setCkData: Dispatch<SetStateAction<IResult>>;
 }
 const InputContent = ({ setCkData }: InputProps) => {
   const { data, isPending, mutate } = useAiHoneyComp();
@@ -26,8 +26,8 @@ const InputContent = ({ setCkData }: InputProps) => {
     },
   });
   useEffect(() => {
-    if (data && data.result) {
-      setCkData(data.result);
+    if (data) {
+      setCkData(data);
     }
   }, [data]);
   return (

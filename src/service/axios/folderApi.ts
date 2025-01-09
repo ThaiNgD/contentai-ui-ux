@@ -22,16 +22,21 @@ export const folderApi = {
   },
 
   getFolderForUser: async () => {
-    const data = await http.get<AnalyserNode[], FolderProps[]>(
-      `${folderApi.queryKey}/folder_for_user`
+    return await http.get<AnalyserNode[], FolderProps[]>(
+      `${folderApi.queryKey}/folder_for_user/1`
     );
-    console.log(data);
-    return data;
   },
 
   getFolderForUserById: async (folderId: string) => {
     return await http.get<AnalyserNode[], IResult>(
       `${folderApi.queryKey}/folder_by_id/${folderId}`
     );
+  },
+
+  deleteFolder: async (folderId: string) => {
+    const data = await http.delete<any, IResult>(
+      `${folderApi.queryKey}/delete_folder/${folderId}`,
+    );
+    return data;
   },
 };

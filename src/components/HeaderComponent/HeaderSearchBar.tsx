@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/helper/utils";
+import hotkeys from "hotkeys-js";
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 const HeaderSearchBar = () => {
@@ -7,13 +8,19 @@ const HeaderSearchBar = () => {
   const onClickInput = (): void => {
     setIsFocus((prev) => !prev);
   };
+  const inputSearch = document.getElementById("input-search");
+  hotkeys("ctrl+k", function (event) {
+    // Prevent the default refresh event under WINDOWS system
+    event.preventDefault();
+    inputSearch?.focus();
+  });
   return (
-    <div className="flex relative rounded-2xl w-[400px] h-[35px] bg-gray-200 ">
+    <div className="hidden lg:flex relative rounded-2xl w-[400px] h-[35px] bg-gray-200 ">
       <input
         id="input-search"
         type="text"
         placeholder="Search"
-        className="h-full px-[40px] !pointer-events-none bg-gray-100 focus:bg-white w-full rounded-2xl focus:!shadow-inner !shadow-blue-600 !border-none focus:!border-none"
+        className="h-full px-[40px] bg-gray-100 focus:bg-white w-full rounded-2xl focus:!shadow-inner !shadow-blue-600 !border-none focus:!border-none"
         onFocus={onClickInput}
         onBlur={onClickInput}
       />

@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface InputProps {
-  setCkData: Dispatch<SetStateAction<string>>;
+  setCkData: Dispatch<SetStateAction<IResult>>;
 }
 
 const InputContent = ({ setCkData }: InputProps) => {
@@ -24,10 +24,9 @@ const InputContent = ({ setCkData }: InputProps) => {
       aiCreateDetail(values);
     },
   });
-
   useEffect(() => {
     if (data) {
-      setCkData(data.result);
+      setCkData(data);
     }
   }, [data]);
 

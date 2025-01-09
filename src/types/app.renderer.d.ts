@@ -11,6 +11,7 @@ declare global {
     result: string;
     tokenInput: string;
     tokenOutput: string;
+    aiModelName:string;
   };
   type IOptionSelectFormat = {
     readonly label: string;
@@ -87,5 +88,23 @@ declare global {
       username: string;
     };
     message: string;
+  }
+
+  type IGetAllDocumentsResponse = {
+    data: IDocument[];
+    total: number;
+    page: string;
+    limit: number;
+  }
+
+  type IDocument = {
+    document_id: string;
+    document_name: string;
+    content: string;
+    created_at: string;
+    favourite: boolean;
+    userId: string;
+    folderId: string | null;
+    aiModelName: string;
   }
 }
