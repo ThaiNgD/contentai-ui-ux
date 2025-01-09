@@ -16,6 +16,10 @@ const ContentDisplay = () => {
             date={document.created_at}
             documentId={document.document_id}
             isFolderDisplay
+            tooltip={{
+              tooltip_content: document.document_name,
+              tooltip_id: document.document_id,
+            }}
           />
         ))
       ) : (

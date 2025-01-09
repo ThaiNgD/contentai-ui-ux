@@ -17,7 +17,7 @@ const InfoCard = ({
 InfoCardProps): JSX.Element => {
   const Icon = icon;
   return (
-    <div className="bg-white dark:bg-[#0D0B0B] dark:text-white border px-2 md:px-4 py-1 md:py-3 w-full items-center rounded-xl h-[70px] flex  gap-2 md:gap-4 ">
+    <div className="bg-white max-w-[200px] dark:bg-[#0D0B0B] dark:text-white border px-2 md:px-4 py-1 md:py-3 w-full items-center rounded-xl h-[70px] flex  gap-2 md:gap-4 ">
       <div className="rounded-full dark:text-[#019de4] dark:bg-white  h-fit bg-black text-white p-2">
         <Icon size={20} />
       </div>

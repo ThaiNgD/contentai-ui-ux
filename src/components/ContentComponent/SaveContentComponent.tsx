@@ -9,7 +9,7 @@ import InputField from "../CustomField/InputField";
 import { SelectField } from "../CustomField/SelectField";
 
 interface InputProps {
-  data: IResult
+  data: IResult;
 }
 
 const SaveContentComponent = ({ data }: InputProps) => {
@@ -22,15 +22,13 @@ const SaveContentComponent = ({ data }: InputProps) => {
       folderId: "",
     },
     onSubmit: (values) => {
-      mutateFn(
-          {
-            document_name: values.document_name,
-            folderId: values.folderId,
-            aiModelName: data.aiModelName,
-            content: data.result
-          },
-        )
-      },
+      mutateFn({
+        document_name: values.document_name,
+        folderId: values.folderId,
+        aiModelName: data.aiModelName,
+        content: data.result,
+      });
+    },
   });
 
   const folder_option = useMemo(() => {
@@ -51,7 +49,7 @@ const SaveContentComponent = ({ data }: InputProps) => {
       className="flex w-full justify-between"
       onSubmit={formik.handleSubmit}
     >
-      <div className="flex flex-col gap-3">
+      <div className="flex md:flex-row flex-col gap-3">
         <InputField
           name="document_name"
           placeholder="Tên document"
