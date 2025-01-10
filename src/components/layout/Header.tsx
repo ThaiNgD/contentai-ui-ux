@@ -3,16 +3,24 @@
 import { sidebarList } from "@/config/configSidebar";
 import { cn } from "@/helper/function";
 import { useGetPathComponent } from "@/hook/useGetPathComponent";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineSetting } from "react-icons/ai";
 import ChangeLanguage from "../ChangeLanguage";
 import HeaderAccountDropdownInfo from "../HeaderComponent/HeaderAccountDropdownInfo";
 import HeaderChangeTheme from "../HeaderComponent/HeaderChangeTheme";
-import HeaderSearchBar from "../HeaderComponent/HeaderSearchBar";
 import HeaderTokenLeft from "../HeaderComponent/HeaderTokenLeft";
 import ResponsiveHeaderRoute from "../HeaderComponent/ResponsiveHeaderRoute";
 import NavbarLinkComponent from "../SidebarComponent/NavbarLinkComponent";
+
+const HeaderSearchBar = dynamic(
+  () => import("../HeaderComponent/HeaderSearchBar"),
+  {
+    ssr: false,
+  }
+);
+
 const Header = (): JSX.Element => {
   const router = useRouter();
   const { locale, pathArray } = useGetPathComponent();
@@ -23,7 +31,10 @@ const Header = (): JSX.Element => {
 
   return (
     <>
-      <header className="h-[65px] relative shadow-xl duration-300 dark:border-black border-b">
+      <header
+        className="h-[65px] relative shadow-xl duration-300 dark:border-black border-b"
+        suppressHydrationWarning
+      >
         <div className="shadow-sm h-full">
           <div className="relative justify-between h-full flex w-full items-center duration-300 2xl:px-[175px] px-[15px] py-2.5 dark:bg-black">
             <div>

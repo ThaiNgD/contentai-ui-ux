@@ -2,7 +2,6 @@
 "use client";
 import { EMOJIS_ARRAY } from "@/helper/const";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-
 import {
   Alignment,
   Autoformat,
@@ -26,6 +25,7 @@ import {
   Italic,
   Link,
   List,
+  ListProperties,
   Markdown,
   Mention,
   Paragraph,
@@ -40,31 +40,22 @@ import {
 } from "ckeditor5";
 import "ckeditor5/ckeditor5.css";
 import { useEffect, useState } from "react";
-import showdown from "showdown";
 interface CKEDITORProps {
   data?: string;
   clsWidth?: string;
   clsHeight?: string;
 }
 function CustomEditor({ data }: CKEDITORProps) {
-  const converter = new showdown.Converter({
-    tables: true,
-    completeHTMLDocument: true,
-  });
   const [htmlData, setHtmlData] = useState("");
-  // Convert markdown to HTML
   useEffect(() => {
     if (data) {
       let i = 0;
-      const stringResponse = converter.makeHtml(data);
-      // converter.
-      console.log(stringResponse);
       const intervalId = setInterval(() => {
-        setHtmlData(stringResponse.slice(0, i));
+        setHtmlData(data.slice(0, i));
 
         i += 20;
 
-        if (i > stringResponse.length + 20) {
+        if (i > data.length + 20) {
           clearInterval(intervalId);
         }
       }, 1);
@@ -111,6 +102,7 @@ function CustomEditor({ data }: CKEDITORProps) {
             Italic,
             Link,
             List,
+            ListProperties,
             Markdown,
             Mention,
             Paragraph,
@@ -165,6 +157,13 @@ function CustomEditor({ data }: CKEDITORProps) {
             "horizontalLine",
             "specialCharacters",
           ],
+          list: {
+            properties: {
+              styles: true,
+              startIndex: true,
+              reversed: true,
+            },
+          },
           codeBlock: {
             languages: [
               { language: "css", label: "CSS" },
