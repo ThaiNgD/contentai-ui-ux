@@ -7,9 +7,9 @@ import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FaAddressBook, FaHandPointDown } from "react-icons/fa";
-import { FaImage } from "react-icons/fa6";
-import { MdFormatListNumbered, MdToken } from "react-icons/md";
+import { FaHandPointDown } from "react-icons/fa";
+import { FaFileWord, FaImage } from "react-icons/fa6";
+import { MdTimer } from "react-icons/md";
 const DashboardInfo = () => {
   const t = useTranslations("dashboard");
   const { data: info } = useFetchUserInfo();
@@ -94,7 +94,7 @@ const DashboardInfo = () => {
             />
             <button
               role="button"
-              className="font-bold justify-self-center h-fit text-sm md:!text-[20px] rounded-lg glow-bg-blue update px-[22px] py-[10px] z-5 duration-200 hover:animate-none whitespace-nowrap button hover:bg-[#019de4]"
+              className="font-bold justify-self-center h-fit text-sm md:!text-[20px] rounded-lg glow-bg-blue update px-[22px] py-[10px] z-5 duration-200 hover:animate-none whitespace-nowrap delay-click button hover:bg-[#019de4]"
               onClick={moveToUpdateApi}
             >
               UPGRADE NOW
@@ -107,7 +107,7 @@ const DashboardInfo = () => {
             tooltip_id="test"
             info={10}
             tooltip="Test"
-            icon={MdToken}
+            icon={FaFileWord}
           />
 
           <DataCard
@@ -115,7 +115,7 @@ const DashboardInfo = () => {
             tooltip_id="test"
             info={10}
             tooltip="Test"
-            icon={FaAddressBook}
+            icon={FaFileWord}
           />
 
           <DataCard
@@ -123,7 +123,7 @@ const DashboardInfo = () => {
             tooltip_id="test"
             info={info && info.max_minute ? Number(info.max_minute * 60) : 0}
             tooltip="Test"
-            icon={MdFormatListNumbered}
+            icon={MdTimer}
           />
 
           <DataCard

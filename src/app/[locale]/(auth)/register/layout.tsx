@@ -5,8 +5,7 @@ export default function layout({
 }>) {
   return (
     <div className={`w-full h-full flex items-center p-5`}>
-      <div className="flex flex-col gap-5 w-full">
-        <h1 className="text-center text-3xl font-bold">Đăng ký tài khoản</h1>
+      <div className="flex flex-col w-full">
         <div>{children}</div>
       </div>
     </div>
