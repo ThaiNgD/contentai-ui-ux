@@ -7,7 +7,7 @@ import { useFetchUserInfo } from "@/service/auth/useFetchUserInfor";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FaAddressBook } from "react-icons/fa";
+import { FaAddressBook, FaHandPointDown } from "react-icons/fa";
 import { FaImage } from "react-icons/fa6";
 import { MdFormatListNumbered, MdToken } from "react-icons/md";
 const DashboardInfo = () => {
@@ -42,7 +42,7 @@ const DashboardInfo = () => {
           </div>
         )}
 
-        <div className="flex justify-between w-full">
+        <div className="flex flex-col md:flex-row justify-between w-full">
           <div className="text-left z-10 mt-[30px] flex-auto">
             <h6 className="text-black dark:text-white text-lg md:text-[30px] leading-[32px] font-bold text-left">
               {t("welcome")},{" "}
@@ -86,13 +86,20 @@ const DashboardInfo = () => {
               />
             </div> */}
           </div>
-          <button
-            role="button"
-            className="font-bold  h-fit text-sm md:!text-[20px] rounded-lg glow-bg-blue update px-4 py-3  -z-5 mt-8 hover:!transition-none duration-200 hover:animate-none hover:bg-sky-500"
-            onClick={moveToUpdateApi}
-          >
-            UPGRADE NOW
-          </button>
+          <div className="flex-col items-center gap-4 group justify-center">
+            <FaHandPointDown
+              className="justify-self-center opacity-0 duration-200 group-hover:opacity-0 md:opacity-100 translate-y-hand !z-[100]"
+              size={20}
+              color="#F8AF34"
+            />
+            <button
+              role="button"
+              className="font-bold justify-self-center h-fit text-sm md:!text-[20px] rounded-lg glow-bg-blue update px-[22px] py-[10px] z-5 duration-200 hover:animate-none whitespace-nowrap button hover:bg-[#019de4]"
+              onClick={moveToUpdateApi}
+            >
+              UPGRADE NOW
+            </button>
+          </div>
         </div>
         <div className="limit w-full items-center justify-between mt-[38px] mb-[40px] flex gap-2 ">
           <DataCard

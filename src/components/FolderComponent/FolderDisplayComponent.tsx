@@ -18,6 +18,7 @@ export interface FolderDisplayComponentProps {
   folder_id: string;
   clsContainerWidth?: string;
   setShouldFetch?: Dispatch<SetStateAction<boolean>>;
+  inFolderDisplay?: boolean;
 }
 const FolderDisplayComponent = ({
   folder_id,
@@ -25,6 +26,7 @@ const FolderDisplayComponent = ({
   time,
   clsContainerWidth,
   setShouldFetch,
+  inFolderDisplay,
 }: FolderDisplayComponentProps) => {
   const { mutate: mutateFn } = useDeleteFolder();
   const router = useRouter();
@@ -108,7 +110,7 @@ const FolderDisplayComponent = ({
           gap: "10px",
         }}
         onClick={(): void => {
-          if (showEdit) {
+          if (showEdit || inFolderDisplay) {
             return;
           }
           setIsSelected(true);

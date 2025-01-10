@@ -18,11 +18,11 @@ const DataCard = ({
 }: DataCardProps) => {
   const Icon = icon;
   return (
-    <div className="bg-white min-w-[22.5%] p-4 rounded-lg  shadow-lg flex flex-col md:flex-row gap-4 z-10">
+    <div className="bg-white h-full min-w-[22.5%] p-4 rounded-lg  shadow-lg flex flex-col md:flex-row md:gap-2 gap-4 z-10">
       <div className="p-3 w-fit h-fit rounded-full shadow-inner bg-gray-200">
         <Icon size={24} />
       </div>
-      <div className="">
+      <div className="flex-auto flex flex-col justify-between md:flex-1">
         <div className="flex gap-1 font-bold text-[#FFB951] shadow-custom">
           {title}
           {tooltip && (

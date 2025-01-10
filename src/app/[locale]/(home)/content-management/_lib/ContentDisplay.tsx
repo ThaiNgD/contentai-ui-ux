@@ -5,7 +5,7 @@ const ContentDisplay = () => {
   const { isPending, data: documents } = useGetAllDocument();
 
   return (
-    <div className="flex mt-[40px] flex-wrap justify-evenly gap-5">
+    <div className="flex mt-[40px] justify-normal mx-auto flex-wrap gap-5">
       {!isPending ? (
         documents?.data.map((document, index) => (
           <RecentLaunchComponent
