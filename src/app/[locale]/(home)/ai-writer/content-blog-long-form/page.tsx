@@ -1,9 +1,13 @@
 "use client";
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
 import SaveContentComponent from "@/components/ContentComponent/SaveContentComponent";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import ChildHeader from "../_lib/ChildHeader";
 import InputContent from "./_lib/InputContent";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 const Page = () => {
   const [ckData, setCkData] = useState<IResult>({

@@ -8,10 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit -p tsconfig.json --composite false",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy:prod": "next build && pm2 startOrRestart ecosystem.config.js --env production"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-react": "^9.3.1",
+    "@ckeditor/ckeditor5-react": "^9.4.0",
     "@mantine/core": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
     "@react-pdf-viewer/core": "3.12.0",

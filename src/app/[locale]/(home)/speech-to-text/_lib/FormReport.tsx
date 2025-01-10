@@ -1,4 +1,8 @@
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
+import dynamic from "next/dynamic";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 const FormReport = ({ transcribedText }: { transcribedText: string }) => {
   return (
