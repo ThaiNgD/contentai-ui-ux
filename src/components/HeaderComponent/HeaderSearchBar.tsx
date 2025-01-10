@@ -1,19 +1,22 @@
 "use client";
 import { cn } from "@/helper/utils";
 import hotkeys from "hotkeys-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 const HeaderSearchBar = () => {
   const [isFocus, setIsFocus] = useState(false);
   const onClickInput = (): void => {
     setIsFocus((prev) => !prev);
   };
-  const inputSearch = document.getElementById("input-search");
-  hotkeys("ctrl+k", function (event) {
-    // Prevent the default refresh event under WINDOWS system
-    event.preventDefault();
-    inputSearch?.focus();
+  useEffect(() => {
+    const inputSearch = document.getElementById("input-search");
+    hotkeys("ctrl+k", function (event) {
+      // Prevent the default refresh event under WINDOWS system
+      event.preventDefault();
+      inputSearch?.focus();
+    });
   });
+
   return (
     <div className="hidden lg:flex relative rounded-2xl w-[400px] h-[35px] bg-gray-200 ">
       <input

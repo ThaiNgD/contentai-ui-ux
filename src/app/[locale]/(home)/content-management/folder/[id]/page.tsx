@@ -1,5 +1,5 @@
 "use client";
-import RecentLaunchComponent from "@/components/ContentComponent/RecentLaunchComponent";
+import RecentLaunchComponent from "@/components/FolderComponent/RecentLaunchComponent";
 import { useGetDocumentByFolder } from "@/service/document/useGetDocumentByFolder";
 import { useEffect, useState } from "react";
 import FolderDisplay from "./_lib/FolderDisplay";
@@ -36,6 +36,11 @@ export default function Page({
               content={document.content}
               date={document.created_at}
               documentId={document.document_id}
+              isFolderDisplay
+              tooltip={{
+                tooltip_content: document.document_name,
+                tooltip_id: document.document_id,
+              }}
             />
           ))}
         </div>

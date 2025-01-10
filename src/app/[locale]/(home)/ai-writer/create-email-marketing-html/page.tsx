@@ -1,7 +1,11 @@
 "use client";
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
+import dynamic from "next/dynamic";
 import ChildHeader from "../_lib/ChildHeader";
 import InputContent from "./_lib/InputContent";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 const page = () => {
   return (

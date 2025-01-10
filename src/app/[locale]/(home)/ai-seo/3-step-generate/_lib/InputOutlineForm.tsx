@@ -1,8 +1,12 @@
 "use client";
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
 import { Button } from "flowbite-react";
+import dynamic from "next/dynamic";
 import { Dispatch, SetStateAction, useState } from "react";
 import InputOutline from "./InputOutline";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 interface InputOutlineFormProps {
   setStepsPost: () => void;

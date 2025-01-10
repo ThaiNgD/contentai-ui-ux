@@ -1,7 +1,11 @@
 "use client";
-import CustomEditor from "@/components/CKEditorComponent/CustomEditor";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import InputPost from "./InputPost";
+const CustomEditor = dynamic(
+  () => import("@/components/CKEditorComponent/CustomEditor"),
+  { ssr: false }
+);
 
 const InputPostForm = ({ outline }: { outline: string }) => {
   const [ckData, setCkData] = useState("");

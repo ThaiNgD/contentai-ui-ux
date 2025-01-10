@@ -14,6 +14,7 @@ const FolderDisplay = () => {
         title="Folder"
         time="1 tháng trước"
         clsContainerWidth="w-full"
+        inFolderDisplay={true}
       />
     </div>
   );
